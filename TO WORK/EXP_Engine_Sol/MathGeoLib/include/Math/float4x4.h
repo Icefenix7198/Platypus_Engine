@@ -70,7 +70,7 @@ class ALIGN_MAT float4x4
 {
 public:
 	/// Specifies the height of this matrix.
-	enum { Rows = 4 };
+	enum { Rows = 4 }; 
 
 	/// Specifies the width of this matrix.
 	enum { Cols = 4 };

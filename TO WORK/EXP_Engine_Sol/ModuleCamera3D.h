@@ -4,8 +4,7 @@
 #include "MathGeoLib/include/Math/float3.h"
 #include "MathGeoLib/include/Math/float4x4.h"
 
-//todo: REMOVE this before 1st delivery!!
-#include "glmath.h"
+#include"MathGeoLib/include/Geometry/Frustum.h";
 
 class ModuleCamera3D : public Module
 {
@@ -33,6 +32,6 @@ public:
 
 private:
 
-	mat4x4 ViewMatrix;
-	//Frustum mMainCamera; Some help here :)
+	//mat4x4 ViewMatrix;
+	Frustum mMainCamera; 
 };

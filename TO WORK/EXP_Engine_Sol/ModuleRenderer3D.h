@@ -7,8 +7,7 @@
 #include "MathGeoLib/include/Math/float4x4.h"
 #include "Primitive.h"
 
-//todo: REMOVE this before 1st delivery!!
-#include "glmath.h"
+#include"MathGeoLib/include/Geometry/Frustum.h";
 
 #define MAX_LIGHTS 8
 
@@ -32,5 +31,7 @@ public:
 	CPlane Grid;
 	
 	//You won't need this after using Frustum
-	mat4x4 ProjectionMatrix;
+	//mat4x4 ProjectionMatrix;
+	Frustum camFrustrum;
+	
 };

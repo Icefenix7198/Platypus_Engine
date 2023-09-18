@@ -1,1 +1,22 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(439,5): error MSB8020: No se pueden encontrar las herramientas de compilación para v143 (Conjunto de herramientas de la plataforma = 'v143'). Para compilar con las herramientas de compilación v143, instale las herramientas de compilación v143. También puede actualizar a las herramientas actuales de Visual Studio. Para ello, seleccione el menú Proyecto o haga clic con el botón secundario en la solución y, a continuación, seleccione "Actualizar solución".
+﻿  Application.cpp
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(10,9): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleCamera3D.h(7,9): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+  Main.cpp
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(10,9): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleCamera3D.h(7,9): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+  ModuleCamera3D.cpp
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(10,9): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleCamera3D.h(7,9): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleCamera3D.cpp(14,2): error C2065: 'ViewMatrix': identificador no declarado
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleCamera3D.cpp(14,15): error C2065: 'IdentityMatrix': identificador no declarado
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleCamera3D.cpp(157,9): error C2065: 'ViewMatrix': identificador no declarado
+  ModuleInput.cpp
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(10,9): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleCamera3D.h(7,9): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+  ModuleRenderer3D.cpp
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(10,9): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleCamera3D.h(7,9): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+  ModuleWindow.cpp
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(10,9): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleCamera3D.h(7,9): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+  Generando código...

@@ -169,6 +169,8 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	//glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
+	//ImGui::EndMenuBar();
+
 	Grid.Render();
 	SDL_GL_SwapWindow(App->window->window);
 	return UPDATE_CONTINUE;

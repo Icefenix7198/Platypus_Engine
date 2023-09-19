@@ -1,5 +1,11 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (3D Physics - class5.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  ModuleRenderer3D.cpp
+  ModuleInput.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
 C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : see previous definition of 'M_PI'
+C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(65,24): warning C4244: '/=': conversion from 'double' to 'int', possible loss of data
+C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(66,24): warning C4244: '/=': conversion from 'double' to 'int', possible loss of data
+C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(102,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(103,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(105,35): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(106,35): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   3D Physics.vcxproj -> C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Debug\Platypus Engine.exe

@@ -163,7 +163,11 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	if (second_Window)
 	{
-		ImGui::Begin("Prueba", &second_Window);
+		ImGui::Begin("CloseWindow", &second_Window);
+		if (ImGui::Button("Close"))
+		{
+			return UPDATE_STOP;
+		}
 		ImGui::End();
 	}
 	// Rendering
@@ -174,8 +178,6 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 	//ImGui::EndMenuBar();
-
-	if(second_Window)
 
 	Grid.Render();
 	SDL_GL_SwapWindow(App->window->window);

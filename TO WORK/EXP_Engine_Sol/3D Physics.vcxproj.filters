@@ -43,6 +43,9 @@
     <Filter Include="Externals\ImGui\Backends">
       <UniqueIdentifier>{3a108e19-cac2-40c1-8f24-bbfb43d1de88}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Externals\mmgr">
+      <UniqueIdentifier>{f9e77437-91ee-45e4-a1e6-8ea8488cb112}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -288,6 +291,12 @@
     <ClInclude Include="ImGui\backends\imgui_impl_sdl.h">
       <Filter>Externals\ImGui\Backends</Filter>
     </ClInclude>
+    <ClInclude Include="mmgr\mmgr.h">
+      <Filter>Externals\mmgr</Filter>
+    </ClInclude>
+    <ClInclude Include="mmgr\nommgr.h">
+      <Filter>Externals\mmgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -442,6 +451,9 @@
     </ClCompile>
     <ClCompile Include="ImGui\backends\imgui_impl_sdl.cpp">
       <Filter>Externals\ImGui\Backends</Filter>
+    </ClCompile>
+    <ClCompile Include="mmgr\mmgr.cpp">
+      <Filter>Externals\mmgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

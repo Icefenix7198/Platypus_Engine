@@ -2,15 +2,6 @@
   ModuleEditor.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
 C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-  ModuleInput.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(65,24): warning C4244: '/=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(66,24): warning C4244: '/=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(102,25): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(103,25): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(105,35): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(106,35): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
   ModuleRenderer3D.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
 C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'

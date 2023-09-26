@@ -37,14 +37,14 @@
     <Filter Include="Externals\MathGeoLib\Time">
       <UniqueIdentifier>{1d07a7ae-7541-4ebe-8134-5a5b5b6088ca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Externals\ImGui">
-      <UniqueIdentifier>{1c1b9d3e-6a3a-459f-b474-32d180b3b416}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Externals\ImGui\Backends">
-      <UniqueIdentifier>{3a108e19-cac2-40c1-8f24-bbfb43d1de88}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Externals\mmgr">
       <UniqueIdentifier>{f9e77437-91ee-45e4-a1e6-8ea8488cb112}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Externals\ImGui">
+      <UniqueIdentifier>{06d3c041-e72b-48b5-b74b-3ed3e05fe28c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Externals\ImGui\Backends">
+      <UniqueIdentifier>{ef221697-005d-465b-8fa9-041b5cc3b1c9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -264,38 +264,41 @@
     <ClInclude Include="glmath.h">
       <Filter>Externals</Filter>
     </ClInclude>
-    <ClInclude Include="ImGui\imconfig.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGui\imgui.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGui\imgui_internal.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGui\imstb_rectpack.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGui\imstb_textedit.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGui\imstb_truetype.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGui\backends\imgui_impl_opengl3.h">
-      <Filter>Externals\ImGui\Backends</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGui\backends\imgui_impl_opengl3_loader.h">
-      <Filter>Externals\ImGui\Backends</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGui\backends\imgui_impl_sdl.h">
-      <Filter>Externals\ImGui\Backends</Filter>
-    </ClInclude>
     <ClInclude Include="mmgr\mmgr.h">
       <Filter>Externals\mmgr</Filter>
     </ClInclude>
     <ClInclude Include="mmgr\nommgr.h">
       <Filter>Externals\mmgr</Filter>
+    </ClInclude>
+    <ClInclude Include="imGui\imconfig.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imGui\imgui.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imGui\imgui_internal.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imGui\imstb_rectpack.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imGui\imstb_textedit.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imGui\imstb_truetype.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imGui\backends\imgui_impl_opengl3.h">
+      <Filter>Externals\ImGui\Backends</Filter>
+    </ClInclude>
+    <ClInclude Include="imGui\backends\imgui_impl_opengl3_loader.h">
+      <Filter>Externals\ImGui\Backends</Filter>
+    </ClInclude>
+    <ClInclude Include="imGui\backends\imgui_impl_sdl2.h">
+      <Filter>Externals\ImGui\Backends</Filter>
+    </ClInclude>
+    <ClInclude Include="imGui\backends\imgui_impl_sdlrenderer2.h">
+      <Filter>Externals\ImGui\Backends</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -431,29 +434,32 @@
     <ClCompile Include="glmath.cpp">
       <Filter>Externals</Filter>
     </ClCompile>
-    <ClCompile Include="ImGui\imgui.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="ImGui\imgui_demo.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="ImGui\imgui_draw.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="ImGui\imgui_tables.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="ImGui\imgui_widgets.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="ImGui\backends\imgui_impl_opengl3.cpp">
-      <Filter>Externals\ImGui\Backends</Filter>
-    </ClCompile>
-    <ClCompile Include="ImGui\backends\imgui_impl_sdl.cpp">
-      <Filter>Externals\ImGui\Backends</Filter>
-    </ClCompile>
     <ClCompile Include="mmgr\mmgr.cpp">
       <Filter>Externals\mmgr</Filter>
+    </ClCompile>
+    <ClCompile Include="imGui\imgui.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imGui\imgui_demo.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imGui\imgui_draw.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imGui\imgui_tables.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imGui\imgui_widgets.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imGui\backends\imgui_impl_opengl3.cpp">
+      <Filter>Externals\ImGui\Backends</Filter>
+    </ClCompile>
+    <ClCompile Include="imGui\backends\imgui_impl_sdl2.cpp">
+      <Filter>Externals\ImGui\Backends</Filter>
+    </ClCompile>
+    <ClCompile Include="imGui\backends\imgui_impl_sdlrenderer2.cpp">
+      <Filter>Externals\ImGui\Backends</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -161,15 +161,29 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGui::ShowDemoWindow();
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	if (second_Window)
+
+	//Barra de arriba del editor (esto tendra que ir en ModuleEditor)
+	if (ImGui::BeginMainMenuBar())
 	{
-		ImGui::Begin("CloseWindow", &second_Window);
-		if (ImGui::Button("Close"))
+		if (ImGui::BeginMenu("File"))
 		{
-			return UPDATE_STOP;
+			ImGui::EndMenu();
 		}
-		ImGui::End();
+		if (ImGui::BeginMenu("Edit"))
+		{
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("Assets"))
+		{
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("GameObject"))
+		{
+			ImGui::EndMenu();
+		}
+		ImGui::EndMainMenuBar();
 	}
+
 	// Rendering
 	ImGui::Render();
 	glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);

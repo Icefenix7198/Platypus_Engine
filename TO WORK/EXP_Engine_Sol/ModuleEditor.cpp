@@ -45,11 +45,56 @@ bool ModuleEditor::Init()
 
 void ModuleEditor::DrawEditor()
 {
+    // Start the ImGui frame
+    //ImGui_ImplOpenGL3_NewFrame();
+    //ImGui_ImplSDL2_NewFrame();
+    ////ImGui::NewFrame();
+
+	/*ImGuiIO& io = ImGui::GetIO(); (void)io;*/
+
+	//Barra de arriba del editor (esto tendra que ir en ModuleEditor)
+	if (ImGui::BeginMainMenuBar())
+	{
+		if (ImGui::BeginMenu("File"))
+		{
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("Edit"))
+		{
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("Assets"))
+		{
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("GameObject"))
+		{
+			ImGui::EndMenu();
+		}
+		ImGui::EndMainMenuBar();
+	}
+
+	//Render
+	//ImGui::Render();
+	//ImGui::UpdatePlatformWindows(); //Testing @ANDREU
+	//ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+	//SDL_GL_SwapWindow(App->window->window);
+
 }
 
 bool ModuleEditor::CleanUp()
 {
-	return false;
+	// Cleanup
+	//PRUEBA
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplSDL2_Shutdown();
+	ImGui::DestroyContext();
+
+	SDL_GL_DeleteContext(App->renderer3D->context);
+	SDL_DestroyWindow(App->window->window);
+	SDL_Quit();
+	return true;
 }
 
 void ModuleEditor::AddFPS(const float aFPS)

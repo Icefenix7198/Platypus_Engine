@@ -123,8 +123,8 @@ bool ModuleRenderer3D::Init()
 	//ImGui::StyleColorsClassic();
 
 	// Setup Platform/Renderer backends
-	ImGui_ImplSDL2_InitForOpenGL(App->window->window, context);
-	ImGui_ImplOpenGL3_Init("#version 130");
+	//ImGui_ImplSDL2_InitForOpenGL(App->window->window, context); //PETA AQUI @ANDREU
+	//ImGui_ImplOpenGL3_Init("#version 130");
 
 	Grid.axis = true;
 
@@ -155,15 +155,17 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	// Start the Dear ImGui frame
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame();
-	ImGui::NewFrame();
+	ImGui::NewFrame(); //Es en el segundo NewFrame que esto peta @Andreu
 
 	// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
 	ImGui::ShowDemoWindow();
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
+	App->editor->DrawEditor(); //Esto en principio ahora ya funciona bien? (no peta al menos)
+
 	//Barra de arriba del editor (esto tendra que ir en ModuleEditor)
-	if (ImGui::BeginMainMenuBar())
+	/*if (ImGui::BeginMainMenuBar())
 	{
 		if (ImGui::BeginMenu("File"))
 		{
@@ -182,16 +184,16 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 			ImGui::EndMenu();
 		}
 		ImGui::EndMainMenuBar();
-	}
+	}*/
 
 	// Rendering
 	ImGui::Render();
+	ImGui::EndFrame();//Testing
+	ImGui::UpdatePlatformWindows(); //Testing SIN ESTO PETA MUCHO PERO CON ESTO LA RAM SUBE AL INFINITO
 	glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
 	//glClearColor(1.0, 1.0, 1.0, 0.0);
 	//glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-	//ImGui::EndMenuBar();
 
 	Grid.Render();
 	SDL_GL_SwapWindow(App->window->window);

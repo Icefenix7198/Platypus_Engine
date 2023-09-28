@@ -117,6 +117,11 @@ bool ModuleRenderer3D::Init()
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
+	//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; //@ANDREU This flag causes errors with the coment: 
+	// Forgot to call UpdatePlatformWindows() in main loop after EndFrame()? Check examples/ applications for reference."
 
 	// Setup Dear ImGui style
 	ImGui::StyleColorsDark();
@@ -162,8 +167,9 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
+	App->editor->DrawEditor();
 	//Barra de arriba del editor (esto tendra que ir en ModuleEditor)
-	if (ImGui::BeginMainMenuBar())
+	/*if (ImGui::BeginMainMenuBar())
 	{
 		if (ImGui::BeginMenu("File"))
 		{
@@ -182,7 +188,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 			ImGui::EndMenu();
 		}
 		ImGui::EndMainMenuBar();
-	}
+	}*/
 
 	// Rendering
 	ImGui::Render();

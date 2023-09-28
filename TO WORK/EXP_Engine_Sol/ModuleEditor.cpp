@@ -14,37 +14,58 @@ ModuleEditor::~ModuleEditor()
 
 bool ModuleEditor::Init()
 {
-    SDL_GLContext gl_context = SDL_GL_CreateContext(App->window->window);
-    
-	IMGUI_CHECKVERSION();
-    ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
-	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+ //   SDL_GLContext gl_context = SDL_GL_CreateContext(App->window->window);
+ //   
+	//IMGUI_CHECKVERSION();
+ //   ImGui::CreateContext();
+	//ImGuiIO& io = ImGui::GetIO(); (void)io;
+	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+	//io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
+	//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
-    // Setup ImGui style
-    ImGui::StyleColorsDark();
-    //ImGui::StyleColorsLight();
+ //   // Setup ImGui style
+ //   ImGui::StyleColorsDark();
+ //   //ImGui::StyleColorsLight();
 
-    // When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to regular ones.
-    ImGuiStyle& style = ImGui::GetStyle();
-    if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
-    {
-        style.WindowRounding = 0.0f;
-        style.Colors[ImGuiCol_WindowBg].w = 1.0f;
-    }
+ //   // When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to regular ones.
+ //   ImGuiStyle& style = ImGui::GetStyle();
+ //   if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+ //   {
+ //       style.WindowRounding = 0.0f;
+ //       style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+ //   }
     
     // Setup Platform/Renderer backends
-    ImGui_ImplSDL2_InitForOpenGL(App->window->window, gl_context);
-    ImGui_ImplOpenGL3_Init(); // TESTING 
+    //ImGui_ImplSDL2_InitForOpenGL(App->window->window, gl_context); //@ANDREU This causes an special error because the backend is alredy declared
+    //ImGui_ImplOpenGL3_Init(); //@ANDREU This causes an special error because the backend is alredy declared
 
 	return true;
 }
 
 void ModuleEditor::DrawEditor()
 {
+	//Barra de arriba del editor (esto tendra que ir en ModuleEditor)
+	if (ImGui::BeginMainMenuBar())
+	{
+		if (ImGui::BeginMenu("File"))
+		{
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("Edit"))
+		{
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("Assets"))
+		{
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("GameObject"))
+		{
+			ImGui::EndMenu();
+		}
+		ImGui::EndMainMenuBar();
+	}
 }
 
 bool ModuleEditor::CleanUp()

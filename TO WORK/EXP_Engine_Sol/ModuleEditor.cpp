@@ -84,21 +84,23 @@ void ModuleEditor::DrawEditor()
 	}
 
 	//Testeo
-	AddFPS(120);
+	AddFPS(0.16);
 }
 
 bool ModuleEditor::CleanUp()
 {
-	return false;
+	mFPSLog.clear();
+	return true;
 }
 
 void ModuleEditor::AddFPS(const float aFPS)
 {
 	mFPSLog.push_back(aFPS);
-	ImGui::PlotHistogram("FPS", mFPSLog.data(), mFPSLog.size());
+	ImGui::PlotHistogram("FPS", mFPSLog.data(), mFPSLog.size(),0,NULL,0.0f,1.0f, ImVec2(0, 80.0f)); //Name,iterador,tamaño vector, ??,???,???,???, tamaño espacio azul
 	
-	if (mFPSLog.size()>=2500)
+	if (mFPSLog.size()>=25)
 	{
+		//Hacer copia del vector inversa
 		mFPSLog.clear();
 	}
 

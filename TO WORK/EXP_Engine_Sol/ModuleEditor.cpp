@@ -59,15 +59,16 @@ void ModuleEditor::DrawEditor()
 		{
 			if (ImGui::BeginMenu("Options"))
 			{	
-				bool VSYNCactive = VSYNC; //ERIC, como hacer opciones ImGui
+				bool VSYNCactive = App->window->GetVSYNC(); //ERIC, como hacer opciones ImGui
 				if(ImGui::Checkbox("VSYNC", &VSYNCactive))
 				{
-					 
+					App->window->SetVSYNC(VSYNCactive);
 				}
-				/*if (ImGui::SliderInt("Brigthness", pBrigthness,0,100))
+				float winScale = App->window->GetScreenSize();
+				if (ImGui::SliderFloat("Window Scale", &winScale,0.1f,1.0f))
 				{
-					App->window.set
-				}*/
+					App->window->SetScreenSize(winScale);
+				}
 			
 				ImGui::EndMenu();
 			}

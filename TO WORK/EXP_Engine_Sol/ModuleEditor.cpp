@@ -41,7 +41,6 @@ bool ModuleEditor::Init()
     //ImGui_ImplOpenGL3_Init(); //@ANDREU This causes an special error because the backend is alredy declared
 
 
-
 	return true;
 }
 
@@ -58,7 +57,7 @@ void ModuleEditor::DrawEditor()
 		{
 			if (ImGui::BeginMenu("Options"))
 			{	
-				bool VSYNCactive = App->window->GetVSYNC(); //ERIC, como hacer opciones ImGui
+				bool VSYNCactive = App->window->GetVSYNC();
 				if(ImGui::Checkbox("VSYNC", &VSYNCactive))
 				{
 					App->window->SetVSYNC(VSYNCactive);
@@ -83,6 +82,9 @@ void ModuleEditor::DrawEditor()
 		}
 		ImGui::EndMainMenuBar();
 	}
+
+	//Testeo
+	AddFPS(120);
 }
 
 bool ModuleEditor::CleanUp()
@@ -92,8 +94,14 @@ bool ModuleEditor::CleanUp()
 
 void ModuleEditor::AddFPS(const float aFPS)
 {
-	std::vector<float> vFPS;
-	//ImGui::PlotHistogram("FPS",);
+	mFPSLog.push_back(aFPS);
+	ImGui::PlotHistogram("FPS", mFPSLog.data(), mFPSLog.size());
+	
+	if (mFPSLog.size()>=2500)
+	{
+		mFPSLog.clear();
+	}
+
 
 
 }

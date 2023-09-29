@@ -120,7 +120,7 @@ bool ModuleRenderer3D::Init()
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
-	//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; //@ANDREU This flag causes errors with the coment: 
+	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; //@ANDREU This flag causes errors with the coment: 
 	// Forgot to call UpdatePlatformWindows() in main loop after EndFrame()? Check examples/ applications for reference."
 
 	// Setup Dear ImGui style
@@ -193,11 +193,21 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	// Rendering
 	ImGui::Render();
 	glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
-	//glClearColor(1.0, 1.0, 1.0, 0.0);
-	//glClear(GL_COLOR_BUFFER_BIT);
+	//glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
+	glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-	//ImGui::EndMenuBar();
+	// Update and Render additional Platform Windows
+	// (Platform functions may change the current OpenGL context, so we save/restore it to make it easier to paste this code elsewhere.
+	//  For this specific demo app we could also call SDL_GL_MakeCurrent(window, gl_context) directly)
+	if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+	{
+		SDL_Window* backup_current_window = SDL_GL_GetCurrentWindow();
+		SDL_GLContext backup_current_context = SDL_GL_GetCurrentContext();
+		ImGui::UpdatePlatformWindows();
+		ImGui::RenderPlatformWindowsDefault();
+		SDL_GL_MakeCurrent(backup_current_window, backup_current_context);
+	}
 
 	Grid.Render();
 	SDL_GL_SwapWindow(App->window->window);

@@ -20,6 +20,9 @@ public:
 	void AddFPS(const float aFPS);
 
 	std::vector<float> mFPSLog;
+
+	//Values options
+	int* pBrigthness;
 };
 
 #endif //MODULE_EDITOR

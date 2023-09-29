@@ -40,6 +40,9 @@ bool ModuleEditor::Init()
     //ImGui_ImplSDL2_InitForOpenGL(App->window->window, gl_context); //@ANDREU This causes an special error because the backend is alredy declared
     //ImGui_ImplOpenGL3_Init(); //@ANDREU This causes an special error because the backend is alredy declared
 
+	int Brigthness = 100;
+
+
 	return true;
 }
 
@@ -54,6 +57,20 @@ void ModuleEditor::DrawEditor()
 		}
 		if (ImGui::BeginMenu("Edit"))
 		{
+			if (ImGui::BeginMenu("Options"))
+			{	
+				bool VSYNCactive = VSYNC; //ERIC, como hacer opciones ImGui
+				if(ImGui::Checkbox("VSYNC", &VSYNCactive))
+				{
+					 
+				}
+				/*if (ImGui::SliderInt("Brigthness", pBrigthness,0,100))
+				{
+					App->window.set
+				}*/
+			
+				ImGui::EndMenu();
+			}
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Assets"))
@@ -75,4 +92,8 @@ bool ModuleEditor::CleanUp()
 
 void ModuleEditor::AddFPS(const float aFPS)
 {
+	std::vector<float> vFPS;
+	//ImGui::PlotHistogram("FPS",);
+
+
 }

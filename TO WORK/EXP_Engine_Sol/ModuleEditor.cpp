@@ -40,7 +40,9 @@ bool ModuleEditor::Init()
     //ImGui_ImplSDL2_InitForOpenGL(App->window->window, gl_context); //@ANDREU This causes an special error because the backend is alredy declared
     //ImGui_ImplOpenGL3_Init(); //@ANDREU This causes an special error because the backend is alredy declared
 
-
+	cpuCache = SDL_GetCPUCacheLineSize();
+	cpus = SDL_GetCPUCount();
+	ram = SDL_GetSystemRAM();
 	return true;
 }
 
@@ -83,6 +85,12 @@ void ModuleEditor::DrawEditor()
 		ImGui::EndMainMenuBar();
 	}
 
+	if (ImGui::Begin("Hardware"))
+	{
+		ImGui::Text("CPUs: %i (Cache: %ikb)", cpus, cpuCache);
+		ImGui::Text("System RAM: %iMb", ram);
+	}
+	ImGui::End();
 	//Testeo
 	AddFPS(0.16);
 }

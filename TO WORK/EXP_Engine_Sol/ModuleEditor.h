@@ -20,6 +20,10 @@ public:
 	void AddFPS(const float aFPS);
 
 	std::vector<float> mFPSLog;
+
+	int cpuCache;
+	int cpus;
+	int ram;
 };
 
 #endif //MODULE_EDITOR

@@ -82,6 +82,19 @@ void ModuleEditor::DrawEditor()
 		{
 			ImGui::EndMenu();
 		}
+		if (ImGui::BeginMenu("Show"))
+		{
+			ImGui::EndMenu();
+		}
+		if (ImGui::BeginMenu("Help"))
+		{
+			if (ImGui::BeginMenu("About"))
+			{
+				ImGui::EndMenu();
+			}
+			ImGui::EndMenu();
+		}
+
 		ImGui::EndMainMenuBar();
 	}
 
@@ -92,7 +105,7 @@ void ModuleEditor::DrawEditor()
 	}
 	ImGui::End();
 	//Testeo
-	AddFPS(0.16);
+	//AddFPS(0.16);
 }
 
 bool ModuleEditor::CleanUp()

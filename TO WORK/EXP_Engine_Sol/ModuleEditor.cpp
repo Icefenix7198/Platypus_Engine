@@ -143,6 +143,19 @@ void ModuleEditor::DrawEditor()
 	{
 		ImGui::Text("CPUs: %i (Cache: %ikb)", cpus, cpuCache);
 		ImGui::Text("System RAM: %iMb", ram);
+		ImGui::Text("Caps: ");
+		if (caps[0] == true) { ImGui::Text("3D"); }
+		if (caps[1] == true) { ImGui::Text("AltiVec"); }
+		if (caps[2] == true) { ImGui::Text("AVX"); }
+		if (caps[3] == true) { ImGui::Text("AVX2"); }
+		if (caps[4] == true) { ImGui::Text("MMX"); }
+		if (caps[5] == true) { ImGui::Text("RDTSC"); }
+		if (caps[6] == true) { ImGui::Text("SSE"); }
+		if (caps[7] == true) { ImGui::Text("SSE2"); }
+		if (caps[8] == true) { ImGui::Text("SSE3"); }
+		if (caps[9] == true) { ImGui::Text("SSE41"); }
+		if (caps[10] == true) { ImGui::Text("SSE42"); }
+		
 	}
 	ImGui::End();
 	//Testeo

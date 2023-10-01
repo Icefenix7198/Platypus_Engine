@@ -1,10 +1,6 @@
-﻿  ModuleEditor.cpp
-C:\Users\greem\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(52,20): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
-C:\Users\greem\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-  Generando código
-  1 of 3063 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+﻿  Generando código
+  0 of 3063 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    83 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   3D Physics.vcxproj -> C:\Users\greem\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Release\Platypus Engine.exe

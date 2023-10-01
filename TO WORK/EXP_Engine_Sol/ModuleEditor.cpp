@@ -43,6 +43,20 @@ bool ModuleEditor::Init()
 	cpuCache = SDL_GetCPUCacheLineSize();
 	cpus = SDL_GetCPUCount();
 	ram = SDL_GetSystemRAM();
+
+	caps[0] = SDL_Has3DNow();
+	caps[1] = SDL_HasAltiVec();
+	caps[2] = SDL_HasAVX();
+	caps[3] = SDL_HasAVX2();
+	caps[4] = SDL_HasMMX();
+	caps[5] = SDL_HasRDTSC();
+	caps[6] = SDL_HasSSE();
+	caps[7] = SDL_HasSSE2();
+	caps[8] = SDL_HasSSE3();
+	caps[9] = SDL_HasSSE41();
+	caps[10] = SDL_HasSSE42();
+
+
 	return true;
 }
 
@@ -90,6 +104,33 @@ void ModuleEditor::DrawEditor()
 		{
 			if (ImGui::BeginMenu("About"))
 			{
+				//Quzas para no ocupar tanto espacio aqui añado un about.h
+				ImGui::Text("Platypus Engine v0.1\n"
+							"The Wildest 3D Videogame Engine\n"
+							"By Eric Segovia & Andreu Miro\n"
+							"https://github.com/Icefenix7198/Platypus_Engine \n\n"
+							"Third party libraries used:\n"
+							"- ImGui v1.89.9 \n- SDL2 \n- MathGeoLib \n- OpenGL \n- Glew \n- mmgr \n- parson \n\n"
+							"License: \nMIT License \n\n"
+							"Copyright (c) 2023 by Eric Segovia & Andreu Miro \n\n"
+							"Permission is hereby granted, free of charge, to any person obtaining\n"
+							"a copy of this software and associated documentation files(the\n"
+							"Software""), to deal in the Software without restriction, including\n"
+							"without limitation the rights to use, copy, modify, merge, publish,\n"
+							"distribute, sublicense, and /or sell copies of the Software, and to\n"
+							"permit persons to whom the Software is furnished to do so, subject to\n"
+							"the following conditions :\n\n"
+
+							"The above copyright noticeand this permission notice shall be\n"
+							"included in all copies or substantial portions of the Software.\n\n"
+
+							"THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,\n"
+							"EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n"
+							"MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n"
+							"NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\n"
+							"LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\n"
+							"OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\n"
+							"WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.");
 				ImGui::EndMenu();
 			}
 			ImGui::EndMenu();

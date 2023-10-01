@@ -24,6 +24,8 @@ public:
 	int cpuCache;
 	int cpus;
 	int ram;
+
+	SDL_bool caps[11];
 };
 
 #endif //MODULE_EDITOR

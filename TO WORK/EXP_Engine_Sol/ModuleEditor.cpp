@@ -57,6 +57,7 @@ bool ModuleEditor::Init()
 	caps[10] = SDL_HasSSE42();
 
 	showFPS = false;
+	showConfig = false;
 
 	return true;
 }
@@ -72,20 +73,26 @@ void ModuleEditor::DrawEditor()
 		}
 		if (ImGui::BeginMenu("Edit"))
 		{
-			if (ImGui::BeginMenu("Options"))
-			{	
+			if (ImGui::Button("Configuration"))
+			{
+				showConfig = true;
+			}
+			if (showConfig)
+			{
+				ImGui::Begin("Config", &showConfig);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+
 				bool VSYNCactive = App->window->GetVSYNC();
-				if(ImGui::Checkbox("VSYNC", &VSYNCactive))
+				if (ImGui::Checkbox("VSYNC", &VSYNCactive))
 				{
 					App->window->SetVSYNC(VSYNCactive);
 				}
 				float winScale = App->window->GetScreenSize();
-				if (ImGui::SliderFloat("Window Scale", &winScale,0.1f,1.0f))
+				if (ImGui::SliderFloat("Window Scale", &winScale, 0.1f, 1.0f))
 				{
 					App->window->SetScreenSize(winScale);
 				}
-			
-				ImGui::EndMenu();
+				ImGui::End();
+
 			}
 			ImGui::EndMenu();
 		}
@@ -100,7 +107,7 @@ void ModuleEditor::DrawEditor()
 		if (ImGui::BeginMenu("Show"))
 		{
 			//Al pulsar el boton y solo entonces se abre el menu que muestra los FPS
-			if (ImGui::BeginMenu("ShowFPS"))
+			if (ImGui::Button("ShowFPS"))
 			{
 				showFPS = true;
 				ImGui::EndMenu();

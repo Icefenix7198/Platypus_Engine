@@ -30,6 +30,7 @@ public:
 	//Quiza esto sea too much y haya que descartar la idea
 private:
 	bool showFPS;
+	bool showConfig;
 };
 
 #endif //MODULE_EDITOR

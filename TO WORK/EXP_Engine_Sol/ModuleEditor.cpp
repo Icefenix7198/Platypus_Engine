@@ -90,6 +90,20 @@ void ModuleEditor::DrawEditor()
 				if (ImGui::SliderFloat("Window Scale", &winScale, 0.1f, 1.0f))
 				{
 					App->window->SetScreenSize(winScale);
+					//App->window->Init(); ESTO NO FUNCIONA, CREA UNA NUEVA VENTANA
+				}
+				int winW = App->window->GetScreenWidth();
+				if (ImGui::SliderInt("Window Width", &winW, 64, 5000))
+				{
+					App->window->SetScreenWidth(winW);
+					/*App->window->CleanUp(); COMBINADO ES AUN PEOR, HACE QUE PETE TODO
+					App->window->Init();*/
+				}
+				int winH = App->window->GetScreenHeigth();
+				if (ImGui::SliderInt("Window Heigth", &winH, 64, 5000))
+				{
+					App->window->SetScreenHeigth(winH);
+					//App->window->Init();
 				}
 				ImGui::End();
 

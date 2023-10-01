@@ -2,19 +2,19 @@
 C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(52,20): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
 C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(172,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(173,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(174,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(175,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(176,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(177,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(178,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(179,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(180,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(181,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(182,19): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(186,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(187,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(188,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(189,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(190,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(191,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(192,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(193,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(194,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(195,18): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(196,19): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
   Generando código
-  2 of 3113 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 3115 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     82 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada

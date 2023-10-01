@@ -26,6 +26,10 @@ public:
 	int ram;
 
 	SDL_bool caps[11];
+
+	//Quiza esto sea too much y haya que descartar la idea
+private:
+	bool showFPS;
 };
 
 #endif //MODULE_EDITOR

@@ -1,41 +1,3197 @@
 
 -------------- Application Init --------------
-File System error while opening file /Settings/config.json: The system cannot find the file specified.
-
 Loading File System
 Init SDL window & surface
 Loading Resource Manager
-File System error while opening file /Settings/LAST_UID: The system cannot find the file specified.
-
-WARNING! Cannot read resource UID from file [/Settings/LAST_UID] - Generating a new one
-New file created [./Settings/LAST_UID] of 8 bytes
-File System error while opening file /Settings/resources.json: The system cannot find the file specified.
-
 Init Image library using DevIL lib version 178
 Init Mesh library
 Loading Animation System
 Creating 3D Physics simulation
 Creating 3D Renderer context
 Using Glew 2.0.0
-Vendor: NVIDIA Corporation
-Renderer: GeForce GTX 675MX/PCIe/SSE2
-OpenGL version supported 4.5.0 NVIDIA 368.81
-GLSL: 4.50 NVIDIA
+Vendor: Intel
+Renderer: Intel(R) UHD Graphics
+OpenGL version supported 3.0.0 - Build 31.0.101.2111
+GLSL: 1.30 - Build 31.0.101.2111
 
 Init editor gui with imgui lib version 1.50 WIP
 Init SDL input event system
 Loading Audio Mixer
 Using Bass 2.4
 Audio device detected: No sound
-Audio device detected: Headphones (Cirrus Logic CS4206B (AB 92))
-Audio device detected: Digital Audio (S/PDIF) (Cirrus Logic CS4206B (AB 92))
-Audio device detected: Speakers (Cirrus Logic CS4206B (AB 92))
+Audio device detected: Altavoces (Realtek(R) Audio)
+Audio device detected: Realtek HD Audio 2nd output (Realtek(R) Audio)
 Loading Scene Manager
 Loading AI
 Loading Level Manager
 Creating Physics environment
 Setting up the camera
-File System error while opening file default.eduscene: The system cannot find the file specified.
+File System error while opening file default.eduscene: El sistema no puede encontrar el archivo especificado.
 
 -------------- Application Update --------------
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
+Could not change window brightness: SetDeviceGammaRamp(): La operación se completó correctamente.
+
+
 -------------- Application CleanUp --------------

@@ -56,6 +56,7 @@ bool ModuleEditor::Init()
 	caps[9] = SDL_HasSSE41();
 	caps[10] = SDL_HasSSE42();
 
+	showFPS = false;
 
 	return true;
 }
@@ -98,6 +99,23 @@ void ModuleEditor::DrawEditor()
 		}
 		if (ImGui::BeginMenu("Show"))
 		{
+			//Al pulsar el boton y solo entonces se abre el menu que muestra los FPS
+			if (ImGui::BeginMenu("ShowFPS"))
+			{
+				showFPS = true;
+				ImGui::EndMenu();
+			}
+			if (showFPS)
+			{
+				ImGui::Begin("Another Window", &showFPS);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+				//Testeo
+				AddFPS((float)(rand() % 100) / 100);
+				ImGui::Text("FPS");
+				if (ImGui::Button("Close"))
+					showFPS = false;
+				ImGui::End();
+			}
+
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Help"))
@@ -158,8 +176,7 @@ void ModuleEditor::DrawEditor()
 		
 	}
 	ImGui::End();
-	//Testeo
-	AddFPS((float)(rand() % 100)/100);
+	
 }
 
 bool ModuleEditor::CleanUp()

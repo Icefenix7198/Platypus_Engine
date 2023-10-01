@@ -159,7 +159,7 @@ void ModuleEditor::DrawEditor()
 	}
 	ImGui::End();
 	//Testeo
-	//AddFPS(0.16);
+	AddFPS((float)(rand() % 100)/100);
 }
 
 bool ModuleEditor::CleanUp()
@@ -171,14 +171,23 @@ bool ModuleEditor::CleanUp()
 void ModuleEditor::AddFPS(const float aFPS)
 {
 	mFPSLog.push_back(aFPS);
-	ImGui::PlotHistogram("FPS", mFPSLog.data(), mFPSLog.size(),0,NULL,0.0f,1.0f, ImVec2(0, 80.0f)); //Name,iterador,tamaño vector, ??,???,???,???, tamaño espacio azul
-	
-	if (mFPSLog.size()>=25)
+	ImGui::PlotHistogram("FPS", mFPSLog.data(), 25, 0, NULL, 0.0f, 1.0f, ImVec2(0, 80.0f)); //Name,iterador,tamaño vector, ??,???,???,???, tamaño espacio azul
+
+	if (mFPSLog.size() >= 25)
 	{
 		//Hacer copia del vector inversa
-		mFPSLog.clear();
+		std::vector<float> tempVec;
+		for (int i = mFPSLog.size() - 1; i > 1; i--)
+		{
+			tempVec.push_back(mFPSLog.at(i)); //We add in the temporal vector all the values except the first one
+		}
+		mFPSLog.clear(); //With all the relevant values copied we clear the vector
+		for (auto it = tempVec.cend(); it != tempVec.end(); ++it)
+		{
+			mFPSLog.push_back(*it);//We add the values on the vector
+		}
+		//Destroy temporalVector
+		tempVec.clear();
+
 	}
-
-
-
 }

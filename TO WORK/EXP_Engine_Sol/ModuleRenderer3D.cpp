@@ -9,6 +9,7 @@
 #include "ImGui/backends/imgui_impl_sdl2.h"
 #include "ImGui/backends/imgui_impl_opengl3.h"
 
+
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
 #pragma comment (lib, "glu32.lib") /* link Microsoft OpenGL lib   */
 #pragma comment (lib, "Glew/libx86/glew32.lib")
@@ -130,8 +131,34 @@ bool ModuleRenderer3D::Init()
 	// Setup Platform/Renderer backends
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, context);
 	ImGui_ImplOpenGL3_Init("#version 130");
+	//iNICIAR GL GLEW (ESTA EN EL POWER)
 
 	Grid.axis = true;
+
+	
+	//VBO = 0; //Buffer de vertices
+	//EBO = 0;
+	//VAO = 0;
+
+	////Generate buffers.If after this any of them is 0 there is an error
+	//glGenBuffers(1, &VBO); 
+	//glGenBuffers(1, &EBO);
+	//glGenVertexArrays(1, &VAO);
+
+
+	//glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	////glBufferData(GL_ARRAY_BUFFER, sizeof(arrayVertices), arrayVertices, GL_STATIC_DRAW); //Bien declarada pero hay que darle un arrayVertices que exista
+	//glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	////glBufferData(GL_ARRAY_BUFFER, sizeof(arrayIndices), arrayIndices, GL_STATIC_DRAW); //Bien declarada pero hay que darle un arrayIndices que exista
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	//
+	////VAO declaration is special/different
+	//glBindVertexArray(VAO);
+	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0); //???,num elements del tipo, tipo VAR, ???, tamaño bite elementos, offset en bites (por si hay elementos anteriores)
+	//glEnableVertexAttribArray(0);
+	//glBindVertexArray(0);
 
 	return ret;
 }
@@ -162,33 +189,12 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGui_ImplSDL2_NewFrame();
 	ImGui::NewFrame();
 
-	// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
-	ImGui::ShowDemoWindow();
+	
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
 	App->editor->DrawEditor();
-	//Barra de arriba del editor (esto tendra que ir en ModuleEditor)
-	/*if (ImGui::BeginMainMenuBar())
-	{
-		if (ImGui::BeginMenu("File"))
-		{
-			ImGui::EndMenu();
-		}
-		if (ImGui::BeginMenu("Edit"))
-		{
-			ImGui::EndMenu();
-		}
-		if (ImGui::BeginMenu("Assets"))
-		{
-			ImGui::EndMenu();
-		}
-		if (ImGui::BeginMenu("GameObject"))
-		{
-			ImGui::EndMenu();
-		}
-		ImGui::EndMainMenuBar();
-	}*/
+	
 
 	// Rendering
 	ImGui::Render();
@@ -219,6 +225,10 @@ bool ModuleRenderer3D::CleanUp()
 {
 	LOG("Destroying 3D Renderer");
 
+	if (VBO!=0)
+	{
+		glDeleteBuffers(1, &VBO);
+	}
 	SDL_GL_DeleteContext(context);
 
 	return true;

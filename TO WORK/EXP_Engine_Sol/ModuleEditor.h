@@ -31,6 +31,7 @@ public:
 private:
 	bool showFPS;
 	bool showConfig;
+	bool showDemo = false;
 };
 
 #endif //MODULE_EDITOR

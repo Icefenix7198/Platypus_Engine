@@ -81,32 +81,63 @@ void ModuleEditor::DrawEditor()
 			{
 				ImGui::Begin("Config", &showConfig);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
 
-				bool VSYNCactive = App->window->GetVSYNC();
-				if (ImGui::Checkbox("VSYNC", &VSYNCactive))
+				if (ImGui::BeginMenu("Window"))
 				{
-					App->window->SetVSYNC(VSYNCactive);
-				}
-				float winScale = App->window->GetScreenSize();
-				if (ImGui::SliderFloat("Window Scale", &winScale, 0.1f, 1.0f))
-				{
-					App->window->SetScreenSize(winScale);
-					//App->window->Init(); ESTO NO FUNCIONA, CREA UNA NUEVA VENTANA
-				}
-				int winW = App->window->GetScreenWidth();
-				if (ImGui::SliderInt("Window Width", &winW, 64, 5000))
-				{
-					App->window->SetScreenWidth(winW);
-					/*App->window->CleanUp(); COMBINADO ES AUN PEOR, HACE QUE PETE TODO
-					App->window->Init();*/
-				}
-				int winH = App->window->GetScreenHeigth();
-				if (ImGui::SliderInt("Window Heigth", &winH, 64, 5000))
-				{
-					App->window->SetScreenHeigth(winH);
-					//App->window->Init();
-				}
-				ImGui::End();
+					//Sliders scale windows
+					float winScale = App->window->GetScreenSize();
+					if (ImGui::SliderFloat("Window Scale", &winScale, 0.1f, 1.0f))
+					{
+						App->window->SetScreenSize(winScale);
+						//App->window->Init(); ESTO NO FUNCIONA, CREA UNA NUEVA VENTANA
+					}
+					int winW = App->window->GetScreenWidth();
+					if (ImGui::SliderInt("Window Width", &winW, 64, 5000))
+					{
+						App->window->SetScreenWidth(winW);
+						/*App->window->CleanUp(); COMBINADO ES AUN PEOR, HACE QUE PETE TODO
+						App->window->Init();*/
+					}
+					int winH = App->window->GetScreenHeigth();
+					if (ImGui::SliderInt("Window Heigth", &winH, 64, 5000))
+					{
+						App->window->SetScreenHeigth(winH);
+						//App->window->Init();
+					}
 
+					//CheckBoxes of screen flags
+					bool VSYNCactive = App->window->GetVSYNC();
+					if (ImGui::Checkbox("VSYNC", &VSYNCactive))
+					{
+						App->window->SetVSYNC(VSYNCactive);
+					}
+					bool fullscreenActive = App->window->GetWinFullscreen();
+					if (ImGui::Checkbox("Fullscren", &fullscreenActive))
+					{
+						App->window->SetWinFullscreen(fullscreenActive);
+					}
+					bool fullscreenDesktopActive = App->window->GetWinFullscreenDesktop();
+					if (ImGui::Checkbox("Desktop Fullscren", &fullscreenDesktopActive))
+					{
+						App->window->SetWinFullscreenDesktop(fullscreenDesktopActive);
+					}
+					bool resizableActive = App->window->GetWinResizable();
+					if (ImGui::Checkbox("Resizable", &resizableActive))
+					{
+						App->window->SetWinResizable(resizableActive);
+					}
+
+				ImGui::EndMenu();
+				}
+				if (ImGui::BeginMenu("Input"))
+				{
+					ImGui::Text("Mouse X");
+					ImGui::Text("Mouse Y");
+					ImGui::Text("???");
+				ImGui::EndMenu();
+				}
+					
+
+				ImGui::End();
 			}
 			ImGui::EndMenu();
 		}
@@ -124,20 +155,26 @@ void ModuleEditor::DrawEditor()
 			if (ImGui::Button("ShowFPS"))
 			{
 				showFPS = true;
-				ImGui::EndMenu();
 			}
 			if (showFPS)
 			{
 				ImGui::Begin("Another Window", &showFPS);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-				//Testeo
-				AddFPS((float)(rand() % 100) / 100);
-				ImGui::Text("FPS");
-				if (ImGui::Button("Close"))
-					showFPS = false;
+					//Testeo
+					AddFPS((float)(rand() % 100) / 100);
+					ImGui::Text("FPS");
+					if (ImGui::Button("Close"))
+						showFPS = false;
 				ImGui::End();
 			}
 
-			ImGui::EndMenu();
+
+			// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
+			if (ImGui::Button("Show ImGui:Demo"))
+			{
+				showDemo = !showDemo;
+			}			
+
+		ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Help"))
 		{
@@ -197,6 +234,8 @@ void ModuleEditor::DrawEditor()
 		
 	}
 	ImGui::End();
+
+	if (showDemo) { ImGui::ShowDemoWindow(); }
 	
 }
 

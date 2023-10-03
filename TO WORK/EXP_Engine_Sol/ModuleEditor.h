@@ -17,9 +17,12 @@ public:
 	void DrawEditor();
 	bool CleanUp() override;
 
+	//ImGui Complicated Things Print
 	void AddFPS(const float aFPS);
+	void ConsoleLog(std::string str);
 
 	std::vector<float> mFPSLog;
+	std::string consoleLog;
 
 	int cpuCache;
 	int cpus;
@@ -27,9 +30,12 @@ public:
 
 	SDL_bool caps[11];
 
+
+
 	//Quiza esto sea too much y haya que descartar la idea
 private:
 	bool showFPS;
+	bool showConsole = true;
 	bool showConfig;
 	bool showDemo = false;
 };

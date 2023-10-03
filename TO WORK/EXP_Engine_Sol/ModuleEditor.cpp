@@ -4,6 +4,7 @@
 #include "imGui/backends/imgui_impl_opengl3.h"
 #include "imGui/backends/imgui_impl_SDL2.h"
 
+
 ModuleEditor::ModuleEditor(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 }
@@ -155,15 +156,30 @@ void ModuleEditor::DrawEditor()
 			if (ImGui::Button("ShowFPS"))
 			{
 				showFPS = true;
+				consoleLog.push_back('e');
 			}
 			if (showFPS)
 			{
-				ImGui::Begin("Another Window", &showFPS);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+				//ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver); //Try
+				ImGui::Begin("FPS", &showFPS);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
 					//Testeo
 					AddFPS((float)(rand() % 100) / 100);
 					ImGui::Text("FPS");
 					if (ImGui::Button("Close"))
 						showFPS = false;
+				ImGui::End();
+			}
+			if (ImGui::Button("ShowConsole"))
+			{
+				showConsole = true;
+			}
+			if (showConsole)
+			{
+				//ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver); //Try
+				ImGui::Begin("Console", &showConsole);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked				
+				
+				ConsoleLog(consoleLog);
+
 				ImGui::End();
 			}
 
@@ -267,4 +283,9 @@ void ModuleEditor::AddFPS(const float aFPS)
 		tempVec.clear();
 
 	}
+}
+
+void ModuleEditor::ConsoleLog(std::string str)
+{
+	ImGui::TextUnformatted(consoleLog.data());
 }

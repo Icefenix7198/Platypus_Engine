@@ -1,5 +1,8 @@
 #pragma once
 #include "Globals.h"
+#include "Application.h" //Esto no sirve de nada, no puede llamar a la app.
+//#include <String>
+#include"ModuleEditor.h"
 
 void log(const char file[], int line, const char* format, ...)
 {

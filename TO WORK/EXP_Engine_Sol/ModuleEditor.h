@@ -5,6 +5,7 @@
 #include "Module.h"
 #include "Globals.h"
 #include <vector>
+#include <string>
 
 class ModuleEditor : public Module
 {
@@ -19,10 +20,13 @@ public:
 
 	//ImGui Complicated Things Print
 	void AddFPS(const float aFPS);
-	void ConsoleLog(std::string str);
+	
 
 	std::vector<float> mFPSLog;
+	//extern std::string consoleLog; //La classe de almacenamiento es no valida
 	std::string consoleLog;
+	
+	void ConsoleLog(const std::string& str);
 
 	int cpuCache;
 	int cpus;

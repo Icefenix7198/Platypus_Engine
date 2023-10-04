@@ -3,7 +3,7 @@
 #include "imGui/imgui.h"
 #include "imGui/backends/imgui_impl_opengl3.h"
 #include "imGui/backends/imgui_impl_SDL2.h"
-
+#include "Globals.h"
 
 ModuleEditor::ModuleEditor(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -156,6 +156,7 @@ void ModuleEditor::DrawEditor()
 			if (ImGui::Button("ShowFPS"))
 			{
 				showFPS = true;
+				
 				consoleLog.push_back('e');
 			}
 			if (showFPS)
@@ -285,7 +286,12 @@ void ModuleEditor::AddFPS(const float aFPS)
 	}
 }
 
-void ModuleEditor::ConsoleLog(std::string str)
+void ModuleEditor::ConsoleLog(const std::string& str)
 {
 	ImGui::TextUnformatted(consoleLog.data());
 }
+
+//void ModuleEditor::ConsoleLog(std::string str)
+//{
+//	ImGui::TextUnformatted(consoleLog.data());
+//}

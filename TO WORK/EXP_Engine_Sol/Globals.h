@@ -30,4 +30,4 @@ enum update_status
 	UPDATE_ERROR
 };
 
-//extern std::string consoleLog;
+extern std::string consoleLog;

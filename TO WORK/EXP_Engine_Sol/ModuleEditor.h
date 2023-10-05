@@ -7,6 +7,8 @@
 #include <vector>
 #include <string>
 
+//inline std::string stringTest;
+
 class ModuleEditor : public Module
 {
 public:

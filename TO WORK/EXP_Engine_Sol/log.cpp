@@ -1,8 +1,8 @@
 #pragma once
 #include "Globals.h"
 #include "Application.h" //Esto no sirve de nada, no puede llamar a la app.
-//#include <String>
-#include"ModuleEditor.h"
+#include <String>
+#include "ModuleEditor.h"
 
 extern std::string consoleLog;
 void log(const char file[], int line, const char* format, ...)
@@ -18,5 +18,12 @@ void log(const char file[], int line, const char* format, ...)
 	sprintf_s(tmp_string2, 4096, "\n%s(%d) : %s", file, line, tmp_string);
 	OutputDebugString(tmp_string2);
 	//sI TENGO ACCESO APP Y EDITOR Y MANDARLE LA TMP STRING AL LOG DEL EDITOR
+	/*for (int i = 0; tmp_string[i]!=NULL; i++)
+	{
+		consoleLog.push_back(tmp_string[i]); //Error de simbolo externo sin resolver
+	}*/
+	//consoleLog.push_back('e');
+
+	stringTest;
 	
 }

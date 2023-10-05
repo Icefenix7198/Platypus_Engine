@@ -13,6 +13,8 @@ ModuleEditor::~ModuleEditor()
 {
 }
 
+//extern std::string stringTest; //NO PUEDE SER ENCONTRADO
+
 bool ModuleEditor::Init()
 {
  //   SDL_GLContext gl_context = SDL_GL_CreateContext(App->window->window);

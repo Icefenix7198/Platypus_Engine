@@ -225,11 +225,18 @@ bool ModuleRenderer3D::CleanUp()
 {
 	LOG("Destroying 3D Renderer");
 
-	if (VBO!=0)
-	{
+	//if (VBO!=0)
+	/*{
 		glDeleteBuffers(1, &VBO);
-	}
+	}*/
+	
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplSDL2_Shutdown();
+	ImGui::DestroyContext();
+
 	SDL_GL_DeleteContext(context);
+	SDL_DestroyWindow(App->window->window);
+	SDL_Quit();
 
 	return true;
 }

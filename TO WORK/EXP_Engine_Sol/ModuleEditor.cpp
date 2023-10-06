@@ -4,6 +4,8 @@
 #include "imGui/backends/imgui_impl_opengl3.h"
 #include "imGui/backends/imgui_impl_SDL2.h"
 #include "Globals.h"
+#include <gl/GL.h>
+#include <gl/GLU.h>
 
 ModuleEditor::ModuleEditor(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -246,18 +248,20 @@ void ModuleEditor::DrawEditor()
 		ImGui::Text("CPUs: %i (Cache: %ikb)", cpus, cpuCache);
 		ImGui::Text("System RAM: %iMb", ram);
 		ImGui::Text("Caps: ");
-		if (caps[0] == true) { ImGui::Text("3D"); }
-		if (caps[1] == true) { ImGui::Text("AltiVec"); }
-		if (caps[2] == true) { ImGui::Text("AVX"); }
-		if (caps[3] == true) { ImGui::Text("AVX2"); }
-		if (caps[4] == true) { ImGui::Text("MMX"); }
-		if (caps[5] == true) { ImGui::Text("RDTSC"); }
-		if (caps[6] == true) { ImGui::Text("SSE"); }
-		if (caps[7] == true) { ImGui::Text("SSE2"); }
-		if (caps[8] == true) { ImGui::Text("SSE3"); }
-		if (caps[9] == true) { ImGui::Text("SSE41"); }
-		if (caps[10] == true) { ImGui::Text("SSE42"); }
+		ImGui::SameLine();
+		if (caps[0] == true) { ImGui::Text("3D"); ImGui::SameLine();}
+		if (caps[1] == true) { ImGui::Text("AltiVec"); ImGui::SameLine();}
+		if (caps[2] == true) { ImGui::Text("AVX"); ImGui::SameLine();}
+		if (caps[3] == true) { ImGui::Text("AVX2"); ImGui::SameLine();}
+		if (caps[4] == true) { ImGui::Text("MMX"); ImGui::SameLine();}
+		if (caps[5] == true) { ImGui::Text("RDTSC");}
+		if (caps[6] == true) { ImGui::Text("SSE"); ImGui::SameLine();}
+		if (caps[7] == true) { ImGui::Text("SSE2"); ImGui::SameLine();}
+		if (caps[8] == true) { ImGui::Text("SSE3"); ImGui::SameLine();}
+		if (caps[9] == true) { ImGui::Text("SSE41"); ImGui::SameLine();	}
+		if (caps[10] == true) { ImGui::Text("SSE42");  }
 		
+		ImGui::Text("GPU: %s", glGetString(GL_VENDOR));
 	}
 	ImGui::End();
 

@@ -44,6 +44,8 @@ public:
 	void SetWinFullscreenDesktop(bool value) { WIN_FULLSCREEN_DESKTOP = value; }
 	void SetVSYNC(bool value){ VSYNC = value; }
 
+	void ResizeWindow();
+
 
 private:
 	// Configuration -----------

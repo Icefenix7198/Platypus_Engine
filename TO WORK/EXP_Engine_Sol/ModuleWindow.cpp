@@ -92,3 +92,10 @@ void ModuleWindow::SetTitle(const char* title)
 {
 	SDL_SetWindowTitle(window, title);
 }
+
+void ModuleWindow::ResizeWindow()
+{
+	SDL_SetWindowSize(window, SCREEN_WIDTH*SCREEN_SIZE, SCREEN_HEIGHT*SCREEN_SIZE);
+
+
+}

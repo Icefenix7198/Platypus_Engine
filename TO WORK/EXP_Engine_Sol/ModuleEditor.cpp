@@ -94,6 +94,7 @@ void ModuleEditor::DrawEditor()
 					{
 						App->window->SetScreenSize(winScale);
 						//App->window->Init(); ESTO NO FUNCIONA, CREA UNA NUEVA VENTANA
+						App->window->ResizeWindow();
 					}
 					int winW = App->window->GetScreenWidth();
 					if (ImGui::SliderInt("Window Width", &winW, 64, 5000))
@@ -101,12 +102,14 @@ void ModuleEditor::DrawEditor()
 						App->window->SetScreenWidth(winW);
 						/*App->window->CleanUp(); COMBINADO ES AUN PEOR, HACE QUE PETE TODO
 						App->window->Init();*/
+						App->window->ResizeWindow();
 					}
 					int winH = App->window->GetScreenHeigth();
 					if (ImGui::SliderInt("Window Heigth", &winH, 64, 5000))
 					{
 						App->window->SetScreenHeigth(winH);
 						//App->window->Init();
+						App->window->ResizeWindow();
 					}
 
 					//CheckBoxes of screen flags

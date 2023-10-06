@@ -24,6 +24,6 @@ void log(const char file[], int line, const char* format, ...)
 	}*/
 	//consoleLog.push_back('e');
 
-	stringTest;
+	//stringTest;
 	
 }

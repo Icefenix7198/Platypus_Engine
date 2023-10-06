@@ -84,7 +84,7 @@ void ModuleEditor::DrawEditor()
 			{
 				ImGui::Begin("Config", &showConfig);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
 
-				if (ImGui::BeginMenu("Window"))
+				if (ImGui::CollapsingHeader("Window"))
 				{
 					//Sliders scale windows
 					float winScale = App->window->GetScreenSize();
@@ -129,14 +129,14 @@ void ModuleEditor::DrawEditor()
 						App->window->SetWinResizable(resizableActive);
 					}
 
-				ImGui::EndMenu();
+				//ImGui::End();
 				}
-				if (ImGui::BeginMenu("Input"))
+				if (ImGui::CollapsingHeader("Input"))
 				{
 					ImGui::Text("Mouse X");
 					ImGui::Text("Mouse Y");
 					ImGui::Text("???");
-				ImGui::EndMenu();
+				//ImGui::EndMenu();
 				}
 					
 

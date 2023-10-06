@@ -11,7 +11,7 @@
 
 #include<vector>
 
-class Application
+extern class Application
 {
 public:
 	ModuleWindow* window;

@@ -26,6 +26,8 @@ public:
 
 	void OnResize(int width, int height);
 
+	void DrawCubeDirectMode(float originX=0, float originY=0, float originZ=0, float size=1);
+
 public:
 
 	Light lights[MAX_LIGHTS];

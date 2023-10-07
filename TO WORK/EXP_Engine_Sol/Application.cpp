@@ -99,6 +99,11 @@ bool Application::CleanUp()
 	return ret;
 }
 
+float Application::GetDeltaTime()
+{
+	return dt;
+}
+
 void Application::AddModule(Module* mod)
 {
 	list_modules.push_back(mod);

@@ -189,7 +189,8 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGui_ImplSDL2_NewFrame();
 	ImGui::NewFrame();
 
-	
+	//Functions to draw in direct mode here (it will need to go away)
+	DrawCubeDirectMode(0, 0, 0);
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
@@ -255,4 +256,43 @@ void ModuleRenderer3D::OnResize(int width, int height)
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+}
+
+void ModuleRenderer3D::DrawCubeDirectMode(float originX, float originY, float originZ,float size)
+{
+
+	//Arrays to draw cube
+	//Vertices of the cube
+	GLfloat vertices[] =
+	{
+	 originX + 0 * size ,originY + 0 * size ,originZ + 0 * size, //v0
+	 originX + 1 * size ,originY + 0 * size ,originZ + 0 * size, //v1
+	 originX + 1 * size ,originY + 1 * size ,originZ + 0 * size, //v2
+	 originX + 0 * size ,originY + 1 * size ,originZ + 0 * size, //v3
+	 originX + 0 * size ,originY + 1 * size ,originZ + 1 * size, //v4
+	 originX + 0 * size ,originY + 0 * size ,originZ + 1 * size, //v5
+	 originX + 1 * size ,originY + 0 * size ,originZ + 1 * size, //v6
+	 originX + 1 * size ,originY + 1 * size ,originZ + 1 * size, //v7
+
+	};
+	//Indices to draw the cube 
+	GLubyte indices[] = 
+	{ 
+	0,1,2,	2,3,0,  //front face 
+	0,3,4,	4,5,0,	//rigth face
+	0,5,6,	6,1,0,	//top face
+	4,7,6,	6,5,4,	//back face
+	1,6,7,	7,2,1,	//left face
+	7,4,3,	3,2,7,	//bottom face
+	};
+
+	// activate and specify pointer to vertex array
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, vertices);
+
+	// draw a cube
+	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_BYTE, indices);
+
+	// deactivate vertex arrays after drawing
+	glDisableClientState(GL_VERTEX_ARRAY);
 }

@@ -34,6 +34,7 @@ public:
 	bool Init();
 	update_status Update();
 	bool CleanUp();
+	float GetDeltaTime();
 
 private:
 

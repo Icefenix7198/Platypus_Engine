@@ -178,7 +178,8 @@ void ModuleEditor::DrawEditor()
 				//ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver); //Try
 				ImGui::Begin("FPS", &showFPS);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
 					//Testeo
-					AddFPS((float)(rand() % 100) / 100);
+					//AddFPS((float)(rand() % 100) / 100);
+					AddFPS(1/App->GetDeltaTime()); //??  No se si esto esta bien o mal
 					ImGui::Text("FPS");
 					if (ImGui::Button("Close"))
 						showFPS = false;

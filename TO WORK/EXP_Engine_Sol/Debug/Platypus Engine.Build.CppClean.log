@@ -1,6 +1,5 @@
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\vc142.pdb
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\vc142.idb
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\frustum.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\cylinder.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\cone.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\circle.obj
@@ -15,12 +14,12 @@ c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\imgui_draw.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\imgui_demo.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\imgui.obj
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\imgui_impl_sdl.obj
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\imgui_impl_sdlrenderer2.obj
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\imgui_impl_sdl2.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\imgui_impl_opengl3.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\glmath.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\color.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\application.obj
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\mathops.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\mathlog.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\mathfunc.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\float4x4.obj
@@ -40,36 +39,33 @@ c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\obb.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\linesegment.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\line.obj
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\frustum.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\timer.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\primitive.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\modulewindow.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\modulerenderer3d.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\moduleinput.obj
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\moduleeditor.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\modulecamera3d.obj
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\mmgr.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\clock.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\transformops.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\ssemath.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\quat.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\polynomial.obj
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\mmgr.obj
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\imgui_impl_sdlrenderer2.obj
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\imgui_impl_sdl2.obj
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.ilk
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.exe
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\mathops.obj
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\parson.obj
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\moduleeditor.obj.enc
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.pdb
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\3d physics - class5.ilk
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\vc143.idb
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\3d physics - class5.pdb
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\vc143.pdb
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\cl.command.1.tlog
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\cl.read.1.tlog
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\cl.write.1.tlog
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.35032-cvtres.read.1.tlog
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.35032-cvtres.write.1.tlog
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.35032-rc.read.1.tlog
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.35032-rc.write.1.tlog
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.35032.read.1.tlog
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.35032.write.1.tlog
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.20856-cvtres.read.1.tlog
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.20856-cvtres.write.1.tlog
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.20856-rc.read.1.tlog
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.20856-rc.write.1.tlog
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.20856.read.1.tlog
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.20856.write.1.tlog
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.command.1.tlog
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.read.1.tlog
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\debug\platypus engine.tlog\link.write.1.tlog

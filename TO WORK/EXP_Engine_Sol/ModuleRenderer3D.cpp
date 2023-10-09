@@ -193,9 +193,9 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGui::NewFrame();
 
 	//Functions to draw in direct mode here (it will need to go away)
-	DrawCubeDirectMode();
+	//DrawCubeDirectMode();
 	//DrawSphereDirectMode(3, 8, 5); //This is broken and doesen't work
-	DrawPyramidDirectMode();
+	DrawPyramidDirectMode(0,0,0,7,5,5);
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
@@ -266,33 +266,7 @@ void ModuleRenderer3D::OnResize(int width, int height)
 void ModuleRenderer3D::DrawCubeDirectMode(float originX, float originY, float originZ,float size)
 {
 
-	//Arrays to draw cube
-	//Vertices of the cube
-	//GLfloat vertices[] =
-	//{
-	// originX + 0 * size ,originY + 0 * size ,originZ + 0 * size, //v0
-	// originX + 1 * size ,originY + 0 * size ,originZ + 0 * size, //v1
-	// originX + 1 * size ,originY + 1 * size ,originZ + 0 * size, //v2
-	// originX + 0 * size ,originY + 1 * size ,originZ + 0 * size, //v3
-	// originX + 0 * size ,originY + 1 * size ,originZ + 1 * size, //v4
-	// originX + 0 * size ,originY + 0 * size ,originZ + 1 * size, //v5
-	// originX + 1 * size ,originY + 0 * size ,originZ + 1 * size, //v6
-	// originX + 1 * size ,originY + 1 * size ,originZ + 1 * size, //v7
-
-	//};
-	////Indices to draw the cube 
-	//GLubyte indices[] = 
-	//{ 
-	//0,1,2,	2,3,0,  //front face 
-	//0,3,4,	4,5,0,	//rigth face
-	//0,5,6,	6,1,0,	//top face
-	//
-	//1,6,7,	7,2,1,	//left face
-	//7,4,3,	3,2,7,	//bottom face
-	//4,7,6,	6,5,4,	//back face
-	//};
-
-	//Try 2
+	//Vertex
 	GLfloat vertices[] =
 	{
 	 originX + 0 * size ,originY + 0 * size ,originZ + 0 * size, //v0
@@ -423,11 +397,61 @@ void ModuleRenderer3D::DrawPyramidDirectMode(float originX, float originY, float
 	
 	//Add base indexes
 	//Note: Due to the order that they must be drawn to be seen (horario) is best to start from the end
-	for (size_t i = numFaces; i > 2; i--)
+
+	int extraOffset = 0;
+	for (int i = 0; i < numFaces-2 ; i++) //First law of the routine: It should iterate a number of faces of base-2
 	{
-		indices.push_back(i); //Nota:Las bases impares son mas raras creo 
+		for (int j = 0; j < 3; j++)
+		{
+			//AUN HAY FALLO PARA VALORES MAYORES DE 5
+			//Para seis el ultimo triangulo lo hace alreves 6-2-4 cuando tendria que ser 6-4-2
+			//Y en siete el ultimo triangulo lo hace mal por poco, hace 1-3-5 en vez de 3-7-5
+
+			//Second law: The first vertices chosen for the new triangle has a jump of 2
+			int val = numFaces - 2 * i ;
+
+			
+
+			val = val - j * (1 + extraOffset);
+			
+			//Fourth law: Each time we do a full cycle of the vertex base we increase the distance between the vertex we choose
+			extraOffset = (2 * i + j * (1 + extraOffset)) / numFaces;
+
+			if(val <=0)
+			{
+				//Third law: If the number becomes 0 or negative it becomes 5-the rest
+				val = /*numFaces - */abs(val);
+			}
+			if (val==0)
+			{
+				val = numFaces;
+			}
+			
+			//val = val - j * (1 + extraOffset); //We add this again becose we are reseting the offset up
+			  
+
+			indices.push_back(val);
+		}
 
 	}
+
+	std::vector<float> vertices;
+	for (size_t i = 0; i < x.size(); i++) //Podria ser x, y o z ya que son exactamente iguales
+	{
+		vertices.push_back(x.at(i));
+		vertices.push_back(y.at(i));
+		vertices.push_back(z.at(i));
+	}
+
+	// activate and specify pointer to vertex array
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, vertices.data());
+
+	// draw a cube
+	glDrawElements(GL_TRIANGLES, indices.size()/3, GL_UNSIGNED_BYTE, indices.data());
+
+	// deactivate vertex arrays after drawing
+	glDisableClientState(GL_VERTEX_ARRAY);
 
 
 	//GLfloat vertices[3+numFaces*3];

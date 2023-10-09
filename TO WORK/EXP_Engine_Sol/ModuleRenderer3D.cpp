@@ -194,6 +194,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 
 	//Functions to draw in direct mode here (it will need to go away)
 	DrawCubeDirectMode();
+	//DrawSphereDirectMode(3, 8, 5); //This is broken and doesen't work
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
@@ -324,4 +325,63 @@ void ModuleRenderer3D::DrawCubeDirectMode(float originX, float originY, float or
 
 	// deactivate vertex arrays after drawing
 	glDisableClientState(GL_VERTEX_ARRAY);
+}
+
+void ModuleRenderer3D::DrawSphereDirectMode(float radius, unsigned int rings, unsigned int sectors) // No funciona
+{
+	std::vector<GLushort> indices;
+	std::vector<vec3> vertices;
+	std::vector<vec2> texcoords;
+
+	float const R = 1. / (float)(rings - 1);
+	float const S = 1. / (float)(sectors - 1);
+
+	for (int r = 0; r < rings; ++r) {
+		for (int s = 0; s < sectors; ++s) {
+			float const y = sin(-M_PI_2 + M_PI * r * R);
+			float const x = cos(2 * M_PI * s * S) * sin(M_PI * r * R);
+			float const z = sin(2 * M_PI * s * S) * sin(M_PI * r * R);
+
+			texcoords.push_back(vec2(s * S, r * R));
+			vertices.push_back(vec3(x, y, z) * radius);
+
+			int curRow = r * sectors;
+			int nextRow = (r + 1) * sectors;
+
+			indices.push_back(curRow + s);
+			indices.push_back(nextRow + s);
+			indices.push_back(nextRow + (s + 1));
+
+			indices.push_back(curRow + s);
+			indices.push_back(nextRow + (s + 1));
+			indices.push_back(curRow + (s + 1));
+		}
+	}
+
+	glEnableClientState(GL_VERTEX_ARRAY);
+	//glEnableClientState(GL_NORMAL_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+	glVertexPointer(3, GL_FLOAT, 0, vertices.data());
+	//glTexCoordPointer(2, GL_FLOAT, 0, texcoords.data());
+
+	//glEnable(GL_TEXTURE_2D);
+	////glFrontFace(GL_CCW);
+	//glEnable(GL_CULL_FACE);
+	///*glActiveTexture(GL_TEXTURE0);
+	//glBindTexture(GL_TEXTURE_2D, privModel->texname);*/
+
+	glDrawElements(GL_TRIANGLES,indices.size(), GL_UNSIGNED_SHORT, indices.data());
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
+
+	
+
+}
+
+void ModuleRenderer3D::DrawPyramidDirectMode(float originX, float originY, float originZ, uint numFaces)
+{
+	std::vector<float> x;
+	std::vector<float> y;
+	std::vector<float> z;
 }

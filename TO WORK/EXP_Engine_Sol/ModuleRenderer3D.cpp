@@ -195,6 +195,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	//Functions to draw in direct mode here (it will need to go away)
 	DrawCubeDirectMode();
 	//DrawSphereDirectMode(3, 8, 5); //This is broken and doesen't work
+	DrawPyramidDirectMode();
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
@@ -379,9 +380,55 @@ void ModuleRenderer3D::DrawSphereDirectMode(float radius, unsigned int rings, un
 
 }
 
-void ModuleRenderer3D::DrawPyramidDirectMode(float originX, float originY, float originZ, uint numFaces)
+void ModuleRenderer3D::DrawPyramidDirectMode(float originX, float originY, float originZ, uint numFaces,float heigth, float width)
 {
 	std::vector<float> x;
 	std::vector<float> y;
 	std::vector<float> z;
+
+	//Top point
+	x.push_back(originX);
+	y.push_back(originY);
+	z.push_back(originZ);
+
+	//Create lateral faces
+	if (numFaces >= 3)
+	{
+		float degree = PI / numFaces;
+		float h = originY - heigth;
+		//Pushback all vertices
+		for (uint i = 0; i < numFaces; i++)
+		{
+			y.push_back(h); //All pyramid points are in the same heigth
+
+			//Vertices
+			x.push_back(originX+width * sin(0 + degree * i));
+			z.push_back(originZ + width * cos(0 + degree * i));
+		}
+	}
+
+	//Add lateral faces indexes
+	std::vector<int> indices;
+
+	for (int i = 1; i <= numFaces; i++)
+	{
+		indices.push_back(0);
+		indices.push_back(i);
+		if (i>=numFaces) //Si ya hemos dado la vuelta le devolvemos un 1 (el primer vertice lateral
+		{
+			indices.push_back(1);
+		}
+		else { indices.push_back(i + 1); }
+	}
+	
+	//Add base indexes
+	//Note: Due to the order that they must be drawn to be seen (horario) is best to start from the end
+	for (size_t i = numFaces; i > 2; i--)
+	{
+		indices.push_back(i); //Nota:Las bases impares son mas raras creo 
+
+	}
+
+
+	//GLfloat vertices[3+numFaces*3];
 }

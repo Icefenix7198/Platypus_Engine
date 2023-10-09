@@ -28,7 +28,7 @@ public:
 
 	void DrawCubeDirectMode(float originX=0, float originY=0, float originZ=0, float size=1);
 	void DrawSphereDirectMode(float radius, unsigned int rings, unsigned int sectors);
-	void DrawPyramidDirectMode(float originX=0, float originY = 0, float originZ = 0, uint numFaces=3);
+	void DrawPyramidDirectMode(float originX=0, float originY = 0, float originZ = 0, uint numFaces=3, float heigth=1, float width=1);
 
 public:
 

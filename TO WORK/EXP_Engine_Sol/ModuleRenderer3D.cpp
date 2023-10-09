@@ -136,6 +136,7 @@ bool ModuleRenderer3D::Init()
 	Grid.axis = true;
 
 	
+	
 	//VBO = 0; //Buffer de vertices
 	//EBO = 0;
 	//VAO = 0;
@@ -145,13 +146,15 @@ bool ModuleRenderer3D::Init()
 	//glGenBuffers(1, &EBO);
 	//glGenVertexArrays(1, &VAO);
 
+	//std::vector<float> vecVertices;
+	//std::vector<GLuint> vecIndices;
 
 	//glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	////glBufferData(GL_ARRAY_BUFFER, sizeof(arrayVertices), arrayVertices, GL_STATIC_DRAW); //Bien declarada pero hay que darle un arrayVertices que exista
+	//glBufferData(GL_ARRAY_BUFFER, vecVertices.capacity(), vecVertices.data(), GL_STATIC_DRAW); //Bien declarada pero hay que darle un arrayVertices que exista
 	//glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	////glBufferData(GL_ARRAY_BUFFER, sizeof(arrayIndices), arrayIndices, GL_STATIC_DRAW); //Bien declarada pero hay que darle un arrayIndices que exista
+	//glBufferData(GL_ARRAY_BUFFER, vecIndices.capacity(), vecIndices.data(), GL_STATIC_DRAW); //Bien declarada pero hay que darle un arrayIndices que exista
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	//
 	////VAO declaration is special/different
@@ -190,7 +193,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGui::NewFrame();
 
 	//Functions to draw in direct mode here (it will need to go away)
-	DrawCubeDirectMode(0, 0, 0);
+	DrawCubeDirectMode();
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
@@ -263,27 +266,53 @@ void ModuleRenderer3D::DrawCubeDirectMode(float originX, float originY, float or
 
 	//Arrays to draw cube
 	//Vertices of the cube
+	//GLfloat vertices[] =
+	//{
+	// originX + 0 * size ,originY + 0 * size ,originZ + 0 * size, //v0
+	// originX + 1 * size ,originY + 0 * size ,originZ + 0 * size, //v1
+	// originX + 1 * size ,originY + 1 * size ,originZ + 0 * size, //v2
+	// originX + 0 * size ,originY + 1 * size ,originZ + 0 * size, //v3
+	// originX + 0 * size ,originY + 1 * size ,originZ + 1 * size, //v4
+	// originX + 0 * size ,originY + 0 * size ,originZ + 1 * size, //v5
+	// originX + 1 * size ,originY + 0 * size ,originZ + 1 * size, //v6
+	// originX + 1 * size ,originY + 1 * size ,originZ + 1 * size, //v7
+
+	//};
+	////Indices to draw the cube 
+	//GLubyte indices[] = 
+	//{ 
+	//0,1,2,	2,3,0,  //front face 
+	//0,3,4,	4,5,0,	//rigth face
+	//0,5,6,	6,1,0,	//top face
+	//
+	//1,6,7,	7,2,1,	//left face
+	//7,4,3,	3,2,7,	//bottom face
+	//4,7,6,	6,5,4,	//back face
+	//};
+
+	//Try 2
 	GLfloat vertices[] =
 	{
 	 originX + 0 * size ,originY + 0 * size ,originZ + 0 * size, //v0
-	 originX + 1 * size ,originY + 0 * size ,originZ + 0 * size, //v1
+	 originX + 0 * size ,originY + 1 * size ,originZ + 0 * size, //v1
 	 originX + 1 * size ,originY + 1 * size ,originZ + 0 * size, //v2
-	 originX + 0 * size ,originY + 1 * size ,originZ + 0 * size, //v3
-	 originX + 0 * size ,originY + 1 * size ,originZ + 1 * size, //v4
+	 originX + 1 * size ,originY + 0 * size ,originZ + 0 * size, //v3
+	 originX + 1 * size ,originY + 0 * size ,originZ + 1 * size, //v4
 	 originX + 0 * size ,originY + 0 * size ,originZ + 1 * size, //v5
-	 originX + 1 * size ,originY + 0 * size ,originZ + 1 * size, //v6
+	 originX + 0 * size ,originY + 1 * size ,originZ + 1 * size, //v6
 	 originX + 1 * size ,originY + 1 * size ,originZ + 1 * size, //v7
 
 	};
 	//Indices to draw the cube 
-	GLubyte indices[] = 
-	{ 
-	0,1,2,	2,3,0,  //front face 
-	0,3,4,	4,5,0,	//rigth face
-	0,5,6,	6,1,0,	//top face
-	4,7,6,	6,5,4,	//back face
-	1,6,7,	7,2,1,	//left face
-	7,4,3,	3,2,7,	//bottom face
+	GLubyte indices[] =
+	{
+	7,6,5,	5,4,7,  //front face 
+	2,7,3,	7,4,3,	//rigth face
+	1,6,7,	2,1,7,	//top face
+
+	1,0,5,	5,6,1,	//left face
+	0,3,5,	5,3,4,	//bottom face
+	0,1,2,	2,3,0,	//back face
 	};
 
 	// activate and specify pointer to vertex array

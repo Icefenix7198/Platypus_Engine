@@ -399,37 +399,12 @@ void ModuleRenderer3D::DrawPyramidDirectMode(float originX, float originY, float
 	//Note: Due to the order that they must be drawn to be seen (horario) is best to start from the end
 
 	int extraOffset = 0;
-	for (int i = 0; i < numFaces-2 ; i++) //First law of the routine: It should iterate a number of faces of base-2
+	for (int i = 0; i < numFaces-2 ; i++)
 	{
-		for (int j = 0; j < 3; j++)
+		indices.push_back(numFaces);
+		for (int j = 1; j < 3; j++)
 		{
-			//AUN HAY FALLO PARA VALORES MAYORES DE 5
-			//Para seis el ultimo triangulo lo hace alreves 6-2-4 cuando tendria que ser 6-4-2
-			//Y en siete el ultimo triangulo lo hace mal por poco, hace 1-3-5 en vez de 3-7-5
-
-			//Second law: The first vertices chosen for the new triangle has a jump of 2
-			int val = numFaces - 2 * i ;
-
-			
-
-			val = val - j * (1 + extraOffset);
-			
-			//Fourth law: Each time we do a full cycle of the vertex base we increase the distance between the vertex we choose
-			extraOffset = (2 * i + j * (1 + extraOffset)) / numFaces;
-
-			if(val <=0)
-			{
-				//Third law: If the number becomes 0 or negative it becomes 5-the rest
-				val = /*numFaces - */abs(val);
-			}
-			if (val==0)
-			{
-				val = numFaces;
-			}
-			
-			//val = val - j * (1 + extraOffset); //We add this again becose we are reseting the offset up
-			  
-
+			int val = numFaces - 2 * i - j;
 			indices.push_back(val);
 		}
 

@@ -49,6 +49,9 @@
     <Filter Include="Externals\Parson">
       <UniqueIdentifier>{74394d1f-dae3-402c-88df-051bc8e002f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Tools\Aasimp">
+      <UniqueIdentifier>{22557857-54aa-4004-b48f-fce48f532add}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -309,6 +312,9 @@
     <ClInclude Include="parson-master\parson.h">
       <Filter>Externals\Parson</Filter>
     </ClInclude>
+    <ClInclude Include="aasimp.h">
+      <Filter>Sources\Tools\Aasimp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -475,6 +481,9 @@
     </ClCompile>
     <ClCompile Include="parson-master\parson.c">
       <Filter>Externals\Parson</Filter>
+    </ClCompile>
+    <ClCompile Include="aasimp.cpp">
+      <Filter>Sources\Tools\Aasimp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

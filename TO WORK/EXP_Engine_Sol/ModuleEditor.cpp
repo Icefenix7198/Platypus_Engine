@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
+#include "aasimp.h"
 
 ModuleEditor::ModuleEditor(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -162,6 +163,25 @@ void ModuleEditor::DrawEditor()
 		}
 		if (ImGui::BeginMenu("GameObject"))
 		{
+			//Create basic shape (PROBANDO PATHS)
+			"Game/Assets/3DObjects/baker_house/BakerHouse.fbx";
+
+			//aasimp::Load("Game/Assets/3DObjects/baker_house/BakerHouse.fbx");
+			//aasimp::Load("Game/Assets/3DObjects/baker_house/BakerHouse");
+			
+			aasimp::Load("Assets/3DObjects/baker_house/BakerHouse.fbx");
+			/*aasimp::Load("Assets/3DObjects/baker_house/BakerHouse");
+
+			aasimp::Load("3DObjects/baker_house/BakerHouse.fbx");
+			aasimp::Load("3DObjects/baker_house/BakerHouse");
+
+			Usando .
+			aasimp::Load("./Game/Assets/3DObjects/baker_house/BakerHouse.fbx");
+			aasimp::Load("./Game/Assets/3DObjects/baker_house/BakerHouse");
+
+			aasimp::Load("./Assets/3DObjects/baker_house/BakerHouse.fbx");
+			aasimp::Load("./Assets/3DObjects/baker_house/BakerHouse");*/
+
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Show"))
@@ -179,7 +199,7 @@ void ModuleEditor::DrawEditor()
 				ImGui::Begin("FPS", &showFPS);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
 					//Testeo
 					//AddFPS((float)(rand() % 100) / 100);
-					AddFPS(1/App->GetDeltaTime()); //??  No se si esto esta bien o mal
+					AddFPS(1/*/App->GetDeltaTime()*/); //??  No se si esto esta bien o mal
 					ImGui::Text("FPS");
 					if (ImGui::Button("Close"))
 						showFPS = false;

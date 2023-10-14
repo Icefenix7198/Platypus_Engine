@@ -6,6 +6,8 @@
 
 #include "Globals.h"
 
+#include <vector>
+
 #pragma comment (lib, "Assimp/libx86/assimp.lib")
 
 struct Mesh 
@@ -18,7 +20,10 @@ struct Mesh
 	float* vertex = nullptr;
 };
 
+
+
 namespace aasimp
 {
 	void Load(const char* file_path);
+	static std::vector<Mesh*> vecMeshes; //Quiza hay que hacerlo un objeto static.
 }

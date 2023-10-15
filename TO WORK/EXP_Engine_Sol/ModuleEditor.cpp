@@ -151,6 +151,26 @@ void ModuleEditor::DrawEditor()
 					ImGui::Text("Mouse wheel: %.1f", io.MouseWheel);
 				//ImGui::EndMenu();
 				}
+				if (ImGui::CollapsingHeader("Hardware"))
+				{
+					ImGui::Text("CPUs: %i (Cache: %ikb)", cpus, cpuCache);
+					ImGui::Text("System RAM: %iMb", ram);
+					ImGui::Text("Caps: ");
+					ImGui::SameLine();
+					if (caps[0] == true) { ImGui::Text("3D"); ImGui::SameLine(); }
+					if (caps[1] == true) { ImGui::Text("AltiVec"); ImGui::SameLine(); }
+					if (caps[2] == true) { ImGui::Text("AVX"); ImGui::SameLine(); }
+					if (caps[3] == true) { ImGui::Text("AVX2"); ImGui::SameLine(); }
+					if (caps[4] == true) { ImGui::Text("MMX"); ImGui::SameLine(); }
+					if (caps[5] == true) { ImGui::Text("RDTSC"); }
+					if (caps[6] == true) { ImGui::Text("SSE"); ImGui::SameLine(); }
+					if (caps[7] == true) { ImGui::Text("SSE2"); ImGui::SameLine(); }
+					if (caps[8] == true) { ImGui::Text("SSE3"); ImGui::SameLine(); }
+					if (caps[9] == true) { ImGui::Text("SSE41"); ImGui::SameLine(); }
+					if (caps[10] == true) { ImGui::Text("SSE42"); }
+
+					ImGui::Text("GPU: %s", glGetString(GL_VENDOR));
+				}
 					
 
 				ImGui::End();
@@ -266,28 +286,6 @@ void ModuleEditor::DrawEditor()
 
 		ImGui::EndMainMenuBar();
 	}
-
-	if (ImGui::Begin("Hardware"))
-	{
-		ImGui::Text("CPUs: %i (Cache: %ikb)", cpus, cpuCache);
-		ImGui::Text("System RAM: %iMb", ram);
-		ImGui::Text("Caps: ");
-		ImGui::SameLine();
-		if (caps[0] == true) { ImGui::Text("3D"); ImGui::SameLine();}
-		if (caps[1] == true) { ImGui::Text("AltiVec"); ImGui::SameLine();}
-		if (caps[2] == true) { ImGui::Text("AVX"); ImGui::SameLine();}
-		if (caps[3] == true) { ImGui::Text("AVX2"); ImGui::SameLine();}
-		if (caps[4] == true) { ImGui::Text("MMX"); ImGui::SameLine();}
-		if (caps[5] == true) { ImGui::Text("RDTSC");}
-		if (caps[6] == true) { ImGui::Text("SSE"); ImGui::SameLine();}
-		if (caps[7] == true) { ImGui::Text("SSE2"); ImGui::SameLine();}
-		if (caps[8] == true) { ImGui::Text("SSE3"); ImGui::SameLine();}
-		if (caps[9] == true) { ImGui::Text("SSE41"); ImGui::SameLine();	}
-		if (caps[10] == true) { ImGui::Text("SSE42");  }
-		
-		ImGui::Text("GPU: %s", glGetString(GL_VENDOR));
-	}
-	ImGui::End();
 
 	if (showDemo) { ImGui::ShowDemoWindow(); }
 	

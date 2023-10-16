@@ -26,7 +26,7 @@ public:
 
 	std::vector<float> mFPSLog;
 	//extern std::string consoleLog; //La classe de almacenamiento es no valida
-	std::string consoleLog;
+	//std::string consoleLog;
 	
 	void ConsoleLog(const std::string& str);
 

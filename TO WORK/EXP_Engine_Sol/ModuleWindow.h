@@ -39,12 +39,20 @@ public:
 	void SetScreenWidth(int value) { SCREEN_WIDTH = value; }
 	void SetScreenHeigth(int value) { SCREEN_HEIGHT = value; }
 	void SetScreenSize(float value) { SCREEN_SIZE = value;}
-	void SetWinFullscreen(bool value) { WIN_FULLSCREEN = value;}
+	void SetWinFullscreen(bool value) 
+	{ 
+		WIN_FULLSCREEN = value;
+		WIN_FULLSCREEN_DESKTOP = false;
+	}
 	void SetWinResizable(bool value){ WIN_RESIZABLE = value; }
-	void SetWinFullscreenDesktop(bool value) { WIN_FULLSCREEN_DESKTOP = value; }
+	void SetWinFullscreenDesktop(bool value) 
+	{ 
+		WIN_FULLSCREEN_DESKTOP = value;
+		WIN_FULLSCREEN = false;
+	}
 	void SetVSYNC(bool value){ VSYNC = value; }
 
-	void ResizeWindow();
+	void ResizeWindow(); 
 
 
 private:

@@ -95,7 +95,19 @@ void ModuleWindow::SetTitle(const char* title)
 
 void ModuleWindow::ResizeWindow()
 {
-	SDL_SetWindowSize(window, SCREEN_WIDTH*SCREEN_SIZE, SCREEN_HEIGHT*SCREEN_SIZE);
-
-
+	if (WIN_RESIZABLE) { SDL_SetWindowSize(window, SCREEN_WIDTH * SCREEN_SIZE, SCREEN_HEIGHT * SCREEN_SIZE); }
+	
+	if(WIN_FULLSCREEN)
+	{
+		SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+	}
+	else if (WIN_FULLSCREEN_DESKTOP)
+	{
+		SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+	}
+	else
+	{
+		SDL_SetWindowFullscreen(window, 0);
+	}
+	
 }

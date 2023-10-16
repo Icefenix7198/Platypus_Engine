@@ -123,11 +123,13 @@ void ModuleEditor::DrawEditor()
 					if (ImGui::Checkbox("Fullscren", &fullscreenActive))
 					{
 						App->window->SetWinFullscreen(fullscreenActive);
+						App->window->ResizeWindow();
 					}
 					bool fullscreenDesktopActive = App->window->GetWinFullscreenDesktop();
 					if (ImGui::Checkbox("Desktop Fullscren", &fullscreenDesktopActive))
 					{
 						App->window->SetWinFullscreenDesktop(fullscreenDesktopActive);
+						App->window->ResizeWindow();
 					}
 					bool resizableActive = App->window->GetWinResizable();
 					if (ImGui::Checkbox("Resizable", &resizableActive))

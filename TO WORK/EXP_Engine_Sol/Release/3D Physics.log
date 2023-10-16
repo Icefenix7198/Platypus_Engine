@@ -1,61 +1,4 @@
-﻿  Application.cpp
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(62,20): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : see previous definition of 'M_PI'
-  Main.cpp
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(62,20): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : see previous definition of 'M_PI'
-  ModuleCamera3D.cpp
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(62,20): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : see previous definition of 'M_PI'
-  ModuleEditor.cpp
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(62,20): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : see previous definition of 'M_PI'
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(162,21): warning C4805: '==': unsafe mix of type 'SDL_bool' and type 'bool' in operation
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(163,21): warning C4805: '==': unsafe mix of type 'SDL_bool' and type 'bool' in operation
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(164,21): warning C4805: '==': unsafe mix of type 'SDL_bool' and type 'bool' in operation
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(165,21): warning C4805: '==': unsafe mix of type 'SDL_bool' and type 'bool' in operation
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(166,21): warning C4805: '==': unsafe mix of type 'SDL_bool' and type 'bool' in operation
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(167,21): warning C4805: '==': unsafe mix of type 'SDL_bool' and type 'bool' in operation
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(168,21): warning C4805: '==': unsafe mix of type 'SDL_bool' and type 'bool' in operation
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(169,21): warning C4805: '==': unsafe mix of type 'SDL_bool' and type 'bool' in operation
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(170,21): warning C4805: '==': unsafe mix of type 'SDL_bool' and type 'bool' in operation
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(171,21): warning C4805: '==': unsafe mix of type 'SDL_bool' and type 'bool' in operation
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(172,22): warning C4805: '==': unsafe mix of type 'SDL_bool' and type 'bool' in operation
-  ModuleInput.cpp
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(62,20): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : see previous definition of 'M_PI'
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(65,41): warning C4244: '/=': conversion from 'float' to 'int', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(66,41): warning C4244: '/=': conversion from 'float' to 'int', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(102,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(103,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(105,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(106,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  ModuleRenderer3D.cpp
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(62,20): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : see previous definition of 'M_PI'
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(322,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(322,16): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(323,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(323,16): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(325,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(326,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(327,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(327,18): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(328,42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(328,18): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(329,42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(329,18): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(382,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(398,20): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(402,8): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(413,20): warning C4018: '<': signed/unsigned mismatch
-  ModuleWindow.cpp
+﻿  ModuleWindow.cpp
 C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(62,20): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
 C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : see previous definition of 'M_PI'
@@ -63,13 +6,9 @@ C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.c
 C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.cpp(31,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.cpp(98,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.cpp(98,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  log.cpp
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(62,20): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : see previous definition of 'M_PI'
   Generating code
-  6 of 3293 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  1 of 3293 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    83 functions had inline decision re-evaluated but remain unchanged
+    84 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   3D Physics.vcxproj -> C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Release\Platypus Engine.exe

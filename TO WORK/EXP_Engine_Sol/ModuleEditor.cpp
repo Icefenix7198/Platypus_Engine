@@ -135,6 +135,7 @@ void ModuleEditor::DrawEditor()
 					if (ImGui::Checkbox("Resizable", &resizableActive))
 					{
 						App->window->SetWinResizable(resizableActive);
+						App->window->ResizeWindow();
 					}
 
 				//ImGui::End();

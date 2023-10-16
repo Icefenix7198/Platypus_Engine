@@ -110,4 +110,5 @@ void ModuleWindow::ResizeWindow()
 		SDL_SetWindowFullscreen(window, 0);
 	}
 	
+	SDL_SetWindowResizable(window, (SDL_bool)WIN_RESIZABLE);
 }

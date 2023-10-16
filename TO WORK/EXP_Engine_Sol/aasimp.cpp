@@ -41,7 +41,7 @@ void aasimp::Load(const char* file_path)
 			}
 		}
 		//Copiar OurMesh a un vector de meshes
-		aasimp::vecMeshes.push_back(&ourMesh);
+		vecMeshes.push_back(&ourMesh);
 		
 		aiReleaseImport(scene);
 	}

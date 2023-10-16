@@ -119,6 +119,12 @@ void ModuleEditor::DrawEditor()
 					{
 						App->window->SetVSYNC(VSYNCactive);
 					}
+					bool borderlessActive = App->window->GetWinBorderless();
+					if (ImGui::Checkbox("Borderless", &borderlessActive))
+					{
+						App->window->SetWinBorderless(borderlessActive);
+						App->window->ResizeWindow();
+					}
 					bool fullscreenActive = App->window->GetWinFullscreen();
 					if (ImGui::Checkbox("Fullscren", &fullscreenActive))
 					{

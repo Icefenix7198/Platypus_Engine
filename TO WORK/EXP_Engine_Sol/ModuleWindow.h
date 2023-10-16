@@ -34,6 +34,7 @@ public:
 	bool GetWinFullscreen() { return WIN_FULLSCREEN; }
 	bool GetWinResizable() {return WIN_RESIZABLE; }
 	bool GetWinFullscreenDesktop() {return WIN_FULLSCREEN_DESKTOP; }
+	bool GetWinBorderless() { return WIN_BORDERLESS; }
 	bool GetVSYNC() { return VSYNC; }
 
 	void SetScreenWidth(int value) { SCREEN_WIDTH = value; }
@@ -50,6 +51,7 @@ public:
 		WIN_FULLSCREEN_DESKTOP = value;
 		WIN_FULLSCREEN = false;
 	}
+	void SetWinBorderless(bool value) { WIN_BORDERLESS = value; }
 	void SetVSYNC(bool value){ VSYNC = value; }
 
 	void ResizeWindow(); 

@@ -111,4 +111,5 @@ void ModuleWindow::ResizeWindow()
 	}
 	
 	SDL_SetWindowResizable(window, (SDL_bool)WIN_RESIZABLE);
+	SDL_SetWindowBordered(window, (SDL_bool) WIN_BORDERLESS);
 }

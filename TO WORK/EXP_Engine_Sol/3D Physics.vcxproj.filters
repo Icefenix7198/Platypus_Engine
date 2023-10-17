@@ -315,6 +315,9 @@
     <ClInclude Include="aasimp.h">
       <Filter>Sources\Tools\Aasimp</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleScene.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -484,6 +487,9 @@
     </ClCompile>
     <ClCompile Include="aasimp.cpp">
       <Filter>Sources\Tools\Aasimp</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleScene.cpp">
+      <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

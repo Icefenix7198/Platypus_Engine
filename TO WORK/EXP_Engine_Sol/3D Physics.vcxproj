@@ -81,6 +81,7 @@
     <ClInclude Include="aasimp.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="glmath.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="imGui\backends\imgui_impl_opengl3.h" />

@@ -1,0 +1,1216 @@
+{
+    "Modules": {
+        "Window": {
+            "Fullscreen": true,
+            "V-Sync": false
+        },
+        "Input": {},
+        "Audio": {},
+        "File System": {},
+        "Resource Manager": {
+            "Resources": [
+                {
+                    "File": "Street environment_V01.FBX",
+                    "Imported File": "24854697.scene",
+                    "ID": "24854697",
+                    "Type": 3,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_004",
+                    "Imported File": "24854698.msh",
+                    "ID": "24854698",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "building03_c.tga",
+                    "Imported File": "24854699.dds",
+                    "ID": "24854699",
+                    "Type": 1,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_001",
+                    "Imported File": "24854700.msh",
+                    "ID": "24854700",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "Building_V02_C.png",
+                    "Imported File": "24854701.dds",
+                    "ID": "24854701",
+                    "Type": 1,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_007",
+                    "Imported File": "24854702.msh",
+                    "ID": "24854702",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "building_016_c.tga",
+                    "Imported File": "24854703.dds",
+                    "ID": "24854703",
+                    "Type": 1,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_008",
+                    "Imported File": "24854704.msh",
+                    "ID": "24854704",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "building_025_c.tga",
+                    "Imported File": "24854705.dds",
+                    "ID": "24854705",
+                    "Type": 1,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "Line002",
+                    "Imported File": "24854706.msh",
+                    "ID": "24854706",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "Plane001",
+                    "Imported File": "24854707.msh",
+                    "ID": "24854707",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_010",
+                    "Imported File": "24854708.msh",
+                    "ID": "24854708",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "building 01_c.tga",
+                    "Imported File": "24854709.dds",
+                    "ID": "24854709",
+                    "Type": 1,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_011",
+                    "Imported File": "24854710.msh",
+                    "ID": "24854710",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_013",
+                    "Imported File": "24854711.msh",
+                    "ID": "24854711",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "building 06_ c.tga",
+                    "Imported File": "24854712.dds",
+                    "ID": "24854712",
+                    "Type": 1,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_014",
+                    "Imported File": "24854713.msh",
+                    "ID": "24854713",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_016",
+                    "Imported File": "24854714.msh",
+                    "ID": "24854714",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_017",
+                    "Imported File": "24854715.msh",
+                    "ID": "24854715",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_022",
+                    "Imported File": "24854716.msh",
+                    "ID": "24854716",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "building05 _c.tga",
+                    "Imported File": "24854717.dds",
+                    "ID": "24854717",
+                    "Type": 1,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_023",
+                    "Imported File": "24854718.msh",
+                    "ID": "24854718",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_024",
+                    "Imported File": "24854719.msh",
+                    "ID": "24854719",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_026",
+                    "Imported File": "24854720.msh",
+                    "ID": "24854720",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_028",
+                    "Imported File": "24854721.msh",
+                    "ID": "24854721",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "Building_V01_C.png",
+                    "Imported File": "24854722.dds",
+                    "ID": "24854722",
+                    "Type": 1,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "Object010",
+                    "Imported File": "24854723.msh",
+                    "ID": "24854723",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_030",
+                    "Imported File": "24854724.msh",
+                    "ID": "24854724",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_031",
+                    "Imported File": "24854725.msh",
+                    "ID": "24854725",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_032",
+                    "Imported File": "24854726.msh",
+                    "ID": "24854726",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_033",
+                    "Imported File": "24854727.msh",
+                    "ID": "24854727",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_034",
+                    "Imported File": "24854728.msh",
+                    "ID": "24854728",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_035",
+                    "Imported File": "24854729.msh",
+                    "ID": "24854729",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_036",
+                    "Imported File": "24854730.msh",
+                    "ID": "24854730",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_037",
+                    "Imported File": "24854731.msh",
+                    "ID": "24854731",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_038",
+                    "Imported File": "24854732.msh",
+                    "ID": "24854732",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_039",
+                    "Imported File": "24854733.msh",
+                    "ID": "24854733",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_040",
+                    "Imported File": "24854734.msh",
+                    "ID": "24854734",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "City_building_041",
+                    "Imported File": "24854735.msh",
+                    "ID": "24854735",
+                    "Type": 2,
+                    "Timestamp": 1469446871,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "building 06_ c .tga",
+                    "Imported File": "1005363858.dds",
+                    "ID": "1005363858",
+                    "Type": 1,
+                    "Timestamp": 1376594172,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "cube_trans.fbx",
+                    "Imported File": "1684524002.scene",
+                    "ID": "1684524002",
+                    "Type": 3,
+                    "Timestamp": 1480938320,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "pCube1",
+                    "Imported File": "1684524003.msh",
+                    "ID": "1684524003",
+                    "Type": 2,
+                    "Timestamp": 1480938320,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "blending_transparent_window.png",
+                    "Imported File": "1684524004.dds",
+                    "ID": "1684524004",
+                    "Type": 1,
+                    "Timestamp": 1480938320,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "pCube2",
+                    "Imported File": "1684524005.msh",
+                    "ID": "1684524005",
+                    "Type": 2,
+                    "Timestamp": 1480938320,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "pCube3",
+                    "Imported File": "1684524006.msh",
+                    "ID": "1684524006",
+                    "Type": 2,
+                    "Timestamp": 1480938320,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "grass_transparency.png",
+                    "Imported File": "1684524007.dds",
+                    "ID": "1684524007",
+                    "Type": 1,
+                    "Timestamp": 1480938320,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "pCube4",
+                    "Imported File": "1684524008.msh",
+                    "ID": "1684524008",
+                    "Type": 2,
+                    "Timestamp": 1480938320,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "primitives_with_parent.fbx",
+                    "Imported File": "2016096925.scene",
+                    "ID": "2016096925",
+                    "Type": 3,
+                    "Timestamp": 1476200577,
+                    "Loaded in memory": false,
+                    "Times referenced": 0
+                },
+                {
+                    "File": "pSphere1",
+                    "Imported File": "2016096926.msh",
+                    "ID": "2016096926",
+                    "Type": 2,
+                    "Timestamp": 1476200577,
+                    "Loaded in memory": true,
+                    "Times referenced": 1
+                },
+                {
+                    "File": "grass.png",
+                    "Imported File": "2016096927.dds",
+                    "ID": "2016096927",
+                    "Type": 1,
+                    "Timestamp": 1476200577,
+                    "Loaded in memory": true,
+                    "Times referenced": 4
+                },
+                {
+                    "File": "pCube1",
+                    "Imported File": "2016096928.msh",
+                    "ID": "2016096928",
+                    "Type": 2,
+                    "Timestamp": 1476200577,
+                    "Loaded in memory": true,
+                    "Times referenced": 1
+                },
+                {
+                    "File": "Stone wall.jpg",
+                    "Imported File": "2016096929.dds",
+                    "ID": "2016096929",
+                    "Type": 1,
+                    "Timestamp": 1476200577,
+                    "Loaded in memory": true,
+                    "Times referenced": 1
+                },
+                {
+                    "File": "pTorus1",
+                    "Imported File": "2016096930.msh",
+                    "ID": "2016096930",
+                    "Type": 2,
+                    "Timestamp": 1476200577,
+                    "Loaded in memory": true,
+                    "Times referenced": 1
+                },
+                {
+                    "File": "scratch_metal.jpg",
+                    "Imported File": "2016096931.dds",
+                    "ID": "2016096931",
+                    "Type": 1,
+                    "Timestamp": 1476200577,
+                    "Loaded in memory": true,
+                    "Times referenced": 1
+                },
+                {
+                    "File": "pPyramid1",
+                    "Imported File": "2016096932.msh",
+                    "ID": "2016096932",
+                    "Type": 2,
+                    "Timestamp": 1476200577,
+                    "Loaded in memory": true,
+                    "Times referenced": 1
+                },
+                {
+                    "File": "pPyramid2",
+                    "Imported File": "2016096933.msh",
+                    "ID": "2016096933",
+                    "Type": 2,
+                    "Timestamp": 1476200577,
+                    "Loaded in memory": true,
+                    "Times referenced": 1
+                },
+                {
+                    "File": "pPyramid3",
+                    "Imported File": "2016096934.msh",
+                    "ID": "2016096934",
+                    "Type": 2,
+                    "Timestamp": 1476200577,
+                    "Loaded in memory": true,
+                    "Times referenced": 1
+                }
+            ]
+        },
+        "GameObject Manager": {
+            "Game Objects": [
+                {
+                    "Name": "Main_camera",
+                    "Active": true,
+                    "Selected": false,
+                    "ToDelete": false,
+                    "Static": true,
+                    "UUID": "542274313",
+                    "Parent UUID": "0",
+                    "Components": [
+                        {
+                            "Type": 1,
+                            "Local position": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Local scale": [
+                                1,
+                                1,
+                                1
+                            ],
+                            "Local rotation": [
+                                0,
+                                0,
+                                0,
+                                1
+                            ],
+                            "Parent transform": [
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1
+                            ],
+                            "Forward": [
+                                0,
+                                0,
+                                1
+                            ],
+                            "Left": [
+                                1,
+                                0,
+                                0
+                            ],
+                            "Up": [
+                                0,
+                                1,
+                                0
+                            ]
+                        },
+                        {
+                            "Type": 4,
+                            "Near Plane": 0.500000,
+                            "Far Plane": 200,
+                            "FOV h": 0,
+                            "FOV v": 60,
+                            "Aspect ratio": 1.333000,
+                            "Camera editor": true
+                        }
+                    ]
+                },
+                {
+                    "Name": "pSphere1",
+                    "Active": true,
+                    "Selected": false,
+                    "ToDelete": false,
+                    "Static": true,
+                    "UUID": "1011609200",
+                    "Parent UUID": "0",
+                    "Components": [
+                        {
+                            "Type": 1,
+                            "Local position": [
+                                0,
+                                0,
+                                3
+                            ],
+                            "Local scale": [
+                                1,
+                                1,
+                                1
+                            ],
+                            "Local rotation": [
+                                0,
+                                0,
+                                0,
+                                1
+                            ],
+                            "Parent transform": [
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1
+                            ],
+                            "Forward": [
+                                0,
+                                0,
+                                1
+                            ],
+                            "Left": [
+                                1,
+                                0,
+                                0
+                            ],
+                            "Up": [
+                                0,
+                                1,
+                                0
+                            ]
+                        },
+                        {
+                            "Type": 3,
+                            "Wire": false,
+                            "Resource ID": "2016096926",
+                            "Active": true
+                        },
+                        {
+                            "Type": 2,
+                            "Active": true,
+                            "Opacity": 1,
+                            "Color diffuse": [
+                                0.800000,
+                                0.800000,
+                                0.800000
+                            ],
+                            "Color specular": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color ambient": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color emissive": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color transparent": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Resource ID": "2016096927"
+                        }
+                    ]
+                },
+                {
+                    "Name": "pCube1",
+                    "Active": true,
+                    "Selected": false,
+                    "ToDelete": false,
+                    "Static": true,
+                    "UUID": "1932982911",
+                    "Parent UUID": "0",
+                    "Components": [
+                        {
+                            "Type": 1,
+                            "Local position": [
+                                -3,
+                                0,
+                                -1
+                            ],
+                            "Local scale": [
+                                2.386031,
+                                2.386031,
+                                2.386031
+                            ],
+                            "Local rotation": [
+                                0.074712,
+                                -0.228463,
+                                0.301708,
+                                0.922602
+                            ],
+                            "Parent transform": [
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1
+                            ],
+                            "Forward": [
+                                -0.376478,
+                                -0.275716,
+                                0.884446
+                            ],
+                            "Left": [
+                                0.713554,
+                                0.522576,
+                                0.466643
+                            ],
+                            "Up": [
+                                -0.590851,
+                                0.806781,
+                                0.000000
+                            ]
+                        },
+                        {
+                            "Type": 3,
+                            "Wire": false,
+                            "Resource ID": "2016096928",
+                            "Active": true
+                        },
+                        {
+                            "Type": 2,
+                            "Active": true,
+                            "Opacity": 1,
+                            "Color diffuse": [
+                                0.800000,
+                                0.800000,
+                                0.800000
+                            ],
+                            "Color specular": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color ambient": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color emissive": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color transparent": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Resource ID": "2016096929"
+                        }
+                    ]
+                },
+                {
+                    "Name": "pTorus1",
+                    "Active": true,
+                    "Selected": false,
+                    "ToDelete": false,
+                    "Static": true,
+                    "UUID": "173312351",
+                    "Parent UUID": "0",
+                    "Components": [
+                        {
+                            "Type": 1,
+                            "Local position": [
+                                3,
+                                0,
+                                -3
+                            ],
+                            "Local scale": [
+                                1.000000,
+                                1.000000,
+                                1
+                            ],
+                            "Local rotation": [
+                                0,
+                                0,
+                                0.743853,
+                                0.668343
+                            ],
+                            "Parent transform": [
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1
+                            ],
+                            "Forward": [
+                                0,
+                                0,
+                                1
+                            ],
+                            "Left": [
+                                -0.106635,
+                                0.994298,
+                                0
+                            ],
+                            "Up": [
+                                -0.994298,
+                                -0.106635,
+                                0
+                            ]
+                        },
+                        {
+                            "Type": 3,
+                            "Wire": false,
+                            "Resource ID": "2016096930",
+                            "Active": true
+                        },
+                        {
+                            "Type": 2,
+                            "Active": true,
+                            "Opacity": 1,
+                            "Color diffuse": [
+                                0.800000,
+                                0.800000,
+                                0.800000
+                            ],
+                            "Color specular": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color ambient": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color emissive": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color transparent": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Resource ID": "2016096931"
+                        }
+                    ]
+                },
+                {
+                    "Name": "pPyramid1",
+                    "Active": true,
+                    "Selected": false,
+                    "ToDelete": false,
+                    "Static": true,
+                    "UUID": "17320325",
+                    "Parent UUID": "1011609200",
+                    "Components": [
+                        {
+                            "Type": 1,
+                            "Local position": [
+                                3,
+                                0,
+                                0
+                            ],
+                            "Local scale": [
+                                1,
+                                1,
+                                1
+                            ],
+                            "Local rotation": [
+                                0,
+                                0,
+                                -0.693819,
+                                0.720150
+                            ],
+                            "Parent transform": [
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1,
+                                3,
+                                0,
+                                0,
+                                0,
+                                1
+                            ],
+                            "Forward": [
+                                0,
+                                0,
+                                1
+                            ],
+                            "Left": [
+                                0.037232,
+                                -0.999307,
+                                0
+                            ],
+                            "Up": [
+                                0.999307,
+                                0.037232,
+                                0
+                            ]
+                        },
+                        {
+                            "Type": 3,
+                            "Wire": false,
+                            "Resource ID": "2016096932",
+                            "Active": true
+                        },
+                        {
+                            "Type": 2,
+                            "Active": true,
+                            "Opacity": 1,
+                            "Color diffuse": [
+                                0.800000,
+                                0.800000,
+                                0.800000
+                            ],
+                            "Color specular": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color ambient": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color emissive": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color transparent": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Resource ID": "2016096927"
+                        }
+                    ]
+                },
+                {
+                    "Name": "pPyramid2",
+                    "Active": true,
+                    "Selected": false,
+                    "ToDelete": false,
+                    "Static": true,
+                    "UUID": "1711527128",
+                    "Parent UUID": "17320325",
+                    "Components": [
+                        {
+                            "Type": 1,
+                            "Local position": [
+                                -0.111695,
+                                -2.997920,
+                                2.500000
+                            ],
+                            "Local scale": [
+                                1,
+                                1,
+                                1
+                            ],
+                            "Local rotation": [
+                                0.697988,
+                                0,
+                                0,
+                                0.716109
+                            ],
+                            "Parent transform": [
+                                0.037232,
+                                0.999307,
+                                0,
+                                3,
+                                -0.999307,
+                                0.037232,
+                                0,
+                                0,
+                                0,
+                                0,
+                                1,
+                                3,
+                                0,
+                                0,
+                                0,
+                                1
+                            ],
+                            "Forward": [
+                                -0.998979,
+                                -0.037219,
+                                0.025624
+                            ],
+                            "Left": [
+                                0.037232,
+                                -0.999307,
+                                0
+                            ],
+                            "Up": [
+                                0.025607,
+                                0.000954,
+                                0.999672
+                            ]
+                        },
+                        {
+                            "Type": 3,
+                            "Wire": false,
+                            "Resource ID": "2016096933",
+                            "Active": true
+                        },
+                        {
+                            "Type": 2,
+                            "Active": true,
+                            "Opacity": 1,
+                            "Color diffuse": [
+                                0.800000,
+                                0.800000,
+                                0.800000
+                            ],
+                            "Color specular": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color ambient": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color emissive": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color transparent": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Resource ID": "2016096927"
+                        }
+                    ]
+                },
+                {
+                    "Name": "pPyramid3",
+                    "Active": true,
+                    "Selected": false,
+                    "ToDelete": false,
+                    "Static": true,
+                    "UUID": "39558491",
+                    "Parent UUID": "1711527128",
+                    "Components": [
+                        {
+                            "Type": 1,
+                            "Local position": [
+                                -1.424497,
+                                -0.947028,
+                                -2.079410
+                            ],
+                            "Local scale": [
+                                1,
+                                1,
+                                1
+                            ],
+                            "Local rotation": [
+                                -0.269524,
+                                0.053931,
+                                0.188650,
+                                0.942793
+                            ],
+                            "Parent transform": [
+                                0.037232,
+                                0.025607,
+                                -0.998979,
+                                -0.000000,
+                                -0.999307,
+                                0.000954,
+                                -0.037219,
+                                0.000000,
+                                0,
+                                0.999672,
+                                0.025624,
+                                5.500000,
+                                0,
+                                0,
+                                0,
+                                1
+                            ],
+                            "Forward": [
+                                -0.834495,
+                                -0.031091,
+                                0.550138
+                            ],
+                            "Left": [
+                                0.245904,
+                                -0.914484,
+                                0.321326
+                            ],
+                            "Up": [
+                                0.493102,
+                                0.403426,
+                                0.770777
+                            ]
+                        },
+                        {
+                            "Type": 3,
+                            "Wire": false,
+                            "Resource ID": "2016096934",
+                            "Active": true
+                        },
+                        {
+                            "Type": 2,
+                            "Active": true,
+                            "Opacity": 1,
+                            "Color diffuse": [
+                                0.800000,
+                                0.800000,
+                                0.800000
+                            ],
+                            "Color specular": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color ambient": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color emissive": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Color transparent": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "Resource ID": "2016096927"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Camera Editor": {},
+        "Scene": {},
+        "Editor": {
+            "About menu": false,
+            "Configuration menu": false,
+            "Console menu": false,
+            "Hierarchy menu": false,
+            "Component menu": false,
+            "Warning alert": false,
+            "Gameobject selected": false
+        },
+        "Renderer3D": {}
+    }
+}

@@ -4,8 +4,12 @@
 
 #include "Module.h"
 #include "Globals.h"
+#include "GameObject.h"
+
+
 #include <vector>
 #include <string>
+
 
 class ModuleScene : public Module
 {
@@ -17,7 +21,11 @@ public:
 	bool Init() override;
 	bool CleanUp() override;
 
-	//Quiza esto sea too much y haya que descartar la idea
+	////GameObjects related
+	//GameObject* CreateGameObject(GameObject* parent); //Crea un gameObject vacio
+	//int UpdateGameObjects(GameObject* go);
+
+	//GameObject* root;
 private:
 	
 };

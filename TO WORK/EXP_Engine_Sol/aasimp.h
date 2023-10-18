@@ -3,6 +3,7 @@
 #include "Assimp/include/scene.h"
 #include "Assimp/include/postprocess.h"
 #include "Assimp/include/mesh.h"
+#include "Glew/include/glew.h"
 
 #include "Globals.h"
 
@@ -18,11 +19,15 @@ struct Mesh
 	uint id_vertex = 0; // unique vertex in VRAM
 	uint num_vertex = 0;
 	float* vertex = nullptr;
+
+	GLuint VAO;
+	GLuint EBO;
 };
 
-static std::vector<Mesh*> vecMeshes; //Quiza hay que hacerlo un objeto static. //Maybe tiene que ser vector<Mesh>* en vez, que sea el vector la ref
 
 namespace aasimp
 {
 	void Load(const char* file_path);
+
+	static std::vector<Mesh*> vecMeshes; //Quiza hay que hacerlo un objeto static. //Maybe tiene que ser vector<Mesh>* en vez, que sea el vector la ref
 }

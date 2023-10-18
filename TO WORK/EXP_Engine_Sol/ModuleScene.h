@@ -22,10 +22,10 @@ public:
 	bool CleanUp() override;
 
 	////GameObjects related
-	//GameObject* CreateGameObject(GameObject* parent); //Crea un gameObject vacio
-	//int UpdateGameObjects(GameObject* go);
+	GameObject* CreateGameObject(GameObject* parent); //Crea un gameObject vacio
+	int UpdateGameObjects(GameObject* go);
 
-	//GameObject* root;
+	GameObject* root;
 private:
 	
 };

@@ -86,7 +86,7 @@ void ModuleEditor::DrawEditor()
 			if (showConfig)
 			{
 				ImGui::Begin("Config", &showConfig);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-
+				//WINDOW
 				if (ImGui::CollapsingHeader("Window"))
 				{
 					//Sliders scale windows
@@ -143,10 +143,9 @@ void ModuleEditor::DrawEditor()
 						App->window->SetWinResizable(resizableActive);
 						App->window->ResizeWindow();
 					}
-
-				//ImGui::End();
 				}
-				if (ImGui::CollapsingHeader("Input"))
+				//INPUT
+				if (ImGui::CollapsingHeader("Input")) 
 				{
 					ImGuiIO& io = ImGui::GetIO();
 
@@ -158,7 +157,20 @@ void ModuleEditor::DrawEditor()
 					ImGui::Text("Mouse down:");
 					for (int i = 0; i < IM_ARRAYSIZE(io.MouseDown); i++) if (ImGui::IsMouseDown(i)) { ImGui::SameLine(); ImGui::Text("b%d (%.02f secs)", i, io.MouseDownDuration[i]); }
 					ImGui::Text("Mouse wheel: %.1f", io.MouseWheel);
-				//ImGui::EndMenu();
+				}
+				//RENDER
+				if (ImGui::CollapsingHeader("Render"))
+				{
+					//Draw OpenGL wireframe mode
+					bool drawWireframeMode = App->window->GetVSYNC();
+					if (ImGui::Checkbox("Wireframe Mode", &drawWireframeMode))
+					{
+						glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+					}
+					else
+					{
+						glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //Posiblemente haya que hacerlo con una variable en renderer? Pero ahora eso no se toca
+					}
 				}
 				if (ImGui::CollapsingHeader("Hardware"))
 				{

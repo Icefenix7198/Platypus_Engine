@@ -22,6 +22,7 @@ struct Mesh
 
 	GLuint VAO;
 	GLuint EBO;
+	GLuint VBO;
 };
 
 

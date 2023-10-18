@@ -41,6 +41,32 @@ void aasimp::Load(const char* file_path)
 			}
 
 
+			//BUFFERS
+			ourMesh->VBO = 0; //Buffer de vertices
+			ourMesh->EBO = 0;
+			//ourMesh->VAO = 0;
+
+			//Generate buffers.If after this any of them is 0 there is an error
+			glGenBuffers(1, &ourMesh->VBO);
+			glGenBuffers(1, &ourMesh->EBO);
+			//glGenVertexArrays(1, &ourMesh->VAO);
+
+			
+
+			//glBindBuffer(GL_ARRAY_BUFFER, VBO);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(float)*ourMesh->num_vertex*3, ourMesh->vertex, GL_STATIC_DRAW); //Bien declarada pero hay que darle un arrayVertices que exista
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ourMesh->EBO);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * ourMesh->num_index, ourMesh->index, GL_STATIC_DRAW); //Bien declarada pero hay que darle un arrayIndices que exista
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	
+			//ourMesh->VAO declaration is special/different
+			//glBindVertexArray(ourMesh->VAO);
+			//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0); //???,num elements del tipo, tipo VAR, ???, tamaño bite elementos, offset en bites (por si hay elementos anteriores)
+			//glEnableVertexAttribArray(0);
+			//glBindVertexArray(0);
+
 
 			//Copiar OurMesh a un vector de meshes
 			vecMeshes.push_back(ourMesh);

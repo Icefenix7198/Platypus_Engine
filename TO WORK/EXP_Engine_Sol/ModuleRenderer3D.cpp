@@ -136,34 +136,6 @@ bool ModuleRenderer3D::Init()
 
 	Grid.axis = true;
 
-	
-	
-	//VBO = 0; //Buffer de vertices
-	//EBO = 0;
-	//VAO = 0;
-
-	////Generate buffers.If after this any of them is 0 there is an error
-	//glGenBuffers(1, &VBO); 
-	//glGenBuffers(1, &EBO);
-	//glGenVertexArrays(1, &VAO);
-
-	//std::vector<float> vecVertices;
-	//std::vector<GLuint> vecIndices;
-
-	//glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	//glBufferData(GL_ARRAY_BUFFER, vecVertices.capacity(), vecVertices.data(), GL_STATIC_DRAW); //Bien declarada pero hay que darle un arrayVertices que exista
-	//glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	//glBufferData(GL_ARRAY_BUFFER, vecIndices.capacity(), vecIndices.data(), GL_STATIC_DRAW); //Bien declarada pero hay que darle un arrayIndices que exista
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-	//
-	////VAO declaration is special/different
-	//glBindVertexArray(VAO);
-	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0); //???,num elements del tipo, tipo VAR, ???, tamaño bite elementos, offset en bites (por si hay elementos anteriores)
-	//glEnableVertexAttribArray(0);
-	//glBindVertexArray(0);
-
 	return ret;
 }
 
@@ -205,9 +177,9 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGui::NewFrame();
 
 	//Functions to draw in direct mode here (it will need to go away)
-	//DrawCubeDirectMode();
+	DrawCubeDirectMode();
 	//DrawSphereDirectMode(3, 8, 5); //This is broken and doesen't work
-	DrawPyramidDirectMode(0,0,0,7,5,5);
+	
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
@@ -314,132 +286,17 @@ void ModuleRenderer3D::DrawCubeDirectMode(float originX, float originY, float or
 	glDisableClientState(GL_VERTEX_ARRAY);
 }
 
-void ModuleRenderer3D::DrawSphereDirectMode(float radius, unsigned int rings, unsigned int sectors) // No funciona
+void ModuleRenderer3D::DrawMesh(Mesh* mesh)
 {
-	std::vector<GLushort> indices;
-	std::vector<vec3> vertices;
-	std::vector<vec2> texcoords;
-
-	float const R = 1. / (float)(rings - 1);
-	float const S = 1. / (float)(sectors - 1);
-
-	for (int r = 0; r < rings; ++r) {
-		for (int s = 0; s < sectors; ++s) {
-			float const y = sin(-M_PI_2 + M_PI * r * R);
-			float const x = cos(2 * M_PI * s * S) * sin(M_PI * r * R);
-			float const z = sin(2 * M_PI * s * S) * sin(M_PI * r * R);
-
-			texcoords.push_back(vec2(s * S, r * R));
-			vertices.push_back(vec3(x, y, z) * radius);
-
-			int curRow = r * sectors;
-			int nextRow = (r + 1) * sectors;
-
-			indices.push_back(curRow + s);
-			indices.push_back(nextRow + s);
-			indices.push_back(nextRow + (s + 1));
-
-			indices.push_back(curRow + s);
-			indices.push_back(nextRow + (s + 1));
-			indices.push_back(curRow + (s + 1));
-		}
-	}
-
-	glEnableClientState(GL_VERTEX_ARRAY);
-	//glEnableClientState(GL_NORMAL_ARRAY);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
-	glVertexPointer(3, GL_FLOAT, 0, vertices.data());
-	//glTexCoordPointer(2, GL_FLOAT, 0, texcoords.data());
-
-	//glEnable(GL_TEXTURE_2D);
-	////glFrontFace(GL_CCW);
-	//glEnable(GL_CULL_FACE);
-	///*glActiveTexture(GL_TEXTURE0);
-	//glBindTexture(GL_TEXTURE_2D, privModel->texname);*/
-
-	glDrawElements(GL_TRIANGLES,indices.size(), GL_UNSIGNED_SHORT, indices.data());
-	glPopMatrix();
-	glDisable(GL_TEXTURE_2D);
-
-	
 
 }
 
-void ModuleRenderer3D::DrawPyramidDirectMode(float originX, float originY, float originZ, uint numFaces,float heigth, float width)
+void ModuleRenderer3D::DrawAllMeshes()
 {
-	std::vector<float> x;
-	std::vector<float> y;
-	std::vector<float> z;
-
-	//Top point
-	x.push_back(originX);
-	y.push_back(originY);
-	z.push_back(originZ);
-
-	//Create lateral faces
-	if (numFaces >= 3)
+	auto aux = aasimp::vecMeshes;
+	for (int i = 0; i < aux.size(); i++)
 	{
-		float degree = PI / numFaces;
-		float h = originY - heigth;
-		//Pushback all vertices
-		for (uint i = 0; i < numFaces; i++)
-		{
-			y.push_back(h); //All pyramid points are in the same heigth
-
-			//Vertices
-			x.push_back(originX+width * sin(0 + degree * i));
-			z.push_back(originZ + width * cos(0 + degree * i));
-		}
+		DrawMesh(aux.at(i));
 	}
-
-	//Add lateral faces indexes
-	std::vector<int> indices;
-
-	for (int i = 1; i <= numFaces; i++)
-	{
-		indices.push_back(0);
-		indices.push_back(i);
-		if (i>=numFaces) //Si ya hemos dado la vuelta le devolvemos un 1 (el primer vertice lateral
-		{
-			indices.push_back(1);
-		}
-		else { indices.push_back(i + 1); }
-	}
-	
-	//Add base indexes
-	//Note: Due to the order that they must be drawn to be seen (horario) is best to start from the end
-
-	int extraOffset = 0;
-	for (int i = 0; i < numFaces-2 ; i++)
-	{
-		indices.push_back(numFaces);
-		for (int j = 1; j < 3; j++)
-		{
-			int val = numFaces - 2 * i - j;
-			indices.push_back(val);
-		}
-
-	}
-
-	std::vector<float> vertices;
-	for (size_t i = 0; i < x.size(); i++) //Podria ser x, y o z ya que son exactamente iguales
-	{
-		vertices.push_back(x.at(i));
-		vertices.push_back(y.at(i));
-		vertices.push_back(z.at(i));
-	}
-
-	// activate and specify pointer to vertex array
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 0, vertices.data());
-
-	// draw a cube
-	glDrawElements(GL_TRIANGLES, indices.size()/3, GL_UNSIGNED_BYTE, indices.data());
-
-	// deactivate vertex arrays after drawing
-	glDisableClientState(GL_VERTEX_ARRAY);
-
-
-	//GLfloat vertices[3+numFaces*3];
 }
+

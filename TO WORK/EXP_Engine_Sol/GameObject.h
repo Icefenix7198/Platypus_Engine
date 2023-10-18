@@ -1,5 +1,4 @@
-#ifndef __GAMEOBJECT_H__
-#define __GAMEOBJECT_H__
+#pragma once
 
 #include "Globals.h"
 
@@ -50,4 +49,3 @@
 //};
 
 
-#endif //__GAMEOBJECT_H__

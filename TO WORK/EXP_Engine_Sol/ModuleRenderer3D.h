@@ -7,6 +7,7 @@
 #include "MathGeoLib/include/Math/float4x4.h"
 #include "Primitive.h"
 #include "Glew/include/glew.h"
+#include "aasimp.h"
 
 //todo: REMOVE this before 1st delivery!!
 #include "glmath.h"
@@ -27,8 +28,9 @@ public:
 	void OnResize(int width, int height);
 
 	void DrawCubeDirectMode(float originX=0, float originY=0, float originZ=0, float size=1);
-	void DrawSphereDirectMode(float radius, unsigned int rings, unsigned int sectors);
-	void DrawPyramidDirectMode(float originX=0, float originY = 0, float originZ = 0, uint numFaces=3, float heigth=1, float width=1);
+	
+	void DrawMesh(Mesh* mesh);
+	void DrawAllMeshes();
 
 public:
 

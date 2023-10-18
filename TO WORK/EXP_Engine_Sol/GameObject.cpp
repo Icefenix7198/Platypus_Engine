@@ -41,6 +41,8 @@ void GameObject::Update()
 Component* GameObject::CreateComponent(ComponentType type)
 {
 	bool nonTransform = true; //Only one transform can exist at a time
+	Component* ret = nullptr;
+	
 	switch (type)
 	{
 	case TRANSFORM:
@@ -52,27 +54,32 @@ Component* GameObject::CreateComponent(ComponentType type)
 		if (nonTransform)
 		{
 			LOG("Create Component Transform")				
-			ComponentTransform* temp = new ComponentTransform;
-			components.push_back(temp);
+			ret = new ComponentTransform;
+			components.push_back(ret);
 		}
 
 		break;
 	case MESH:
 
 		//Create component mesh
-		//components.push_back();
+		LOG("Create Component Mesh");
+		ret = new ComponentMesh;
+		components.push_back(ret);
 
 		break;
 	case MATERIAL:
 
 		//Create component material
-		//components.push_back();
+		LOG("Create Component Transform")
+		ret = new ComponentTransform;
+		components.push_back(ret);
 
 		break;
 	default:
 		break;
 	}
-	return nullptr;
+	
+	return ret;
 }
 
 

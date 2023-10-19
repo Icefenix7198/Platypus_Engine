@@ -172,7 +172,7 @@ void ModuleEditor::DrawEditor()
 						glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //Posiblemente haya que hacerlo con una variable en renderer? Pero ahora eso no se toca
 					}
 
-					//Añadir botones to directly enable / disable 	 GL_DEPTH_TEST, GL_CULL_FACE, GL_LIGHTING	 GL_COLOR_MATERIAL, GL_TEXTURE_2D + two other
+					//TODO Eric: Añadir botones to directly enable / disable 	 GL_DEPTH_TEST, GL_CULL_FACE, GL_LIGHTING	 GL_COLOR_MATERIAL, GL_TEXTURE_2D + two other
 
 				}
 				if (ImGui::CollapsingHeader("Hardware"))

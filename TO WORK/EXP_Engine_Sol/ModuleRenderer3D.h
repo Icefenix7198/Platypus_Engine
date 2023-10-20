@@ -32,13 +32,17 @@ public:
 	void DrawMesh(Mesh* mesh);
 	void DrawAllMeshes();
 
+	//Drawing Mode
+	bool GetDrawingMode() { return wireframeMode; }
+	void SetDrawingMode(bool mode) { wireframeMode = mode; }
+
 public:
 
 	Light lights[MAX_LIGHTS];
 	SDL_GLContext context;
 	CPlane Grid;
 
-	bool second_Window = true;
+	bool second_Window = true; 
 	
 	//You won't need this after using Frustum
 	mat4x4 ProjectionMatrix;
@@ -47,4 +51,7 @@ public:
 	GLuint EBO; //ELEMENT BUFFER OBJECT
 	GLuint VAO; //VERTEX ATRIBUTE OBJECT
 
+private:
+	//Drawing Modes
+	bool wireframeMode = false;
 };

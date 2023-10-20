@@ -27,5 +27,3 @@ public:
 private:
 
 };
-
-#endif //!__GAMEOBJECT_H__

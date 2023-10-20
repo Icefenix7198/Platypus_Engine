@@ -162,15 +162,18 @@ void ModuleEditor::DrawEditor()
 				if (ImGui::CollapsingHeader("Render"))
 				{
 					//Draw OpenGL wireframe mode
-					bool drawWireframeMode = App->window->GetVSYNC();
+					bool drawWireframeMode = App->renderer3D->GetDrawingMode();
 					if (ImGui::Checkbox("Wireframe Mode", &drawWireframeMode))
 					{
-						glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+						if(drawWireframeMode){glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);}
+						else
+						{
+						glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+						
+						}
+						App->renderer3D->SetDrawingMode(drawWireframeMode);
 					}
-					else
-					{
-						glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //Posiblemente haya que hacerlo con una variable en renderer? Pero ahora eso no se toca
-					}
+					
 
 					//TODO Eric: Añadir botones to directly enable / disable 	 GL_DEPTH_TEST, GL_CULL_FACE, GL_LIGHTING	 GL_COLOR_MATERIAL, GL_TEXTURE_2D + two other
 

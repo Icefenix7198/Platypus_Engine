@@ -22,6 +22,7 @@ public:
 
 	//ImGui Complicated Things Print
 	void AddFPS(const float aFPS);
+
 	
 
 	std::vector<float> mFPSLog;
@@ -29,6 +30,8 @@ public:
 	//std::string consoleLog;
 	
 	void ConsoleLog(const std::string& str);
+
+	void GameObjectHierarchy();
 
 	int cpuCache;
 	int cpus;
@@ -44,6 +47,7 @@ private:
 	bool showConsole = true;
 	bool showConfig;
 	bool showDemo = false;
+	bool showInspector = true; //No se si inspector es la palabra correcta
 };
 
 #endif //MODULE_EDITOR

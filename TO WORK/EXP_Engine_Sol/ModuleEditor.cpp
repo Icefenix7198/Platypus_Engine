@@ -206,28 +206,22 @@ void ModuleEditor::DrawEditor()
 		}
 		if (ImGui::BeginMenu("Assets"))
 		{
+			if(ImGui::Button("Load BakerHouse"))
+			{
+				aasimp::Load("Assets/3DObjects/baker_house/BakerHouse.fbx");
+			}
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("GameObject"))
 		{
-			//Create basic shape (PROBANDO PATHS)
-			"Game/Assets/3DObjects/baker_house/BakerHouse.fbx";
-
-			//aasimp::Load("Game/Assets/3DObjects/baker_house/BakerHouse.fbx");
-			//aasimp::Load("Game/Assets/3DObjects/baker_house/BakerHouse");
+			if(ImGui::Checkbox("Show GameObject tree", &showInspector))
+			{
+				//Activate
+			}
 			
-			aasimp::Load("Assets/3DObjects/baker_house/BakerHouse.fbx");
-			/*aasimp::Load("Assets/3DObjects/baker_house/BakerHouse");
-
-			aasimp::Load("3DObjects/baker_house/BakerHouse.fbx");
-			aasimp::Load("3DObjects/baker_house/BakerHouse");
-
-			Usando .
-			aasimp::Load("./Game/Assets/3DObjects/baker_house/BakerHouse.fbx");
-			aasimp::Load("./Game/Assets/3DObjects/baker_house/BakerHouse");
-
-			aasimp::Load("./Assets/3DObjects/baker_house/BakerHouse.fbx");
-			aasimp::Load("./Assets/3DObjects/baker_house/BakerHouse");*/
+			
+			
+			
 
 			ImGui::EndMenu();
 		}
@@ -237,8 +231,6 @@ void ModuleEditor::DrawEditor()
 			if (ImGui::Button("ShowFPS"))
 			{
 				showFPS = true;
-				
-				consoleLog.push_back('e');
 			}
 			if (showFPS)
 			{
@@ -315,6 +307,8 @@ void ModuleEditor::DrawEditor()
 	}
 
 	if (showDemo) { ImGui::ShowDemoWindow(); }
+	if (showInspector) { GameObjectHierarchy(); }
+
 	
 }
 
@@ -353,7 +347,9 @@ void ModuleEditor::ConsoleLog(const std::string& str)
 	ImGui::TextUnformatted(consoleLog.data());
 }
 
-//void ModuleEditor::ConsoleLog(std::string str)
-//{
-//	ImGui::TextUnformatted(consoleLog.data());
-//}
+void ModuleEditor::GameObjectHierarchy()
+{
+
+}
+
+

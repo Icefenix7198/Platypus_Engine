@@ -108,6 +108,8 @@ bool ModuleRenderer3D::Init()
 		lights[0].Active(true);
 		glEnable(GL_LIGHTING);
 		glEnable(GL_COLOR_MATERIAL);
+
+		glewInit();
 	}
 
 	// Projection matrix for
@@ -180,9 +182,10 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	DrawCubeDirectMode();
 	//DrawSphereDirectMode(3, 8, 5); //This is broken and doesen't work
 	
+	DrawAllMeshes();
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
-
+	
 	App->editor->DrawEditor();
 	
 

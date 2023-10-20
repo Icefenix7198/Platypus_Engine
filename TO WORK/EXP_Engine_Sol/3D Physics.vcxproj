@@ -82,6 +82,10 @@
     <ClInclude Include="aasimp.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="ComponentMaterial.h" />
+    <ClInclude Include="ComponentTransform.h" />
+    <ClInclude Include="ComponentMesh.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="glmath.h" />
     <ClInclude Include="Globals.h" />
@@ -173,6 +177,10 @@
     <ClCompile Include="aasimp.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ComponentMaterial.cpp" />
+    <ClCompile Include="ComponentTransform.cpp" />
+    <ClCompile Include="ComponentMesh.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="glmath.cpp" />
     <ClCompile Include="imGui\backends\imgui_impl_opengl3.cpp" />

@@ -248,15 +248,7 @@ void ModuleEditor::DrawEditor()
 			{
 				showConsole = true;
 			}
-			if (showConsole)
-			{
-				//ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver); //Try
-				ImGui::Begin("Console", &showConsole);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked				
-				
-				ConsoleLog(consoleLog);
-
-				ImGui::End();
-			}
+			
 
 
 			// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
@@ -308,6 +300,15 @@ void ModuleEditor::DrawEditor()
 
 	if (showDemo) { ImGui::ShowDemoWindow(); }
 	if (showInspector) { GameObjectHierarchy(); }
+	if (showConsole)
+	{
+		//ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver); //Try
+		ImGui::Begin("Console", &showConsole);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked				
+
+		ConsoleLog(consoleLog);
+
+		ImGui::End();
+	}
 
 	
 }

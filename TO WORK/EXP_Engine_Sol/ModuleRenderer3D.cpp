@@ -294,10 +294,14 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh)
 {
 	// activate and specify pointer to vertex array
 	glEnableClientState(GL_VERTEX_ARRAY);
+	glBindBuffer(GL_ARRAY_BUFFER,mesh->id_vertex ); 
 	glVertexPointer(3, GL_FLOAT, 0, mesh->vertex);
 
-	// draw a cube
-	glDrawElements(GL_TRIANGLES, mesh->num_index, GL_UNSIGNED_BYTE, mesh->index);
+	//Index array binding
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->id_index);
+
+	// Draw mesh
+	glDrawElements(GL_TRIANGLES, mesh->num_index, GL_UNSIGNED_INT, mesh->index);
 
 	// deactivate vertex arrays after drawing
 	glDisableClientState(GL_VERTEX_ARRAY);

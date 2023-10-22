@@ -40,25 +40,45 @@ void aasimp::Load(const char* file_path)
 				}
 			}
 
+			//Copy normals
+			if (scene->mMeshes[i]->HasNormals())
+			{
+				ourMesh->num_normals = scene->mMeshes[i]->mNumVertices; //Get the number of normals (it will be 3 for each triangle/face)
+
+				ourMesh->normals = new uint[ourMesh->num_normals]; // assume each face is a triangle (so it will have 3 normals)
+				memcpy(ourMesh->normals, scene->mMeshes[i]->mNormals, sizeof(float) * ourMesh->num_normals); //Copy the vertices array into mesh Vertex array 
+
+				LOG("New mesh with %d normals", ourMesh->num_normals);
+				
+			}
+			
+
 
 			//BUFFERS
 			ourMesh->VBO = 0; //Buffer de vertices
+			ourMesh->VN = 0;
 			ourMesh->EBO = 0;
+			
 			//ourMesh->VAO = 0;
 
 			//Generate buffers.If after this any of them is 0 there is an error
 			glGenBuffers(1, &ourMesh->VBO);
+			glGenBuffers(1, &ourMesh->VN);
 			glGenBuffers(1, &ourMesh->EBO);
+			
 			//glGenVertexArrays(1, &ourMesh->VAO);
 
 			
 
 			//glBindBuffer(GL_ARRAY_BUFFER, VBO);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(float)*ourMesh->num_vertex*3, ourMesh->vertex, GL_STATIC_DRAW); //Bien declarada pero hay que darle un arrayVertices que exista
+			glBufferData(GL_ARRAY_BUFFER, sizeof(float)*ourMesh->num_vertex*3, ourMesh->vertex, GL_STATIC_DRAW); 
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+			glBufferData(GL_ARRAY_BUFFER, sizeof(float) * ourMesh->num_normals * 3, ourMesh->normals, GL_STATIC_DRAW);
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ourMesh->EBO);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * ourMesh->num_index, ourMesh->index, GL_STATIC_DRAW); //Bien declarada pero hay que darle un arrayIndices que exista
+			glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * ourMesh->num_index, ourMesh->index, GL_STATIC_DRAW); 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	
 			//ourMesh->VAO declaration is special/different

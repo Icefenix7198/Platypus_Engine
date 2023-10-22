@@ -294,8 +294,16 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh)
 {
 	// activate and specify pointer to vertex array
 	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+	//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	
+	//Bind vertex buffers
 	glBindBuffer(GL_ARRAY_BUFFER,mesh->id_vertex ); 
 	glVertexPointer(3, GL_FLOAT, 0, mesh->vertex);
+
+	//Bind normals buffers
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_normals);
+	glNormalPointer(GL_FLOAT, 0, NULL);
 
 	//Draw Lines or Full
 	if (wireframeMode) { glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); }

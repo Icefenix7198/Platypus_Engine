@@ -8,7 +8,8 @@
 #include "ImGui/imgui.h"
 #include "ImGui/backends/imgui_impl_sdl2.h"
 #include "ImGui/backends/imgui_impl_opengl3.h"
-//#include 
+
+#include "aasimp.h"
 
 
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
@@ -291,14 +292,24 @@ void ModuleRenderer3D::DrawCubeDirectMode(float originX, float originY, float or
 
 void ModuleRenderer3D::DrawMesh(Mesh* mesh)
 {
+	// activate and specify pointer to vertex array
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, mesh->vertex);
 
+	// draw a cube
+	glDrawElements(GL_TRIANGLES, mesh->num_index, GL_UNSIGNED_BYTE, mesh->index);
+
+	// deactivate vertex arrays after drawing
+	glDisableClientState(GL_VERTEX_ARRAY);
 }
 
 void ModuleRenderer3D::DrawAllMeshes()
 {
+	//aasimp::
 	auto aux = aasimp::vecMeshes;
 	for (int i = 0; i < aux.size(); i++)
 	{
+		//LOG("DAM activated %d", i)
 		DrawMesh(aux.at(i));
 	}
 }

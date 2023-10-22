@@ -31,5 +31,5 @@ namespace aasimp
 {
 	void Load(const char* file_path);
 
-	static std::vector<Mesh*> vecMeshes; //Quiza hay que hacerlo un objeto static. //Maybe tiene que ser vector<Mesh>* en vez, que sea el vector la ref
+	std::vector<Mesh*> vecMeshes; //Quiza hay que hacerlo un objeto static. //Maybe tiene que ser vector<Mesh>* en vez, que sea el vector la ref
 }

@@ -165,12 +165,6 @@ void ModuleEditor::DrawEditor()
 					bool drawWireframeMode = App->renderer3D->GetDrawingMode();
 					if (ImGui::Checkbox("Wireframe Mode", &drawWireframeMode))
 					{
-						if(drawWireframeMode){glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);}
-						else
-						{
-						glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-						
-						}
 						App->renderer3D->SetDrawingMode(drawWireframeMode);
 					}
 					

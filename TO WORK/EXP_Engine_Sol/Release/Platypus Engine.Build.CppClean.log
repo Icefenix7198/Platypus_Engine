@@ -11,6 +11,7 @@ c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\releas
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\imgui_impl_sdl2.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\imgui_impl_opengl3.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\glmath.obj
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\gameobject.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\componentmesh.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\componentmaterial.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\component.obj
@@ -58,6 +59,83 @@ c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\releas
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\float3x4.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\float3x3.obj
 c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\timer.obj
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\platypus engine.tlog\cl.command.1.tlog
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\platypus engine.tlog\cl.read.1.tlog
-c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\platypus engine.tlog\cl.write.1.tlog
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\parson.obj
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\componenttransform.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\vc142.pdb
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\main.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\log.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\light.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\imgui_widgets.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\imgui_tables.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\imgui_draw.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\imgui_demo.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\imgui.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\imgui_impl_sdlrenderer2.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\imgui_impl_sdl2.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\imgui_impl_opengl3.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\glmath.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\gameobject.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\componentmesh.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\componenttransform.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\componentmaterial.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\component.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\color.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\application.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\aasimp.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\float3.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\float2.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\bitops.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\trianglemesh.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\triangle.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\sphere.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\ray.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\polyhedron.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\polygon.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\plane.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\obb.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\linesegment.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\line.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\frustum.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\cylinder.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\cone.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\circle.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\capsule.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\aabb.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\lcg.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\primitive.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\modulewindow.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\modulescene.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\modulerenderer3d.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\moduleinput.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\moduleeditor.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\modulecamera3d.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\mmgr.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\clock.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\transformops.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\ssemath.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\quat.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\polynomial.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\mathops.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\mathlog.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\mathfunc.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\float4x4.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\float4.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\float3x4.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\float3x3.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\timer.obj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\parson.obj
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\platypus engine.exe
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\platypus engine.pdb
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\platypus engine.exe
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\platypus engine.pdb
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\platypus engine.ipdb
+c:\users\eric\onedrive\documentos\github\motores3d\to work\exp_engine_sol\release\platypus engine.iobj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\platypus engine.ipdb
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\platypus engine.iobj
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\platypus engine.tlog\cl.command.1.tlog
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\platypus engine.tlog\cl.read.1.tlog
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\platypus engine.tlog\cl.write.1.tlog
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\platypus engine.tlog\link.command.1.tlog
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\platypus engine.tlog\link.read.1.tlog
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\platypus engine.tlog\link.write.1.tlog
+c:\users\ericsb\documents\github\motores3d\to work\exp_engine_sol\release\platypus engine.tlog\platypus engine.write.1u.tlog

@@ -9,9 +9,9 @@ ComponentTransform::ComponentTransform()
 	translation.z = 0;
 	pos = {translation.x,translation.y,translation.z};
 
-	scaling.x = 0;
-	scaling.y = 0;
-	scaling.z = 0;
+	scaling.x = 1;
+	scaling.y = 1;
+	scaling.z = 1;
 	scale = { scaling.x, scaling.y, scaling.z };
 
 	rotation.x = 0;
@@ -28,9 +28,9 @@ ComponentTransform::ComponentTransform(aiVector3D vecPos)
 	translation.z = vecPos.z;
 	pos = { translation.x,translation.y,translation.z };
 
-	scaling.x = 0;
-	scaling.y = 0;
-	scaling.z = 0;
+	scaling.x = 1;
+	scaling.y = 1;
+	scaling.z = 1;
 	scale = { scaling.x, scaling.y, scaling.z };
 
 	rotation.x = 0;

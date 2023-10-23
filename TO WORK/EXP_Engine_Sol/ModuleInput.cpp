@@ -113,7 +113,47 @@ update_status ModuleInput::PreUpdate(float dt)
 			case SDL_WINDOWEVENT:
 			{
 				if(e.window.event == SDL_WINDOWEVENT_RESIZED)
+				{
+					
 					App->renderer3D->OnResize(e.window.data1, e.window.data2);
+				}
+				break;
+			}
+
+			case SDL_DROPFILE:
+			{
+				
+				std::string pathFile;
+				std::string fileType;
+				pathFile.assign(e.drop.file);
+				bool pointFound=false;
+				//We search were the point is in the string to select the fileType
+				for (int i = 0; i < pathFile.size(); i++)
+				{
+					if(pointFound)
+					{
+						//Pushback the chars after the point (they will be the file tipe) ex: .fbx, .png, etc.
+						fileType.push_back(pathFile.at(i));
+					}
+					if(pathFile.at(i) == '.')
+					{
+						pointFound = true;
+						LOG("Punto detectado en %d",i) 
+					}
+				}
+
+				if(std::strcmp(fileType.c_str(),"fbx")==0)
+				{
+					aasimp::Load(pathFile.c_str());
+					LOG("Fbx File %s loaded", pathFile.c_str())
+				}
+				if (std::strcmp(fileType.c_str(), "png") == 0)
+				{
+					LOG("Png File %s loaded", pathFile.c_str())
+				}
+
+				
+				break;
 			}
 		}
 	}

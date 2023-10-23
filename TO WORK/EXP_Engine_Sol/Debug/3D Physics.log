@@ -1,17 +1,9 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (3D Physics - class5.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  ComponentTransform.cpp
-  ModuleInput.cpp
+  ModuleRenderer3D.cpp
 C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(64,20): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
 C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : see previous definition of 'M_PI'
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(65,41): warning C4244: '/=': conversion from 'float' to 'int', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(66,41): warning C4244: '/=': conversion from 'float' to 'int', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(102,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(103,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(105,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(106,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(131,23): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
+C:\Users\ericsb\Documents\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(326,20): warning C4018: '<': signed/unsigned mismatch
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
 Application.obj : warning LNK4006: "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > aasimp::vecMeshes" (?vecMeshes@aasimp@@3V?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@A) already defined in aasimp.obj; second definition ignored
 ComponentTransform.obj : warning LNK4006: "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > aasimp::vecMeshes" (?vecMeshes@aasimp@@3V?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@A) already defined in aasimp.obj; second definition ignored

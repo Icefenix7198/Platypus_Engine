@@ -313,27 +313,40 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh)
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
 	//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-	
-	//Bind vertex buffers
-	glBindBuffer(GL_ARRAY_BUFFER,mesh->VBO ); 
-	glVertexPointer(3, GL_FLOAT, 0, nullptr);
+
+	// activate and specify pointer to vertex array
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_vertex);
+	glVertexPointer(3, GL_FLOAT, 0, mesh->vertex);
 
 	//Bind normals buffers
-	/*glBindBuffer(GL_ARRAY_BUFFER, mesh->VN);
-	glNormalPointer(GL_FLOAT, 0, NULL);*/
-
-	//Draw Lines or Full
-	if (wireframeMode) { glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); }
-	else{ glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); }
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_normals);
+	glNormalPointer(GL_FLOAT, 0, NULL);
 
 	//Index array binding
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->EBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->id_index);
+
+	//Draw Lines or Full
+	if (wireframeMode)
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	}
+	else
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
 
 	// Draw mesh
-	glDrawElements(GL_TRIANGLES, mesh->num_index, GL_UNSIGNED_INT, nullptr);
+	glDrawElements(GL_TRIANGLES, mesh->num_index, GL_UNSIGNED_INT, mesh->index);
+
+	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER,0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
 
 	// deactivate vertex arrays after drawing
 	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
+	//glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
 }
 
 void ModuleRenderer3D::DrawAllMeshes()

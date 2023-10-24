@@ -14,6 +14,9 @@
 
 #define MAX_LIGHTS 8
 
+#define CHECKERS_HEIGHT 256
+#define CHECKERS_WIDTH 256
+
 class ModuleRenderer3D : public Module
 {
 public:
@@ -50,6 +53,8 @@ public:
 	GLuint VBO; //VERTEX BUFFER OBJECT
 	GLuint EBO; //ELEMENT BUFFER OBJECT
 	GLuint VAO; //VERTEX ATRIBUTE OBJECT
+
+	GLuint textureID;
 
 private:
 	//Drawing Modes

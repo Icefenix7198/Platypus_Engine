@@ -8,6 +8,9 @@
 enum ComponentType;
 
 class Component;
+class ComponentTransform;
+class ComponentMesh;
+class ComponentMaterial;
 
 class GameObject
 {
@@ -18,6 +21,8 @@ public:
 
 	void Update();
 	Component* CreateComponent(ComponentType type);
+
+	ComponentTransform* objTransform = nullptr; //Due to the importance of the transform we have another reference to it
 
 	bool active;
 	std::string name;

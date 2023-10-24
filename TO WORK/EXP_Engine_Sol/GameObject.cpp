@@ -10,6 +10,7 @@ GameObject::GameObject()
 	CreateComponent(ComponentType::TRANSFORM);
 	name = "GameObject";
 	active = true;
+
 }
 
 GameObject::GameObject(std::string _name, bool _active)
@@ -17,6 +18,7 @@ GameObject::GameObject(std::string _name, bool _active)
 	CreateComponent(ComponentType::TRANSFORM);
 	name = _name;
 	active = _active;
+	
 }
 
 GameObject::~GameObject()
@@ -51,11 +53,12 @@ Component* GameObject::CreateComponent(ComponentType type)
 		{
 			if (components.at(i)->type == ComponentType::TRANSFORM) { nonTransform = false; }
 		}
-		if (nonTransform)
+		if (nonTransform && objTransform ==nullptr)
 		{
 			LOG("Create Component Transform")				
 			ret = new ComponentTransform;
 			components.push_back(ret);
+			objTransform = (ComponentTransform*)ret;
 		}
 
 		break;

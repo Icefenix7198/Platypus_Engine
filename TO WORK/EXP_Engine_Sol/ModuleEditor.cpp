@@ -83,129 +83,7 @@ void ModuleEditor::DrawEditor()
 			{
 				showConfig = true;
 			}
-			if (showConfig)
-			{
-				ImGui::Begin("Config", &showConfig);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-				
-				if (ImGui::CollapsingHeader("Aplication"))
-				{
-					int FPS = App->fixedFPS;
-					if (ImGui::SliderInt("FPS", &FPS, 1, 120))
-					{
-						App->fixedFPS = FPS;
-					}
-				}
-													   
-				//WINDOW
-				if (ImGui::CollapsingHeader("Window"))
-				{
-					//Sliders scale windows
-					float winScale = App->window->GetScreenSize();
-					if (ImGui::SliderFloat("Window Scale", &winScale, 0.1f, 1.0f))
-					{
-						App->window->SetScreenSize(winScale);
-						//App->window->Init(); ESTO NO FUNCIONA, CREA UNA NUEVA VENTANA
-						App->window->ResizeWindow();
-					}
-					int winW = App->window->GetScreenWidth();
-					if (ImGui::SliderInt("Window Width", &winW, 64, 5000))
-					{
-						App->window->SetScreenWidth(winW);
-						/*App->window->CleanUp(); COMBINADO ES AUN PEOR, HACE QUE PETE TODO
-						App->window->Init();*/
-						App->window->ResizeWindow();
-					}
-					int winH = App->window->GetScreenHeigth();
-					if (ImGui::SliderInt("Window Heigth", &winH, 64, 5000))
-					{
-						App->window->SetScreenHeigth(winH);
-						//App->window->Init();
-						App->window->ResizeWindow();
-					}
-
-					//CheckBoxes of screen flags
-					bool VSYNCactive = App->window->GetVSYNC();
-					if (ImGui::Checkbox("VSYNC", &VSYNCactive))
-					{
-						App->window->SetVSYNC(VSYNCactive);
-					}
-					bool borderlessActive = App->window->GetWinBorderless();
-					if (ImGui::Checkbox("Borderless", &borderlessActive))
-					{
-						App->window->SetWinBorderless(borderlessActive);
-						App->window->ResizeWindow();
-					}
-					bool fullscreenActive = App->window->GetWinFullscreen();
-					if (ImGui::Checkbox("Fullscren", &fullscreenActive))
-					{
-						App->window->SetWinFullscreen(fullscreenActive);
-						App->window->ResizeWindow();
-					}
-					bool fullscreenDesktopActive = App->window->GetWinFullscreenDesktop();
-					if (ImGui::Checkbox("Desktop Fullscren", &fullscreenDesktopActive))
-					{
-						App->window->SetWinFullscreenDesktop(fullscreenDesktopActive);
-						App->window->ResizeWindow();
-					}
-					bool resizableActive = App->window->GetWinResizable();
-					if (ImGui::Checkbox("Resizable", &resizableActive))
-					{
-						App->window->SetWinResizable(resizableActive);
-						App->window->ResizeWindow();
-					}
-				}
-				//INPUT
-				if (ImGui::CollapsingHeader("Input")) 
-				{
-					ImGuiIO& io = ImGui::GetIO();
-
-					if (ImGui::IsMousePosValid())
-						ImGui::Text("Mouse pos: (%g, %g)", io.MousePos.x, io.MousePos.y);
-					else
-						ImGui::Text("Mouse pos: <INVALID>");
-					ImGui::Text("Mouse delta: (%g, %g)", io.MouseDelta.x, io.MouseDelta.y);
-					ImGui::Text("Mouse down:");
-					for (int i = 0; i < IM_ARRAYSIZE(io.MouseDown); i++) if (ImGui::IsMouseDown(i)) { ImGui::SameLine(); ImGui::Text("b%d (%.02f secs)", i, io.MouseDownDuration[i]); }
-					ImGui::Text("Mouse wheel: %.1f", io.MouseWheel);
-				}
-				//RENDER
-				if (ImGui::CollapsingHeader("Render"))
-				{
-					//Draw OpenGL wireframe mode
-					bool drawWireframeMode = App->renderer3D->GetDrawingMode();
-					if (ImGui::Checkbox("Wireframe Mode", &drawWireframeMode))
-					{
-						App->renderer3D->SetDrawingMode(drawWireframeMode);
-					}
-					
-
-					//TODO Eric: Añadir botones to directly enable / disable 	 GL_DEPTH_TEST, GL_CULL_FACE, GL_LIGHTING	 GL_COLOR_MATERIAL, GL_TEXTURE_2D + two other
-
-				}
-				if (ImGui::CollapsingHeader("Hardware"))
-				{
-					ImGui::Text("CPUs: %i (Cache: %ikb)", cpus, cpuCache);
-					ImGui::Text("System RAM: %iMb", ram);
-					ImGui::Text("Caps: ");
-					ImGui::SameLine();
-					if (caps[0] == true) { ImGui::Text("3D"); ImGui::SameLine(); }
-					if (caps[1] == true) { ImGui::Text("AltiVec"); ImGui::SameLine(); }
-					if (caps[2] == true) { ImGui::Text("AVX"); ImGui::SameLine(); }
-					if (caps[3] == true) { ImGui::Text("AVX2"); ImGui::SameLine(); }
-					if (caps[4] == true) { ImGui::Text("MMX"); ImGui::SameLine(); }
-					if (caps[5] == true) { ImGui::Text("RDTSC"); }
-					if (caps[6] == true) { ImGui::Text("SSE"); ImGui::SameLine(); }
-					if (caps[7] == true) { ImGui::Text("SSE2"); ImGui::SameLine(); }
-					if (caps[8] == true) { ImGui::Text("SSE3"); ImGui::SameLine(); }
-					if (caps[9] == true) { ImGui::Text("SSE41"); ImGui::SameLine(); }
-					if (caps[10] == true) { ImGui::Text("SSE42"); }
-
-					ImGui::Text("GPU: %s", glGetString(GL_VENDOR));
-				}
-					
-
-				ImGui::End();
-			}
+			
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Assets"))
@@ -223,7 +101,18 @@ void ModuleEditor::DrawEditor()
 				//Activate
 			}
 			
-			
+			if (ImGui::Button("CreateGameObject"))
+			{
+				App->scene->CreateGameObject(App->scene->root);
+			}
+			if (ImGui::Button("CreateChildGameObject"))
+			{
+				if (App->scene->root->children.size()>0)
+				{
+					App->scene->CreateGameObject(App->scene->root->children.at(0));
+				}
+				
+			}
 			
 			
 
@@ -304,7 +193,8 @@ void ModuleEditor::DrawEditor()
 	}
 
 	if (showDemo) { ImGui::ShowDemoWindow(); }
-	if (showInspector) { GameObjectHierarchy(); }
+	if (showConfig) { Configuration(); }
+	if (showInspector) { GameObjectHierarchy(App->scene->root); }
 	if (showConsole)
 	{
 		//ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver); //Try
@@ -322,6 +212,131 @@ bool ModuleEditor::CleanUp()
 {
 	mFPSLog.clear();
 	return true;
+}
+
+void ModuleEditor::Configuration()
+{
+	if (showConfig)
+	{
+		ImGui::Begin("Config", &showConfig);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+
+		if (ImGui::CollapsingHeader("Aplication"))
+		{
+			int FPS = App->fixedFPS;
+			if (ImGui::SliderInt("FPS", &FPS, 1, 120))
+			{
+				App->fixedFPS = FPS;
+			}
+		}
+
+		//WINDOW
+		if (ImGui::CollapsingHeader("Window"))
+		{
+			//Sliders scale windows
+			float winScale = App->window->GetScreenSize();
+			if (ImGui::SliderFloat("Window Scale", &winScale, 0.1f, 1.0f))
+			{
+				App->window->SetScreenSize(winScale);
+				//App->window->Init(); ESTO NO FUNCIONA, CREA UNA NUEVA VENTANA
+				App->window->ResizeWindow();
+			}
+			int winW = App->window->GetScreenWidth();
+			if (ImGui::SliderInt("Window Width", &winW, 64, 5000))
+			{
+				App->window->SetScreenWidth(winW);
+				/*App->window->CleanUp(); COMBINADO ES AUN PEOR, HACE QUE PETE TODO
+				App->window->Init();*/
+				App->window->ResizeWindow();
+			}
+			int winH = App->window->GetScreenHeigth();
+			if (ImGui::SliderInt("Window Heigth", &winH, 64, 5000))
+			{
+				App->window->SetScreenHeigth(winH);
+				//App->window->Init();
+				App->window->ResizeWindow();
+			}
+
+			//CheckBoxes of screen flags
+			bool VSYNCactive = App->window->GetVSYNC();
+			if (ImGui::Checkbox("VSYNC", &VSYNCactive))
+			{
+				App->window->SetVSYNC(VSYNCactive);
+			}
+			bool borderlessActive = App->window->GetWinBorderless();
+			if (ImGui::Checkbox("Borderless", &borderlessActive))
+			{
+				App->window->SetWinBorderless(borderlessActive);
+				App->window->ResizeWindow();
+			}
+			bool fullscreenActive = App->window->GetWinFullscreen();
+			if (ImGui::Checkbox("Fullscren", &fullscreenActive))
+			{
+				App->window->SetWinFullscreen(fullscreenActive);
+				App->window->ResizeWindow();
+			}
+			bool fullscreenDesktopActive = App->window->GetWinFullscreenDesktop();
+			if (ImGui::Checkbox("Desktop Fullscren", &fullscreenDesktopActive))
+			{
+				App->window->SetWinFullscreenDesktop(fullscreenDesktopActive);
+				App->window->ResizeWindow();
+			}
+			bool resizableActive = App->window->GetWinResizable();
+			if (ImGui::Checkbox("Resizable", &resizableActive))
+			{
+				App->window->SetWinResizable(resizableActive);
+				App->window->ResizeWindow();
+			}
+		}
+		//INPUT
+		if (ImGui::CollapsingHeader("Input"))
+		{
+			ImGuiIO& io = ImGui::GetIO();
+
+			if (ImGui::IsMousePosValid())
+				ImGui::Text("Mouse pos: (%g, %g)", io.MousePos.x, io.MousePos.y);
+			else
+				ImGui::Text("Mouse pos: <INVALID>");
+			ImGui::Text("Mouse delta: (%g, %g)", io.MouseDelta.x, io.MouseDelta.y);
+			ImGui::Text("Mouse down:");
+			for (int i = 0; i < IM_ARRAYSIZE(io.MouseDown); i++) if (ImGui::IsMouseDown(i)) { ImGui::SameLine(); ImGui::Text("b%d (%.02f secs)", i, io.MouseDownDuration[i]); }
+			ImGui::Text("Mouse wheel: %.1f", io.MouseWheel);
+		}
+		//RENDER
+		if (ImGui::CollapsingHeader("Render"))
+		{
+			//Draw OpenGL wireframe mode
+			bool drawWireframeMode = App->renderer3D->GetDrawingMode();
+			if (ImGui::Checkbox("Wireframe Mode", &drawWireframeMode))
+			{
+				App->renderer3D->SetDrawingMode(drawWireframeMode);
+			}
+
+
+			//TODO Eric: Añadir botones to directly enable / disable 	 GL_DEPTH_TEST, GL_CULL_FACE, GL_LIGHTING	 GL_COLOR_MATERIAL, GL_TEXTURE_2D + two other
+
+		}
+		if (ImGui::CollapsingHeader("Hardware"))
+		{
+			ImGui::Text("CPUs: %i (Cache: %ikb)", cpus, cpuCache);
+			ImGui::Text("System RAM: %iMb", ram);
+			ImGui::Text("Caps: ");
+			ImGui::SameLine();
+			if (caps[0] == true) { ImGui::Text("3D"); ImGui::SameLine(); }
+			if (caps[1] == true) { ImGui::Text("AltiVec"); ImGui::SameLine(); }
+			if (caps[2] == true) { ImGui::Text("AVX"); ImGui::SameLine(); }
+			if (caps[3] == true) { ImGui::Text("AVX2"); ImGui::SameLine(); }
+			if (caps[4] == true) { ImGui::Text("MMX"); ImGui::SameLine(); }
+			if (caps[5] == true) { ImGui::Text("RDTSC"); }
+			if (caps[6] == true) { ImGui::Text("SSE"); ImGui::SameLine(); }
+			if (caps[7] == true) { ImGui::Text("SSE2"); ImGui::SameLine(); }
+			if (caps[8] == true) { ImGui::Text("SSE3"); ImGui::SameLine(); }
+			if (caps[9] == true) { ImGui::Text("SSE41"); ImGui::SameLine(); }
+			if (caps[10] == true) { ImGui::Text("SSE42"); }
+
+			ImGui::Text("GPU: %s", glGetString(GL_VENDOR));
+		}
+		ImGui::End();
+	}
 }
 
 void ModuleEditor::AddFPS(const float aFPS)
@@ -353,9 +368,42 @@ void ModuleEditor::ConsoleLog(const std::string& str)
 	ImGui::TextUnformatted(consoleLog.data());
 }
 
-void ModuleEditor::GameObjectHierarchy()
+void ModuleEditor::GameObjectHierarchy(GameObject* go)
 {
+	//The first node passed (go) should not be printed becose it will be the root
+	GameObject* ctp = nullptr; //Childs to print
 
+	int treeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+	int leafFlags = treeFlags | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+
+	int num_children = go->children.size();
+	
+	
+	
+	for (int i = 0; i < num_children; ++i)
+	{
+		ctp = go->children[i];
+
+
+		if (ctp->children.size() > 0)
+		{
+			bool node_open = ImGui::TreeNodeEx((void*)(intptr_t)i, treeFlags, ctp->name.c_str());
+
+			/*if (ImGui::IsItemClicked())
+				ChangeSelectedGameObject(child);*/
+
+			if (node_open)
+			{
+				GameObjectHierarchy(ctp); //If the game object has a child we call it recursive to print its childs
+				ImGui::TreePop();
+			}
+		}
+		else
+		{
+			ImGui::TreeNodeEx((void*)(intptr_t)i, leafFlags, ctp->name.c_str()); // Leafs are game objects without childs
+			/*if (ImGui::IsItemClicked())
+				ChangeSelectedGameObject(child);*/
+		}
+	}
+	
 }
-
-

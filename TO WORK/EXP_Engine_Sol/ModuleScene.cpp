@@ -10,6 +10,7 @@
 
 ModuleScene::ModuleScene(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
+	root = new GameObject("Root_Node", nullptr); //Create the root node
 }
 
 ModuleScene::~ModuleScene()
@@ -40,11 +41,14 @@ int ModuleScene::UpdateGameObjects(GameObject* go)
 	int numChildren = 0;
 	for (int i = 0; i < go->children.size(); i++)
 	{
-		numChildren++;
-		numChildren += UpdateGameObjects(go->children.at(i));
+		if (go->children.at(i)->active)
+		{
+			numChildren++;
+			numChildren += UpdateGameObjects(go->children.at(i));
 
-		//Make GameObjects update
-		go->children.at(i)->Update();
+			//Make GameObjects update
+			go->children.at(i)->Update();
+		}	
 	}
 
 	return 0;

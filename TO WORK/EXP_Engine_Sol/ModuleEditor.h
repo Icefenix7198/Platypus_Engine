@@ -4,6 +4,7 @@
 
 #include "Module.h"
 #include "Globals.h"
+#include "GameObject.h"
 #include <vector>
 #include <string>
 
@@ -21,17 +22,14 @@ public:
 	bool CleanUp() override;
 
 	//ImGui Complicated Things Print
+	void Configuration();
+
 	void AddFPS(const float aFPS);
-
-	
-
 	std::vector<float> mFPSLog;
-	//extern std::string consoleLog; //La classe de almacenamiento es no valida
-	//std::string consoleLog;
-	
+
 	void ConsoleLog(const std::string& str);
 
-	void GameObjectHierarchy();
+	void GameObjectHierarchy(GameObject* go);
 
 	int cpuCache;
 	int cpus;

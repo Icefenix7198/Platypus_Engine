@@ -49,15 +49,15 @@ bool Application::Init()
 		(*it)->Start();
 	}
 	
-	ms_timer.Start();
+	/*ms_timer.Start();*/
 	return ret;
 }
 
 // ---------------------------------------------
 void Application::PrepareUpdate()
 {
-	dt = (float)ms_timer.Read() / 1000.0f;
-	ms_timer.Start();
+	/*dt = (float)ms_timer.Read() / 1000.0f;
+	ms_timer.Start();*/
 }
 
 // ---------------------------------------------

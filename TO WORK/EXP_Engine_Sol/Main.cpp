@@ -23,6 +23,11 @@ int main(int argc, char ** argv)
 	main_states state = MAIN_CREATION;
 	Application* App = NULL;
 
+	uint startTime;
+	float fps;
+
+	startTime = SDL_GetTicks();
+
 	while (state != MAIN_EXIT)
 	{
 		switch (state)
@@ -80,6 +85,39 @@ int main(int argc, char ** argv)
 			break;
 
 		}
+
+		switch (App->timeControl)
+		{
+
+		case DeltaTimeControl::FIXED_DELTATIME:
+
+			App->dt = (1/App->fixedFPS);
+
+			break;
+		case DeltaTimeControl::FIXED_DELTATIME_DELAY:
+
+			App->dt = (1 / App->fixedFPS);
+
+			if ((1 / App->fixedFPS) > SDL_GetTicks() - startTime)
+			{
+				SDL_Delay((1 / App->fixedFPS) - (SDL_GetTicks() - startTime));
+			}
+
+			break;
+		case DeltaTimeControl::VARIABLE_DELTATIME:
+
+			if ((1 / App->fixedFPS) > SDL_GetTicks() - startTime)
+			{
+				SDL_Delay(App->fixedFPS - (SDL_GetTicks() - startTime));
+			}
+			fps = (SDL_GetTicks() - startTime);
+			App->dt = fps;
+
+			break;
+		default:
+			break;
+		}
+
 	}
 
 	delete App;

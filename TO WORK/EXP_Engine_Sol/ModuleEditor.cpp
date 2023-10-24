@@ -86,6 +86,16 @@ void ModuleEditor::DrawEditor()
 			if (showConfig)
 			{
 				ImGui::Begin("Config", &showConfig);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+				
+				if (ImGui::CollapsingHeader("Aplication"))
+				{
+					int FPS = App->fixedFPS;
+					if (ImGui::SliderInt("FPS", &FPS, 1, 120))
+					{
+						App->fixedFPS = FPS;
+					}
+				}
+													   
 				//WINDOW
 				if (ImGui::CollapsingHeader("Window"))
 				{
@@ -230,13 +240,14 @@ void ModuleEditor::DrawEditor()
 			{
 				//ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver); //Try
 				ImGui::Begin("FPS", &showFPS);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-					//Testeo
+				{	//Testeo
 					//AddFPS((float)(rand() % 100) / 100);
-					AddFPS(1/*/App->GetDeltaTime()*/); //??  No se si esto esta bien o mal
-					ImGui::Text("FPS");
+					AddFPS(App->GetDeltaTime() * 1000); //??  No se si esto esta bien o mal
+					ImGui::Text("Delta Time");
 					if (ImGui::Button("Close"))
 						showFPS = false;
-				ImGui::End();
+					ImGui::End();
+				}
 			}
 			if (ImGui::Button("ShowConsole"))
 			{

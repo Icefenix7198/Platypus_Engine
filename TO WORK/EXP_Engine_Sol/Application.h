@@ -12,6 +12,15 @@
 
 #include<vector>
 
+enum class DeltaTimeControl
+{
+
+	FIXED_DELTATIME,
+	FIXED_DELTATIME_DELAY,
+	VARIABLE_DELTATIME
+
+};
+
 class Application
 {
 public:
@@ -22,10 +31,15 @@ public:
 	ModuleEditor* editor;
 	ModuleScene* scene;
 
+	//Moved to public to control Delta Time
+	Timer	ms_timer;
+	float fixedFPS = 60; //16 es too fast 
+	float	dt;
+	DeltaTimeControl timeControl = DeltaTimeControl::FIXED_DELTATIME;
+
 private:
 
-	Timer	ms_timer;
-	float	dt;
+	
 	std::vector<Module*> list_modules;
 
 public:

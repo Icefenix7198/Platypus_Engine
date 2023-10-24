@@ -41,16 +41,16 @@ void aasimp::Load(const char* file_path)
 			}
 
 			//Copy normals
-			//if (scene->mMeshes[i]->HasNormals())
-			//{
-			//	ourMesh->num_normals = scene->mMeshes[i]->mNumVertices; //Get the number of normals (it will be 3 for each triangle/face)
+			if (scene->mMeshes[i]->HasNormals())
+			{
+				ourMesh->num_normals = scene->mMeshes[i]->mNumVertices; //Get the number of normals (it will be 3 for each triangle/face)
 
-			//	ourMesh->normals = new uint[ourMesh->num_normals]; // assume each face is a triangle (so it will have 3 normals)
-			//	memcpy(ourMesh->normals, scene->mMeshes[i]->mNormals, sizeof(float) * ourMesh->num_normals); //Copy the vertices array into mesh Vertex array 
+				ourMesh->normals = new uint[ourMesh->num_normals]; // assume each face is a triangle (so it will have 3 normals)
+				memcpy(ourMesh->normals, scene->mMeshes[i]->mNormals, sizeof(float) * ourMesh->num_normals); //Copy the vertices array into mesh Vertex array 
 
-			//	LOG("New mesh with %d normals", ourMesh->num_normals);
-			//	
-			//}
+				LOG("New mesh with %d normals", ourMesh->num_normals);
+				
+			}
 			
 
 
@@ -80,11 +80,9 @@ void aasimp::Load(const char* file_path)
 			glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * ourMesh->num_index, ourMesh->index, GL_STATIC_DRAW); 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	
-			//ourMesh->VAO declaration is special/different
-			//glBindVertexArray(ourMesh->VAO);
-			//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0); //???,num elements del tipo, tipo VAR, ???, tamaño bite elementos, offset en bites (por si hay elementos anteriores)
-			//glEnableVertexAttribArray(0);
-			//glBindVertexArray(0);
+
+
+			//Aqui habria que crear un GameObject y asignarle la mesh
 
 
 			//Copiar OurMesh a un vector de meshes

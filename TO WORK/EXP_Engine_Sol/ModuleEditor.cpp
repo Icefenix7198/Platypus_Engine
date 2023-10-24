@@ -366,6 +366,8 @@ void ModuleEditor::AddFPS(const float aFPS)
 void ModuleEditor::ConsoleLog(const std::string& str)
 {
 	ImGui::TextUnformatted(consoleLog.data());
+
+	//Habria que añadir un boton para limpiar el log
 }
 
 void ModuleEditor::GameObjectHierarchy(GameObject* go)

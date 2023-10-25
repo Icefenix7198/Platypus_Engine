@@ -1,4 +1,5 @@
 #include "aasimp.h"
+#include "GameObject.h"
 
 //#include <vector>
 
@@ -83,7 +84,9 @@ void aasimp::Load(const char* file_path)
 
 
 			//Aqui habria que crear un GameObject y asignarle la mesh
-
+			//scene->mMeshes[i].
+			GameObject* go = new GameObject();
+			//scene->mRootNode->mTransformation.Decompose();
 
 			//Copiar OurMesh a un vector de meshes
 			vecMeshes.push_back(ourMesh);
@@ -93,7 +96,7 @@ void aasimp::Load(const char* file_path)
 	}
 	else
 	{
-		LOG("Error loading scene % s", file_path);
+		LOG("Error loading scene %s", file_path);
 	}
 		
 }

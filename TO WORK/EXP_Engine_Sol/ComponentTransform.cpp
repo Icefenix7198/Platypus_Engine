@@ -56,5 +56,5 @@ ComponentTransform::~ComponentTransform()
 {
 }
 
-
+Component::OnEditor(){}
 

@@ -24,6 +24,8 @@ public:
 
 	~ComponentTransform();
 
+	virtual void Component::OnEditor()
+
 	aiVector3D translation, scaling;
 	aiQuaternion rotation;
 	

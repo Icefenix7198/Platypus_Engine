@@ -29,6 +29,8 @@ public:
 	virtual bool Update();
 	virtual bool Disable();
 
+	virtual void OnEditor();
+
 private:
 
 };

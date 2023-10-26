@@ -23,3 +23,7 @@ bool Component::Disable()
 {
 	return false;
 }
+
+void Component::OnEditor()
+{
+}

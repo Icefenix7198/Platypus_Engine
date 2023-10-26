@@ -198,7 +198,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 
 	//Functions to draw in direct mode here (it will need to go away)
 	DrawCubeDirectMode();
-	//DrawSphereDirectMode(3, 8, 5); //This is broken and doesen't work
+
 	
 	DrawAllMeshes();
 
@@ -210,8 +210,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	// Rendering
 	ImGui::Render();
 	glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
-	//glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
-	glClear(GL_COLOR_BUFFER_BIT);
+
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 	// Update and Render additional Platform Windows

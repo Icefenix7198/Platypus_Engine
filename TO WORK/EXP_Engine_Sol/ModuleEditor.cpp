@@ -453,7 +453,7 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 
 void ModuleEditor::Inspector(GameObject* go)
 {
-	for (int i = 0; i > go->components.size(), i++;) 
+	for (int i = 0; i < go->components.size(), i++;) 
 	{ 
 		//Print all components
 		go->components;

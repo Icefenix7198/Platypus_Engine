@@ -10,7 +10,10 @@
 
 ModuleScene::ModuleScene(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	root = new GameObject("Root_Node", nullptr); //Create the root node
+	std::string name;
+	name.assign("Root_Node");
+
+	root = new GameObject(name, nullptr); //Create the root node
 }
 
 ModuleScene::~ModuleScene()
@@ -19,6 +22,7 @@ ModuleScene::~ModuleScene()
 
 bool ModuleScene::Init()
 {  
+	selectedGO = root;
 	return true;
 }
 
@@ -32,6 +36,7 @@ GameObject* ModuleScene::CreateGameObject(GameObject* parent)
 	GameObject* go = new GameObject;
 	
 	parent->children.push_back(go);
+	selectedGO = go;
 
 	return go;
 }

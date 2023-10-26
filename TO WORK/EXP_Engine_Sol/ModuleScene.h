@@ -26,6 +26,7 @@ public:
 	int UpdateGameObjects(GameObject* go);
 
 	GameObject* root;
+	GameObject* selectedGO = nullptr;
 private:
 	
 };

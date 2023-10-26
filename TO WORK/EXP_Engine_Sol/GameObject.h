@@ -17,6 +17,7 @@ class GameObject
 public:
 	GameObject();
 	GameObject(std::string name, bool active = true);
+	GameObject(std::string name, GameObject* parent, bool active = true);
 	~GameObject();
 
 	void Update();

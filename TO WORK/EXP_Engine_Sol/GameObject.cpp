@@ -10,7 +10,6 @@ GameObject::GameObject()
 	CreateComponent(ComponentType::TRANSFORM);
 	name = "GameObject";
 	active = true;
-
 }
 
 GameObject::GameObject(std::string _name, bool _active)
@@ -19,6 +18,14 @@ GameObject::GameObject(std::string _name, bool _active)
 	name = _name;
 	active = _active;
 	
+}
+
+GameObject::GameObject(std::string _name, GameObject* _parent, bool _active)
+{
+	CreateComponent(ComponentType::TRANSFORM);
+	name = _name;
+	parent = _parent;
+	active = _active;
 }
 
 GameObject::~GameObject()

@@ -126,6 +126,7 @@ update_status ModuleInput::PreUpdate(float dt)
 				std::string pathFile;
 				std::string fileType;
 				pathFile.assign(e.drop.file);
+				LOG("Document with name %s droped", pathFile.c_str())
 				bool pointFound=false;
 				//We search were the point is in the string to select the fileType
 				for (int i = 0; i < pathFile.size(); i++)
@@ -142,7 +143,7 @@ update_status ModuleInput::PreUpdate(float dt)
 					}
 				}
 
-				if(std::strcmp(fileType.c_str(),"fbx")==0)
+				if(std::strcmp(fileType.c_str(),"FBX")==0)
 				{
 					aasimp::Load(pathFile.c_str());
 					LOG("Fbx File %s loaded", pathFile.c_str())

@@ -31,10 +31,12 @@ struct Mesh
 	GLuint VN; //Normales para las texturas
 };
 
-
 namespace aasimp
 {
 	void Load(const char* file_path);
 
+
 	std::vector<Mesh*> vecMeshes; 
 }
+
+void HierarcyGameObject(aiNode root);

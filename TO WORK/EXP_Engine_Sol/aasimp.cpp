@@ -1,6 +1,8 @@
 #include "aasimp.h"
 #include "GameObject.h"
 
+#include "Application.h"
+
 //#include <vector>
 
 void aasimp::Load(const char* file_path)
@@ -99,4 +101,23 @@ void aasimp::Load(const char* file_path)
 		LOG("Error loading scene %s", file_path);
 	}
 		
+}
+
+void HierarcyGameObject(aiNode* root,std::string name)
+{
+	if(root->mNumChildren>1)
+	{
+		//Call recursivelly the function
+	}
+	else
+	{
+		if (root->mNumChildren>0)
+		{
+			HierarcyGameObject(root->mChildren[0],name);
+		}
+		else
+		{
+			GameObject* go = new GameObject();
+		}
+	}
 }

@@ -385,14 +385,29 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 	for (int i = 0; i < num_children; ++i)
 	{
 		ctp = go->children[i];
-
+		if(ctp == App->scene->selectedGO)
+		{
+			treeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_Selected;
+			LOG("Selected Game Object")
+		}
 
 		if (ctp->children.size() > 0)
 		{
 			bool node_open = ImGui::TreeNodeEx((void*)(intptr_t)i, treeFlags, ctp->name.c_str());
 
-			/*if (ImGui::IsItemClicked())
-				ChangeSelectedGameObject(child);*/
+			if (ImGui::IsItemClicked())
+			{
+				if (App->scene->selectedGO == ctp)
+				{
+					App->scene->selectedGO = App->scene->root; //No estoy seguro si se ha de poner nullptr o siempre ha de apuntar a algo
+				}
+				else
+				{
+					App->scene->selectedGO = ctp;
+				}
+				
+			}
+				
 
 			if (node_open)
 			{
@@ -403,8 +418,19 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 		else
 		{
 			ImGui::TreeNodeEx((void*)(intptr_t)i, leafFlags, ctp->name.c_str()); // Leafs are game objects without childs
-			/*if (ImGui::IsItemClicked())
-				ChangeSelectedGameObject(child);*/
+			
+			if (ImGui::IsItemClicked())
+			{
+				if (App->scene->selectedGO == ctp)
+				{
+					App->scene->selectedGO = App->scene->root; //No estoy seguro si se ha de poner nullptr o siempre ha de apuntar a algo
+				}
+				else
+				{
+					App->scene->selectedGO = ctp;
+				}
+
+			}
 		}
 	}
 	

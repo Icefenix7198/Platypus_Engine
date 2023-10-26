@@ -31,6 +31,8 @@ public:
 
 	void GameObjectHierarchy(GameObject* go);
 
+	void Inspector(GameObject* go);
+
 	int cpuCache;
 	int cpus;
 	int ram;

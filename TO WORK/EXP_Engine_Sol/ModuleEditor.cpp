@@ -109,7 +109,7 @@ void ModuleEditor::DrawEditor()
 			{
 				if (App->scene->root->children.size()>0)
 				{
-					App->scene->CreateGameObject(App->scene->root->children.at(0));
+					App->scene->CreateGameObject(App->scene->selectedGO);
 				}
 				
 			}
@@ -194,7 +194,22 @@ void ModuleEditor::DrawEditor()
 
 	if (showDemo) { ImGui::ShowDemoWindow(); }
 	if (showConfig) { Configuration(); }
-	if (showInspector) { GameObjectHierarchy(App->scene->root); }
+	if (showInspector) 
+	{ 
+		//GameObjectsTree
+		ImGui::Begin("Hierarchy", &showInspector);
+		GameObjectHierarchy(App->scene->root); 
+		ImGui::End();
+
+		//GameObject Inspector
+		if(App->scene->selectedGO != App->scene->root && App->scene->selectedGO != nullptr)
+		{
+			ImGui::Begin("Inspector", &showInspector);
+			Inspector(App->scene->selectedGO);
+			ImGui::End();
+		}
+		
+	}
 	if (showConsole)
 	{
 		//ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver); //Try
@@ -388,7 +403,7 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 		if(ctp == App->scene->selectedGO)
 		{
 			treeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_Selected;
-			LOG("Selected Game Object")
+			//LOG("Selected Game Object")
 		}
 
 		if (ctp->children.size() > 0)
@@ -434,4 +449,13 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 		}
 	}
 	
+}
+
+void ModuleEditor::Inspector(GameObject* go)
+{
+	for (int i = 0; i > go->components.size(), i++;) 
+	{ 
+		//Print all components
+		go->components;
+	}
 }

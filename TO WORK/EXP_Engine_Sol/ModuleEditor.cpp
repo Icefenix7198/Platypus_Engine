@@ -96,6 +96,25 @@ void ModuleEditor::DrawEditor()
 			{
 				aasimp::Load("Assets/3DObjects/baker_house/BakerHouse.fbx");
 			}
+			
+			if(ImGui::BeginMenu("Geometric Shapes"))
+			{
+				if (ImGui::Button("Create Cube"))
+				{
+					aasimp::Load("Assets/3DObjects/cube.fbx");
+				}
+				if (ImGui::Button("Create Sphere"))
+				{
+					aasimp::Load("Assets/3DObjects/sphere.fbx");
+				}
+				if (ImGui::Button("Create Cylinder"))
+				{
+					aasimp::Load("Assets/3DObjects/cylinder.fbx");
+				}
+
+				ImGui::EndMenu();
+			}
+			
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("GameObject"))

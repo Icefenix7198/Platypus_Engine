@@ -65,28 +65,49 @@ void ComponentTransform::OnEditor()
 	
 	if(ImGui::CollapsingHeader("Transform"))
 	{
-		//LOG("OnEditor de Transform")
-		ImGui::AlignTextToFramePadding();
-		//Position
-		ImGui::InputFloat("X", &pos.x, 0.5F, 0.0F, "%.5f"); ImGui::SameLine();
-		ImGui::InputFloat("Y", &pos.y, 0.0F, 0.0F, "%.5f"); ImGui::SameLine();
-		ImGui::InputFloat("Z", &pos.z, 0.0F, 0.0F, "%.5f"); ImGui::SameLine();
-		ImGui::Text("Position");
+		bool enabled = active;
+		if(ImGui::Checkbox("Active",&enabled))
+		{
+			active = enabled;
+		}
 
-		//Rotation
-		ImGui::Text("X"); ImGui::SameLine();
-		ImGui::Text("Y"); ImGui::SameLine();
-		ImGui::Text("Z"); ImGui::SameLine();
-		ImGui::Text("Rotation");
+		//Each table goes apart to avoid modifing non desired values
+		if (ImGui::BeginTable("Position", 4, 0)) 
+		{
+			//(active) ? 0 :ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly --> When active= false los valores no se pueden modificar desde aqui
+			// 
+			// 
+			//Position
+			ImGui::TableNextRow();
+			ImGui::TableNextColumn(); ImGui::InputFloat("X", &pos.x, 0.0F, 0.0F, "%.5f", (active) ? 0 :ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly); 
+			ImGui::TableNextColumn(); ImGui::InputFloat("Y", &pos.y, 0.0F, 0.0F, "%.5f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
+			ImGui::TableNextColumn(); ImGui::InputFloat("Z", &pos.z, 0.0F, 0.0F, "%.5f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
+			ImGui::TableNextColumn();ImGui::Text("Position");
 
-		//Scale
-		ImGui::Text("X"); ImGui::SameLine();
-		ImGui::Text("Y"); ImGui::SameLine();
-		ImGui::Text("Z"); ImGui::SameLine();
-		ImGui::Text("Scale");
-		//ImGui::End();
+			ImGui::EndTable();
+		}
+		if (ImGui::BeginTable("Position", 4, 0))
+		{
+			//Rotation
+			ImGui::TableNextRow();
+			ImGui::TableNextColumn(); ImGui::InputFloat("X", &rot.x, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
+			ImGui::TableNextColumn(); ImGui::InputFloat("Y", &rot.y, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
+			ImGui::TableNextColumn(); ImGui::InputFloat("Z", &rot.z, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
+			ImGui::TableNextColumn(); ImGui::Text("Rotation");
 
-		//ImGui::BeginTable()
+			ImGui::EndTable();
+		}
+		if (ImGui::BeginTable("Position", 4, 0))
+		{
+			//Scale
+			ImGui::TableNextRow();
+			ImGui::TableNextColumn(); ImGui::InputFloat("X", &scale.x, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
+			ImGui::TableNextColumn(); ImGui::InputFloat("Y", &scale.y, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
+			ImGui::TableNextColumn(); ImGui::InputFloat("Z", &scale.z, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
+			ImGui::TableNextColumn(); ImGui::Text("Scale");
+
+			ImGui::EndTable();
+		}
 	}
 }
 

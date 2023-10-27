@@ -6,7 +6,11 @@
 #include "Globals.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
+
 #include "aasimp.h"
+
+#include "GameObject.h"
+#include "Component.h"
 
 ModuleEditor::ModuleEditor(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -453,9 +457,9 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 
 void ModuleEditor::Inspector(GameObject* go)
 {
-	for (int i = 0; i < go->components.size(), i++;) 
+	for (int i = 0; i < go->components.size(); i++) 
 	{ 
 		//Print all components
-		go->components;
+		go->components.at(i)->OnEditor();
 	}
 }

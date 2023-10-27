@@ -2,6 +2,10 @@
 
 #include "MathGeoLib/include/Math/Quat.h"
 
+#include "imGui/imgui.h"
+#include "imGui/backends/imgui_impl_opengl3.h"
+#include "imGui/backends/imgui_impl_SDL2.h"
+
 ComponentTransform::ComponentTransform()
 {
 	translation.x = 0;
@@ -56,5 +60,34 @@ ComponentTransform::~ComponentTransform()
 {
 }
 
-Component::OnEditor(){}
+void ComponentTransform::OnEditor()
+{
+	
+	if(ImGui::CollapsingHeader("Transform"))
+	{
+		//LOG("OnEditor de Transform")
+		ImGui::AlignTextToFramePadding();
+		//Position
+		ImGui::InputFloat("X", &pos.x, 0.5F, 0.0F, "%.5f"); ImGui::SameLine();
+		ImGui::InputFloat("Y", &pos.y, 0.0F, 0.0F, "%.5f"); ImGui::SameLine();
+		ImGui::InputFloat("Z", &pos.z, 0.0F, 0.0F, "%.5f"); ImGui::SameLine();
+		ImGui::Text("Position");
+
+		//Rotation
+		ImGui::Text("X"); ImGui::SameLine();
+		ImGui::Text("Y"); ImGui::SameLine();
+		ImGui::Text("Z"); ImGui::SameLine();
+		ImGui::Text("Rotation");
+
+		//Scale
+		ImGui::Text("X"); ImGui::SameLine();
+		ImGui::Text("Y"); ImGui::SameLine();
+		ImGui::Text("Z"); ImGui::SameLine();
+		ImGui::Text("Scale");
+		//ImGui::End();
+
+		//ImGui::BeginTable()
+	}
+}
+
 

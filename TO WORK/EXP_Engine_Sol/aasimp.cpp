@@ -87,7 +87,7 @@ void aasimp::Load(const char* file_path)
 
 			//Aqui habria que crear un GameObject y asignarle la mesh
 			//scene->mMeshes[i].
-			GameObject* go = new GameObject();
+			//GameObject* go = new GameObject();
 			//scene->mRootNode->mTransformation.Decompose();
 
 			//Copiar OurMesh a un vector de meshes

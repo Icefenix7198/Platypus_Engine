@@ -30,6 +30,7 @@ public:
 	
 	//You won't need this after using Frustum
 	float3 X, Y, Z, Position, Reference;
+	SDL_Event event;
 
 private:
 

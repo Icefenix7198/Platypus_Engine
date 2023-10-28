@@ -44,10 +44,54 @@ update_status ModuleCamera3D::Update(float dt)
 
 	float3 newPos(0,0,0);
 	float speed = 3.0f * dt;
-	if(App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
-		speed = 6.0f * dt;
 
-	// Mouse motion ----------------
+
+
+	if(App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
+	{
+		speed = 6.0f * dt;
+	}
+
+	//while (SDL_PollEvent(&event))
+	//{
+	//	if (event.type == SDL_MOUSEWHEEL)
+	//	{
+	//		if (event.wheel.y > 0) // scroll up
+	//		{
+	//			newPos -= Z * 100;
+	//		}
+	//		else if (event.wheel.y < 0) // scroll down
+	//		{
+	//			newPos += Z * speed;
+	//		}
+	//	}
+	//}
+
+
+	//Free movement in x, y
+	if (App->input->GetMouseButton(SDL_BUTTON_MIDDLE) == KEY_REPEAT)
+	{
+		int dx = -App->input->GetMouseXMotion();
+		int dy = -App->input->GetMouseYMotion();
+
+		float Sensitivity = 0.35f * dt;
+
+		if (dx != 0)
+		{
+			float DeltaX = (float)dx * Sensitivity;
+
+			newPos += X * DeltaX;
+		}
+
+		if (dy != 0)
+		{
+			float DeltaY = (float)dy * Sensitivity;
+
+			newPos -= Y * DeltaY;
+		}
+	}
+
+	// Orbital camera
 
 	if(App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_REPEAT && App->input->GetKey(SDL_SCANCODE_LALT) == KEY_REPEAT)
 	{
@@ -90,6 +134,8 @@ update_status ModuleCamera3D::Update(float dt)
 		LookAt(Reference);
 	}
 
+
+	//Free camera
 	if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT)
 	{
 		int dx = -App->input->GetMouseXMotion();
@@ -125,23 +171,27 @@ update_status ModuleCamera3D::Update(float dt)
 			}
 		}
 
-		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) newPos.y += speed;
-		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) newPos.y -= speed;
+		if (App->input->GetKey(SDL_SCANCODE_E) == KEY_REPEAT) newPos.y += speed;
+		if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT) newPos.y -= speed;
 
-		//if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) newPos -= Z * speed;
-		//if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) newPos += Z * speed;
+		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) newPos -= Z * speed;
+		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) newPos += Z * speed;
 
 
 		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) newPos -= X * speed;
 		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) newPos += X * speed;
 	}
 
+	//Look at game object
 	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT)
 	{
+		//Temporal
+		Reference = float3(0, 0, 0);
 		Position = Reference + float3(5,5,10);
 		LookAt(Reference);
 	}
 
+	Reference += newPos;
 	Position += newPos;
 	// Recalculate matrix -------------
 	CalculateViewMatrix();

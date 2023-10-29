@@ -6,6 +6,7 @@
 #include "Glew/include/glew.h"
 
 #include "Globals.h"
+#include "GameObject.h"
 
 #include <vector>
 
@@ -39,4 +40,4 @@ namespace aasimp
 	std::vector<Mesh*> vecMeshes; 
 }
 
-void HierarcyGameObject(aiNode root);
+void HierarcyGameObject(aiNode* root, const char* name, GameObject* parent);

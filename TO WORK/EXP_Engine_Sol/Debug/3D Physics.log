@@ -1,111 +1,17 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: El directorio intermedio (Debug\) contiene archivos compartidos de otro proyecto (3D Physics - class5.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
-  Application.cpp
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(64,20): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(17,1): warning C4005: 'CHECKERS_HEIGHT': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(22): message : vea la definición anterior de 'CHECKERS_HEIGHT'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(18,1): warning C4005: 'CHECKERS_WIDTH': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(23): message : vea la definición anterior de 'CHECKERS_WIDTH'
-  Component.cpp
-  ComponentMaterial.cpp
-  ComponentTransform.cpp
-  ComponentMesh.cpp
-  GameObject.cpp
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\GameObject.cpp(52,21): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\GameObject.cpp(61,22): error C2440: '=': no se puede realizar la conversión de 'Component *' a 'ComponentTransform *'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\GameObject.cpp(61,19): message : La conversión de la base al elemento derivado requiere dynamic_cast o static_cast
-  log.cpp
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(64,20): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(17,1): warning C4005: 'CHECKERS_HEIGHT': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(22): message : vea la definición anterior de 'CHECKERS_HEIGHT'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(18,1): warning C4005: 'CHECKERS_WIDTH': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(23): message : vea la definición anterior de 'CHECKERS_WIDTH'
-  Main.cpp
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(64,20): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(17,1): warning C4005: 'CHECKERS_HEIGHT': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(22): message : vea la definición anterior de 'CHECKERS_HEIGHT'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(18,1): warning C4005: 'CHECKERS_WIDTH': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(23): message : vea la definición anterior de 'CHECKERS_WIDTH'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Main.cpp(103,35): warning C4244: 'argumento': conversión de 'float' a 'Uint32'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Main.cpp(111,29): warning C4244: 'argumento': conversión de 'float' a 'Uint32'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Main.cpp(113,26): warning C4244: '=': conversión de 'Uint32' a 'float'; posible pérdida de datos
-  ModuleCamera3D.cpp
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(64,20): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(17,1): warning C4005: 'CHECKERS_HEIGHT': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(22): message : vea la definición anterior de 'CHECKERS_HEIGHT'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(18,1): warning C4005: 'CHECKERS_WIDTH': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(23): message : vea la definición anterior de 'CHECKERS_WIDTH'
-  ModuleEditor.cpp
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(64,20): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(17,1): warning C4005: 'CHECKERS_HEIGHT': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(22): message : vea la definición anterior de 'CHECKERS_HEIGHT'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(18,1): warning C4005: 'CHECKERS_WIDTH': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(23): message : vea la definición anterior de 'CHECKERS_WIDTH'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(214,12): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(217,21): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(313,19): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(314,19): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(315,19): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(316,19): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(317,19): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(318,19): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(319,19): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(320,19): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(321,19): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(322,19): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleEditor.cpp(323,20): warning C4805: '==': combinación no segura del tipo 'SDL_bool' y el tipo 'bool' en la operación
-  ModuleInput.cpp
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(64,20): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(17,1): warning C4005: 'CHECKERS_HEIGHT': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(22): message : vea la definición anterior de 'CHECKERS_HEIGHT'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(18,1): warning C4005: 'CHECKERS_WIDTH': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(23): message : vea la definición anterior de 'CHECKERS_WIDTH'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(65,41): warning C4244: '/=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(66,41): warning C4244: '/=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(102,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(103,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(105,35): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(106,35): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleInput.cpp(131,23): warning C4018: '<': no coinciden signed/unsigned
-  ModuleRenderer3D.cpp
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(64,20): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(17,1): warning C4005: 'CHECKERS_HEIGHT': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(22): message : vea la definición anterior de 'CHECKERS_HEIGHT'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(18,1): warning C4005: 'CHECKERS_WIDTH': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(23): message : vea la definición anterior de 'CHECKERS_WIDTH'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.cpp(356,20): warning C4018: '<': no coinciden signed/unsigned
-  ModuleScene.cpp
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(64,20): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(17,1): warning C4005: 'CHECKERS_HEIGHT': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(22): message : vea la definición anterior de 'CHECKERS_HEIGHT'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(18,1): warning C4005: 'CHECKERS_WIDTH': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(23): message : vea la definición anterior de 'CHECKERS_WIDTH'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleScene.cpp(42,20): warning C4018: '<': no coinciden signed/unsigned
-  ModuleWindow.cpp
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.h(64,20): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\SDL\include\SDL_stdinc.h(619): message : vea la definición anterior de 'M_PI'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(17,1): warning C4005: 'CHECKERS_HEIGHT': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(22): message : vea la definición anterior de 'CHECKERS_HEIGHT'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleRenderer3D.h(18,1): warning C4005: 'CHECKERS_WIDTH': redefinición de macro
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Globals.h(23): message : vea la definición anterior de 'CHECKERS_WIDTH'
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.cpp(30,13): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.cpp(31,14): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.cpp(98,91): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\ModuleWindow.cpp(98,62): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-  Generando código...
+LINK : warning LNK4075: se omite '/INCREMENTAL' debido a la especificación '/FORCE'
+Application.obj : warning LNK4006: "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > aasimp::vecMeshes" (?vecMeshes@aasimp@@3V?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@A) ya se definió en aasimp.obj; segunda definición omitida
+ComponentTransform.obj : warning LNK4006: "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > aasimp::vecMeshes" (?vecMeshes@aasimp@@3V?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@A) ya se definió en aasimp.obj; segunda definición omitida
+GameObject.obj : warning LNK4006: "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > aasimp::vecMeshes" (?vecMeshes@aasimp@@3V?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@A) ya se definió en aasimp.obj; segunda definición omitida
+log.obj : warning LNK4006: "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > aasimp::vecMeshes" (?vecMeshes@aasimp@@3V?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@A) ya se definió en aasimp.obj; segunda definición omitida
+Main.obj : warning LNK4006: "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > aasimp::vecMeshes" (?vecMeshes@aasimp@@3V?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@A) ya se definió en aasimp.obj; segunda definición omitida
+ModuleCamera3D.obj : warning LNK4006: "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > aasimp::vecMeshes" (?vecMeshes@aasimp@@3V?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@A) ya se definió en aasimp.obj; segunda definición omitida
+ModuleEditor.obj : warning LNK4006: "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > aasimp::vecMeshes" (?vecMeshes@aasimp@@3V?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@A) ya se definió en aasimp.obj; segunda definición omitida
+ModuleInput.obj : warning LNK4006: "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > aasimp::vecMeshes" (?vecMeshes@aasimp@@3V?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@A) ya se definió en aasimp.obj; segunda definición omitida
+ModuleRenderer3D.obj : warning LNK4006: "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > aasimp::vecMeshes" (?vecMeshes@aasimp@@3V?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@A) ya se definió en aasimp.obj; segunda definición omitida
+ModuleScene.obj : warning LNK4006: "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > aasimp::vecMeshes" (?vecMeshes@aasimp@@3V?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@A) ya se definió en aasimp.obj; segunda definición omitida
+ModuleWindow.obj : warning LNK4006: "class std::vector<struct Mesh *,class std::allocator<struct Mesh *> > aasimp::vecMeshes" (?vecMeshes@aasimp@@3V?$vector@PAUMesh@@V?$allocator@PAUMesh@@@std@@@std@@A) ya se definió en aasimp.obj; segunda definición omitida
+aasimp.obj : error LNK2019: símbolo externo "void __cdecl HierarcyGameObject(struct aiNode *,char const *,class GameObject *)" (?HierarcyGameObject@@YAXPAUaiNode@@PBDPAVGameObject@@@Z) sin resolver al que se hace referencia en la función "void __cdecl HierarcyGameObject(struct aiNode *,char *,class GameObject *)" (?HierarcyGameObject@@YAXPAUaiNode@@PADPAVGameObject@@@Z)
+    Sugerencia sobre los símbolos definidos que podrían coincidir:
+      "void __cdecl HierarcyGameObject(struct aiNode *,char *,class GameObject *)" (?HierarcyGameObject@@YAXPAUaiNode@@PADPAVGameObject@@@Z)
+C:\Users\Eric\OneDrive\Documentos\GitHub\Motores3D\TO WORK\EXP_Engine_Sol\Debug\Platypus Engine.exe : fatal error LNK1120: 1 externos sin resolver

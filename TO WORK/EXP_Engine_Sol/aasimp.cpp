@@ -1,7 +1,9 @@
 #include "aasimp.h"
 #include "GameObject.h"
+#include "Component.h"
 
 #include "Application.h"
+#include "ModuleScene.h"
 
 //#include <vector>
 
@@ -94,6 +96,15 @@ void aasimp::Load(const char* file_path)
 			vecMeshes.push_back(ourMesh);
 		}
 		
+		//Get name
+		std::string fPathFull; //String with name path
+		fPathFull.assign(file_path);
+		int posSlash=fPathFull.find_last_of("/"); //Find the last / of the file, will have the name of the fbx as the others are folders. (returns int position)
+		int nameLength = fPathFull.find_last_of(".") - posSlash -1; //Size of the word, the -1 is to not take the "."
+		
+		std::string name;
+		name.assign(fPathFull, posSlash +1, nameLength); //We add a +1 to not write the /, 
+		HierarcyGameObject(scene->mRootNode,name.c_str(),nullptr);
 		aiReleaseImport(scene);
 	}
 	else
@@ -103,21 +114,44 @@ void aasimp::Load(const char* file_path)
 		
 }
 
-void HierarcyGameObject(aiNode* root,std::string name)
+void HierarcyGameObject(aiNode* root,const char* name,GameObject* parent)
 {
+
 	if(root->mNumChildren>1)
 	{
-		//Call recursivelly the function
+		if (parent == nullptr) //Fist time called the function (we put nullptr becose we don't have access to ModuleScene->root)
+		{
+			GameObject* gm = new GameObject(name, true); //Create first container with parent = Scene->root
+			parent = gm;
+		}
+		else 
+		{
+			GameObject* gm = new GameObject(name,parent, true); //Create first container
+			parent = gm;
+		}
+
+		for (int i = 0; i < root->mNumChildren; i++)
+		{
+			HierarcyGameObject(root->mChildren[i],root->mChildren[i]->mName.C_Str(), parent);
+		}
 	}
 	else
 	{
 		if (root->mNumChildren>0)
 		{
-			HierarcyGameObject(root->mChildren[0],name);
+			//HierarcyGameObject(root->mChildren[0],name);
 		}
 		else
 		{
-			GameObject* go = new GameObject();
+			
+			if (root->mNumMeshes>0) 
+			{ 
+				LOG("%s",name)
+				GameObject* gm = new GameObject(name, parent, true); //Create GameObject
+				ComponentMesh* cMesh; //Create reference to modify compoent mesh
+				cMesh=(ComponentMesh*)gm->CreateComponent(ComponentType::MESH); //Create component mesh
+			}
+
 		}
 	}
 }

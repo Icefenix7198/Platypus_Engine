@@ -3,6 +3,7 @@
 
 #include "Globals.h"
 #include "Component.h"
+#include "aasimp.h"
 
 #include <vector>
 #include <string>
@@ -11,8 +12,10 @@ class ComponentMesh : public Component
 {
 public:
 	ComponentMesh();
+	ComponentMesh(Mesh* _mesh);
 	~ComponentMesh();
 
+	Mesh* mesh;
 
 private:
 

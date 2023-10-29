@@ -40,4 +40,4 @@ namespace aasimp
 	std::vector<Mesh*> vecMeshes; 
 }
 
-void HierarcyGameObject(aiNode* root, const char* name, GameObject* parent);
+void HierarcyGameObject(const aiScene* scene,aiNode* root, const char* name, GameObject* parent);

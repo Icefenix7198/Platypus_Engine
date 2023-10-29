@@ -1,6 +1,8 @@
 #include "aasimp.h"
 #include "GameObject.h"
+
 #include "Component.h"
+#include "ComponentMesh.h"
 
 #include "Application.h"
 #include "ModuleScene.h"
@@ -104,7 +106,7 @@ void aasimp::Load(const char* file_path)
 		
 		std::string name;
 		name.assign(fPathFull, posSlash +1, nameLength); //We add a +1 to not write the /, 
-		HierarcyGameObject(scene->mRootNode,name.c_str(),nullptr);
+		HierarcyGameObject(scene,scene->mRootNode,name.c_str(),nullptr);
 		aiReleaseImport(scene);
 	}
 	else
@@ -114,7 +116,7 @@ void aasimp::Load(const char* file_path)
 		
 }
 
-void HierarcyGameObject(aiNode* root,const char* name,GameObject* parent)
+void HierarcyGameObject(const aiScene* scene,aiNode* root,const char* name,GameObject* parent)
 {
 
 	if(root->mNumChildren>1)
@@ -132,7 +134,7 @@ void HierarcyGameObject(aiNode* root,const char* name,GameObject* parent)
 
 		for (int i = 0; i < root->mNumChildren; i++)
 		{
-			HierarcyGameObject(root->mChildren[i],root->mChildren[i]->mName.C_Str(), parent);
+			HierarcyGameObject(scene,root->mChildren[i],root->mChildren[i]->mName.C_Str(), parent);
 		}
 	}
 	else
@@ -146,10 +148,16 @@ void HierarcyGameObject(aiNode* root,const char* name,GameObject* parent)
 			
 			if (root->mNumMeshes>0) 
 			{ 
-				LOG("%s",name)
-				GameObject* gm = new GameObject(name, parent, true); //Create GameObject
-				ComponentMesh* cMesh; //Create reference to modify compoent mesh
-				cMesh=(ComponentMesh*)gm->CreateComponent(ComponentType::MESH); //Create component mesh
+				for (int i = 0; i < root->mNumMeshes; i++)
+				{
+					LOG("%s",name)
+					GameObject* gm = new GameObject(name, parent, true); //Create GameObject
+					ComponentMesh* cMesh; //Create reference to modify compoent mesh
+					cMesh=(ComponentMesh*)gm->CreateComponent(ComponentType::MESH); //Create component mesh
+					uint* numMesh = root->mMeshes; //mMeshes is a number to to the scene mMeshes array
+					//cMesh->mesh = scene->mMeshes[numMesh[i]]; //TODO ERIC: Es un aiMesh, hay que convertirlo a Mesh normal
+				}
+				
 			}
 
 		}

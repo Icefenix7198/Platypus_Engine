@@ -37,7 +37,19 @@ public:
 
 	//Drawing Mode
 	bool GetDrawingMode() { return wireframeMode; }
+	bool GetDepthTest() { return glDepthTest; }
+	bool GetCullFace() { return glCullFace; }
+	bool GetLigthning() { return glLigthning; }
+	bool GetColorMaterial() { return glColorMaterial; }
+	bool GetTexture2D() { return glTexture2D; }
+	//bool GetDrawingMode() { return wireframeMode; }
+
 	void SetDrawingMode(bool mode) { wireframeMode = mode; }
+	void SetDepthTest(bool mode) { glDepthTest = mode; }
+	void SetCullFace(bool mode) { glCullFace = mode; }
+	void SetLigthning(bool mode) { glLigthning = mode; }
+	void SetColorMaterial(bool mode) { glColorMaterial = mode; }
+	void SetTexture2D(bool mode) { glTexture2D = mode; }
 
 public:
 
@@ -59,4 +71,11 @@ public:
 private:
 	//Drawing Modes
 	bool wireframeMode = false;
+
+	//FLAGS OPENGL
+	bool glDepthTest = true;
+	bool glCullFace = true;
+	bool glLigthning = true;
+	bool glColorMaterial = true;
+	bool glTexture2D = true;
 };

@@ -152,9 +152,8 @@ void ModuleEditor::DrawEditor()
 			{
 				//ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver); //Try
 				ImGui::Begin("FPS", &showFPS);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-				{	//Testeo
-					//AddFPS((float)(rand() % 100) / 100);
-					AddFPS(App->GetDeltaTime() * 1000); //??  No se si esto esta bien o mal
+				{	
+					AddFPS(App->GetDeltaTime() * 1000);
 					ImGui::Text("Delta Time");
 					if (ImGui::Button("Close"))
 						showFPS = false;
@@ -275,22 +274,18 @@ void ModuleEditor::Configuration()
 			if (ImGui::SliderFloat("Window Scale", &winScale, 0.1f, 1.0f))
 			{
 				App->window->SetScreenSize(winScale);
-				//App->window->Init(); ESTO NO FUNCIONA, CREA UNA NUEVA VENTANA
 				App->window->ResizeWindow();
 			}
 			int winW = App->window->GetScreenWidth();
 			if (ImGui::SliderInt("Window Width", &winW, 64, 5000))
 			{
 				App->window->SetScreenWidth(winW);
-				/*App->window->CleanUp(); COMBINADO ES AUN PEOR, HACE QUE PETE TODO
-				App->window->Init();*/
 				App->window->ResizeWindow();
 			}
 			int winH = App->window->GetScreenHeigth();
 			if (ImGui::SliderInt("Window Heigth", &winH, 64, 5000))
 			{
 				App->window->SetScreenHeigth(winH);
-				//App->window->Init();
 				App->window->ResizeWindow();
 			}
 
@@ -349,8 +344,62 @@ void ModuleEditor::Configuration()
 				App->renderer3D->SetDrawingMode(drawWireframeMode);
 			}
 
+			bool drawDepthTest = App->renderer3D->GetDepthTest();
+			if (ImGui::Checkbox("Depth Test", &drawDepthTest))
+			{
+				glEnable(GL_DEPTH_TEST);
+				App->renderer3D->SetDepthTest(drawDepthTest);
+			}
+			else
+			{
+				glDisable(GL_DEPTH_TEST);
+			}
 
-			//TODO Eric: Añadir botones to directly enable / disable 	 GL_DEPTH_TEST, GL_CULL_FACE, GL_LIGHTING	 GL_COLOR_MATERIAL, GL_TEXTURE_2D + two other
+			bool drawCullFace = App->renderer3D->GetCullFace();
+			if (ImGui::Checkbox("Face Culling", &drawCullFace))
+			{
+				glEnable(GL_CULL_FACE);
+				App->renderer3D->SetCullFace(drawCullFace);
+			}
+			else
+			{
+				glDisable(GL_CULL_FACE);
+			}
+
+			bool drawlLigthning = App->renderer3D->GetLigthning();
+			if (ImGui::Checkbox("Ligthning", &drawlLigthning))
+			{
+				glEnable(GL_LIGHTING);
+				App->renderer3D->SetLigthning(drawlLigthning);
+			}
+			else
+			{
+				glDisable(GL_LIGHTING);
+			}
+
+			bool drawColorMaterial = App->renderer3D->GetColorMaterial();
+			if (ImGui::Checkbox("Draw Color Material", &drawColorMaterial))
+			{
+				glEnable(GL_COLOR_MATERIAL);
+				App->renderer3D->SetColorMaterial(drawColorMaterial);
+			}
+			else
+			{
+				glDisable(GL_COLOR_MATERIAL);
+			}
+
+			bool drawTexture2D = App->renderer3D->GetTexture2D();
+			if (ImGui::Checkbox("Draw Texture 2D", &drawTexture2D))
+			{
+				glEnable(GL_TEXTURE_2D);
+				App->renderer3D->SetTexture2D(drawTexture2D);
+			}
+			else
+			{
+				glDisable(GL_TEXTURE_2D);
+			}
+
+			
 
 		}
 		if (ImGui::CollapsingHeader("Hardware"))

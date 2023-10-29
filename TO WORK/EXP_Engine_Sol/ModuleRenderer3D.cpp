@@ -206,7 +206,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	
 	App->editor->DrawEditor();
 	
-
+	Grid.Render();
 	// Rendering
 	ImGui::Render();
 	glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
@@ -225,7 +225,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 		SDL_GL_MakeCurrent(backup_current_window, backup_current_context);
 	}
 
-	Grid.Render();
+	/*Grid.Render();*/
 	SDL_GL_SwapWindow(App->window->window);
 	return UPDATE_CONTINUE;
 }

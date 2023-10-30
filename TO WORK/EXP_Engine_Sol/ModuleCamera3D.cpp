@@ -44,6 +44,7 @@ update_status ModuleCamera3D::Update(float dt)
 
 	float3 newPos(0,0,0);
 	float speed = 3.0f * dt;
+	float3 zoom(1, 1, 1);
 
 
 
@@ -52,20 +53,21 @@ update_status ModuleCamera3D::Update(float dt)
 		speed = 6.0f * dt;
 	}
 
-	//while (SDL_PollEvent(&event))
-	//{
-	//	if (event.type == SDL_MOUSEWHEEL)
-	//	{
-	//		if (event.wheel.y > 0) // scroll up
-	//		{
-	//			newPos -= Z * 100;
-	//		}
-	//		else if (event.wheel.y < 0) // scroll down
-	//		{
-	//			newPos += Z * speed;
-	//		}
-	//	}
-	//}
+	if (App->input->GetMouseZ() > 0)
+	{
+		/*newPos.x = newPos.x / speed * 2;
+		newPos.y = newPos.y / speed * 2;
+		newPos.z = newPos.z / speed * 2;*/
+		newPos -= Position * 0.1;
+	}
+
+	if (App->input->GetMouseZ() < 0)
+	{
+		/*newPos.x = newPos.x * speed * 2;
+		newPos.y = newPos.y * speed * 2;
+		newPos.z = newPos.z * speed * 2;*/
+		newPos += Position * 0.1;
+	}
 
 
 	//Free movement in x, y
@@ -180,6 +182,7 @@ update_status ModuleCamera3D::Update(float dt)
 
 		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) newPos -= X * speed;
 		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) newPos += X * speed;
+		Reference += newPos;
 	}
 
 	//Look at game object
@@ -191,7 +194,6 @@ update_status ModuleCamera3D::Update(float dt)
 		LookAt(Reference);
 	}
 
-	Reference += newPos;
 	Position += newPos;
 	// Recalculate matrix -------------
 	CalculateViewMatrix();

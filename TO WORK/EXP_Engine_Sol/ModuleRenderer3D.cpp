@@ -355,7 +355,7 @@ void ModuleRenderer3D::DrawAllMeshes()
 	for (int i = 0; i < aux.size(); i++)
 	{
 		//LOG("DAM activated %d", i)
-		DrawMesh(aux.at(i));
+		//DrawMesh(aux.at(i));
 	}
 }
 

@@ -31,10 +31,10 @@ bool ModuleScene::CleanUp()
 	return true;
 }
 
-GameObject* ModuleScene::CreateGameObject(GameObject* parent)
+GameObject* ModuleScene::CreateGameObject(GameObject* parent,std::string name)
 {
 	GameObject* go = new GameObject;
-	
+	go->name = name;
 	parent->children.push_back(go);
 	selectedGO = go;
 

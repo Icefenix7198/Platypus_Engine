@@ -81,7 +81,7 @@ Component* GameObject::CreateComponent(ComponentType type)
 
 		//Create component material
 		LOG("Create Component Transform")
-		ret = new ComponentTransform;
+		ret = new ComponentMaterial;
 		components.push_back(ret);
 
 		break;

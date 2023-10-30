@@ -9,6 +9,11 @@
 
 //#include <vector>
 
+Mesh* aasimp::ExtractMeshInfo(aiScene* scene)
+{
+	return nullptr;
+}
+
 void aasimp::Load(const char* file_path)
 {
 	Mesh* ourMesh = new Mesh();
@@ -17,7 +22,7 @@ void aasimp::Load(const char* file_path)
 	if (scene != nullptr && scene-> HasMeshes())
 	{
 		// Use scene->mNumMeshes to iterate on scene->mMeshes array
-		for (int i = 0; i < scene->mNumMeshes; i++) //For e
+		for (int i = 0; i < scene->mNumMeshes; i++) 
 		{
 			//Copy Vertex
 			ourMesh->num_vertex = scene->mMeshes[i]->mNumVertices; //Copy the num of Vertex to our mesh from the imported mesh
@@ -115,6 +120,8 @@ void aasimp::Load(const char* file_path)
 	}
 		
 }
+
+
 
 void HierarcyGameObject(const aiScene* scene,aiNode* root,const char* name,GameObject* parent)
 {

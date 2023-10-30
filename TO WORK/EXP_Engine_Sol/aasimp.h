@@ -32,11 +32,13 @@ struct Mesh
 	GLuint VN; //Normales para las texturas
 };
 
+
+
 namespace aasimp
 {
 	void Load(const char* file_path);
-
-
+	Mesh* ExtractMeshInfo(aiScene* scene);
+	
 	std::vector<Mesh*> vecMeshes; 
 }
 

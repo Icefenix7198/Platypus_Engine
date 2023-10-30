@@ -347,56 +347,78 @@ void ModuleEditor::Configuration()
 			bool drawDepthTest = App->renderer3D->GetDepthTest();
 			if (ImGui::Checkbox("Depth Test", &drawDepthTest))
 			{
-				glEnable(GL_DEPTH_TEST);
+				if (drawDepthTest)
+				{
+					glEnable(GL_DEPTH_TEST);
+				}
+				else
+				{
+					glDisable(GL_DEPTH_TEST);
+				}
+				
 				App->renderer3D->SetDepthTest(drawDepthTest);
 			}
-			else
-			{
-				glDisable(GL_DEPTH_TEST);
-			}
+			
 
 			bool drawCullFace = App->renderer3D->GetCullFace();
 			if (ImGui::Checkbox("Face Culling", &drawCullFace))
 			{
-				glEnable(GL_CULL_FACE);
+				if (drawCullFace)
+				{
+					glEnable(GL_CULL_FACE);
+				}
+				else
+				{
+					glDisable(GL_CULL_FACE);
+				}
+
 				App->renderer3D->SetCullFace(drawCullFace);
-			}
-			else
-			{
-				glDisable(GL_CULL_FACE);
 			}
 
 			bool drawlLigthning = App->renderer3D->GetLigthning();
 			if (ImGui::Checkbox("Ligthning", &drawlLigthning))
 			{
-				glEnable(GL_LIGHTING);
+				if (drawlLigthning)
+				{
+					glEnable(GL_LIGHTING);
+				}
+				else
+				{
+					glDisable(GL_LIGHTING);
+				}
+
 				App->renderer3D->SetLigthning(drawlLigthning);
 			}
-			else
-			{
-				glDisable(GL_LIGHTING);
-			}
+
 
 			bool drawColorMaterial = App->renderer3D->GetColorMaterial();
 			if (ImGui::Checkbox("Draw Color Material", &drawColorMaterial))
 			{
-				glEnable(GL_COLOR_MATERIAL);
+				if (drawColorMaterial)
+				{
+					glEnable(GL_COLOR_MATERIAL);
+				}
+				else
+				{
+					glDisable(GL_COLOR_MATERIAL);
+				}
+
 				App->renderer3D->SetColorMaterial(drawColorMaterial);
-			}
-			else
-			{
-				glDisable(GL_COLOR_MATERIAL);
 			}
 
 			bool drawTexture2D = App->renderer3D->GetTexture2D();
 			if (ImGui::Checkbox("Draw Texture 2D", &drawTexture2D))
 			{
-				glEnable(GL_TEXTURE_2D);
+				if (drawTexture2D)
+				{
+					glEnable(GL_TEXTURE_2D);
+				}
+				else
+				{
+					glDisable(GL_TEXTURE_2D);
+				}
+
 				App->renderer3D->SetTexture2D(drawTexture2D);
-			}
-			else
-			{
-				glDisable(GL_TEXTURE_2D);
 			}
 
 			
@@ -532,5 +554,13 @@ void ModuleEditor::Inspector(GameObject* go)
 	{ 
 		//Print all components
 		go->components.at(i)->OnEditor();
+	}
+	if(ImGui::Button("Add Mesh"))
+	{
+		go->CreateComponent(ComponentType::MESH);
+	}
+	if (ImGui::Button("Add Material"))
+	{
+		go->CreateComponent(ComponentType::MATERIAL);
 	}
 }

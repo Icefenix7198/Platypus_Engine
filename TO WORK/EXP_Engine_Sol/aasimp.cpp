@@ -130,13 +130,13 @@ void HierarcyGameObject(const aiScene* scene,aiNode* root,const char* name,GameO
 	{
 		if (parent == nullptr) //Fist time called the function (we put nullptr becose we don't have access to ModuleScene->root)
 		{
-			GameObject* gm = new GameObject(name, true); //Create first container with parent = Scene->root
-			parent = gm;
+			parent = App->scene->CreateGameObject(App->scene->root,name);
+			//GameObject* gm = new GameObject(name,App->scene->root, true); //Create first container with parent = Scene->root
+			
 		}
 		else 
 		{
-			GameObject* gm = new GameObject(name,parent, true); //Create first container
-			parent = gm;
+			parent = App->scene->CreateGameObject(parent, name);
 		}
 
 		for (int i = 0; i < root->mNumChildren; i++)
@@ -157,8 +157,8 @@ void HierarcyGameObject(const aiScene* scene,aiNode* root,const char* name,GameO
 			{ 
 				for (int i = 0; i < root->mNumMeshes; i++)
 				{
-					LOG("%s",name)
-					GameObject* gm = new GameObject(name, parent, true); //Create GameObject
+					LOG("Create GamoObject for mesh %s",name)
+					GameObject* gm=App->scene->CreateGameObject(parent, name);
 					ComponentMesh* cMesh; //Create reference to modify compoent mesh
 					cMesh=(ComponentMesh*)gm->CreateComponent(ComponentType::MESH); //Create component mesh
 					uint* numMesh = root->mMeshes; //mMeshes is a number to to the scene mMeshes array

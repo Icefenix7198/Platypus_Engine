@@ -314,15 +314,18 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh)
 	//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
 	// activate and specify pointer to vertex array
-	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_vertex);
+	//glBindBuffer(GL_ARRAY_BUFFER, mesh->id_vertex);
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->VBO);
 	glVertexPointer(3, GL_FLOAT, 0, mesh->vertex);
 
 	//Bind normals buffers
-	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_normals);
+	//glBindBuffer(GL_ARRAY_BUFFER, mesh->id_normals);
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->VN);
 	glNormalPointer(GL_FLOAT, 0, NULL);
 
 	//Index array binding
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->id_index);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->id_index);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->EBO);
 
 	//Draw Lines or Full
 	if (wireframeMode)
@@ -335,6 +338,7 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh)
 	}
 
 	// Draw mesh
+	//glDrawElements(GL_TRIANGLES, mesh->num_index, GL_UNSIGNED_INT, mesh->index);
 	glDrawElements(GL_TRIANGLES, mesh->num_index, GL_UNSIGNED_INT, mesh->index);
 
 	glBindVertexArray(0);
@@ -355,7 +359,7 @@ void ModuleRenderer3D::DrawAllMeshes()
 	for (int i = 0; i < aux.size(); i++)
 	{
 		//LOG("DAM activated %d", i)
-		//DrawMesh(aux.at(i));
+		DrawMesh(aux.at(i));
 	}
 }
 

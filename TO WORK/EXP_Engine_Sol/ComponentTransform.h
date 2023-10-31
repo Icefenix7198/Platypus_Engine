@@ -17,6 +17,9 @@
 class ComponentTransform : public Component
 {
 public:
+
+	bool active;
+
 	ComponentTransform();
 	ComponentTransform(aiVector3D vecPos); //Only position
 	ComponentTransform(aiVector3D vecPos, aiVector3D vecScale, aiQuaternion quatRot); //All parameters

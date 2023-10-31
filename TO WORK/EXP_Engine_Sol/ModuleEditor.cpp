@@ -546,7 +546,7 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 void ModuleEditor::Inspector(GameObject* go)
 {
 	ImGui::Checkbox("Active", &go->active); 
-	ImGui::SameLine();
+	//ImGui::SameLine();
 	//ImGui::InputText();
 	for (int i = 0; i < go->components.size(); i++) 
 	{ 

@@ -13,6 +13,8 @@
 class ComponentMesh : public Component
 {
 public:
+	bool active;
+
 	ComponentMesh();
 	ComponentMesh(Mesh* _mesh);
 	~ComponentMesh();

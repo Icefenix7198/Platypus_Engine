@@ -23,6 +23,8 @@ ComponentTransform::ComponentTransform()
 	rotation.z = 0;
 	rotation.w = 0;
 	rot = {rotation.x, rotation.y, rotation.z, rotation.w};
+
+	Enable();
 }
 
 ComponentTransform::ComponentTransform(aiVector3D vecPos)
@@ -42,6 +44,8 @@ ComponentTransform::ComponentTransform(aiVector3D vecPos)
 	rotation.z = 0;
 	rotation.w = 0;
 	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
+
+	Enable();
 }
 
 ComponentTransform::ComponentTransform(aiVector3D vecPos, aiVector3D vecScale, aiQuaternion quatRot)
@@ -54,6 +58,8 @@ ComponentTransform::ComponentTransform(aiVector3D vecPos, aiVector3D vecScale, a
 
 	rotation = quatRot;
 	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
+
+	Enable();
 }
 
 ComponentTransform::~ComponentTransform()
@@ -65,11 +71,9 @@ void ComponentTransform::OnEditor()
 	
 	if(ImGui::CollapsingHeader("Transform"))
 	{
-		bool enabled = active;
-		if(ImGui::Checkbox("Active",&enabled))
-		{
-			active = enabled;
-		}
+
+		ImGui::Checkbox("##Transform", &active);
+		
 
 		//Each table goes apart to avoid modifing non desired values
 		if (ImGui::BeginTable("Position", 4, 0)) 

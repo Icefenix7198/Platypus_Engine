@@ -11,12 +11,14 @@ Component::~Component()
 
 bool Component::Enable()
 {
-	return false;
+	active = true;
+	return true;
 }
 
 bool Component::Update()
 {
-	return false;
+	active = false;
+	return true;
 }
 
 bool Component::Disable()

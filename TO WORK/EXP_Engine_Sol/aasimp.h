@@ -6,11 +6,13 @@
 #include "Glew/include/glew.h"
 
 #include "Globals.h"
-#include "GameObject.h"
+//#include "GameObject.h"
 
 #include <vector>
 
 #pragma comment (lib, "Assimp/libx86/assimp.lib")
+
+class GameObject;
 
 struct Mesh 
 {

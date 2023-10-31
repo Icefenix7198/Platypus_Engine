@@ -22,7 +22,7 @@ public:
 	bool CleanUp() override;
 
 	////GameObjects related
-	GameObject* CreateGameObject(GameObject* parent,std::string name = ""); //Crea un gameObject vacio
+	GameObject* CreateGameObject(GameObject* parent,std::string name = "GameObject"); //Crea un gameObject vacio
 	int UpdateGameObjects(GameObject* go);
 
 	GameObject* root;

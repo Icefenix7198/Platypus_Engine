@@ -489,8 +489,6 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 
 	int num_children = go->children.size();
 	
-	
-	
 	for (int i = 0; i < num_children; ++i)
 	{
 		ctp = go->children[i];

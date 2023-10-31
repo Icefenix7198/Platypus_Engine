@@ -5,6 +5,8 @@
 #include "Component.h"
 #include "aasimp.h"
 
+#include "Application.h"
+
 #include <vector>
 #include <string>
 
@@ -15,8 +17,11 @@ public:
 	ComponentMesh(Mesh* _mesh);
 	~ComponentMesh();
 
-	Mesh* mesh;
+	bool Update();
+	void OnEditor();
 
+	Mesh* mesh;
+	bool wireMode;
 private:
 
 };

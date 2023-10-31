@@ -111,4 +111,13 @@ void ComponentTransform::OnEditor()
 	}
 }
 
+void ComponentTransform::SetValues(aiVector3D translation, aiVector3D scaling, aiQuaternion rotation)
+{
+	pos = { translation.x,translation.y,translation.z };
+
+	scale = { scaling.x, scaling.y, scaling.z };
+
+	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
+}
+
 

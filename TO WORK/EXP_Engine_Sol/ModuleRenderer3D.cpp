@@ -314,18 +314,18 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh)
 	//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
 	// activate and specify pointer to vertex array
-	//glBindBuffer(GL_ARRAY_BUFFER, mesh->id_vertex);
-	glBindBuffer(GL_ARRAY_BUFFER, mesh->VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_vertex);
+	//glBindBuffer(GL_ARRAY_BUFFER, mesh->VBO);
 	glVertexPointer(3, GL_FLOAT, 0, mesh->vertex);
 
 	//Bind normals buffers
-	//glBindBuffer(GL_ARRAY_BUFFER, mesh->id_normals);
-	glBindBuffer(GL_ARRAY_BUFFER, mesh->VN);
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->id_normals);
+	//glBindBuffer(GL_ARRAY_BUFFER, mesh->VN);
 	glNormalPointer(GL_FLOAT, 0, NULL);
 
 	//Index array binding
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->id_index);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->EBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->id_index);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->EBO);
 
 	//Draw Lines or Full
 	if (wireframeMode)

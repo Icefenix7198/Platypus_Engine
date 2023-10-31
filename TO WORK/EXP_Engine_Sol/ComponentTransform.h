@@ -26,10 +26,11 @@ public:
 
 	void OnEditor();
 
+
 	aiVector3D translation, scaling;
 	aiQuaternion rotation;
-	
-	//node->mTransformation.Decompose(scaling, rotation, translation); //Esto es conseguir es scenes creo?
+
+	void SetValues(aiVector3D translation, aiVector3D scaling, aiQuaternion rotation);
 	
 	float3 pos;
 	float3 scale;

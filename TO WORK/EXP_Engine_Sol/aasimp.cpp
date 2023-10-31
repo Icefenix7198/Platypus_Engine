@@ -2,6 +2,7 @@
 #include "GameObject.h"
 
 #include "Component.h"
+#include "ComponentTransform.h"
 #include "ComponentMesh.h"
 
 #include "Application.h"
@@ -111,7 +112,7 @@ void aasimp::Load(const char* file_path)
 		
 		std::string name;
 		name.assign(fPathFull, posSlash +1, nameLength); //We add a +1 to not write the /, 
-		HierarcyGameObject(scene,scene->mRootNode,name.c_str(),nullptr);
+		HierarcyGameObject(scene,scene->mRootNode,name.c_str(),App->scene->root);
 		aiReleaseImport(scene);
 	}
 	else
@@ -121,23 +122,75 @@ void aasimp::Load(const char* file_path)
 		
 }
 
+Mesh* AiMeshtoMesh(aiMesh* mesh)
+{
+	Mesh* nMesh = new Mesh;
 
+	//Copy Vertex
+	nMesh->num_vertex = mesh->mNumVertices; //Copy the num of Vertex to our mesh from the imported mesh
+
+	nMesh->vertex = new float[nMesh->num_vertex * 3]; //Create array of vertex of size equal to the imported mesh
+	memcpy(nMesh->vertex, mesh->mVertices, sizeof(float) * nMesh->num_vertex * 3); //Copy the vertices array into mesh Vertex array 
+
+	//Copy faces/indexes
+	if (mesh->HasFaces())
+	{
+		nMesh->num_index = mesh->mNumFaces * 3; //Get the number of indixes (it will be 3 for each triangle/face)
+
+		nMesh->index = new uint[nMesh->num_index]; // assume each face is a triangle
+		for (uint j = 0; j < mesh->mNumFaces; ++j)
+		{
+			if (mesh->mFaces[j].mNumIndices != 3)
+			{
+				LOG("WARNING, geometry face with != 3 indices!");
+			}
+			else
+			{
+				memcpy(&nMesh->index[j * 3], mesh->mFaces[j].mIndices, 3 * sizeof(uint)); //Copy in index array 
+			}
+
+		}
+	}
+
+	//Copy normals
+	if (mesh->HasNormals())
+	{
+		nMesh->num_normals = mesh->mNumVertices; //Get the number of normals (it will be 3 for each triangle/face)
+
+		nMesh->normals = new uint[nMesh->num_normals]; // assume each face is a triangle (so it will have 3 normals)
+		memcpy(nMesh->normals, mesh->mNormals, sizeof(float) * nMesh->num_normals); //Copy the vertices array into mesh Vertex array 
+	}
+
+	return nMesh;
+}
 
 void HierarcyGameObject(const aiScene* scene,aiNode* root,const char* name,GameObject* parent)
 {
 
 	if(root->mNumChildren>1)
 	{
-		if (parent == nullptr) //Fist time called the function (we put nullptr becose we don't have access to ModuleScene->root)
-		{
-			parent = App->scene->CreateGameObject(App->scene->root,name);
-			//GameObject* gm = new GameObject(name,App->scene->root, true); //Create first container with parent = Scene->root
 			
-		}
-		else 
-		{
-			parent = App->scene->CreateGameObject(parent, name);
-		}
+			if (root->mNumMeshes > 0)
+			{
+				for (int i = 0; i < root->mNumMeshes; i++)
+				{
+					aiVector3D translation, scaling;
+					aiQuaternion rotation;
+					root->mTransformation.Decompose(scaling, rotation, translation);
+					GameObject* gm = App->scene->CreateGameObject(parent, name);
+					gm->objTransform->SetValues(translation, scaling, rotation);
+					ComponentMesh* cMesh; //Create reference to modify compoent mesh
+					cMesh = (ComponentMesh*)gm->CreateComponent(ComponentType::MESH); //Create component mesh
+					uint* numMesh = root->mMeshes; //mMeshes is a number to to the scene mMeshes array
+					cMesh->mesh = AiMeshtoMesh(scene->mMeshes[numMesh[i]]); //TODO ERIC: Es un aiMesh, hay que convertirlo a Mesh normal
+				}
+
+			}
+			else
+			{
+				parent = App->scene->CreateGameObject(parent, name);
+			}
+		
 
 		for (int i = 0; i < root->mNumChildren; i++)
 		{
@@ -148,7 +201,23 @@ void HierarcyGameObject(const aiScene* scene,aiNode* root,const char* name,GameO
 	{
 		if (root->mNumChildren>0)
 		{
-			//HierarcyGameObject(root->mChildren[0],name);
+			if (root->mNumMeshes > 0)
+			{
+				for (int i = 0; i < root->mNumMeshes; i++)
+				{
+					aiVector3D translation, scaling;
+					aiQuaternion rotation;
+					root->mTransformation.Decompose(scaling, rotation, translation);
+					LOG("Create GamoObject for mesh %s", name)
+						GameObject* gm = App->scene->CreateGameObject(parent, name);
+					gm->objTransform->SetValues(translation, scaling, rotation);
+					ComponentMesh* cMesh; //Create reference to modify compoent mesh
+					cMesh = (ComponentMesh*)gm->CreateComponent(ComponentType::MESH); //Create component mesh
+					uint* numMesh = root->mMeshes; //mMeshes is a number to to the scene mMeshes array
+					cMesh->mesh = AiMeshtoMesh(scene->mMeshes[numMesh[i]]); //TODO ERIC: Es un aiMesh, hay que convertirlo a Mesh normal
+				}
+
+			}
 		}
 		else
 		{
@@ -157,12 +226,16 @@ void HierarcyGameObject(const aiScene* scene,aiNode* root,const char* name,GameO
 			{ 
 				for (int i = 0; i < root->mNumMeshes; i++)
 				{
+					aiVector3D translation, scaling;
+					aiQuaternion rotation;
+					root->mTransformation.Decompose(scaling, rotation, translation);
 					LOG("Create GamoObject for mesh %s",name)
 					GameObject* gm=App->scene->CreateGameObject(parent, name);
+					gm->objTransform->SetValues(translation,scaling,rotation);
 					ComponentMesh* cMesh; //Create reference to modify compoent mesh
 					cMesh=(ComponentMesh*)gm->CreateComponent(ComponentType::MESH); //Create component mesh
 					uint* numMesh = root->mMeshes; //mMeshes is a number to to the scene mMeshes array
-					//cMesh->mesh = scene->mMeshes[numMesh[i]]; //TODO ERIC: Es un aiMesh, hay que convertirlo a Mesh normal
+					cMesh->mesh = AiMeshtoMesh(scene->mMeshes[numMesh[i]]); //TODO ERIC: Es un aiMesh, hay que convertirlo a Mesh normal
 				}
 				
 			}

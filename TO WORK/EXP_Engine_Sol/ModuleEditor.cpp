@@ -214,6 +214,10 @@ void ModuleEditor::DrawEditor()
 			}
 			ImGui::EndMenu();
 		}
+		if (ImGui::Button("Quit"))
+		{
+			quit = true;
+		}
 
 		ImGui::EndMainMenuBar();
 	}

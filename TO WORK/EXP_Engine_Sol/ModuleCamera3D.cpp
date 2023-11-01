@@ -3,6 +3,8 @@
 #include "ModuleCamera3D.h"
 #include "MathGeoLib/include/Math/Quat.h"
 
+#include "ComponentTransform.h"
+
 ModuleCamera3D::ModuleCamera3D(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 	X = float3(1.0f, 0.0f, 0.0f);
@@ -187,8 +189,9 @@ update_status ModuleCamera3D::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT)
 	{
 		//Temporal
-		Reference = float3(0, 0, 0);
-		Position = Reference + float3(5,5,10);
+		auto aux = App->scene->selectedGO->objTransform->pos;
+		Reference = float3(aux.x, aux.y, aux.z);
+		Position = Reference + float3(5,5,10); //Fixed distance should be in accordance to AABB to adecuate to size of the object
 		LookAt(Reference);
 	}
 

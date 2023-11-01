@@ -92,6 +92,7 @@ void ComponentTransform::OnEditor()
 		}
 		if (ImGui::BeginTable("Position", 4, 0))
 		{
+
 			//Rotation
 			ImGui::TableNextRow();
 			ImGui::TableNextColumn(); ImGui::InputFloat("X", &rot.x, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
@@ -121,7 +122,10 @@ void ComponentTransform::SetValues(aiVector3D translation, aiVector3D scaling, a
 
 	scale = { scaling.x, scaling.y, scaling.z };
 
+	
 	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
+	//rot.x=RadToDeg(rot.x); rot.y = RadToDeg(rot.y); rot.z = RadToDeg(rot.z); //Values given in Radians,must translate to degrees
+	rot.x = RADTODEG * (rot.x); rot.y = RADTODEG * (rot.y); rot.z = RADTODEG * (rot.z); //Values given in Radians,must translate to degrees
 }
 
 

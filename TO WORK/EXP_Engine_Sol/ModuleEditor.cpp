@@ -185,7 +185,7 @@ void ModuleEditor::DrawEditor()
 							"By Eric Segovia & Andreu Miro\n"
 							"https://github.com/Icefenix7198/Platypus_Engine \n\n"
 							"Third party libraries used:\n"
-							"- ImGui v1.89.9 \n- SDL2 \n- MathGeoLib \n- OpenGL \n- Glew \n- mmgr \n- parson \n\n"
+							"- ImGui v1.89.9 \n- SDL2 v2.0.4 \n- MathGeoLib v2.04 \n- OpenGL \n- Glew \n- mmgr \n- parson v1.5.2 \n- Assimp \n- DevIL v2.1\n"
 							"License: \nMIT License \n\n"
 							"Copyright (c) 2023 by Eric Segovia & Andreu Miro \n\n"
 							"Permission is hereby granted, free of charge, to any person obtaining\n"

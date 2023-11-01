@@ -48,6 +48,10 @@ bool ModuleRenderer3D::Init()
 		LOG("OpenGL context could not be created! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
+	else
+	{
+		LOG("OpenGL context correctly created");
+	}
 	
 	if(ret == true)
 	{
@@ -66,6 +70,11 @@ bool ModuleRenderer3D::Init()
 			LOG("Error initializing OpenGL! %s\n", gluErrorString(error));
 			ret = false;
 		}
+		else
+		{
+			LOG("OpenGL Projection correctly created");
+		}
+		
 
 		//Initialize Modelview Matrix
 		glMatrixMode(GL_MODELVIEW);
@@ -77,6 +86,10 @@ bool ModuleRenderer3D::Init()
 		{
 			LOG("Error initializing OpenGL! %s\n", gluErrorString(error));
 			ret = false;
+		}
+		else
+		{
+			LOG("OpenGL Modelview correctly created");
 		}
 		
 		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
@@ -91,6 +104,10 @@ bool ModuleRenderer3D::Init()
 		{
 			LOG("Error initializing OpenGL! %s\n", gluErrorString(error));
 			ret = false;
+		}
+		else
+		{
+			LOG("OpenGL clear color correctly created");
 		}
 		
 		GLfloat LightModelAmbient[] = {0.0f, 0.0f, 0.0f, 1.0f};
@@ -123,7 +140,10 @@ bool ModuleRenderer3D::Init()
 
 	// Setup Dear ImGui context
 	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
+	if(nullptr !=ImGui::CreateContext())
+	{
+		LOG("ImGui context correctly created");
+	}
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
 	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
@@ -138,9 +158,14 @@ bool ModuleRenderer3D::Init()
 	//ImGui::StyleColorsClassic();
 
 	// Setup Platform/Renderer backends
-	ImGui_ImplSDL2_InitForOpenGL(App->window->window, context);
-	ImGui_ImplOpenGL3_Init("#version 130");
-	//iNICIAR GL GLEW (ESTA EN EL POWER)
+	if(ImGui_ImplSDL2_InitForOpenGL(App->window->window, context))
+	{
+		LOG("SDL2 for OpenGL correctly initializated");
+	}
+	if(ImGui_ImplOpenGL3_Init("#version 130"))
+	{
+		LOG("ImGui version 130 for OpenGL3 correctly initializated");
+	}
 
 
 	GLubyte checkerImage[CHECKERS_HEIGHT][CHECKERS_WIDTH][4];
@@ -168,6 +193,7 @@ bool ModuleRenderer3D::Init()
 	Grid.axis = true;
 
 	//Load Baker House
+	LOG("-----------------FINISHED INITIALIZATION---------------- \n")
 	aasimp::Load("Assets/3DObjects/baker_house/BakerHouse.fbx"); //It must be done in Renderer because OpenGL isn't inizialitzed in scene.
 
 	return ret;

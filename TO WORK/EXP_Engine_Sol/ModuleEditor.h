@@ -45,7 +45,7 @@ public:
 private:
 	bool showFPS;
 	bool showConsole = true;
-	bool showConfig;
+	bool showConfig = true;
 	bool showDemo = false;
 	bool showInspector = true; //No se si inspector es la palabra correcta
 };

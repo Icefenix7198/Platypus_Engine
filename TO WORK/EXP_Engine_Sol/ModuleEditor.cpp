@@ -85,7 +85,7 @@ void ModuleEditor::DrawEditor()
 		{
 			if (ImGui::Button("Configuration"))
 			{
-				showConfig = true;
+				showConfig = !showConfig;
 			}
 			
 			ImGui::EndMenu();
@@ -162,7 +162,7 @@ void ModuleEditor::DrawEditor()
 			}
 			if (ImGui::Button("ShowConsole"))
 			{
-				showConsole = true;
+				showConsole = !showConsole;
 			}
 			
 
@@ -207,6 +207,10 @@ void ModuleEditor::DrawEditor()
 							"OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\n"
 							"WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.");
 				ImGui::EndMenu();
+			}
+			if (ImGui::MenuItem("GitHub Page"))
+			{
+				ShellExecute(NULL, "open", "https://github.com/Icefenix7198/Platypus_Engine", 0, 0, SW_SHOWNORMAL);
 			}
 			ImGui::EndMenu();
 		}
@@ -259,11 +263,8 @@ void ModuleEditor::Configuration()
 
 		if (ImGui::CollapsingHeader("Aplication"))
 		{
-			int FPS = App->fixedFPS;
-			if (ImGui::SliderInt("FPS", &FPS, 1, 120))
-			{
-				App->fixedFPS = FPS;
-			}
+			AddFPS(App->GetDeltaTime() * 1000);
+			ImGui::Text("Delta Time");
 		}
 
 		//WINDOW

@@ -39,7 +39,7 @@ public:
 
 	SDL_bool caps[11];
 
-
+	bool quit = false;
 
 	//Quiza esto sea too much y haya que descartar la idea
 private:

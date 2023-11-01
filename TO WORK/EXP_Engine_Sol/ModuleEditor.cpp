@@ -141,7 +141,7 @@ void ModuleEditor::DrawEditor()
 
 			ImGui::EndMenu();
 		}
-		if (ImGui::BeginMenu("Show"))
+		if (ImGui::BeginMenu("Windows"))
 		{
 			//Al pulsar el boton y solo entonces se abre el menu que muestra los FPS
 			if (ImGui::Button("ShowFPS"))
@@ -160,18 +160,20 @@ void ModuleEditor::DrawEditor()
 					ImGui::End();
 				}
 			}
-			if (ImGui::Button("ShowConsole"))
+			if (ImGui::Button("Console"))
 			{
 				showConsole = !showConsole;
 			}
 			
-
-
-			// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
 			if (ImGui::Button("Show ImGui:Demo"))
 			{
 				showDemo = !showDemo;
-			}			
+			}
+
+			if (ImGui::Button("Inspector"))
+			{
+				showInspector = !showInspector;
+			}
 
 		ImGui::EndMenu();
 		}
@@ -213,6 +215,10 @@ void ModuleEditor::DrawEditor()
 				ShellExecute(NULL, "open", "https://github.com/Icefenix7198/Platypus_Engine", 0, 0, SW_SHOWNORMAL);
 			}
 			ImGui::EndMenu();
+		}
+		if (ImGui::Button("Quit"))
+		{
+			quit = true;
 		}
 
 		ImGui::EndMainMenuBar();

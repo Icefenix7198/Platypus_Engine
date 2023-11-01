@@ -66,24 +66,25 @@ void aasimp::Load(const char* file_path)
 			}
 			
 			// Copy UV
-			//uint UV_index = 0;
-			//if (scene->mMeshes[i]->HasTextureCoords(UV_index))
-			//{
-			//	ourMesh->num_UVs = ourMesh->num_vertex;
-			//	//ourMesh->UVs = new float2[ourMesh->num_UVs];
-			//	for (int k = 0; k < scene->mMeshes[i]->mNumVertices; ++k) //There is one UV per vertex
-			//	{
-			//		ourMesh->UVs[k].x = scene->mMeshes[i]->mTextureCoords[UV_index][k].x;
-			//		ourMesh->UVs[k].y = scene->mMeshes[i]->mTextureCoords[UV_index][k].y;
-			//	}
-			//	LOG("New mesh with %d texture coordinates",ourMesh->num_UVs);
-			//}
+			uint UV_index = 0;
+			if (scene->mMeshes[i]->HasTextureCoords(UV_index))
+			{
+				ourMesh->num_UVs = ourMesh->num_vertex;
+				ourMesh->UVs = new float2[ourMesh->num_UVs];
+				for (uint k = 0; k < scene->mMeshes[i]->mNumVertices; k++) //There is one UV per vertex
+				{
+					ourMesh->UVs[k].x = scene->mMeshes[i]->mTextureCoords[UV_index][k].x;
+					ourMesh->UVs[k].y = scene->mMeshes[i]->mTextureCoords[UV_index][k].y;
+				}
+				LOG("New mesh with %d texture coordinates",ourMesh->num_UVs);
+			}
 
 
 			//BUFFERS
 			ourMesh->VBO = 0; //Buffer de vertices
 			ourMesh->VN = 0;
 			ourMesh->EBO = 0;
+			ourMesh->VUV = 0;
 			
 			//ourMesh->VAO = 0;
 
@@ -91,6 +92,7 @@ void aasimp::Load(const char* file_path)
 			glGenBuffers(1, &ourMesh->VBO);
 			glGenBuffers(1, &ourMesh->VN);
 			glGenBuffers(1, &ourMesh->EBO);
+			glGenBuffers(1, &ourMesh->VUV);
 
 			
 
@@ -102,18 +104,16 @@ void aasimp::Load(const char* file_path)
 			glBufferData(GL_ARRAY_BUFFER, sizeof(float) * ourMesh->num_normals, ourMesh->normals, GL_STATIC_DRAW);
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
+			glBindBuffer(GL_ARRAY_BUFFER, ourMesh->VUV);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(math::float2) * ourMesh->num_UVs, ourMesh->UVs, GL_STATIC_DRAW);
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ourMesh->EBO);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * ourMesh->num_index, ourMesh->index, GL_STATIC_DRAW); 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	
 
-
-			//Aqui habria que crear un GameObject y asignarle la mesh
-			//scene->mMeshes[i].
-			//GameObject* go = new GameObject();
-			//scene->mRootNode->mTransformation.Decompose();
-
-			//Copiar OurMesh a un vector de meshes
+			//Copy OurMesh to vector of meshes
 			vecMeshes.push_back(ourMesh);
 		}
 		

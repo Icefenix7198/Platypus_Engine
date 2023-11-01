@@ -311,14 +311,15 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh)
 	// activate and specify pointer to vertex array
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
-	//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
 	// activate and specify pointer to vertex array
 	glVertexPointer(3, GL_FLOAT, 0, mesh->vertex);
 
 	//Bind normals buffers
-
 	glNormalPointer(GL_FLOAT, 0, mesh->normals);
+
+	glTexCoordPointer(2, GL_FLOAT, 0, mesh->UVs);
 
 	//Draw Lines or Full
 	if (wireframeMode)

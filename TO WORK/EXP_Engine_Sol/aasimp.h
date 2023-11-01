@@ -39,6 +39,7 @@ struct Mesh
 	GLuint EBO;
 	GLuint VBO;
 	GLuint VN; //Normales para las texturas
+	GLuint VUV;
 };
 
 

@@ -270,6 +270,12 @@ void ModuleEditor::Configuration()
 		//WINDOW
 		if (ImGui::CollapsingHeader("Window"))
 		{
+			float vBrigtness = SDL_GetWindowBrightness(App->window->window);
+			if (ImGui::SliderFloat("Window Brigtness", &vBrigtness, 0.1f, 1.0f))
+			{
+				SDL_SetWindowBrightness(App->window->window, vBrigtness);
+			}
+
 			//Sliders scale windows
 			float winScale = App->window->GetScreenSize();
 			if (ImGui::SliderFloat("Window Scale", &winScale, 0.1f, 1.0f))

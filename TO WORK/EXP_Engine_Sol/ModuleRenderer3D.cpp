@@ -167,6 +167,9 @@ bool ModuleRenderer3D::Init()
 
 	Grid.axis = true;
 
+	//Load Baker House
+	aasimp::Load("Assets/3DObjects/baker_house/BakerHouse.fbx"); //It must be done in Renderer because OpenGL isn't inizialitzed in scene.
+
 	return ret;
 }
 

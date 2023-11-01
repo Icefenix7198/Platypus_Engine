@@ -23,6 +23,7 @@ ModuleScene::~ModuleScene()
 bool ModuleScene::Init()
 {  
 	selectedGO = root;
+
 	return true;
 }
 

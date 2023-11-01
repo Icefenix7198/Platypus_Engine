@@ -20,6 +20,7 @@ public:
 	~ComponentMesh();
 
 	bool Update();
+	bool DrawNormals();
 	void OnEditor();
 
 	Mesh* mesh;

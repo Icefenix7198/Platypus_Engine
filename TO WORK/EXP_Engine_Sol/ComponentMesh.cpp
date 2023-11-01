@@ -46,6 +46,27 @@ bool ComponentMesh::Update()
 	return true;
 }
 
+bool ComponentMesh::DrawNormals()
+{
+	if(mesh != nullptr)
+	{
+	glBegin(GL_LINES);
+	for (int i = 0; i < mesh->num_normals; i++)
+	{
+		glVertex3f(10*i, 10*i,10*i);
+		glVertex3f(20*i, 20*i,20*i);
+	}
+	
+	glEnd();
+	}
+	else
+	{
+		return false;
+	}
+	
+	return true;
+}
+
 void ComponentMesh::OnEditor()
 {
 

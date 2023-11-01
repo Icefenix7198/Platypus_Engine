@@ -121,6 +121,10 @@ void aasimp::Load(const char* file_path)
 		std::string fPathFull; //String with name path
 		fPathFull.assign(file_path);
 		int posSlash=fPathFull.find_last_of("/"); //Find the last / of the file, will have the name of the fbx as the others are folders. (returns int position)
+		if (posSlash==-1) //In case model uses \\ instead of /
+		{
+			posSlash = fPathFull.find_last_of("\\");
+		}
 		int nameLength = fPathFull.find_last_of(".") - posSlash -1; //Size of the word, the -1 is to not take the "."
 		
 		std::string name;
@@ -231,6 +235,10 @@ void HierarcyGameObject(const aiScene* scene,aiNode* root,const char* name,GameO
 				}
 
 			}
+			
+			
+			HierarcyGameObject(scene, root->mChildren[0], root->mChildren[0]->mName.C_Str(), parent);
+			
 		}
 		else
 		{

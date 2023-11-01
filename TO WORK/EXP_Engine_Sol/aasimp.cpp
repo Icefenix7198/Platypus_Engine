@@ -65,6 +65,19 @@ void aasimp::Load(const char* file_path)
 				
 			}
 			
+			// Copy UV
+			//uint UV_index = 0;
+			//if (scene->mMeshes[i]->HasTextureCoords(UV_index))
+			//{
+			//	ourMesh->num_UVs = ourMesh->num_vertex;
+			//	//ourMesh->UVs = new float2[ourMesh->num_UVs];
+			//	for (int k = 0; k < scene->mMeshes[i]->mNumVertices; ++k) //There is one UV per vertex
+			//	{
+			//		ourMesh->UVs[k].x = scene->mMeshes[i]->mTextureCoords[UV_index][k].x;
+			//		ourMesh->UVs[k].y = scene->mMeshes[i]->mTextureCoords[UV_index][k].y;
+			//	}
+			//	LOG("New mesh with %d texture coordinates",ourMesh->num_UVs);
+			//}
 
 
 			//BUFFERS

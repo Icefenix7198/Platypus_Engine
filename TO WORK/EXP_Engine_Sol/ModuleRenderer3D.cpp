@@ -171,8 +171,6 @@ bool ModuleRenderer3D::Init()
 		LOG("ImGui version 130 for OpenGL3 correctly initializated");
 	}
 
-	Checkers(); //Init checkers for textures
-
 	Grid.axis = true;
 
 	//Load Baker House
@@ -195,6 +193,8 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 
 	for(uint i = 0; i < MAX_LIGHTS; ++i)
 		lights[i].Render();
+
+	Checkers(); //Init checkers for textures
 
 	return UPDATE_CONTINUE;
 }
@@ -236,7 +236,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 		SDL_GL_MakeCurrent(backup_current_window, backup_current_context);
 	}
 
-	
+	glDeleteTextures(1, &textureID);
 
 	SDL_GL_SwapWindow(App->window->window);
 	return UPDATE_CONTINUE;

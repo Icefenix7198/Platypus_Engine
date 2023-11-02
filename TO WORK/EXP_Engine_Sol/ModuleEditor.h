@@ -24,6 +24,9 @@ public:
 	//ImGui Complicated Things Print
 	void Configuration();
 
+	void AddDeltaTime(const float aFPS);
+	std::vector<float> mDTLog;
+
 	void AddFPS(const float aFPS);
 	std::vector<float> mFPSLog;
 

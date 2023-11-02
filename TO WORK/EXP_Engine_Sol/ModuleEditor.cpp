@@ -229,7 +229,7 @@ void ModuleEditor::DrawEditor()
 
 bool ModuleEditor::CleanUp()
 {
-	mFPSLog.clear();
+	mDTLog.clear();
 	return true;
 }
 
@@ -241,8 +241,16 @@ void ModuleEditor::Configuration()
 
 		if (ImGui::CollapsingHeader("Aplication"))
 		{
-			AddFPS(App->GetDeltaTime() * 1000);
+			AddDeltaTime(App->GetDeltaTime() * 1000);
 			ImGui::Text("Delta Time");
+			AddFPS(App->fixedFPS);
+			ImGui::Text("FPS");
+
+			float FPS = App->fixedFPS;
+			if (ImGui::SliderFloat("FPS", &FPS, 1.0f, 120.0f,"%.0f"))
+			{
+				App->fixedFPS = FPS;
+			}
 		}
 
 		//WINDOW
@@ -441,10 +449,34 @@ void ModuleEditor::Configuration()
 	}
 }
 
+void ModuleEditor::AddDeltaTime(const float aFPS)
+{
+	mDTLog.push_back(aFPS);
+	ImGui::PlotHistogram("DeltaTime", mDTLog.data(), 25, 0, NULL, 0.0f, 1.0f, ImVec2(0, 120.0f)); //Name,iterador,tamaño vector, ??,???,???,???, tamaño espacio azul
+
+	if (mDTLog.size() >= 60)
+	{
+		//Hacer copia del vector inversa
+		std::vector<float> tempVec;
+		for (int i = mDTLog.size() - 1; i > 1; i--)
+		{
+			tempVec.push_back(mDTLog.at(i)); //We add in the temporal vector all the values except the first one
+		}
+		mDTLog.clear(); //With all the relevant values copied we clear the vector
+		for (auto it = tempVec.cend(); it != tempVec.end(); ++it)
+		{
+			mDTLog.push_back(*it);//We add the values on the vector
+		}
+		//Destroy temporalVector
+		tempVec.clear();
+
+	}
+}
+
 void ModuleEditor::AddFPS(const float aFPS)
 {
 	mFPSLog.push_back(aFPS);
-	ImGui::PlotHistogram("FPS", mFPSLog.data(), 25, 0, NULL, 0.0f, 1.0f, ImVec2(0, 80.0f)); //Name,iterador,tamaño vector, ??,???,???,???, tamaño espacio azul
+	ImGui::PlotHistogram("FPS ##HISTOGRAM", mFPSLog.data(), 25, 0, NULL, 0.0f, 1.0f, ImVec2(0, 80.0f)); //Name,iterador,tamaño vector, ??,???,???,???, tamaño espacio azul
 
 	if (mFPSLog.size() >= 25)
 	{

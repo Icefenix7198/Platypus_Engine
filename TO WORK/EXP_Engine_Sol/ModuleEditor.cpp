@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
+#include "mmgr/mmgr.h"
 
 #include "aasimp.h"
 
@@ -456,6 +457,14 @@ void ModuleEditor::Configuration()
 			if (caps[10] == true) { ImGui::Text("SSE42"); }
 
 			ImGui::Text("GPU: %s", glGetString(GL_VENDOR));
+
+			sMStats memoryStats = m_getMemoryStatistics();
+
+			ImGui::Text("Total Memory Reported: "); ImGui::SameLine(); ImGui::Text("%u bytes", memoryStats.totalReportedMemory);
+			ImGui::Text("Total Actual Mememory: "); ImGui::SameLine(); ImGui::Text("%u bytes", memoryStats.totalActualMemory);
+			ImGui::Text("Peak Memory Reported: "); ImGui::SameLine(); ImGui::Text("%u bytes", memoryStats.peakReportedMemory);
+			ImGui::Text("Peak Actual Memory: "); ImGui::SameLine(); ImGui::Text("%u bytes", memoryStats.peakActualMemory);
+
 		}
 		ImGui::End();
 	}

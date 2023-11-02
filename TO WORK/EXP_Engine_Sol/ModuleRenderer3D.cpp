@@ -194,8 +194,6 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 	for(uint i = 0; i < MAX_LIGHTS; ++i)
 		lights[i].Render();
 
-	Checkers();
-
 	return UPDATE_CONTINUE;
 }
 
@@ -236,7 +234,8 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 		SDL_GL_MakeCurrent(backup_current_window, backup_current_context);
 	}
 
-	/*Grid.Render();*/
+	Checkers();
+
 	SDL_GL_SwapWindow(App->window->window);
 	return UPDATE_CONTINUE;
 }
@@ -359,6 +358,7 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh)
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 }
 

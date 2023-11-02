@@ -6,27 +6,27 @@ A videogame motor for third grade of the career at CITM Terrasa.
 
 ## Camera
 
-    - Alt + Left: Click Orbital camera
-    - Alt + Right: click Free camera
-        - (In free camera) A: move Left
-        - (In free camera) D: move Right
-        - (In free camera) W: move Forward
-        - (In free camera) S: move Backwards
-        - (In free camera) Q: move Down
-        - (In free camera) R: move Up
-    - Alt + Mouse wheel movement: Zoom
-    - Press Mouse wheel and move mouse: Free screen move
+- Alt + Left: Click Orbital camera
+- Alt + Right: click Free camera
+  - (In free camera) A: move Left
+  - (In free camera) D: move Right
+  - (In free camera) W: move Forward
+  - (In free camera) S: move Backwards
+  - (In free camera) Q: move Down
+  - (In free camera) R: move Up
+- Alt + Mouse wheel movement: Zoom
+- Press Mouse wheel and move mouse: Free screen move
 
 # Features
 
-    - You can create a cube, shpere and a cylinder
-    - You can drag an drop fbx files from your device to the program.
-    - You can show the normals of a game object
-    - Every game object has three components: transform, mesh and material.
+- You can create a cube, shpere and a cylinder
+- You can drag an drop fbx files from your device to the program.
+- You can show the normals of a game object
+- Every game object has three components: transform, mesh and material.
 
 ## Windows
 
-    - Heriarchy window were you can select a created or lodaded game object.
-    - Inspector window were you can acces to de components of the game object.
-    - Configuration window were you can configurate the window, see the mouse information, the fps, and hardware information.
-    - Console window that prints libraries initialitzation and information of game objects loading.
+- Heriarchy window were you can select a created or lodaded game object.
+- Inspector window were you can acces to de components of the game object.
+- Configuration window were you can configurate the window, see the mouse information, the fps, and hardware information.
+- Console window that prints libraries initialitzation and information of game objects loading.

@@ -25,6 +25,8 @@ struct Mesh
 	uint id_normals = 0; //normal in VRAM
 	uint num_normals = 0;
 	float* normals = nullptr;
+	uint numFaces = 0;
+	float* faces = nullptr; //This is necesary to draw faces normals
 
 	uint id_vertex = 0; // unique vertex in VRAM
 	uint num_vertex = 0;

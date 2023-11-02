@@ -37,11 +37,12 @@ bool ComponentMesh::Update()
 {
 	//Draw mesh
 	// To DO: Transformation
-	if (drawVertexNormals)
+	if(mesh!=nullptr && active)
 	{
-		DrawVertexNormals();
+		if (drawVertexNormals) {	DrawVertexNormals();}
+		App->renderer3D->DrawMesh(mesh, wireMode);
 	}
-	App->renderer3D->DrawMesh(mesh, wireMode);
+	
 	
 
 	return true;

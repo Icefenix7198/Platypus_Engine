@@ -92,29 +92,29 @@ void aasimp::Load(const char* file_path)
 			glGenBuffers(1, &ourMesh->VN);
 			glGenBuffers(1, &ourMesh->EBO);
 			glGenBuffers(1, &ourMesh->VUV);
-			glGenBuffers(1, &ourMesh->id_UVs);
 			
 
 			glBindBuffer(GL_ARRAY_BUFFER, ourMesh->VBO);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(float)*ourMesh->num_vertex*3, ourMesh->vertex, GL_STATIC_DRAW); 
-			//glBindBuffer(GL_ARRAY_BUFFER, 0);
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 			glBindBuffer(GL_ARRAY_BUFFER, ourMesh->VN);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(float) * ourMesh->num_normals, ourMesh->normals, GL_STATIC_DRAW);
-			//glBindBuffer(GL_ARRAY_BUFFER, 0);
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 			glBindBuffer(GL_ARRAY_BUFFER, ourMesh->VUV);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(math::float2) * ourMesh->num_UVs, ourMesh->UVs, GL_STATIC_DRAW);
-			//glBindBuffer(GL_ARRAY_BUFFER, 0);
+			App->renderer3D->textureID = ourMesh->VUV;
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ourMesh->EBO);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * ourMesh->num_index, ourMesh->index, GL_STATIC_DRAW); 
-			//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
-			glBindBuffer(GL_ARRAY_BUFFER, ourMesh->id_UVs);
+			/*glBindBuffer(GL_ARRAY_BUFFER, ourMesh->id_UVs);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(float) * ourMesh->num_UVs * 2, ourMesh->UVs, GL_STATIC_DRAW);
 			App->renderer3D->textureID = ourMesh->id_UVs;
-			//glBindBuffer(GL_ARRAY_BUFFER, 0);
+			glBindBuffer(GL_ARRAY_BUFFER, 0);*/
 
 
 			
@@ -182,6 +182,20 @@ Mesh* AiMeshtoMesh(aiMesh* mesh)
 
 		nMesh->normals = new float[nMesh->num_normals]; // assume each face is a triangle (so it will have 3 normals)
 		memcpy(nMesh->normals, mesh->mNormals, sizeof(float) * nMesh->num_normals); //Copy the vertices array into mesh Vertex array 
+	}
+
+	// Copy UV
+	uint UV_index = 0;
+	if (mesh->HasTextureCoords(UV_index))
+	{
+		nMesh->num_UVs = mesh->mNumVertices;
+		nMesh->UVs = new float2[nMesh->num_UVs];
+		for (uint k = 0; k < mesh->mNumVertices; k++) //There is one UV per vertex
+		{
+			nMesh->UVs[k].x = mesh->mTextureCoords[UV_index][k].x;
+			nMesh->UVs[k].y = mesh->mTextureCoords[UV_index][k].y;
+		}
+		
 	}
 
 	return nMesh;

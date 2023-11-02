@@ -10,12 +10,15 @@
 ComponentMesh::ComponentMesh()
 {
 	wireMode = false;
+	drawNormals = false;
 	mesh = nullptr;
 	Enable();
 }
 
 ComponentMesh::ComponentMesh(Mesh* _mesh)
 {
+	wireMode = false;
+	drawNormals = false;
 	mesh = _mesh;
 	Enable();
 }
@@ -50,14 +53,19 @@ bool ComponentMesh::DrawNormals()
 {
 	if(mesh != nullptr)
 	{
-	glBegin(GL_LINES);
-	for (int i = 0; i < mesh->num_normals; i++)
-	{
-		glVertex3f(10*i, 10*i,10*i);
-		glVertex3f(20*i, 20*i,20*i);
-	}
+		//glLineWidth(2.0f); //Not very good, not supported in a lot of systems values different from 1
+		glBegin(GL_LINES);
+
+		//glColor3b();
+		GLfloat const color[3] = { (1.0 / 255), (240.0 / 255), (30.0 / 255) };
+		glColor3fv(color); //Uses values from 1 to 0 no 255
+		for (int i = 0; i < mesh->num_normals; i++)
+		{
+			glVertex3f(10*i, 10*i,10*i);
+			glVertex3f(20*i, 20*i,20*i);
+		}
 	
-	glEnd();
+		glEnd();
 	}
 	else
 	{
@@ -81,6 +89,11 @@ void ComponentMesh::OnEditor()
 		}
 		if(mesh != nullptr)
 		{
+			ImGui::Checkbox("Draw Normals", &drawNormals);
+			if (drawNormals) //TEMPORAL PARA TESTING, TENDRA QUE IR EN EL UPDATE
+			{
+				DrawNormals();
+			}
 			ImGui::Text("Number vertex %d", mesh->num_vertex);
 			ImGui::Text("Number normals %d", mesh->num_normals);
 		}

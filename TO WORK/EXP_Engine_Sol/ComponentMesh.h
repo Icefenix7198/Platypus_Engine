@@ -25,6 +25,7 @@ public:
 
 	Mesh* mesh;
 	bool wireMode;
+	bool drawNormals;
 private:
 
 };

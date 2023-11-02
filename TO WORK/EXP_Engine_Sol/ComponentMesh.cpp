@@ -10,7 +10,7 @@
 ComponentMesh::ComponentMesh()
 {
 	wireMode = false;
-	drawNormals = false;
+	drawVertexNormals = false;
 	mesh = nullptr;
 	Enable();
 }
@@ -18,7 +18,7 @@ ComponentMesh::ComponentMesh()
 ComponentMesh::ComponentMesh(Mesh* _mesh)
 {
 	wireMode = false;
-	drawNormals = false;
+	drawVertexNormals = false;
 	mesh = _mesh;
 	Enable();
 }
@@ -36,20 +36,18 @@ ComponentMesh::~ComponentMesh()
 bool ComponentMesh::Update()
 {
 	//Draw mesh
-
-	if (App->renderer3D->GetDrawingMode() || wireMode)
+	// To DO: Transformation
+	if (drawVertexNormals)
 	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		DrawVertexNormals();
 	}
-	else
-	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	}
+	App->renderer3D->DrawMesh(mesh, wireMode);
+	
 
 	return true;
 }
 
-bool ComponentMesh::DrawNormals()
+bool ComponentMesh::DrawVertexNormals()
 {
 	if(mesh != nullptr)
 	{
@@ -61,16 +59,10 @@ bool ComponentMesh::DrawNormals()
 		glColor3fv(color); //Uses values from 1 to 0 no 255
 		for (int i = 0; i <= mesh->num_vertex; i++)
 		{
-			//LOG("Executed %d times", i);
-			//float normalizer = sqrt(Pow((float)mesh->normals[i*3], 2) + Pow((float)mesh->normals[i*3 + 1], 2) + Pow((float)mesh->normals[i*3 + 2], 2)); //Normals vector normalized (at the moment is huuuge so we need to normalize it
 			glVertex3f(mesh->vertex[i*3], mesh->vertex[i*3 + 1], mesh->vertex[i*3 + 2]);
-			glVertex3f(mesh->vertex[i*3] + mesh->normals[i*3]/*/ normalizer*/, mesh->vertex[i*3 + 1] + mesh->normals[i*3 + 1]/*/normalizer*/, mesh->vertex[i*3 + 2] + mesh->normals[i*3 + 2]/*/ normalizer*/);
+			glVertex3f(mesh->vertex[i*3] + mesh->normals[i*3], mesh->vertex[i*3 + 1] + mesh->normals[i*3 + 1], mesh->vertex[i*3 + 2] + mesh->normals[i*3 + 2]);
 		}
-		
-	
 		glEnd();
-
-		
 	}
 	else
 	{
@@ -94,11 +86,8 @@ void ComponentMesh::OnEditor()
 		}
 		if(mesh != nullptr)
 		{
-			ImGui::Checkbox("Draw Normals", &drawNormals);
-			if (drawNormals) //TEMPORAL PARA TESTING, TENDRA QUE IR EN EL UPDATE
-			{
-				DrawNormals();
-			}
+			ImGui::Checkbox("Draw Normals", &drawVertexNormals);
+			
 			ImGui::Text("Number vertex %d", mesh->num_vertex);
 			ImGui::Text("Number normals %d", mesh->num_normals);
 		}

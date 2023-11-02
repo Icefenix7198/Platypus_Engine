@@ -211,7 +211,8 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	//DrawCubeDirectMode();
 
 	
-	DrawAllMeshes();
+	//DrawAllMeshes();
+	App->scene->UpdateGameObjects(App->scene->root);
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	
@@ -319,7 +320,7 @@ void ModuleRenderer3D::DrawCubeDirectMode(float originX, float originY, float or
 
 }
 
-void ModuleRenderer3D::DrawMesh(Mesh* mesh)
+void ModuleRenderer3D::DrawMesh(Mesh* mesh, bool wireframe)
 {
 	glBindTexture(GL_TEXTURE_2D, textureID);
 
@@ -339,7 +340,7 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh)
 	glTexCoordPointer(2, GL_FLOAT, 0, mesh->UVs);
 
 	//Draw Lines or Full
-	if (wireframeMode)
+	if (wireframeMode || wireframe)
 	{
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	}

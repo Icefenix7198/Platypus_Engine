@@ -97,24 +97,24 @@ void aasimp::Load(const char* file_path)
 
 			glBindBuffer(GL_ARRAY_BUFFER, ourMesh->VBO);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(float)*ourMesh->num_vertex*3, ourMesh->vertex, GL_STATIC_DRAW); 
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
+			//glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 			glBindBuffer(GL_ARRAY_BUFFER, ourMesh->VN);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(float) * ourMesh->num_normals, ourMesh->normals, GL_STATIC_DRAW);
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
+			//glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 			glBindBuffer(GL_ARRAY_BUFFER, ourMesh->VUV);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(math::float2) * ourMesh->num_UVs, ourMesh->UVs, GL_STATIC_DRAW);
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
+			//glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ourMesh->EBO);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * ourMesh->num_index, ourMesh->index, GL_STATIC_DRAW); 
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+			//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 			glBindBuffer(GL_ARRAY_BUFFER, ourMesh->id_UVs);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(float) * ourMesh->num_UVs * 2, ourMesh->UVs, GL_STATIC_DRAW);
 			App->renderer3D->textureID = ourMesh->id_UVs;
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
+			//glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 
 			

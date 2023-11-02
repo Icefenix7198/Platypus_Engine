@@ -185,46 +185,6 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 
-
-	for (int i = 0; i < CHECKERS_HEIGHT; i++) {
-		for (int j = 0; j < CHECKERS_WIDTH; j++) {
-			int c = ((((i & 0x8) == 0) ^ (((j & 0x8)) == 0))) * 255;
-			checkerImage[i][j][0] = (GLubyte)c;
-			checkerImage[i][j][1] = (GLubyte)c;
-			checkerImage[i][j][2] = (GLubyte)c;
-			checkerImage[i][j][3] = (GLubyte)255;
-		}
-	}
-
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-	glGenTextures(1, &textureID);
-	glBindTexture(GL_TEXTURE_2D, textureID);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, CHECKERS_WIDTH, CHECKERS_HEIGHT,
-		0, GL_RGBA, GL_UNSIGNED_BYTE, checkerImage);
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-<<<<<<< Updated upstream
-	Grid.axis = true;
-
-	//Load Baker House
-	LOG("-----------------FINISHED INITIALIZATION---------------- \n")
-	aasimp::Load("Assets/3DObjects/baker_house/BakerHouse.fbx"); //It must be done in Renderer because OpenGL isn't inizialitzed in scene.
-
-	return ret;
-}
-
-// PreUpdate: clear buffer
-update_status ModuleRenderer3D::PreUpdate(float dt)
-{
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glLoadIdentity();
-
-=======
->>>>>>> Stashed changes
 	glMatrixMode(GL_MODELVIEW);
 	glLoadMatrixf(App->camera->GetViewMatrix());
 
@@ -233,6 +193,8 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 
 	for(uint i = 0; i < MAX_LIGHTS; ++i)
 		lights[i].Render();
+
+	Checkers();
 
 	return UPDATE_CONTINUE;
 }
@@ -411,17 +373,41 @@ void ModuleRenderer3D::DrawAllMeshes()
 	}
 }
 
-void ModuleRenderer3D::LoadImage(const char* filepath)
+void ModuleRenderer3D::Checkers()
 {
-	ILuint Name;
-	ilGenImages(1, &Name);
-	ilBindImage(Name);
-
-	if (!ilLoadImage(filepath))
-	{
-		LOG("Image load failed");
+	for (int i = 0; i < CHECKERS_HEIGHT; i++) {
+		for (int j = 0; j < CHECKERS_WIDTH; j++) {
+			int c = ((((i & 0x8) == 0) ^ (((j & 0x8)) == 0))) * 255;
+			checkerImage[i][j][0] = (GLubyte)c;
+			checkerImage[i][j][1] = (GLubyte)c;
+			checkerImage[i][j][2] = (GLubyte)c;
+			checkerImage[i][j][3] = (GLubyte)255;
+		}
 	}
 
-	ilDeleteImages(1, &Name);
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, CHECKERS_WIDTH, CHECKERS_HEIGHT,
+		0, GL_RGBA, GL_UNSIGNED_BYTE, checkerImage);
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
+
+//void ModuleRenderer3D::LoadImage(const char* filepath)
+//{
+//	ILuint Name;
+//	ilGenImages(1, &Name);
+//	ilBindImage(Name);
+//
+//	if (!ilLoadImage(filepath))
+//	{
+//		LOG("Image load failed");
+//	}
+//
+//	ilDeleteImages(1, &Name);
+//}
 

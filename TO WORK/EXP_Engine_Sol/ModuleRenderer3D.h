@@ -34,6 +34,7 @@ public:
 	
 	void DrawMesh(Mesh* mesh);
 	void DrawAllMeshes();
+	void Checkers();
 
 	//Drawing Mode
 	bool GetDrawingMode() { return wireframeMode; }
@@ -67,6 +68,7 @@ public:
 	GLuint VAO; //VERTEX ATRIBUTE OBJECT
 
 	GLuint textureID;
+	GLubyte checkerImage[CHECKERS_HEIGHT][CHECKERS_WIDTH][4];
 
 private:
 	//Drawing Modes

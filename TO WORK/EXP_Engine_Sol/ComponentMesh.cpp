@@ -59,13 +59,18 @@ bool ComponentMesh::DrawNormals()
 		//glColor3b();
 		GLfloat const color[3] = { (1.0 / 255), (240.0 / 255), (30.0 / 255) };
 		glColor3fv(color); //Uses values from 1 to 0 no 255
-		for (int i = 0; i < mesh->num_normals; i++)
+		for (int i = 0; i <= mesh->num_vertex; i++)
 		{
-			glVertex3f(10*i, 10*i,10*i);
-			glVertex3f(20*i, 20*i,20*i);
+			//LOG("Executed %d times", i);
+			//float normalizer = sqrt(Pow((float)mesh->normals[i*3], 2) + Pow((float)mesh->normals[i*3 + 1], 2) + Pow((float)mesh->normals[i*3 + 2], 2)); //Normals vector normalized (at the moment is huuuge so we need to normalize it
+			glVertex3f(mesh->vertex[i*3], mesh->vertex[i*3 + 1], mesh->vertex[i*3 + 2]);
+			glVertex3f(mesh->vertex[i*3] + mesh->normals[i*3]/*/ normalizer*/, mesh->vertex[i*3 + 1] + mesh->normals[i*3 + 1]/*/normalizer*/, mesh->vertex[i*3 + 2] + mesh->normals[i*3 + 2]/*/ normalizer*/);
 		}
+		
 	
 		glEnd();
+
+		
 	}
 	else
 	{

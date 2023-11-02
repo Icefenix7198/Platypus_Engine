@@ -56,9 +56,9 @@ void aasimp::Load(const char* file_path)
 			//Copy normals
 			if (scene->mMeshes[i]->HasNormals())
 			{
-				ourMesh->num_normals = scene->mMeshes[i]->mNumVertices; //Get the number of normals (it will be 3 for each triangle/face)
+				ourMesh->num_normals = scene->mMeshes[i]->mNumVertices*3; //Get the number of normals (it will be 3 for each triangle/face)
 
-				ourMesh->normals = new uint[ourMesh->num_normals]; // assume each face is a triangle (so it will have 3 normals)
+				ourMesh->normals = new float[ourMesh->num_normals]; // assume each face is a triangle (so it will have 3 normals)
 				memcpy(ourMesh->normals, scene->mMeshes[i]->mNormals, sizeof(float) * ourMesh->num_normals); //Copy the vertices array into mesh Vertex array 
 
 				LOG("New mesh with %d normals", ourMesh->num_normals);
@@ -178,9 +178,9 @@ Mesh* AiMeshtoMesh(aiMesh* mesh)
 	//Copy normals
 	if (mesh->HasNormals())
 	{
-		nMesh->num_normals = mesh->mNumVertices; //Get the number of normals (it will be 3 for each triangle/face)
+		nMesh->num_normals = mesh->mNumVertices*3; //Get the number of normals (it will be 3 for each triangle/face)
 
-		nMesh->normals = new uint[nMesh->num_normals]; // assume each face is a triangle (so it will have 3 normals)
+		nMesh->normals = new float[nMesh->num_normals]; // assume each face is a triangle (so it will have 3 normals)
 		memcpy(nMesh->normals, mesh->mNormals, sizeof(float) * nMesh->num_normals); //Copy the vertices array into mesh Vertex array 
 	}
 

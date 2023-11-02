@@ -24,7 +24,7 @@ struct Mesh
 
 	uint id_normals = 0; //normal in VRAM
 	uint num_normals = 0;
-	GLuint* normals = nullptr;
+	float* normals = nullptr;
 
 	uint id_vertex = 0; // unique vertex in VRAM
 	uint num_vertex = 0;

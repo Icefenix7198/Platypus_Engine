@@ -171,10 +171,12 @@ bool ModuleRenderer3D::Init()
 		LOG("ImGui version 130 for OpenGL3 correctly initializated");
 	}
 
+	Checkers(); //Init checkers for textures
+
 	Grid.axis = true;
 
 	//Load Baker House
-	aasimp::Load("Assets/3DObjects/baker_house/BakerHouse.fbx"); //It must be done in Renderer because OpenGL isn't inizialitzed in scene.
+	//aasimp::Load("Assets/3DObjects/baker_house/BakerHouse.fbx"); //It must be done in Renderer because OpenGL isn't inizialitzed in scene.
 
 	return ret;
 }
@@ -234,7 +236,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 		SDL_GL_MakeCurrent(backup_current_window, backup_current_context);
 	}
 
-	Checkers();
+	
 
 	SDL_GL_SwapWindow(App->window->window);
 	return UPDATE_CONTINUE;

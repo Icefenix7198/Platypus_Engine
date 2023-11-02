@@ -79,7 +79,6 @@ void aasimp::Load(const char* file_path)
 				LOG("New mesh with %d texture coordinates",ourMesh->num_UVs);
 			}
 
-
 			//BUFFERS
 			ourMesh->VBO = 0; //Buffer de vertices
 			ourMesh->VN = 0;
@@ -93,7 +92,7 @@ void aasimp::Load(const char* file_path)
 			glGenBuffers(1, &ourMesh->VN);
 			glGenBuffers(1, &ourMesh->EBO);
 			glGenBuffers(1, &ourMesh->VUV);
-
+			glGenBuffers(1, &ourMesh->id_UVs);
 			
 
 			glBindBuffer(GL_ARRAY_BUFFER, ourMesh->VBO);
@@ -111,7 +110,14 @@ void aasimp::Load(const char* file_path)
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ourMesh->EBO);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * ourMesh->num_index, ourMesh->index, GL_STATIC_DRAW); 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-	
+
+			glBindBuffer(GL_ARRAY_BUFFER, ourMesh->id_UVs);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(float) * ourMesh->num_UVs * 2, ourMesh->UVs, GL_STATIC_DRAW);
+			App->renderer3D->textureID = ourMesh->id_UVs;
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+
+			
 
 			//Copy OurMesh to vector of meshes
 			vecMeshes.push_back(ourMesh);

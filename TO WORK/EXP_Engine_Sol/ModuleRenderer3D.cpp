@@ -11,6 +11,10 @@
 
 #include "aasimp.h"
 
+#include "DevIL/include/il.h"
+#include "DevIL/include/ilu.h"
+#include "DevIL/include/ilut.h"
+
 
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
 #pragma comment (lib, "glu32.lib") /* link Microsoft OpenGL lib   */
@@ -167,8 +171,21 @@ bool ModuleRenderer3D::Init()
 		LOG("ImGui version 130 for OpenGL3 correctly initializated");
 	}
 
+	Grid.axis = true;
 
-	GLubyte checkerImage[CHECKERS_HEIGHT][CHECKERS_WIDTH][4];
+	//Load Baker House
+	aasimp::Load("Assets/3DObjects/baker_house/BakerHouse.fbx"); //It must be done in Renderer because OpenGL isn't inizialitzed in scene.
+
+	return ret;
+}
+
+// PreUpdate: clear buffer
+update_status ModuleRenderer3D::PreUpdate(float dt)
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
+
+
 	for (int i = 0; i < CHECKERS_HEIGHT; i++) {
 		for (int j = 0; j < CHECKERS_WIDTH; j++) {
 			int c = ((((i & 0x8) == 0) ^ (((j & 0x8)) == 0))) * 255;
@@ -190,6 +207,7 @@ bool ModuleRenderer3D::Init()
 		0, GL_RGBA, GL_UNSIGNED_BYTE, checkerImage);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
+<<<<<<< Updated upstream
 	Grid.axis = true;
 
 	//Load Baker House
@@ -205,6 +223,8 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 
+=======
+>>>>>>> Stashed changes
 	glMatrixMode(GL_MODELVIEW);
 	glLoadMatrixf(App->camera->GetViewMatrix());
 
@@ -226,7 +246,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGui::NewFrame();
 
 	//Functions to draw in direct mode here (it will need to go away)
-	DrawCubeDirectMode();
+	//DrawCubeDirectMode();
 
 	
 	DrawAllMeshes();
@@ -333,13 +353,18 @@ void ModuleRenderer3D::DrawCubeDirectMode(float originX, float originY, float or
 
 	// deactivate vertex arrays after drawing
 	glDisableClientState(GL_VERTEX_ARRAY);
+
 }
 
 void ModuleRenderer3D::DrawMesh(Mesh* mesh)
 {
+	glBindTexture(GL_TEXTURE_2D, textureID);
+
 	// activate and specify pointer to vertex array
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
 	// activate and specify pointer to vertex array
@@ -371,7 +396,7 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh)
 	// deactivate vertex arrays after drawing
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
-	//glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
 }
 
@@ -384,5 +409,19 @@ void ModuleRenderer3D::DrawAllMeshes()
 		//LOG("DAM activated %d", i)
 		DrawMesh(aux.at(i));
 	}
+}
+
+void ModuleRenderer3D::LoadImage(const char* filepath)
+{
+	ILuint Name;
+	ilGenImages(1, &Name);
+	ilBindImage(Name);
+
+	if (!ilLoadImage(filepath))
+	{
+		LOG("Image load failed");
+	}
+
+	ilDeleteImages(1, &Name);
 }
 

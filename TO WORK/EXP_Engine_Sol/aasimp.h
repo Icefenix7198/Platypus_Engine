@@ -31,7 +31,7 @@ struct Mesh
 	float* vertex = nullptr;
 
 	uint id_UVs = 0; // unique vertex in VRAM
-	uint num_UVs = 0;
+	GLuint num_UVs = 0;
 	math::float2* UVs = nullptr;
 	
 

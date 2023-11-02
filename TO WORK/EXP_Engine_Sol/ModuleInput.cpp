@@ -148,6 +148,11 @@ update_status ModuleInput::PreUpdate(float dt)
 					aasimp::Load(pathFile.c_str());
 					LOG("Fbx File %s loaded", pathFile.c_str())
 				}
+				if (std::strcmp(fileType.c_str(), "fbx") == 0)
+				{
+					aasimp::Load(pathFile.c_str());
+					LOG("Fbx File %s loaded", pathFile.c_str())
+				}
 				if (std::strcmp(fileType.c_str(), "png") == 0)
 				{
 					LOG("Png File %s loaded", pathFile.c_str())

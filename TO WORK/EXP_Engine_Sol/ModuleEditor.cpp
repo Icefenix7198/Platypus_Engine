@@ -44,6 +44,8 @@ bool ModuleEditor::Init()
 	showFPS = false;
 	showConfig = false;
 
+	SDL_GetVersion(&SDLversion);
+
 	return true;
 }
 
@@ -87,6 +89,18 @@ void ModuleEditor::DrawEditor()
 					aasimp::Load("Assets/3DObjects/cylinder.fbx");
 				}
 
+				ImGui::EndMenu();
+			}
+			if (ImGui::BeginMenu("Own FBX"))
+			{
+				if (ImGui::Button("Mike the mouse"))
+				{
+					aasimp::Load("Assets/3DObjects/mickey-mouse.FBX");
+				}
+				if (ImGui::Button("Create AgentP"))
+				{
+					aasimp::Load("Assets/3DObjects/perry.FBX");
+				}
 				ImGui::EndMenu();
 			}
 			
@@ -145,7 +159,7 @@ void ModuleEditor::DrawEditor()
 							"By Eric Segovia & Andreu Miro\n"
 							"https://github.com/Icefenix7198/Platypus_Engine \n\n"
 							"Third party libraries used:\n"
-							"- ImGui v1.89.9 \n- SDL2 v2.0.4 \n- MathGeoLib v2.04 \n- OpenGL v4.5 \n- Glew \n- mmgr \n- parson v1.5.2 \n- Assimp v3.1.1 \n- DevIL v2.1\n"
+							"- ImGui v1.89.9 \n- SDL2 v2.0.4 \n- MathGeoLib v2.04 \n- OpenGL v%s \n- Glew \n- mmgr \n- parson v1.5.2 \n- Assimp v3.1.1 \n- DevIL v2.1\n"
 							"License: \nMIT License \n\n"
 							"Copyright (c) 2023 by Eric Segovia & Andreu Miro \n\n"
 							"Permission is hereby granted, free of charge, to any person obtaining\n"
@@ -165,7 +179,7 @@ void ModuleEditor::DrawEditor()
 							"NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\n"
 							"LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\n"
 							"OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\n"
-							"WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.");
+							"WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.", glGetString(GL_VERSION));
 				ImGui::EndMenu();
 			}
 			if (ImGui::MenuItem("GitHub Page"))

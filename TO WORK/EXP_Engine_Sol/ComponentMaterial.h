@@ -14,6 +14,13 @@ public:
 	ComponentMaterial();
 	~ComponentMaterial();
 
+	void OnEditor();
+
+	bool Update();
+
+	bool checkers;
+	bool activeCheck;
+
 
 
 private:

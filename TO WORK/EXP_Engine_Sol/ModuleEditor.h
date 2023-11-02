@@ -41,6 +41,8 @@ public:
 
 	bool quit = false;
 
+	SDL_version SDLversion;
+
 	//Quiza esto sea too much y haya que descartar la idea
 private:
 	bool showFPS;

@@ -25,32 +25,6 @@ ModuleEditor::~ModuleEditor()
 
 bool ModuleEditor::Init()
 {
- //   SDL_GLContext gl_context = SDL_GL_CreateContext(App->window->window);
- //   
-	//IMGUI_CHECKVERSION();
- //   ImGui::CreateContext();
-	//ImGuiIO& io = ImGui::GetIO(); (void)io;
-	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-	//io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
-	//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
-
- //   // Setup ImGui style
- //   ImGui::StyleColorsDark();
- //   //ImGui::StyleColorsLight();
-
- //   // When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to regular ones.
- //   ImGuiStyle& style = ImGui::GetStyle();
- //   if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
- //   {
- //       style.WindowRounding = 0.0f;
- //       style.Colors[ImGuiCol_WindowBg].w = 1.0f;
- //   }
-    
-    // Setup Platform/Renderer backends
-    //ImGui_ImplSDL2_InitForOpenGL(App->window->window, gl_context); //@ANDREU This causes an special error because the backend is alredy declared
-    //ImGui_ImplOpenGL3_Init(); //@ANDREU This causes an special error because the backend is alredy declared
-
 	cpuCache = SDL_GetCPUCacheLineSize();
 	cpus = SDL_GetCPUCount();
 	ram = SDL_GetSystemRAM();
@@ -144,23 +118,6 @@ void ModuleEditor::DrawEditor()
 		}
 		if (ImGui::BeginMenu("Windows"))
 		{
-			//Al pulsar el boton y solo entonces se abre el menu que muestra los FPS
-			if (ImGui::Button("ShowFPS"))
-			{
-				showFPS = true;
-			}
-			if (showFPS)
-			{
-				//ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver); //Try
-				ImGui::Begin("FPS", &showFPS);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-				{	
-					AddFPS(App->GetDeltaTime() * 1000);
-					ImGui::Text("Delta Time");
-					if (ImGui::Button("Close"))
-						showFPS = false;
-					ImGui::End();
-				}
-			}
 			if (ImGui::Button("Console"))
 			{
 				showConsole = !showConsole;
@@ -188,7 +145,7 @@ void ModuleEditor::DrawEditor()
 							"By Eric Segovia & Andreu Miro\n"
 							"https://github.com/Icefenix7198/Platypus_Engine \n\n"
 							"Third party libraries used:\n"
-							"- ImGui v1.89.9 \n- SDL2 v2.0.4 \n- MathGeoLib v2.04 \n- OpenGL \n- Glew \n- mmgr \n- parson v1.5.2 \n- Assimp \n- DevIL v2.1\n"
+							"- ImGui v1.89.9 \n- SDL2 v2.0.4 \n- MathGeoLib v2.04 \n- OpenGL v4.5 \n- Glew \n- mmgr \n- parson v1.5.2 \n- Assimp v3.1.1 \n- DevIL v2.1\n"
 							"License: \nMIT License \n\n"
 							"Copyright (c) 2023 by Eric Segovia & Andreu Miro \n\n"
 							"Permission is hereby granted, free of charge, to any person obtaining\n"

@@ -16,18 +16,16 @@ A videogame motor for third grade of the career at CITM Terrasa, made by Andreu 
   - (In free camera) R: move Up
 - Alt + Mouse wheel movement: Zoom
 - Press Mouse wheel and move mouse: Free screen move
-- F to look the game object (if you change some of the values of translate, it will look to that position, but the mesh will not move)
+- F to look the game object (if you change some of the values of translate, it will look to that position, although the mesh won't move)
 
 # Features
 
-- You can create a cube, shpere and a cylinder
+- You can create a cube, shpere and a cylinder.
 - You can drag an drop fbx files from your device to the program.
-- You can show the normals of a game object
-- You can select a game object (It isn't very clear when it is selected, but you will know it if the inspector window appear, also sometimes you will have to do double clik to select a game object).
+- You can show the vertex and face normals of a game object.
 - Every game object has three components: transform, mesh and material.
-- There are basic shapes to charge to the project.
 - The project starts with a house charged. 
-- There are two fbx that you can charge to the engine (to se Mike the mouse you will have to zoom out!!!!).
+- There are two fbx that you can charge to the engine (to see Mike the mouse you will have to zoom out!!!!).
 - You can se the UV checkers of a gameobject, but they can't have a texture.
 
 ## Windows

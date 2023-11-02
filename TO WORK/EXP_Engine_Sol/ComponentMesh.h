@@ -20,12 +20,14 @@ public:
 	~ComponentMesh();
 
 	bool Update();
-	bool DrawNormals();
+	bool DrawVertexNormals();
+	bool DrawFaceNormals();
 	void OnEditor();
 
 	Mesh* mesh;
 	bool wireMode;
-	bool drawNormals;
+	bool drawVertexNormals;
+	bool drawFaceNormals;
 private:
 
 };

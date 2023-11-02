@@ -23,6 +23,7 @@ A videogame motor for third grade of the career at CITM Terrasa, made by Andreu 
 - You can create a cube, shpere and a cylinder
 - You can drag an drop fbx files from your device to the program.
 - You can show the normals of a game object
+- You can select a game object (It isn't very clear when it is selected, but you will know it if the inspector window appear, also sometimes you will have to do double clik to select a game object).
 - Every game object has three components: transform, mesh and material.
 - There are basic shapes to charge to the project.
 - The project starts with a house charged. 

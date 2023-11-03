@@ -25,7 +25,7 @@ A videogame motor for third grade of the career at CITM Terrasa, made by Andreu 
 - You can show the vertex and face normals of a game object.
 - Every game object has three components: transform, mesh and material.
 - The project starts with a house charged. 
-- There are two fbx that you can charge to the engine (to see Mike the mouse you will have to zoom out!!!!).
+- There are two fbx that you can charge to the engine (to see Mike the mouse you will have to zoom out!!!!). (AjentP doesen't wor, it will close the program!!!)
 - You can se the UV checkers of a gameobject, but they can't have a texture.
 
 ## Windows

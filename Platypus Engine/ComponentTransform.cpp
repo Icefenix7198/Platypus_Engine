@@ -27,6 +27,11 @@ ComponentTransform::ComponentTransform()
 	Enable();
 }
 
+ComponentTransform::ComponentTransform(GameObject* own)
+{
+	owner = own;
+}
+
 ComponentTransform::ComponentTransform(aiVector3D vecPos)
 {
 	translation.x = vecPos.x;
@@ -66,10 +71,28 @@ ComponentTransform::~ComponentTransform()
 {
 }
 
+void ComponentTransform::SetValues(aiVector3D translation, aiVector3D scaling, aiQuaternion rotation)
+{
+	pos = { translation.x,translation.y,translation.z };
+
+	scale = { scaling.x, scaling.y, scaling.z };
+
+
+	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
+	//rot.x=RadToDeg(rot.x); rot.y = RadToDeg(rot.y); rot.z = RadToDeg(rot.z); //Values given in Radians,must translate to degrees
+	rot.x = RADTODEG * (rot.x); rot.y = RADTODEG * (rot.y); rot.z = RADTODEG * (rot.z); //Values given in Radians,must translate to degrees
+}
+
 void ComponentTransform::OnEditor()
 {
-	
-	if(ImGui::CollapsingHeader("Transform"))
+	//Give an ID to each colapsing header to be able to have more than one of the same time
+	//This must be done due to ImGui using the names as the ids of all menus and things
+	int myPosInComponents = owner->GetComponentPosition(this);
+	std::string idComponent;
+	idComponent.append("Mesh ##");
+	idComponent.append(std::to_string(myPosInComponents).c_str());
+
+	if(ImGui::CollapsingHeader(idComponent.c_str()))
 	{
 
 		ImGui::Checkbox("##Transform", &active);
@@ -116,16 +139,6 @@ void ComponentTransform::OnEditor()
 	}
 }
 
-void ComponentTransform::SetValues(aiVector3D translation, aiVector3D scaling, aiQuaternion rotation)
-{
-	pos = { translation.x,translation.y,translation.z };
 
-	scale = { scaling.x, scaling.y, scaling.z };
-
-	
-	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
-	//rot.x=RadToDeg(rot.x); rot.y = RadToDeg(rot.y); rot.z = RadToDeg(rot.z); //Values given in Radians,must translate to degrees
-	rot.x = RADTODEG * (rot.x); rot.y = RADTODEG * (rot.y); rot.z = RADTODEG * (rot.z); //Values given in Radians,must translate to degrees
-}
 
 

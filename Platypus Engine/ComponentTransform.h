@@ -21,15 +21,13 @@ public:
 	bool active;
 
 	ComponentTransform();
+	ComponentTransform(GameObject* own);
 	ComponentTransform(aiVector3D vecPos); //Only position
 	ComponentTransform(aiVector3D vecPos, aiVector3D vecScale, aiQuaternion quatRot); //All parameters
 
-
 	~ComponentTransform();
 
-	void OnEditor();
-
-
+	//Matrix Values
 	aiVector3D translation, scaling;
 	aiQuaternion rotation;
 
@@ -38,6 +36,9 @@ public:
 	float3 pos;
 	float3 scale;
 	math::Quat rot;
+	
+	//ImGui
+	void OnEditor();
 
 private:
 

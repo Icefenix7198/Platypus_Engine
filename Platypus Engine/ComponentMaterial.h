@@ -12,6 +12,7 @@ class ComponentMaterial : public Component
 {
 public:
 	ComponentMaterial();
+	ComponentMaterial(GameObject* own);
 	~ComponentMaterial();
 
 	void OnEditor();

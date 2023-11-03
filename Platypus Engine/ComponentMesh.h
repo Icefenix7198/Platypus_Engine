@@ -16,6 +16,7 @@ public:
 	bool active;
 
 	ComponentMesh();
+	ComponentMesh(GameObject* own);
 	ComponentMesh(Mesh* _mesh);
 	~ComponentMesh();
 

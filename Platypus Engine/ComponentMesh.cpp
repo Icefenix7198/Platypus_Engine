@@ -15,6 +15,15 @@ ComponentMesh::ComponentMesh()
 	Enable();
 }
 
+ComponentMesh::ComponentMesh(GameObject* own)
+{
+	wireMode = false;
+	drawVertexNormals = drawFaceNormals = false;
+	mesh = nullptr;
+	owner = own;
+	Enable();
+}
+
 ComponentMesh::ComponentMesh(Mesh* _mesh)
 {
 	wireMode = false;
@@ -119,8 +128,14 @@ bool ComponentMesh::DrawFaceNormals()
 
 void ComponentMesh::OnEditor()
 {
+	//Give an ID to each colapsing header to be able to have more than one of the same time
+	//This must be done due to ImGui using the names as the ids of all menus and things
+	int myPosInComponents = owner->GetComponentPosition(this);
+	std::string idComponent;
+	idComponent.append("Mesh ##");
+	idComponent.append(std::to_string(myPosInComponents).c_str());
 
-	if (ImGui::CollapsingHeader("Mesh"))
+	if (ImGui::CollapsingHeader(idComponent.c_str()))
 	{
 		
 		ImGui::Checkbox("##Mesh", &active); //El doble ## hace que no se muestre el texto. Es necesario poner un nombre distinto a cada checkbox y boton ya que ImGui usa el nombre como la ID

@@ -10,6 +10,7 @@ GameObject::GameObject()
 	CreateComponent(ComponentType::TRANSFORM);
 	name = "GameObject";
 	active = true;
+	components = {};
 }
 
 GameObject::GameObject(std::string _name, bool _active)
@@ -17,7 +18,7 @@ GameObject::GameObject(std::string _name, bool _active)
 	CreateComponent(ComponentType::TRANSFORM);
 	name = _name;
 	active = _active;
-	
+	components = {};
 }
 
 GameObject::GameObject(std::string _name, GameObject* _parent, bool _active)
@@ -57,7 +58,6 @@ Component* GameObject::CreateComponent(ComponentType type)
 {
 	bool nonTransform = true; //Only one transform can exist at a time
 	Component* ret = nullptr;
-	
 	switch (type)
 	{
 	case TRANSFORM:
@@ -69,7 +69,7 @@ Component* GameObject::CreateComponent(ComponentType type)
 		if (nonTransform && objTransform ==nullptr)
 		{
 			LOG("Create Component Transform")				
-			ret = new ComponentTransform();
+			ret = new ComponentTransform(this);
 			components.push_back(ret);
 			objTransform = (ComponentTransform*)ret;
 		}
@@ -79,7 +79,7 @@ Component* GameObject::CreateComponent(ComponentType type)
 
 		//Create component mesh
 		LOG("Create Component Mesh");
-		ret = new ComponentMesh;
+		ret = new ComponentMesh(this);
 		components.push_back(ret);
 
 		break;
@@ -87,7 +87,7 @@ Component* GameObject::CreateComponent(ComponentType type)
 
 		//Create component material
 		LOG("Create Component Transform")
-		ret = new ComponentMaterial;
+		ret = new ComponentMaterial(this);
 		components.push_back(ret);
 
 		break;
@@ -95,6 +95,16 @@ Component* GameObject::CreateComponent(ComponentType type)
 		break;
 	}
 	
+	return ret;
+}
+
+int GameObject::GetComponentPosition(Component* comp)
+{
+	int ret = -1; //If not in the list
+	for (int i = 0; i < components.size(); i++)
+	{
+		if (components.at(i) == comp) { ret = i; }
+	}
 	return ret;
 }
 

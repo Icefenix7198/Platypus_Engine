@@ -128,27 +128,41 @@ bool ComponentMesh::DrawFaceNormals()
 
 void ComponentMesh::OnEditor()
 {
+	std::string butonChar;
+
 	//Give an ID to each colapsing header to be able to have more than one of the same time
 	//This must be done due to ImGui using the names as the ids of all menus and things
 	int myPosInComponents = owner->GetComponentPosition(this);
 	std::string idComponent;
-	idComponent.append("Mesh ##");
+	idComponent.append("##");
 	idComponent.append(std::to_string(myPosInComponents).c_str());
-
-	if (ImGui::CollapsingHeader(idComponent.c_str()))
+	
+	butonChar.append("Mesh");
+	if (ImGui::CollapsingHeader(butonChar.append(idComponent).c_str()))
 	{
-		
-		ImGui::Checkbox("##Mesh", &active); //El doble ## hace que no se muestre el texto. Es necesario poner un nombre distinto a cada checkbox y boton ya que ImGui usa el nombre como la ID
+		butonChar.clear();
+		butonChar.append("##Mesh Active");
+		ImGui::Checkbox(butonChar.append(idComponent).c_str(), &active); //El doble ## hace que no se muestre el texto. Es necesario poner un nombre distinto a cada checkbox y boton ya que ImGui usa el nombre como la ID
 		ImGui::SameLine();
-		if(ImGui::Button("Delete component"))
+
+		butonChar.clear();
+		butonChar.append("Delete component");
+		if (ImGui::Button(butonChar.append(idComponent).c_str()))
 		{
 			this->~ComponentMesh();
 		}
-		if(mesh != nullptr)
+
+		if (mesh != nullptr)
 		{
-			ImGui::Checkbox("Draw Wireframe Mode ##Component", &wireMode);
-			ImGui::Checkbox("Draw Vertex Normals", &drawVertexNormals);
-			ImGui::Checkbox("Draw Face Normals", &drawFaceNormals);
+			butonChar.clear();
+			butonChar.append("Wireframe Mode");
+			ImGui::Checkbox(butonChar.append(idComponent).c_str(), &wireMode);
+			butonChar.clear();
+			butonChar.append("Draw Vertex Normals");
+			ImGui::Checkbox(butonChar.append(idComponent).c_str(), &drawVertexNormals);
+			butonChar.clear();
+			butonChar.append("Draw Face Normals");
+			ImGui::Checkbox(butonChar.append(idComponent).c_str(), &drawFaceNormals);
 			
 			ImGui::Text("Number vertex %d", mesh->num_vertex);
 			ImGui::Text("Number normals %d", mesh->num_normals);

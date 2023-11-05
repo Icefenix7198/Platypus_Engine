@@ -13,6 +13,8 @@
 #include "GameObject.h"
 #include "Component.h"
 
+#include "Importer.h" //Lo pongo aqui porque solo es un text temporal
+
 ModuleEditor::ModuleEditor(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 }
@@ -56,6 +58,13 @@ void ModuleEditor::DrawEditor()
 	{
 		if (ImGui::BeginMenu("File"))
 		{
+			if (ImGui::Button("Test LibraryCreation"))
+			{
+				
+				Importer in;
+				in.CreateLibrary();
+			}
+
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Edit"))

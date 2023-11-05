@@ -3,14 +3,16 @@
 
 enum ImporterType //Each type of archive will inherit of this importer
 {
-	FBX,
-	MESH,
-	MATERIAL,
+	IMPORTER_FBX,
+	IMPORTER_MESH,
+	IMPORTER_MATERIAL,
 	NUM_IMPORTERS //For iteration reasons, not an importer
 };
 
 class Importer
 {
+public:
+
 	virtual bool CreateLibrary();
 	virtual bool DestroyLibrary();
 	

@@ -66,7 +66,7 @@ Component* GameObject::CreateComponent(ComponentType type)
 		{
 			if (components.at(i)->type == ComponentType::TRANSFORM) { nonTransform = false; }
 		}
-		if (nonTransform && objTransform ==nullptr)
+		if (nonTransform && objTransform == nullptr)
 		{
 			LOG("Create Component Transform")				
 			ret = new ComponentTransform(this);

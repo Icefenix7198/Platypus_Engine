@@ -8,6 +8,8 @@
 #include <gl/GLU.h>
 #include "aasimp.h"
 
+#include "Component.h"
+
 ModuleScene::ModuleScene(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 	std::string name;
@@ -34,9 +36,9 @@ bool ModuleScene::CleanUp()
 
 GameObject* ModuleScene::CreateGameObject(GameObject* parent,std::string name)
 {
-	GameObject* go = new GameObject;
-	go->name = name;
+	GameObject* go = new GameObject(name,parent,true);
 	parent->children.push_back(go);
+	go->CreateComponent(ComponentType::TRANSFORM);
 	selectedGO = go;
 
 	return go;

@@ -29,6 +29,24 @@ ComponentTransform::ComponentTransform()
 
 ComponentTransform::ComponentTransform(GameObject* own)
 {
+	translation.x = 0;
+	translation.y = 0;
+	translation.z = 0;
+	pos = { translation.x,translation.y,translation.z };
+
+	scaling.x = 1;
+	scaling.y = 1;
+	scaling.z = 1;
+	scale = { scaling.x, scaling.y, scaling.z };
+
+	rotation.x = 0;
+	rotation.y = 0;
+	rotation.z = 0;
+	rotation.w = 0;
+	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
+
+	Enable();
+
 	owner = own;
 }
 

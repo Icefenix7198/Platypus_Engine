@@ -194,7 +194,7 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 	for(uint i = 0; i < MAX_LIGHTS; ++i)
 		lights[i].Render();
 
-	Checkers(); //Init checkers for textures
+	CreateCheckers(); //Init checkers for textures
 
 	return UPDATE_CONTINUE;
 }
@@ -376,7 +376,7 @@ void ModuleRenderer3D::DrawAllMeshes()
 	}
 }
 
-void ModuleRenderer3D::Checkers()
+void ModuleRenderer3D::CreateCheckers()
 {
 	for (int i = 0; i < CHECKERS_HEIGHT; i++) {
 		for (int j = 0; j < CHECKERS_WIDTH; j++) {

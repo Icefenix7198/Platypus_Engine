@@ -22,7 +22,7 @@ public:
 	bool checkers;
 	bool activeCheck;
 
-
+	uint textureBuffer;
 
 private:
 

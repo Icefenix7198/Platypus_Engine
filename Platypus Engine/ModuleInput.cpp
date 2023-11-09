@@ -138,8 +138,7 @@ update_status ModuleInput::PreUpdate(float dt)
 					}
 					if(pathFile.at(i) == '.')
 					{
-						pointFound = true;
-						LOG("Punto detectado en %d",i) 
+						pointFound = true; 
 					}
 				}
 
@@ -155,6 +154,7 @@ update_status ModuleInput::PreUpdate(float dt)
 				}
 				if (std::strcmp(fileType.c_str(), "png") == 0)
 				{
+					aasimp::LoadTexture(pathFile.c_str());
 					LOG("Png File %s loaded", pathFile.c_str())
 				}
 

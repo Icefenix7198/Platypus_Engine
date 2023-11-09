@@ -49,9 +49,13 @@ struct Mesh
 namespace aasimp
 {
 	void Load(const char* file_path);
+	void LoadTexture(const char* path);
 	Mesh* ExtractMeshInfo(aiScene* scene);
 	
 	std::vector<Mesh*> vecMeshes; 
+	std::vector<GLuint*> vecTextures;
 }
+
+
 
 void HierarcyGameObject(const aiScene* scene,aiNode* root, const char* name, GameObject* parent);

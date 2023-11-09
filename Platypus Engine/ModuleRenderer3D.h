@@ -34,7 +34,7 @@ public:
 	
 	void DrawMesh(Mesh* mesh, bool wireframe = false);
 	void DrawAllMeshes();
-	void Checkers();
+	void CreateCheckers();
 
 	//Drawing Mode
 	bool GetDrawingMode() { return wireframeMode; }

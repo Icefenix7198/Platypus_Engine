@@ -8,6 +8,14 @@
 #include "Application.h"
 #include "ModuleScene.h"
 
+#include "DevIL/include/il.h"
+#include "DevIL/include/ilu.h"
+#include "DevIL/include/ilut.h"
+
+#pragma comment (lib, "DevIL/libx86/DevIL.lib")
+#pragma comment (lib, "DevIL/libx86/ILU.lib")
+#pragma comment (lib, "DevIL/libx86/ILUT.lib")
+
 //#include <vector>
 
 Mesh* aasimp::ExtractMeshInfo(aiScene* scene)
@@ -199,6 +207,23 @@ Mesh* AiMeshtoMesh(aiMesh* mesh)
 	}
 
 	return nMesh;
+}
+
+void aasimp::LoadTexture(const char* path)
+{
+	GLuint image; 
+	GLuint texture;
+	//Crete a buffer of size equal to image
+	ilutRenderer(ILUT_OPENGL); //Set DeVil to work for 
+	ilGenImages(1, &image);
+	ilBindImage(image);
+	ilLoadImage("Assets/3DObjects/baker_house/Baker_house.png");
+	texture = ilutGLBindTexImage();
+	//"Assets/3DObjects/baker_house/Baker_house.png"
+
+	aasimp::vecTextures.push_back(&texture);
+	//Add the vertex info to the buffer
+
 }
 
 void HierarcyGameObject(const aiScene* scene,aiNode* root,const char* name,GameObject* parent)

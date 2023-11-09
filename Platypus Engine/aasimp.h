@@ -5,6 +5,9 @@
 #include "Assimp/include/mesh.h"
 #include "Glew/include/glew.h"
 
+#include "DevIL/include/il.h"
+
+
 #include "MathGeoLib/include/MathGeoLib.h"
 
 #include "Globals.h"
@@ -44,7 +47,15 @@ struct Mesh
 	GLuint VUV;
 };
 
+struct Texture
+{
+	std::string name;
+	GLuint id = 0;
+	int width = 0;
+	int heigth = 0;
 
+	Texture(std::string _name, GLuint _id, int w, int h) { name = _name, id = _id, width = w, heigth = h; };
+};
 
 namespace aasimp
 {
@@ -53,7 +64,7 @@ namespace aasimp
 	Mesh* ExtractMeshInfo(aiScene* scene);
 	
 	std::vector<Mesh*> vecMeshes; 
-	std::vector<GLuint*> vecTextures;
+	std::vector<Texture*> vecTextures;
 }
 
 

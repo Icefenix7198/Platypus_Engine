@@ -157,6 +157,16 @@ update_status ModuleInput::PreUpdate(float dt)
 					aasimp::LoadTexture(pathFile.c_str());
 					LOG("Png File %s loaded", pathFile.c_str())
 				}
+				if (std::strcmp(fileType.c_str(), "dds") == 0)
+				{
+					aasimp::LoadTexture(pathFile.c_str());
+					LOG("DDS File %s loaded", pathFile.c_str())
+				}
+				if (std::strcmp(fileType.c_str(), "DDS") == 0)
+				{
+					aasimp::LoadTexture(pathFile.c_str());
+					LOG("DDS File %s loaded", pathFile.c_str())
+				}
 
 				
 				break;

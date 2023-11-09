@@ -211,18 +211,54 @@ Mesh* AiMeshtoMesh(aiMesh* mesh)
 
 void aasimp::LoadTexture(const char* path)
 {
-	GLuint image; 
-	GLuint texture;
-	//Crete a buffer of size equal to image
-	ilutRenderer(ILUT_OPENGL); //Set DeVil to work for 
-	ilGenImages(1, &image);
-	ilBindImage(image);
-	ilLoadImage("Assets/3DObjects/baker_house/Baker_house.png");
-	texture = ilutGLBindTexImage();
-	//"Assets/3DObjects/baker_house/Baker_house.png"
+	path = "Assets/3DObjects/baker_house/Baker_house.png";
 
-	aasimp::vecTextures.push_back(&texture);
-	//Add the vertex info to the buffer
+	Texture* texture = nullptr;
+
+	ILuint new_image_id = 0;
+	ilGenImages(1, &new_image_id);
+	ilBindImage(new_image_id);
+
+	//Init DevIL to work with OpenGL
+	/*if(!ilutRenderer(ILUT_OPENGL))
+	{
+		LOG("Error initializing DevIL for OpenGL")
+	}*/
+	ilutRenderer(ILUT_OPENGL);
+
+	if (ilLoadImage(path)) 
+	{
+		//iluFlipImage(); 
+		std::string str;
+		str.assign(path);
+		texture = new Texture(str, ilutGLBindTexImage(), (int)ilGetInteger(IL_IMAGE_WIDTH), (int)ilGetInteger(IL_IMAGE_HEIGHT));
+		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+		glBindTexture(GL_TEXTURE_2D, texture->id);
+
+		//Assign how the texture will be managed / scaled/ things
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+		//Unbind texture
+		glBindTexture(GL_TEXTURE_2D, 0);
+
+		vecTextures.push_back(texture);
+
+		/*if (has_been_dropped && App->objects->GetSelectedObject() != nullptr) {
+			ApplyTextureToSelectedObject(texture);
+		}*/
+
+		LOG("Texture successfully loaded: %s", path);
+	}
+	else {
+		LOG("Error while loading image in %s", path);
+		LOG("Error: %s", ilGetString(ilGetError()));
+	}
+
+	//Clean memory
+	ilDeleteImages(1, &new_image_id);
 
 }
 

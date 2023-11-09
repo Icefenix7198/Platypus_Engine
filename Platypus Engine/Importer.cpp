@@ -1,5 +1,11 @@
 #include "Importer.h"
 #include <direct.h>
+#include "Globals.h"
+
+#include "SDL\include\SDL.h"
+#include "PhysFS\include\physfs.h" //Works better than direct.h
+
+#pragma comment (lib, "PhysFS/libx86/physfs.lib")
 
 //All other importers
 
@@ -8,12 +14,38 @@ bool Importer::CreateLibrary()
 {
 	bool ret = true;
 
-	//Create Library
-	if (-1 == mkdir("/Library"))
+	//Initializate physFS
+	if (PHYSFS_isInit() == 0)
 	{
+		char* path = SDL_GetBasePath(); //Get the path of the directory
+		if(0==PHYSFS_init(path))
+		{
+			ret = false;
+			LOG("PHYSFS could not initialize! PHYSFS_Error: %s\n", PHYSFS_getLastError());
+		}
+		SDL_free(path);
+	}
+	
+	//Set writing directory
+
+	//ERIC: Menciona algo de app y org que no entiendo
+	char* path2 = SDL_GetBasePath(); //Get the path of the directory
+	if (PHYSFS_setWriteDir(path2) == 0)
+	{
+		LOG("Directory could not be created! PHYSFS_Error: %s\n", PHYSFS_getLastError());
 		ret = false;
-		return ret;
-	};
+	}
+	else
+	{
+		LOG("Writing directory is : % s\n" , path2);
+	}
+	SDL_free(path2);
+	if(PHYSFS_mkdir("/Library")==0)
+	{
+		LOG("Library could not be created! PHYSFS_Error: %s\n", PHYSFS_getLastError());
+	}
+
+	
 
 	for (int i = 0; i < ImporterType::NUM_IMPORTERS; i++) //We call the overload of each method that creates its own library
 	{
@@ -37,6 +69,7 @@ bool Importer::CreateLibrary()
 			}
 		}
 	}
+
 
 	return ret;
 }

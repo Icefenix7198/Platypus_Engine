@@ -101,6 +101,17 @@ void ComponentTransform::SetValues(aiVector3D translation, aiVector3D scaling, a
 	rot.x = RADTODEG * (rot.x); rot.y = RADTODEG * (rot.y); rot.z = RADTODEG * (rot.z); //Values given in Radians,must translate to degrees
 }
 
+void ComponentTransform::GenerateMatrix(aiVector3D translation, aiVector3D scaling, aiQuaternion rotation)
+{
+	//Si entendi bien este tutorial https://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
+	
+	//Multiplicar translacion
+
+	//Multiplicar rotacion
+
+	//Multiplicar escala 
+}
+
 void ComponentTransform::OnEditor()
 {
 	if(ImGui::CollapsingHeader("Transform"))

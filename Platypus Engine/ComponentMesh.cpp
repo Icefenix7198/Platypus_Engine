@@ -50,7 +50,11 @@ bool ComponentMesh::Update()
 	{
 		if (drawVertexNormals) {	DrawVertexNormals();}
 		if (drawFaceNormals) { DrawFaceNormals(); }
+		
+		glPushMatrix();
+		//glMultMatrixf(); //Como se le pasa la focking matriz?
 		App->renderer3D->DrawMesh(mesh, wireMode);
+		glPopMatrix();
 	}
 	
 	return true;

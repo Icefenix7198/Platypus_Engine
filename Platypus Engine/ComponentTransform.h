@@ -36,6 +36,8 @@ public:
 	float3 pos;
 	float3 scale;
 	math::Quat rot;
+
+	void GenerateMatrix(aiVector3D translation, aiVector3D scaling, aiQuaternion rotation);
 	
 	//ImGui
 	void OnEditor();

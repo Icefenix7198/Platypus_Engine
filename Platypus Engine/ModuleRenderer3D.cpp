@@ -173,6 +173,11 @@ bool ModuleRenderer3D::Init()
 
 	Grid.axis = true;
 
+	//Inizialize DevIL
+	ilInit();
+	iluInit();
+	ilutRenderer(ILUT_OPENGL);
+
 	//Load Baker House
 	aasimp::Load("Assets/3DObjects/baker_house/BakerHouse.fbx"); //It must be done in Renderer because OpenGL isn't inizialitzed in scene.
 

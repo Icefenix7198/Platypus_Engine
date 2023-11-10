@@ -211,7 +211,7 @@ Mesh* AiMeshtoMesh(aiMesh* mesh)
 
 void aasimp::LoadTexture(const char* path)
 {
-	path = "Assets/3DObjects/baker_house/Baker_house.png";
+	//path = "Assets/3DObjects/baker_house/Baker_house.png";
 
 	Texture* texture = nullptr;
 
@@ -224,7 +224,7 @@ void aasimp::LoadTexture(const char* path)
 	{
 		LOG("Error initializing DevIL for OpenGL")
 	}*/
-	ilutRenderer(ILUT_OPENGL);
+	//ilutRenderer(ILUT_OPENGL);
 
 	if (ilLoadImage(path)) 
 	{

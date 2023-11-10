@@ -51,8 +51,9 @@ bool ComponentMesh::Update()
 		if (drawVertexNormals) {	DrawVertexNormals();}
 		if (drawFaceNormals) { DrawFaceNormals(); }
 		
+		float4x4 m;
 		glPushMatrix();
-		//glMultMatrixf(); //Como se le pasa la focking matriz?
+		//glMultMatrixf(m.ptr()); //Como se le pasa la focking matriz?
 		App->renderer3D->DrawMesh(mesh, wireMode);
 		glPopMatrix();
 	}

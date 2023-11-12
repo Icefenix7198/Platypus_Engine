@@ -105,11 +105,21 @@ void ComponentTransform::GenerateMatrix(aiVector3D translation, aiVector3D scali
 {
 	//Si entendi bien este tutorial https://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
 	
+	float4x4 m;
+	m = m.identity;
+
 	//Multiplicar translacion
 
 	//Multiplicar rotacion
 
 	//Multiplicar escala 
+	//Scale matrix
+	float4x4 scaleMatrix;
+	scaleMatrix = scaleMatrix.identity;
+	//Ojala poder usar un for pero como los vectores usan x,y,z pues no se puede
+	scaleMatrix.At(0, 0) = scaling.x;
+	scaleMatrix.At(1, 1) = scaling.y;
+	scaleMatrix.At(2, 2) = scaling.z;
 }
 
 void ComponentTransform::OnEditor()

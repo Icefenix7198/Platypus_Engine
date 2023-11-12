@@ -272,15 +272,22 @@ void HierarcyGameObject(const aiScene* scene,aiNode* root,const char* name,GameO
 			{
 				for (int i = 0; i < root->mNumMeshes; i++)
 				{
+					//Transform 
 					aiVector3D translation, scaling;
 					aiQuaternion rotation;
 					root->mTransformation.Decompose(scaling, rotation, translation);
 					GameObject* gm = App->scene->CreateGameObject(parent, name);
 					gm->objTransform->SetValues(translation, scaling, rotation);
+
+					//Mesh
 					ComponentMesh* cMesh; //Create reference to modify compoent mesh
 					cMesh = (ComponentMesh*)gm->CreateComponent(ComponentType::MESH); //Create component mesh
 					uint* numMesh = root->mMeshes; //mMeshes is a number to to the scene mMeshes array
-					cMesh->mesh = AiMeshtoMesh(scene->mMeshes[numMesh[i]]); //TODO ERIC: Es un aiMesh, hay que convertirlo a Mesh normal
+					cMesh->mesh = AiMeshtoMesh(scene->mMeshes[numMesh[i]]); 
+
+					//Material
+					ComponentMaterial* cMaterial;
+					cMaterial = (ComponentMaterial*)gm->CreateComponent(ComponentType::MATERIAL);
 				}
 
 			}

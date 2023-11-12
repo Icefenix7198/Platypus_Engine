@@ -325,7 +325,7 @@ void ModuleRenderer3D::DrawCubeDirectMode(float originX, float originY, float or
 
 }
 
-void ModuleRenderer3D::DrawMesh(Mesh* mesh, bool wireframe)
+void ModuleRenderer3D::DrawMesh(Mesh* mesh, bool wireframe, Color color)
 {
 	glBindTexture(GL_TEXTURE_2D, textureID);
 
@@ -352,6 +352,7 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh, bool wireframe)
 	else
 	{
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		glColor4f(color.r, color.g, color.b, color.a);
 	}
 
 	// Draw mesh
@@ -367,6 +368,7 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh, bool wireframe)
 	glDisableClientState(GL_NORMAL_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	glBindTexture(GL_TEXTURE_2D, 0);
+	glColor4f(1, 1, 1, 1);
 
 }
 

@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <string>
+#include "Color.h"
 
 class ComponentMaterial : public Component
 {
@@ -23,6 +24,8 @@ public:
 	bool activeCheck;
 
 	uint textureBuffer;
+
+	Color color{ 1,1,1,1 };
 
 private:
 

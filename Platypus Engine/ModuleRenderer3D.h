@@ -32,7 +32,7 @@ public:
 
 	void DrawCubeDirectMode(float originX=0, float originY=0, float originZ=0, float size=1);
 	
-	void DrawMesh(Mesh* mesh, bool wireframe = false);
+	void DrawMesh(Mesh* mesh, bool wireframe = false, Color col = {1,1,1,1});
 	void DrawAllMeshes();
 	void CreateCheckers();
 

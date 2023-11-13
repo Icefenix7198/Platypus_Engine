@@ -197,7 +197,7 @@ void ModuleEditor::DrawEditor()
 			}
 			ImGui::EndMenu();
 		}
-		ImGui::PushStyleColor(ImGuiCol_Button, { 0.8,0.1,0.1,1 });
+		ImGui::PushStyleColor(ImGuiCol_Button, { 0.8,0.1,0.1,1 }); //ImGuiCol is the type of widget, the color go from 0 to 1, usable for AAW
 		if (ImGui::Button("Quit"))
 		{
 			quit = true;

@@ -13,6 +13,18 @@
 
 void log(const char file[], int line, const char* format, ...);
 
+//File System things (ft. ThorEngine)
+#define LIBRARY_PATH "Library/"
+#define FOLDERS_PATH "Library/Folders/"
+#define MESHES_PATH "Library/Meshes/"
+#define MATERIALS_PATH "Library/Materials/"
+#define TEXTURES_PATH "Library/Textures/"
+#define MODELS_PATH "Library/Models/"
+#define ANIMATIONS_PATH "Library/Animations/"
+#define BONES_PATH "Library/Bones/"
+#define PARTICLES_PATH "Library/ParticleSystems/"
+#define SHADERS_PATH "Library/Shaders/"
+#define MAPS_PATH "Library/Maps/"
 
 #define CAP(n) ((n <= 0.0f) ? n=0.0f : (n >= 1.0f) ? n=1.0f : n=n)
 

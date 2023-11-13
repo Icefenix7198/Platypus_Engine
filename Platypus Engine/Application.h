@@ -10,6 +10,7 @@
 #include "ModuleCamera3D.h"
 #include "ModuleEditor.h"
 #include "ModuleScene.h"
+#include "ModuleFileSystem.h"
 
 #include<vector>
 
@@ -31,6 +32,7 @@ public:
 	ModuleCamera3D* camera;
 	ModuleEditor* editor;
 	ModuleScene* scene;
+	ModuleFileSystem* fileSystem;
 
 	//Moved to public to control Delta Time
 	Timer	ms_timer;

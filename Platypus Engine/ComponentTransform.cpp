@@ -145,7 +145,7 @@ void ComponentTransform::OnEditor()
 
 			ImGui::EndTable();
 		}
-		if (ImGui::BeginTable("Position", 4, 0))
+		if (ImGui::BeginTable("Rotation", 4, 0))
 		{
 
 			//Rotation
@@ -157,7 +157,7 @@ void ComponentTransform::OnEditor()
 
 			ImGui::EndTable();
 		}
-		if (ImGui::BeginTable("Position", 4, 0))
+		if (ImGui::BeginTable("Scale", 4, 0))
 		{
 			//Scale
 			ImGui::TableNextRow();

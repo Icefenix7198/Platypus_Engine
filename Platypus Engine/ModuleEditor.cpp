@@ -197,10 +197,12 @@ void ModuleEditor::DrawEditor()
 			}
 			ImGui::EndMenu();
 		}
+		ImGui::PushStyleColor(ImGuiCol_Button, { 0.8,0.1,0.1,1 });
 		if (ImGui::Button("Quit"))
 		{
 			quit = true;
 		}
+		ImGui::PopStyleColor();
 
 		ImGui::EndMainMenuBar();
 	}

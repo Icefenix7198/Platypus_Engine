@@ -39,6 +39,25 @@ void ComponentMaterial::OnEditor()
 		butonChar.append("##MaterialActive");
 		ImGui::Checkbox(butonChar.append(idComponent).c_str(), &active); //El doble ## hace que no se muestre el texto. Es necesario poner un nombre distinto a cada checkbox y boton ya que ImGui usa el nombre como la ID
 
+		butonChar.clear();
+		butonChar.append("Colors");
+		if (ImGui::BeginTable(butonChar.append(idComponent).c_str(), 4, 0))
+		{
+			
+			//Color
+			ImGui::TableNextRow();
+			butonChar.clear(); butonChar.append("R");
+			ImGui::TableNextColumn(); ImGui::SliderFloat(butonChar.append(idComponent).c_str(), &color.r, 0, 1);
+			butonChar.clear(); butonChar.append("G");
+			ImGui::TableNextColumn(); ImGui::SliderFloat(butonChar.append(idComponent).c_str(), &color.g, 0, 1);
+			butonChar.clear(); butonChar.append("B");
+			ImGui::TableNextColumn(); ImGui::SliderFloat(butonChar.append(idComponent).c_str(), &color.b, 0, 1);
+			butonChar.clear(); butonChar.append("A");
+			ImGui::TableNextColumn(); ImGui::SliderFloat(butonChar.append(idComponent).c_str(), &color.a, 0, 1);
+
+			ImGui::EndTable();
+		}
+
 		ImGui::Text("Size:");
 		ImGui::Text("Path:");
 

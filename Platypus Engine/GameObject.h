@@ -24,7 +24,9 @@ public:
 	Component* CreateComponent(ComponentType type);
 	bool HasComponent(ComponentType type);
 	int GetComponentPosition(Component* comp); //Return the position in the Component Vector, returns -1 if there is none
-	
+	//Return the component if found in the vec, by default is the first one but could be the second, third, and if the num provided is negative starts by the end.
+	Component* GetComponentByType(ComponentType type, int num = 0); 
+	int GetNumComponentOfAKind(ComponentType type);
 
 	ComponentTransform* objTransform = nullptr; //Due to the importance of the transform we have another reference to it
 

@@ -1,4 +1,5 @@
 #include "ComponentMesh.h"
+#include "ComponentMaterial.h"
 
 #include "Application.h"
 
@@ -57,9 +58,10 @@ bool ComponentMesh::Update()
 		Color col;
 		if (owner->HasComponent(ComponentType::MATERIAL))
 		{
-			//col = owner->components.at(owner->GetComponentPosition(ComponentType::MATERIAL));
+			ComponentMaterial* cMate = (ComponentMaterial*)owner->GetComponentByType(ComponentType::MATERIAL);
+			col = cMate->color;
 		}
-		App->renderer3D->DrawMesh(mesh, wireMode);
+		App->renderer3D->DrawMesh(mesh, wireMode/*,col*/);
 		glPopMatrix();
 	}
 	

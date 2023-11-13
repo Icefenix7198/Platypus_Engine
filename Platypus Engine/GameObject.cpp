@@ -116,4 +116,44 @@ int GameObject::GetComponentPosition(Component* comp)
 	return ret;
 }
 
+Component* GameObject::GetComponentByType(ComponentType _type, int num)
+{
+	Component* ret = nullptr;
+	
+	int pos = 0;
+
+	if(num>=0)
+	{
+		
+		for (int i = 0; i<components.size() ; i++)
+		{
+			if(components.at(i)->type == _type)
+			{
+				if (pos == num)
+				{
+					ret = components.at(i);
+				}
+				pos++;
+			}
+		}
+	}
+	else
+	{
+		for (int i = components.size(); i > 0; i--)
+		{
+			if (components.at(i)->type == _type)
+			{
+				pos++;
+				if (pos == num)
+				{
+					ret = components.at(i);
+				}
+			}
+		}
+	}
+	
+
+	return nullptr;
+}
+
 

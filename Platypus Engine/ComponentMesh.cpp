@@ -54,8 +54,11 @@ bool ComponentMesh::Update()
 		
 		glPushMatrix();
 		//glMultMatrixf(m.ptr()); //Como se le pasa la focking matriz?
-
-
+		Color col;
+		if (owner->HasComponent(ComponentType::MATERIAL))
+		{
+			//col = owner->components.at(owner->GetComponentPosition(ComponentType::MATERIAL));
+		}
 		App->renderer3D->DrawMesh(mesh, wireMode);
 		glPopMatrix();
 	}

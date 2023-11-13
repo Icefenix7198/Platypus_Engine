@@ -62,10 +62,8 @@ Component* GameObject::CreateComponent(ComponentType type)
 	{
 	case TRANSFORM:
 
-		for (int i = 0; i < components.size(); i++)
-		{
-			if (components.at(i)->type == ComponentType::TRANSFORM) { nonTransform = false; }
-		}
+		nonTransform = !HasComponent(ComponentType::TRANSFORM);
+
 		if (nonTransform && objTransform == nullptr)
 		{
 			LOG("Create Component Transform")				
@@ -95,6 +93,16 @@ Component* GameObject::CreateComponent(ComponentType type)
 		break;
 	}
 	
+	return ret;
+}
+
+bool GameObject::HasComponent(ComponentType type)
+{
+	bool ret = false;
+	for (int i = 0; i < components.size(); i++)
+	{
+		if (components.at(i)->type == type) { ret = false; }
+	}
 	return ret;
 }
 

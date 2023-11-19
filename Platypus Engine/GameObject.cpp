@@ -68,6 +68,7 @@ Component* GameObject::CreateComponent(ComponentType type)
 		{
 			LOG("Create Component Transform")				
 			ret = new ComponentTransform(this);
+			ret->type = type;
 			components.push_back(ret);
 			objTransform = (ComponentTransform*)ret;
 		}
@@ -78,6 +79,7 @@ Component* GameObject::CreateComponent(ComponentType type)
 		//Create component mesh
 		LOG("Create Component Mesh");
 		ret = new ComponentMesh(this);
+		ret->type = type;
 		components.push_back(ret);
 
 		break;
@@ -86,6 +88,7 @@ Component* GameObject::CreateComponent(ComponentType type)
 		//Create component material
 		LOG("Create Component Transform")
 		ret = new ComponentMaterial(this);
+		ret->type = type;
 		components.push_back(ret);
 
 		break;
@@ -101,7 +104,10 @@ bool GameObject::HasComponent(ComponentType type)
 	bool ret = false;
 	for (int i = 0; i < components.size(); i++)
 	{
-		if (components.at(i)->type == type) { ret = false; }
+		if (components.at(i)->type == type) 
+		{ 
+			ret = true;
+		}
 	}
 	return ret;
 }
@@ -153,7 +159,7 @@ Component* GameObject::GetComponentByType(ComponentType _type, int num)
 	}
 	
 
-	return nullptr;
+	return ret;
 }
 
 

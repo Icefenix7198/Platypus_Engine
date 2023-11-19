@@ -9,11 +9,14 @@
 ComponentMaterial::ComponentMaterial()
 {
 	checkers = true;
+	type = ComponentType::MATERIAL;
 }
 
 ComponentMaterial::ComponentMaterial(GameObject* own)
 {
 	owner = own;
+	type = ComponentType::MATERIAL;
+	color = { 1,1,1,1 };
 }
 
 ComponentMaterial::~ComponentMaterial()

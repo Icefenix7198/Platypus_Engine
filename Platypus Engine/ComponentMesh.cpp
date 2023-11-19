@@ -13,6 +13,7 @@ ComponentMesh::ComponentMesh()
 	wireMode = false;
 	drawVertexNormals = drawFaceNormals = false;
 	mesh = nullptr;
+	type = ComponentType::MESH;
 	Enable();
 }
 
@@ -22,6 +23,7 @@ ComponentMesh::ComponentMesh(GameObject* own)
 	drawVertexNormals = drawFaceNormals = false;
 	mesh = nullptr;
 	owner = own;
+	type = ComponentType::MESH;
 	Enable();
 }
 
@@ -56,12 +58,17 @@ bool ComponentMesh::Update()
 		glPushMatrix();
 		//glMultMatrixf(m.ptr()); //Como se le pasa la focking matriz?
 		Color col;
+		col = { 1,1,1,1 };
 		if (owner->HasComponent(ComponentType::MATERIAL))
 		{
 			ComponentMaterial* cMate = (ComponentMaterial*)owner->GetComponentByType(ComponentType::MATERIAL);
-			col = cMate->color;
+			if (cMate->active)
+			{
+				col = cMate->color;
+			}
+			
 		}
-		App->renderer3D->DrawMesh(mesh, wireMode/*,col*/);
+		App->renderer3D->DrawMesh(mesh, wireMode,col);
 		glPopMatrix();
 	}
 	

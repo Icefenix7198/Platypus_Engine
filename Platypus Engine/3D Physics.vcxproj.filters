@@ -61,6 +61,9 @@
     <Filter Include="Sources\Importers\Aasimp">
       <UniqueIdentifier>{838e75cd-541f-465b-b235-abf47587e54a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Importers\ImportersTypes">
+      <UniqueIdentifier>{3dca5b96-793a-4a97-95c8-aca8f808fe0b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -348,6 +351,9 @@
     <ClInclude Include="ModuleFileSystem.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ImporterFBX.h">
+      <Filter>Sources\Importers\ImportersTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -541,6 +547,9 @@
     </ClCompile>
     <ClCompile Include="ModuleFileSystem.cpp">
       <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ImporterFBX.cpp">
+      <Filter>Sources\Importers\ImportersTypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

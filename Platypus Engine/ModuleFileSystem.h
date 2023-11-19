@@ -2,6 +2,13 @@
 #include "Module.h"
 #include "Globals.h"
 
+enum ImportType
+{
+	NOTYPE,
+	MODEL,
+	TEXTURES,
+	MAXTYPES
+};
 
 class ModuleFileSystem : public Module
 {
@@ -20,6 +27,10 @@ public:
 	bool Exists(const char* file) const;
 	bool IsDirectory(const char* file) const;
 	bool CreateDir(const char* dir);
+
+	//Add archive to assets.
+	ImportType GetTypeOfFullPath(const char* fullPath);
+	bool AddToAssets(const char* fullPathToAdd, const char* folder);
 
 public:
 

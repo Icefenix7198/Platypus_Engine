@@ -115,6 +115,69 @@ bool ModuleFileSystem::CreateDir(const char* dir)
 	return false;
 }
 
+ImportType ModuleFileSystem::GetTypeOfFullPath(const char* fullPath)
+{
+	ImportType ret = ImportType::NOTYPE;
+
+	std::string pathFile;
+	std::string fileType;
+	pathFile.assign(fullPath);
+	bool pointFound = false;
+	//We search were the point is in the string to select the fileType
+	for (int i = 0; i < pathFile.size(); i++)
+	{
+		if (pointFound)
+		{
+			//Pushback the chars after the point (they will be the file tipe) ex: .fbx, .png, etc.
+			fileType.push_back(pathFile.at(i));
+		}
+		if (pathFile.at(i) == '.')
+		{
+			pointFound = true;
+		}
+	}
+
+	if (std::strcmp(fileType.c_str(), "FBX") == 0 || (std::strcmp(fileType.c_str(), "fbx") == 0))
+	{
+		ret = ImportType::MODEL;
+	}
+
+	if (std::strcmp(fileType.c_str(), "png") == 0 || (std::strcmp(fileType.c_str(), "dds") == 0) || (std::strcmp(fileType.c_str(), "DDS") == 0))
+	{
+		ret = ImportType::TEXTURES;
+	}
+
+	return ret;
+}
+
+bool ModuleFileSystem::AddToAssets(const char* fullPathToAdd, const char* folder)
+{
+	bool ret = false;
+
+	//Fopen to be able to read information Documentation :https://learn.microsoft.com/es-es/cpp/c-runtime-library/reference/fopen-s-wfopen-s?view=msvc-170
+	std::FILE* pFile;
+	fopen_s(&pFile, fullPathToAdd, "rb"); //Pointer to the file to access, name of the file, mode of acces, rb becose reasons
+
+	//Get pointer
+	PHYSFS_file* dest = PHYSFS_openWrite(folder);
+
+	uint size = 0;
+
+	if (pFile != nullptr)
+	{
+		fseek(pFile, 0, SEEK_END);
+		size = ftell(pFile);
+		
+	}
+	else
+	{
+		LOG("FILE SYSTEM: Could not open file '%s' to read", fullPathToAdd);
+	}
+		
+
+	return ret;
+}
+
 // Check if a file is a directory
 bool ModuleFileSystem::IsDirectory(const char* file) const
 {

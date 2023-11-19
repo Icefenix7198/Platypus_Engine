@@ -1,7 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleInput.h"
-
+#include "ModuleFileSystem.h"
 #include "ImGui/backends/imgui_impl_sdl2.h"
 
 #define MAX_KEYS 300
@@ -122,50 +122,31 @@ update_status ModuleInput::PreUpdate(float dt)
 
 			case SDL_DROPFILE:
 			{
-				
-				std::string pathFile;
-				std::string fileType;
-				pathFile.assign(e.drop.file);
-				LOG("Document with name %s droped", pathFile.c_str())
-				bool pointFound=false;
-				//We search were the point is in the string to select the fileType
-				for (int i = 0; i < pathFile.size(); i++)
-				{
-					if(pointFound)
-					{
-						//Pushback the chars after the point (they will be the file tipe) ex: .fbx, .png, etc.
-						fileType.push_back(pathFile.at(i));
-					}
-					if(pathFile.at(i) == '.')
-					{
-						pointFound = true; 
-					}
-				}
+				std::string path;
+				path.assign(e.drop.file);
 
-				if(std::strcmp(fileType.c_str(),"FBX")==0)
+				ImportType iType;
+				
+				iType = App->fileSystem->GetTypeOfFullPath(path.c_str());
+
+
+				switch (iType)
 				{
-					aasimp::Load(pathFile.c_str());
-					LOG("Fbx File %s loaded", pathFile.c_str())
-				}
-				if (std::strcmp(fileType.c_str(), "fbx") == 0)
-				{
-					aasimp::Load(pathFile.c_str());
-					LOG("Fbx File %s loaded", pathFile.c_str())
-				}
-				if (std::strcmp(fileType.c_str(), "png") == 0)
-				{
-					aasimp::LoadTexture(pathFile.c_str());
-					LOG("Png File %s loaded", pathFile.c_str())
-				}
-				if (std::strcmp(fileType.c_str(), "dds") == 0)
-				{
-					aasimp::LoadTexture(pathFile.c_str());
-					LOG("DDS File %s loaded", pathFile.c_str())
-				}
-				if (std::strcmp(fileType.c_str(), "DDS") == 0)
-				{
-					aasimp::LoadTexture(pathFile.c_str());
-					LOG("DDS File %s loaded", pathFile.c_str())
+				case NOTYPE:
+					LOG("Could not load the droped file: %s", path.c_str());
+					break;
+				case MODEL:
+					aasimp::Load(path.c_str());
+					LOG("Model %s loaded", path.c_str());
+					break;
+				case TEXTURES:
+					aasimp::Load(path.c_str());
+					LOG("Image %s loaded", path.c_str());
+					break;
+				case MAXTYPES:
+					break;
+				default:
+					break;
 				}
 
 				

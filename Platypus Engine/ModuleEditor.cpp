@@ -58,12 +58,6 @@ void ModuleEditor::DrawEditor()
 	{
 		if (ImGui::BeginMenu("File"))
 		{
-			if (ImGui::Button("Test LibraryCreation"))
-			{
-				
-				Importer in;
-				in.CreateLibrary();
-			}
 
 			ImGui::EndMenu();
 		}

@@ -66,7 +66,6 @@ bool ComponentMesh::Update()
 			{
 				col = cMate->color;
 			}
-			
 		}
 		App->renderer3D->DrawMesh(mesh, wireMode,col);
 		glPopMatrix();

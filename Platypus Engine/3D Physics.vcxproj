@@ -102,6 +102,7 @@
     <ClInclude Include="imGui\imstb_rectpack.h" />
     <ClInclude Include="imGui\imstb_textedit.h" />
     <ClInclude Include="imGui\imstb_truetype.h" />
+    <ClInclude Include="ImporterMesh.h" />
     <ClInclude Include="ImporterFBX.h" />
     <ClInclude Include="Importer.h" />
     <ClInclude Include="Light.h" />
@@ -197,6 +198,7 @@
     <ClCompile Include="imGui\imgui_draw.cpp" />
     <ClCompile Include="imGui\imgui_tables.cpp" />
     <ClCompile Include="imGui\imgui_widgets.cpp" />
+    <ClCompile Include="ImporterMesh.cpp" />
     <ClCompile Include="ImporterFBX.cpp" />
     <ClCompile Include="Importer.cpp" />
     <ClCompile Include="Light.cpp" />

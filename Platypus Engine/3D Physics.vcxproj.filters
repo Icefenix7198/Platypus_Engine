@@ -354,6 +354,9 @@
     <ClInclude Include="ImporterFBX.h">
       <Filter>Sources\Importers\ImportersTypes</Filter>
     </ClInclude>
+    <ClInclude Include="ImporterMesh.h">
+      <Filter>Sources\Importers\ImportersTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -549,6 +552,9 @@
       <Filter>Sources\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ImporterFBX.cpp">
+      <Filter>Sources\Importers\ImportersTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="ImporterMesh.cpp">
       <Filter>Sources\Importers\ImportersTypes</Filter>
     </ClCompile>
   </ItemGroup>

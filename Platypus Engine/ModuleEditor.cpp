@@ -205,6 +205,10 @@ void ModuleEditor::DrawEditor()
 	if (showConfig) { Configuration(); }
 	if (showInspector) 
 	{ 
+		//Set size and position of inspector
+		ImGui::SetNextWindowSize(ImVec2(220, 772), ImGuiCond_Once);
+		ImGui::SetNextWindowPos(ImVec2(256, 42), ImGuiCond_Once);
+
 		//GameObjectsTree
 		ImGui::Begin("Hierarchy", &showInspector);
 		GameObjectHierarchy(App->scene->root); 
@@ -213,6 +217,10 @@ void ModuleEditor::DrawEditor()
 		//GameObject Inspector
 		if(App->scene->selectedGO != App->scene->root && App->scene->selectedGO != nullptr)
 		{
+			//Set size and position of inspector
+			ImGui::SetNextWindowSize(ImVec2(270, 555), ImGuiCond_Once);
+			ImGui::SetNextWindowPos(ImVec2(1010, 42), ImGuiCond_Once);
+
 			ImGui::Begin("Inspector", &showInspector);
 			Inspector(App->scene->selectedGO);
 			ImGui::End();
@@ -221,9 +229,12 @@ void ModuleEditor::DrawEditor()
 	}
 	if (showConsole)
 	{
-		//ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver); //Try
-		ImGui::Begin("Console", &showConsole);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked				
+		//Set size and position of console
+		ImGui::SetNextWindowSize(ImVec2(805, 220), ImGuiCond_Once ); 
+		ImGui::SetNextWindowPos(ImVec2(475, 600) , ImGuiCond_Once);
 
+		ImGui::Begin("Console", &showConsole);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked				
+		//ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_FirstUseEver);
 		ConsoleLog(consoleLog);
 
 		ImGui::End();

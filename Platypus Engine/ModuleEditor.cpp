@@ -206,6 +206,7 @@ void ModuleEditor::DrawEditor()
 	if (showInspector) 
 	{ 
 		//Set size and position of inspector
+		ImGui::GetMainViewport(); //This is key to have a generic layout
 		ImGui::SetNextWindowSize(ImVec2(220, 772), ImGuiCond_Once);
 		ImGui::SetNextWindowPos(ImVec2(256, 42), ImGuiCond_Once);
 

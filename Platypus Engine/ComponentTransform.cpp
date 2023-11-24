@@ -24,6 +24,8 @@ ComponentTransform::ComponentTransform()
 	rotation.w = 0;
 	rot = {rotation.x, rotation.y, rotation.z, rotation.w};
 
+	localTransform = GenerateMatrix(pos, scale, rot);
+
 	Enable();
 }
 
@@ -44,6 +46,8 @@ ComponentTransform::ComponentTransform(GameObject* own)
 	rotation.z = 0;
 	rotation.w = 0;
 	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
+
+	localTransform = GenerateMatrix(pos, scale, rot);
 
 	Enable();
 
@@ -82,6 +86,7 @@ ComponentTransform::ComponentTransform(aiVector3D vecPos, aiVector3D vecScale, a
 	rotation = quatRot;
 	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
 
+	localTransform = GenerateMatrix(pos, scale, rot);
 	Enable();
 }
 
@@ -98,28 +103,27 @@ void ComponentTransform::SetValues(aiVector3D translation, aiVector3D scaling, a
 
 	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
 	//rot.x=RadToDeg(rot.x); rot.y = RadToDeg(rot.y); rot.z = RadToDeg(rot.z); //Values given in Radians,must translate to degrees
-	rot.x = RADTODEG * (rot.x); rot.y = RADTODEG * (rot.y); rot.z = RADTODEG * (rot.z); //Values given in Radians,must translate to degrees
+	
 }
 
-void ComponentTransform::GenerateMatrix(aiVector3D translation, aiVector3D scaling, aiQuaternion rotation)
+void ComponentTransform::GenerateLocalMatrix()
+{
+	float4x4 m;
+	m = m.identity;
+	m = float4x4::FromTRS(pos, rot, scale); //Creates automatically the matrix, thanks math library
+
+	localTransform = m;
+}
+
+float4x4 ComponentTransform::GenerateMatrix(float3 translation, float3 scaling, Quat rotation)
 {
 	//Si entendi bien este tutorial https://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
 	
 	float4x4 m;
 	m = m.identity;
+	m = float4x4::FromTRS(translation, rotation, scaling); //Creates automatically the matrix, thanks math library
 
-	//Multiplicar translacion
-
-	//Multiplicar rotacion
-
-	//Multiplicar escala 
-	//Scale matrix
-	float4x4 scaleMatrix;
-	scaleMatrix = scaleMatrix.identity;
-	//Ojala poder usar un for pero como los vectores usan x,y,z pues no se puede
-	scaleMatrix.At(0, 0) = scaling.x;
-	scaleMatrix.At(1, 1) = scaling.y;
-	scaleMatrix.At(2, 2) = scaling.z;
+	return m; //Translate*rotate*scale
 }
 
 void ComponentTransform::OnEditor()
@@ -145,14 +149,17 @@ void ComponentTransform::OnEditor()
 
 			ImGui::EndTable();
 		}
+
+		float3 rota = { RADTODEG * (rot.x), RADTODEG * (rot.y), RADTODEG * (rot.z) };//Values given in Radians,must translate to degrees
+
 		if (ImGui::BeginTable("Rotation", 4, 0))
 		{
 
 			//Rotation
 			ImGui::TableNextRow();
-			ImGui::TableNextColumn(); ImGui::InputFloat("X", &rot.x, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
-			ImGui::TableNextColumn(); ImGui::InputFloat("Y", &rot.y, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
-			ImGui::TableNextColumn(); ImGui::InputFloat("Z", &rot.z, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
+			ImGui::TableNextColumn(); ImGui::InputFloat("X", &rota.x, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
+			ImGui::TableNextColumn(); ImGui::InputFloat("Y", &rota.y, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
+			ImGui::TableNextColumn(); ImGui::InputFloat("Z", &rota.z, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
 			ImGui::TableNextColumn(); ImGui::Text("Rotation");
 
 			ImGui::EndTable();

@@ -1,5 +1,6 @@
 #include "ComponentMesh.h"
 #include "ComponentMaterial.h"
+#include "ComponentTransform.h"
 
 #include "Application.h"
 
@@ -54,9 +55,11 @@ bool ComponentMesh::Update()
 		if (drawVertexNormals) {	DrawVertexNormals();}
 		if (drawFaceNormals) { DrawFaceNormals(); }
 		
+		owner->objTransform->GenerateLocalMatrix();
+		float4x4 m = owner->objTransform->localTransform.Transposed();
 		
 		glPushMatrix();
-		//glMultMatrixf(m.ptr()); //Como se le pasa la focking matriz?
+		glMultMatrixf(m.ptr());
 		Color col;
 		col = { 1,1,1,1 };
 		if (owner->HasComponent(ComponentType::MATERIAL))

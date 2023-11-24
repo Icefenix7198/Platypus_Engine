@@ -37,7 +37,11 @@ public:
 	float3 scale;
 	math::Quat rot;
 
-	void GenerateMatrix(aiVector3D translation, aiVector3D scaling, aiQuaternion rotation);
+	float4x4 localTransform;
+	
+	//Sets the local transform in function of the values of the Component
+	void GenerateLocalMatrix();
+	float4x4 GenerateMatrix(float3 translation, float3 scaling, Quat rotation);
 	
 	//ImGui
 	void OnEditor();

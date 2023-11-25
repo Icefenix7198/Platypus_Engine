@@ -157,9 +157,18 @@ void ComponentTransform::OnEditor()
 
 			//Rotation
 			ImGui::TableNextRow();
-			ImGui::TableNextColumn(); ImGui::InputFloat("X", &rota.x, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
-			ImGui::TableNextColumn(); ImGui::InputFloat("Y", &rota.y, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
-			ImGui::TableNextColumn(); ImGui::InputFloat("Z", &rota.z, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
+			ImGui::TableNextColumn(); if (ImGui::InputFloat("X", &rota.x, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly)) 
+			{
+				rot.x = rota.x * DEGTORAD; 
+			}
+			ImGui::TableNextColumn(); if(ImGui::InputFloat("Y", &rota.y, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly)) 
+			{
+				rot.y = rota.y * DEGTORAD;
+			}
+			ImGui::TableNextColumn(); if(ImGui::InputFloat("Z", &rota.z, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly)) 
+			{
+				rot.z = rota.z * DEGTORAD;
+			}
 			ImGui::TableNextColumn(); ImGui::Text("Rotation");
 
 			ImGui::EndTable();

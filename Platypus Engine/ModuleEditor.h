@@ -5,6 +5,7 @@
 #include "Module.h"
 #include "Globals.h"
 #include "GameObject.h"
+#include "imGui/imgui.h"
 #include <vector>
 #include <string>
 
@@ -53,6 +54,9 @@ private:
 	bool showConfig = true;
 	bool showDemo = false;
 	bool showInspector = true; //No se si inspector es la palabra correcta
+
+	//For generic position in screen
+	const ImGuiViewport* main_viewport;
 };
 
 #endif //MODULE_EDITOR

@@ -53,6 +53,8 @@ bool ModuleEditor::Init()
 
 void ModuleEditor::DrawEditor()
 {
+	main_viewport = ImGui::GetMainViewport(); //Make generic windows (it must be declared here cause imGui/Window isn't created at Init
+
 	//Barra de arriba del editor (esto tendra que ir en ModuleEditor)
 	if (ImGui::BeginMainMenuBar())
 	{
@@ -205,10 +207,9 @@ void ModuleEditor::DrawEditor()
 	if (showConfig) { Configuration(); }
 	if (showInspector) 
 	{ 
-		//Set size and position of inspector
-		ImGui::GetMainViewport(); //This is key to have a generic layout
+		//Set size and position of inspector	
+		ImGui::SetNextWindowPos(ImVec2(main_viewport->WorkPos.x + 0, main_viewport->WorkPos.y + 18), ImGuiCond_Once);
 		ImGui::SetNextWindowSize(ImVec2(220, 772), ImGuiCond_Once);
-		ImGui::SetNextWindowPos(ImVec2(256, 42), ImGuiCond_Once);
 
 		//GameObjectsTree
 		ImGui::Begin("Hierarchy", &showInspector);
@@ -219,8 +220,8 @@ void ModuleEditor::DrawEditor()
 		if(App->scene->selectedGO != App->scene->root && App->scene->selectedGO != nullptr)
 		{
 			//Set size and position of inspector
-			ImGui::SetNextWindowSize(ImVec2(270, 555), ImGuiCond_Once);
-			ImGui::SetNextWindowPos(ImVec2(1010, 42), ImGuiCond_Once);
+			ImGui::SetNextWindowPos(ImVec2(main_viewport->WorkPos.x + (main_viewport->Size.x- 270), main_viewport->WorkPos.y + 18), ImGuiCond_Once); 
+			ImGui::SetNextWindowSize(ImVec2(270, 560), ImGuiCond_Once);
 
 			ImGui::Begin("Inspector", &showInspector);
 			Inspector(App->scene->selectedGO);
@@ -231,8 +232,8 @@ void ModuleEditor::DrawEditor()
 	if (showConsole)
 	{
 		//Set size and position of console
-		ImGui::SetNextWindowSize(ImVec2(805, 220), ImGuiCond_Once ); 
-		ImGui::SetNextWindowPos(ImVec2(475, 600) , ImGuiCond_Once);
+		ImGui::SetNextWindowPos(ImVec2(main_viewport->WorkPos.x + 220, main_viewport->WorkPos.y + (main_viewport->Size.y - 220)), ImGuiCond_Once);
+		ImGui::SetNextWindowSize(ImVec2(800, 220), ImGuiCond_Once);
 
 		ImGui::Begin("Console", &showConsole);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked				
 		//ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_FirstUseEver);

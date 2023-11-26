@@ -38,6 +38,7 @@ public:
 	math::Quat rot;
 
 	float4x4 localTransform;
+	float4x4 globalTransform;
 	
 	//Sets the local transform in function of the values of the Component
 	void GenerateLocalMatrix();

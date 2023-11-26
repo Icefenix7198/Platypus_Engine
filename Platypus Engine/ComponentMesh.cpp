@@ -13,6 +13,7 @@ ComponentMesh::ComponentMesh()
 {
 	wireMode = false;
 	drawVertexNormals = drawFaceNormals = false;
+	drawAABB = true;
 	mesh = nullptr;
 	type = ComponentType::MESH;
 	Enable();
@@ -20,10 +21,12 @@ ComponentMesh::ComponentMesh()
 
 ComponentMesh::ComponentMesh(GameObject* own)
 {
+	owner = own;
 	wireMode = false;
 	drawVertexNormals = drawFaceNormals = false;
+	drawAABB = true;
 	mesh = nullptr;
-	owner = own;
+
 	type = ComponentType::MESH;
 	Enable();
 }
@@ -32,6 +35,7 @@ ComponentMesh::ComponentMesh(Mesh* _mesh)
 {
 	wireMode = false;
 	drawVertexNormals = drawFaceNormals = false;
+	drawAABB = true;
 	mesh = _mesh;
 	Enable();
 }
@@ -46,6 +50,26 @@ ComponentMesh::~ComponentMesh()
 	}
 }
 
+AABB ComponentMesh::GenerateLocalAABB()
+{
+	localAABB.SetNegativeInfinity();
+	localAABB.Enclose((float3*)mesh->vertex, mesh->num_vertex);
+
+	return localAABB;
+}
+
+AABB ComponentMesh::GetGlobalAABB()
+{
+	
+	mOBB = GenerateLocalAABB();
+	mOBB.Transform(owner->objTransform->localTransform.Transposed());
+
+	globalAABB.SetNegativeInfinity();
+	globalAABB.Enclose(mOBB);
+
+	return globalAABB;
+}
+
 bool ComponentMesh::Update()
 {
 	//Draw mesh
@@ -54,6 +78,7 @@ bool ComponentMesh::Update()
 	{
 		if (drawVertexNormals) {	DrawVertexNormals();}
 		if (drawFaceNormals) { DrawFaceNormals(); }
+		if (drawAABB) { DrawGlobalAABB(); }
 		
 		owner->objTransform->GenerateLocalMatrix();
 		float4x4 m = owner->objTransform->localTransform.Transposed();
@@ -147,6 +172,74 @@ bool ComponentMesh::DrawFaceNormals()
 	return true;
 }
 
+bool ComponentMesh::DrawGlobalAABB()
+{
+	GLfloat const color[3] = { (220.0 / 255), (10.0 / 255), (10.0 / 255) };
+	glColor3fv(color); //Uses values from 1 to 0 no 255
+	//glLineWidth(1.0f);
+	glBegin(GL_LINES);
+
+	//FRONT FACE
+	// 0,0,0 - 1,0,0
+	glVertex3f(globalAABB.minPoint.x, globalAABB.minPoint.y, globalAABB.minPoint.z);
+	glVertex3f(globalAABB.maxPoint.x, globalAABB.minPoint.y, globalAABB.minPoint.z);
+
+	//0,0,0 - 0,1,0
+	glVertex3f(globalAABB.minPoint.x, globalAABB.minPoint.y, globalAABB.minPoint.z);
+	glVertex3f(globalAABB.minPoint.x, globalAABB.maxPoint.y, globalAABB.minPoint.z);
+
+	//1,0,0 - 1,1,0
+	glVertex3f(globalAABB.maxPoint.x, globalAABB.minPoint.y, globalAABB.minPoint.z);
+	glVertex3f(globalAABB.maxPoint.x, globalAABB.maxPoint.y, globalAABB.minPoint.z);
+
+	//0,1,0 - 1,1,0
+	glVertex3f(globalAABB.minPoint.x, globalAABB.maxPoint.y, globalAABB.minPoint.z);
+	glVertex3f(globalAABB.maxPoint.x, globalAABB.maxPoint.y, globalAABB.minPoint.z);
+
+	//RIGTH FACE (1,0,0 - 1,1,0 IN FRONT)
+	//1,0,0 - 1,0,1
+	glVertex3f(globalAABB.maxPoint.x, globalAABB.minPoint.y, globalAABB.minPoint.z);
+	glVertex3f(globalAABB.maxPoint.x, globalAABB.minPoint.y, globalAABB.maxPoint.z);
+
+	//1,1,0 - 1,1,1
+	glVertex3f(globalAABB.maxPoint.x, globalAABB.maxPoint.y, globalAABB.minPoint.z);
+	glVertex3f(globalAABB.maxPoint.x, globalAABB.maxPoint.y, globalAABB.maxPoint.z);
+
+	//1,0,1 - 1,1,1
+	glVertex3f(globalAABB.maxPoint.x, globalAABB.minPoint.y, globalAABB.maxPoint.z);
+	glVertex3f(globalAABB.maxPoint.x, globalAABB.maxPoint.y, globalAABB.maxPoint.z);
+
+	//LEFT FACE (0,0,1 - 0,1,0 IN FRONT)
+	//0,0,1 - 0,1,1
+	glVertex3f(globalAABB.minPoint.x, globalAABB.minPoint.y, globalAABB.maxPoint.z);
+	glVertex3f(globalAABB.minPoint.x, globalAABB.maxPoint.y, globalAABB.maxPoint.z);
+
+	//0,0,0 - 0,0,1
+	glVertex3f(globalAABB.minPoint.x, globalAABB.minPoint.y, globalAABB.minPoint.z);
+	glVertex3f(globalAABB.minPoint.x, globalAABB.minPoint.y, globalAABB.maxPoint.z);
+
+	//0,1,0 - 0,1,1
+	glVertex3f(globalAABB.minPoint.x, globalAABB.maxPoint.y, globalAABB.minPoint.z);
+	glVertex3f(globalAABB.minPoint.x, globalAABB.maxPoint.y, globalAABB.maxPoint.z);
+
+	//BACK FACE (0,0,1 - 0,1,1 IN LEFT AND 1,0,1 - 1,1,1 IN RIGTH)
+	//0,0,1 - 1,0,1
+	glVertex3f(globalAABB.minPoint.x, globalAABB.minPoint.y, globalAABB.maxPoint.z);
+	glVertex3f(globalAABB.maxPoint.x, globalAABB.minPoint.y, globalAABB.maxPoint.z);
+
+	//0,1,1 - 1,1,1
+	glVertex3f(globalAABB.minPoint.x, globalAABB.maxPoint.y, globalAABB.maxPoint.z);
+	glVertex3f(globalAABB.maxPoint.x, globalAABB.maxPoint.y, globalAABB.maxPoint.z);
+	
+
+	//glLineWidth(1);
+	GLfloat const color2[3] = { (1.0f), (1.0f), (1.0f) };
+	glColor3fv(color2); //Return to White as normal
+	glEnd();
+
+	return true;
+}
+
 void ComponentMesh::OnEditor()
 {
 	std::string butonChar;
@@ -184,6 +277,9 @@ void ComponentMesh::OnEditor()
 			butonChar.clear();
 			butonChar.append("Draw Face Normals");
 			ImGui::Checkbox(butonChar.append(idComponent).c_str(), &drawFaceNormals);
+			butonChar.clear();
+			butonChar.append("Draw AABB");
+			ImGui::Checkbox(butonChar.append(idComponent).c_str(), &drawAABB);
 			
 			ImGui::Text("Number vertex %d", mesh->num_vertex);
 			ImGui::Text("Number normals %d", mesh->num_normals);

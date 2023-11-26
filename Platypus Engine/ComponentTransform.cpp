@@ -1,4 +1,5 @@
 #include "ComponentTransform.h"
+#include "ComponentMesh.h" //Necesary for AABBs
 
 #include "MathGeoLib/include/Math/Quat.h"
 
@@ -31,6 +32,8 @@ ComponentTransform::ComponentTransform()
 
 ComponentTransform::ComponentTransform(GameObject* own)
 {
+	owner = own;
+
 	translation.x = 0;
 	translation.y = 0;
 	translation.z = 0;
@@ -47,11 +50,9 @@ ComponentTransform::ComponentTransform(GameObject* own)
 	rotation.w = 0;
 	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
 
-	localTransform = GenerateMatrix(pos, scale, rot);
-
 	Enable();
-
-	owner = own;
+	
+	localTransform = GenerateMatrix(pos, scale, rot);
 }
 
 ComponentTransform::ComponentTransform(aiVector3D vecPos)
@@ -108,11 +109,14 @@ void ComponentTransform::SetValues(aiVector3D translation, aiVector3D scaling, a
 
 void ComponentTransform::GenerateLocalMatrix()
 {
-	float4x4 m;
-	m = m.identity;
-	m = float4x4::FromTRS(pos, rot, scale); //Creates automatically the matrix, thanks math library
+	//Generate AABB if has component mesh (we do it here)
+	ComponentMesh* mesh = (ComponentMesh*)owner->GetComponentByType(ComponentType::MESH);
+	if (mesh != nullptr)
+	{
+		mesh->GenerateLocalAABB();
+	}
 
-	localTransform = m;
+	localTransform = GenerateMatrix(pos,scale, rot );
 }
 
 float4x4 ComponentTransform::GenerateMatrix(float3 translation, float3 scaling, Quat rotation)

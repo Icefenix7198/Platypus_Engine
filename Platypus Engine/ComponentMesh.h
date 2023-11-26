@@ -20,17 +20,26 @@ public:
 	ComponentMesh(Mesh* _mesh);
 	~ComponentMesh();
 
+	AABB GenerateLocalAABB();
+
+	AABB GetGlobalAABB();
+
 	bool Update();
 	bool DrawVertexNormals();
 	bool DrawFaceNormals();
+	bool DrawGlobalAABB();
+	
 	void OnEditor();
 
 	Mesh* mesh;
 	bool wireMode;
 	bool drawVertexNormals;
 	bool drawFaceNormals;
+	bool drawAABB;
 private:
-
+	AABB localAABB;
+	OBB mOBB;
+	AABB globalAABB;
 };
 
 #endif //!__COMPONENT_MESH_H__

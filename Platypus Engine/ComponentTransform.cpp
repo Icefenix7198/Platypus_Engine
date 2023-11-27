@@ -1,5 +1,6 @@
 #include "ComponentTransform.h"
 #include "ComponentMesh.h" //Necesary for AABBs
+#include "GameObject.h"
 
 #include "MathGeoLib/include/Math/Quat.h"
 
@@ -148,6 +149,17 @@ float4x4 ComponentTransform::CreateMatrix(float3 translation, float3 scaling, Qu
 	return m; //Translate*rotate*scale
 }
 
+bool ComponentTransform::RecalculateMatrix()
+{
+	GenerateGlobalMatrix();
+	for (int i = 0; i < owner->children.size(); i++)
+	{
+		owner->children.at(i)->objTransform->RecalculateMatrix();
+	}
+
+	return true;
+}
+
 void ComponentTransform::OnEditor()
 {
 	if(ImGui::CollapsingHeader("Transform"))
@@ -159,16 +171,19 @@ void ComponentTransform::OnEditor()
 		if (ImGui::DragFloat3("Position", posi)) 
 		{
 			pos.x = posi[0]; pos.y = posi[1]; pos.z = posi[2];
+			RecalculateMatrix();
 		};
 		float rota[3] = { RADTODEG * (rot.x), RADTODEG * (rot.y), RADTODEG * (rot.z) };//Values given in Radians,must translate to degrees
 		if (ImGui::DragFloat3("Rotation", rota))
 		{
 			rot.x = rota[0] * DEGTORAD; rot.y = rota[1] * DEGTORAD; rot.z = rota[2] * DEGTORAD;
+			RecalculateMatrix();
 		};
 		float esca[3] = { scale.x, scale.y, scale.z };
 		if (ImGui::DragFloat3("Scale", esca))
 		{
 			scale.x = esca[0]; scale.y = esca[1]; scale.z = esca[2];
+			RecalculateMatrix();
 		};
 	}
 }

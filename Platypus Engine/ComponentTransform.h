@@ -45,6 +45,9 @@ public:
 	void GenerateGlobalMatrix();
 	float4x4 CreateMatrix(float3 translation, float3 scaling, Quat rotation);
 	
+	//Funcion recursiva actualizar all transforms
+	bool RecalculateMatrix();
+
 	//ImGui
 	void OnEditor();
 

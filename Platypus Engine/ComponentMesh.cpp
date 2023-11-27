@@ -40,8 +40,6 @@ ComponentMesh::ComponentMesh(Mesh* _mesh)
 	Enable();
 }
 
-
-
 ComponentMesh::~ComponentMesh()
 {
 	if (mesh != nullptr)
@@ -80,8 +78,8 @@ bool ComponentMesh::Update()
 		if (drawFaceNormals) { DrawFaceNormals(); }
 		if (drawAABB) { DrawGlobalAABB(); }
 		
-		owner->objTransform->GenerateLocalMatrix();
-		float4x4 m = owner->objTransform->localTransform.Transposed();
+		owner->objTransform->GenerateGlobalMatrix();
+		float4x4 m = owner->objTransform->globalTransform.Transposed();
 		
 		glPushMatrix();
 		glMultMatrixf(m.ptr());

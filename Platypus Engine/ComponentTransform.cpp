@@ -25,9 +25,9 @@ ComponentTransform::ComponentTransform()
 	rotation.w = 0;
 	rot = {rotation.x, rotation.y, rotation.z, rotation.w};
 
-	localTransform = GenerateMatrix(pos, scale, rot);
-
 	Enable();
+
+	GenerateGlobalMatrix();
 }
 
 ComponentTransform::ComponentTransform(GameObject* own)
@@ -52,7 +52,7 @@ ComponentTransform::ComponentTransform(GameObject* own)
 
 	Enable();
 	
-	localTransform = GenerateMatrix(pos, scale, rot);
+	GenerateGlobalMatrix();
 }
 
 ComponentTransform::ComponentTransform(aiVector3D vecPos)
@@ -74,6 +74,9 @@ ComponentTransform::ComponentTransform(aiVector3D vecPos)
 	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
 
 	Enable();
+
+	GenerateGlobalMatrix();
+
 }
 
 ComponentTransform::ComponentTransform(aiVector3D vecPos, aiVector3D vecScale, aiQuaternion quatRot)
@@ -87,7 +90,7 @@ ComponentTransform::ComponentTransform(aiVector3D vecPos, aiVector3D vecScale, a
 	rotation = quatRot;
 	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
 
-	localTransform = GenerateMatrix(pos, scale, rot);
+	GenerateGlobalMatrix(); //Also makes the local matrix
 	Enable();
 }
 
@@ -116,10 +119,25 @@ void ComponentTransform::GenerateLocalMatrix()
 		mesh->GenerateLocalAABB();
 	}
 
-	localTransform = GenerateMatrix(pos,scale, rot );
+	localTransform = CreateMatrix(pos,scale, rot );
 }
 
-float4x4 ComponentTransform::GenerateMatrix(float3 translation, float3 scaling, Quat rotation)
+void ComponentTransform::GenerateGlobalMatrix()
+{
+	//The operation depends of this, so just in case it doesn't exist yet 
+	GenerateLocalMatrix();
+
+	if (owner->parent == nullptr) //Si es el root su global es igual a su loca que es 0,0,0 en todo menos scale que es 1,1,1
+	{
+		globalTransform = localTransform; //Global transform of root is global transform
+	}
+	else
+	{
+		globalTransform = owner->parent->objTransform->globalTransform * localTransform;
+	}
+}
+
+float4x4 ComponentTransform::CreateMatrix(float3 translation, float3 scaling, Quat rotation)
 {
 	//Si entendi bien este tutorial https://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
 	

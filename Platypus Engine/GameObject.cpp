@@ -7,26 +7,26 @@
 
 GameObject::GameObject()
 {
-	CreateComponent(ComponentType::TRANSFORM);
 	name = "GameObject";
 	active = true;
 	components = {};
+	CreateComponent(ComponentType::TRANSFORM);
 }
 
 GameObject::GameObject(std::string _name, bool _active)
 {
-	CreateComponent(ComponentType::TRANSFORM);
 	name = _name;
 	active = _active;
 	components = {};
+	CreateComponent(ComponentType::TRANSFORM);
 }
 
 GameObject::GameObject(std::string _name, GameObject* _parent, bool _active)
 {
-	CreateComponent(ComponentType::TRANSFORM);
 	name = _name;
 	parent = _parent;
 	active = _active;
+	CreateComponent(ComponentType::TRANSFORM);
 }
 
 GameObject::~GameObject()

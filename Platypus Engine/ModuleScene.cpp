@@ -12,10 +12,10 @@
 
 ModuleScene::ModuleScene(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	std::string name;
-	name.assign("Root_Node");
+	//std::string name;
+	//name.assign("Root_Node");
 
-	root = new GameObject(name, nullptr); //Create the root node
+	//root = new GameObject(name, nullptr); //Create the root node
 }
 
 ModuleScene::~ModuleScene()
@@ -24,7 +24,10 @@ ModuleScene::~ModuleScene()
 
 bool ModuleScene::Init()
 {  
-	selectedGO = root;
+	std::string name;
+	name.assign("Root_Node");
+
+	root = CreateGameObject(nullptr, name);
 
 	return true;
 }
@@ -37,7 +40,7 @@ bool ModuleScene::CleanUp()
 GameObject* ModuleScene::CreateGameObject(GameObject* parent,std::string name)
 {
 	GameObject* go = new GameObject(name,parent,true);
-	parent->children.push_back(go);
+	if (parent != nullptr) { parent->children.push_back(go); }
 	go->CreateComponent(ComponentType::TRANSFORM);
 	selectedGO = go;
 

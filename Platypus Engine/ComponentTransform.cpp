@@ -155,57 +155,21 @@ void ComponentTransform::OnEditor()
 
 		ImGui::Checkbox("##Transform", &active);
 		
-
-		//Each table goes apart to avoid modifing non desired values
-		if (ImGui::BeginTable("Position", 4, 0)) 
+		float posi[3] = { pos.x, pos.y, pos.z };
+		if (ImGui::DragFloat3("Position", posi)) 
 		{
-			//(active) ? 0 :ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly --> When active= false los valores no se pueden modificar desde aqui
-			// 
-			// 
-			//Position
-			ImGui::TableNextRow();
-			ImGui::TableNextColumn(); ImGui::InputFloat("X", &pos.x, 0.0F, 0.0F, "%.5f", (active) ? 0 :ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly); 
-			ImGui::TableNextColumn(); ImGui::InputFloat("Y", &pos.y, 0.0F, 0.0F, "%.5f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
-			ImGui::TableNextColumn(); ImGui::InputFloat("Z", &pos.z, 0.0F, 0.0F, "%.5f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
-			ImGui::TableNextColumn();ImGui::Text("Position");
-
-			ImGui::EndTable();
-		}
-
-		float3 rota = { RADTODEG * (rot.x), RADTODEG * (rot.y), RADTODEG * (rot.z) };//Values given in Radians,must translate to degrees
-
-		if (ImGui::BeginTable("Rotation", 4, 0))
+			pos.x = posi[0]; pos.y = posi[1]; pos.z = posi[2];
+		};
+		float rota[3] = { RADTODEG * (rot.x), RADTODEG * (rot.y), RADTODEG * (rot.z) };//Values given in Radians,must translate to degrees
+		if (ImGui::DragFloat3("Rotation", rota))
 		{
-
-			//Rotation
-			ImGui::TableNextRow();
-			ImGui::TableNextColumn(); if (ImGui::InputFloat("X", &rota.x, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly)) 
-			{
-				rot.x = rota.x * DEGTORAD; 
-			}
-			ImGui::TableNextColumn(); if(ImGui::InputFloat("Y", &rota.y, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly)) 
-			{
-				rot.y = rota.y * DEGTORAD;
-			}
-			ImGui::TableNextColumn(); if(ImGui::InputFloat("Z", &rota.z, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly)) 
-			{
-				rot.z = rota.z * DEGTORAD;
-			}
-			ImGui::TableNextColumn(); ImGui::Text("Rotation");
-
-			ImGui::EndTable();
-		}
-		if (ImGui::BeginTable("Scale", 4, 0))
+			rot.x = rota[0] * DEGTORAD; rot.y = rota[1] * DEGTORAD; rot.z = rota[2] * DEGTORAD;
+		};
+		float esca[3] = { scale.x, scale.y, scale.z };
+		if (ImGui::DragFloat3("Scale", esca))
 		{
-			//Scale
-			ImGui::TableNextRow();
-			ImGui::TableNextColumn(); ImGui::InputFloat("X", &scale.x, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
-			ImGui::TableNextColumn(); ImGui::InputFloat("Y", &scale.y, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
-			ImGui::TableNextColumn(); ImGui::InputFloat("Z", &scale.z, 0.0F, 0.0F, "%.2f", (active) ? 0 : ImGuiInputTextFlags_::ImGuiInputTextFlags_ReadOnly);
-			ImGui::TableNextColumn(); ImGui::Text("Scale");
-
-			ImGui::EndTable();
-		}
+			scale.x = esca[0]; scale.y = esca[1]; scale.z = esca[2];
+		};
 	}
 }
 

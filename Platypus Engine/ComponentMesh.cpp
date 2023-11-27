@@ -17,6 +17,8 @@ ComponentMesh::ComponentMesh()
 	mesh = nullptr;
 	type = ComponentType::MESH;
 	Enable();
+
+	if (mesh != nullptr) { GetGlobalAABB(); }
 }
 
 ComponentMesh::ComponentMesh(GameObject* own)
@@ -29,6 +31,8 @@ ComponentMesh::ComponentMesh(GameObject* own)
 
 	type = ComponentType::MESH;
 	Enable();
+
+	if (mesh != nullptr) { GetGlobalAABB(); }
 }
 
 ComponentMesh::ComponentMesh(Mesh* _mesh)
@@ -38,6 +42,8 @@ ComponentMesh::ComponentMesh(Mesh* _mesh)
 	drawAABB = true;
 	mesh = _mesh;
 	Enable();
+
+	if (mesh != nullptr) { GetGlobalAABB(); }
 }
 
 ComponentMesh::~ComponentMesh()
@@ -58,9 +64,9 @@ AABB ComponentMesh::GenerateLocalAABB()
 
 AABB ComponentMesh::GetGlobalAABB()
 {
-	
+	owner->objTransform->GenerateGlobalMatrix();
 	mOBB = GenerateLocalAABB();
-	mOBB.Transform(owner->objTransform->localTransform.Transposed());
+	mOBB.Transform(owner->objTransform->globalTransform/*.Transposed()*/);
 
 	globalAABB.SetNegativeInfinity();
 	globalAABB.Enclose(mOBB);
@@ -78,7 +84,7 @@ bool ComponentMesh::Update()
 		if (drawFaceNormals) { DrawFaceNormals(); }
 		if (drawAABB) { DrawGlobalAABB(); }
 		
-		owner->objTransform->GenerateGlobalMatrix();
+		//owner->objTransform->GenerateGlobalMatrix();
 		float4x4 m = owner->objTransform->globalTransform.Transposed();
 		
 		glPushMatrix();
@@ -172,10 +178,12 @@ bool ComponentMesh::DrawFaceNormals()
 
 bool ComponentMesh::DrawGlobalAABB()
 {
+	GetGlobalAABB();
+	glBegin(GL_LINES);
 	GLfloat const color[3] = { (220.0 / 255), (10.0 / 255), (10.0 / 255) };
 	glColor3fv(color); //Uses values from 1 to 0 no 255
-	//glLineWidth(1.0f);
-	glBegin(GL_LINES);
+	glLineWidth(2.0f);
+	
 
 	//FRONT FACE
 	// 0,0,0 - 1,0,0
@@ -230,7 +238,7 @@ bool ComponentMesh::DrawGlobalAABB()
 	glVertex3f(globalAABB.maxPoint.x, globalAABB.maxPoint.y, globalAABB.maxPoint.z);
 	
 
-	//glLineWidth(1);
+	glLineWidth(1.0f);
 	GLfloat const color2[3] = { (1.0f), (1.0f), (1.0f) };
 	glColor3fv(color2); //Return to White as normal
 	glEnd();

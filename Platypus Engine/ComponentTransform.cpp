@@ -96,7 +96,7 @@ void ComponentTransform::GenerateLocalMatrix()
 		mesh->GenerateLocalAABB();
 	}
 
-	rot = Quat::FromEulerXYZ(rot.x, rot.y, rot.z);
+	rot = Quat::FromEulerXYZ(2*rot.x, 2*rot.y, 2*rot.z); //TODO: Por algun motivo esta formula me los divide entre 2, porque? NPI
 	rot.Normalize();
 
 	localTransform = CreateMatrix(pos,scale, rot );
@@ -131,17 +131,18 @@ float4x4 ComponentTransform::CreateMatrix(float3 translation, float3 scaling, Qu
 bool ComponentTransform::RecalculateMatrix()
 {
 	GenerateGlobalMatrix();
-	ComponentMesh* mesh = (ComponentMesh*)owner->GetComponentByType(ComponentType::MESH);
-	if (mesh != nullptr)
-	{
-		mesh->GetGlobalAABB();
-	}
+	
 	if (!owner->children.empty())
 	{
 		for (int i = 0; i < owner->children.size(); i++)
 		{
 			owner->children.at(i)->objTransform->RecalculateMatrix();
 		}
+	}
+	ComponentMesh* mesh = (ComponentMesh*)owner->GetComponentByType(ComponentType::MESH);
+	if (mesh != nullptr)
+	{
+		mesh->GetGlobalAABB();
 	}
 	
 
@@ -155,24 +156,25 @@ void ComponentTransform::OnEditor()
 
 		ImGui::Checkbox("##Transform", &active);
 		
-		float posi[3] = { pos.x, pos.y, pos.z };
-		if (ImGui::DragFloat3("Position", posi)) 
+		if (ImGui::DragFloat3("Position", &pos.x)) 
 		{
-			pos.x = posi[0]; pos.y = posi[1]; pos.z = posi[2];
 			RecalculateMatrix();
 		};
-		float rota[3] = { RADTODEG * (rot.x), RADTODEG * (rot.y), RADTODEG * (rot.z) };//Values given in Radians,must translate to degrees
-		if (ImGui::DragFloat3("Rotation", rota))
+		//Angles in degrees for display
+		angles.x = rot.x * RADTODEG; angles.y = rot.y * RADTODEG; angles.z = rot.z * RADTODEG;
+		//float rota[3] = { RADTODEG * (rot.x), RADTODEG * (rot.y), RADTODEG * (rot.z) };//Values given in Radians,must translate to degrees
+		if (ImGui::DragFloat3("Rotation", &angles.x))
 		{
-			rot.x = rota[0] * DEGTORAD; rot.y = rota[1] * DEGTORAD; rot.z = rota[2] * DEGTORAD;
-			rot = Quat::FromEulerXYZ(rot.x, rot.y, rot.z);
-			rot.Normalize();
+			float3 aux; //Ya por probar haber si ayuda a evitar perdidas de info
+			aux.x = angles.x * DEGTORAD; aux.y = angles.y * DEGTORAD; aux.z = angles.z * DEGTORAD;
+			rot = Quat::FromEulerXYZ(2*aux.x, 2*aux.y, 2*aux.z);
+			//rot = Quat::FromEulerXYZ(rota[0], rota[1], rota[2]);
+			rot = rot.Normalized();
 			RecalculateMatrix();
 		};
-		float esca[3] = { scale.x, scale.y, scale.z };
-		if (ImGui::DragFloat3("Scale", esca))
+
+		if (ImGui::DragFloat3("Scale", &scale.x))
 		{
-			scale.x = esca[0]; scale.y = esca[1]; scale.z = esca[2];
 			RecalculateMatrix();
 		};
 	}

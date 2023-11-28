@@ -36,6 +36,7 @@ public:
 	float3 pos;
 	float3 scale;
 	math::Quat rot;
+	float3 angles; //Only for display
 
 	float4x4 localTransform;
 	float4x4 globalTransform;

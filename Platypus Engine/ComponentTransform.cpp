@@ -165,6 +165,8 @@ void ComponentTransform::OnEditor()
 		if (ImGui::DragFloat3("Rotation", rota))
 		{
 			rot.x = rota[0] * DEGTORAD; rot.y = rota[1] * DEGTORAD; rot.z = rota[2] * DEGTORAD;
+			rot = Quat::FromEulerXYZ(rot.x, rot.y, rot.z);
+			rot.Normalize();
 			RecalculateMatrix();
 		};
 		float esca[3] = { scale.x, scale.y, scale.z };

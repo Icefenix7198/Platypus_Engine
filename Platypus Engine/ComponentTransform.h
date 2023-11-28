@@ -52,7 +52,8 @@ public:
 	void OnEditor();
 
 private:
-
+	//Values are inicialized to 0,0,0-0,0,0,0-1,1,1, so the first time in the constructor when we calculate the 
+	bool firstRecalculate;
 };
 
 #endif //!__COMPONENT_TRANSFORM_H__

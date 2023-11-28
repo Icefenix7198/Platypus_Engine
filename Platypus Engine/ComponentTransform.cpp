@@ -96,7 +96,7 @@ void ComponentTransform::GenerateLocalMatrix()
 		mesh->GenerateLocalAABB();
 	}
 
-	rot.FromEulerXYZ(rot.x, rot.y, rot.z);
+	rot = Quat::FromEulerXYZ(rot.x, rot.y, rot.z);
 	rot.Normalize();
 
 	localTransform = CreateMatrix(pos,scale, rot );
@@ -131,10 +131,19 @@ float4x4 ComponentTransform::CreateMatrix(float3 translation, float3 scaling, Qu
 bool ComponentTransform::RecalculateMatrix()
 {
 	GenerateGlobalMatrix();
-	for (int i = 0; i < owner->children.size(); i++)
+	ComponentMesh* mesh = (ComponentMesh*)owner->GetComponentByType(ComponentType::MESH);
+	if (mesh != nullptr)
 	{
-		owner->children.at(i)->objTransform->RecalculateMatrix();
+		mesh->GetGlobalAABB();
 	}
+	if (!owner->children.empty())
+	{
+		for (int i = 0; i < owner->children.size(); i++)
+		{
+			owner->children.at(i)->objTransform->RecalculateMatrix();
+		}
+	}
+	
 
 	return true;
 }

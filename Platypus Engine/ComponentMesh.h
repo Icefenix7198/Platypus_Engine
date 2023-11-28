@@ -28,6 +28,7 @@ public:
 	bool DrawVertexNormals();
 	bool DrawFaceNormals();
 	bool DrawGlobalAABB();
+	bool DrawOBB();
 	
 	void OnEditor();
 
@@ -36,6 +37,8 @@ public:
 	bool drawVertexNormals;
 	bool drawFaceNormals;
 	bool drawAABB;
+	bool drawOBB;
+
 private:
 	AABB localAABB;
 	OBB mOBB;

@@ -39,7 +39,7 @@ ComponentMesh::ComponentMesh(Mesh* _mesh)
 {
 	wireMode = false;
 	drawVertexNormals = drawFaceNormals = false;
-	drawAABB = true;
+	drawOBB = drawAABB = true;
 	mesh = _mesh;
 	Enable();
 
@@ -83,6 +83,7 @@ bool ComponentMesh::Update()
 		if (drawVertexNormals) {	DrawVertexNormals();}
 		if (drawFaceNormals) { DrawFaceNormals(); }
 		if (drawAABB) { DrawGlobalAABB(); }
+		if (drawOBB) { /*DrawOBB();*/ }
 		
 		//owner->objTransform->GenerateGlobalMatrix();
 		float4x4 m = owner->objTransform->globalTransform.Transposed();
@@ -237,6 +238,63 @@ bool ComponentMesh::DrawGlobalAABB()
 	glVertex3f(globalAABB.minPoint.x, globalAABB.maxPoint.y, globalAABB.maxPoint.z);
 	glVertex3f(globalAABB.maxPoint.x, globalAABB.maxPoint.y, globalAABB.maxPoint.z);
 	
+
+	glLineWidth(1.0f);
+	GLfloat const color2[3] = { (1.0f), (1.0f), (1.0f) };
+	glColor3fv(color2); //Return to White as normal
+	glEnd();
+
+	return true;
+}
+
+bool ComponentMesh::DrawOBB()
+{
+	if (mesh == nullptr)
+		return false;
+
+	GLfloat const color[3] = { (220.0 / 255), (10.0 / 255), (10.0 / 255) };
+	glColor3fv(color); //Uses values from 1 to 0 no 255
+	glLineWidth(2.0f);
+	float3* OBB_points = nullptr;
+	mOBB.GetCornerPoints(OBB_points);
+
+	glBegin(GL_LINES);
+
+	glVertex3f(mOBB.CornerPoint(0).x, mOBB.CornerPoint(0).y, mOBB.CornerPoint(0).z);
+	glVertex3f(mOBB.CornerPoint(1).x, mOBB.CornerPoint(1).y, mOBB.CornerPoint(1).z);
+
+	glVertex3f(mOBB.CornerPoint(0).x, mOBB.CornerPoint(0).y, mOBB.CornerPoint(0).z);
+	glVertex3f(mOBB.CornerPoint(4).x, mOBB.CornerPoint(4).y, mOBB.CornerPoint(4).z);
+
+	glVertex3f(mOBB.CornerPoint(0).x, mOBB.CornerPoint(0).y, mOBB.CornerPoint(0).z);
+	glVertex3f(mOBB.CornerPoint(2).x, mOBB.CornerPoint(2).y, mOBB.CornerPoint(2).z);
+
+	glVertex3f(mOBB.CornerPoint(2).x, mOBB.CornerPoint(2).y, mOBB.CornerPoint(2).z);
+	glVertex3f(mOBB.CornerPoint(3).x, mOBB.CornerPoint(3).y, mOBB.CornerPoint(3).z);
+
+	glVertex3f(mOBB.CornerPoint(1).x, mOBB.CornerPoint(1).y, mOBB.CornerPoint(1).z);
+	glVertex3f(mOBB.CornerPoint(5).x, mOBB.CornerPoint(5).y, mOBB.CornerPoint(5).z);
+
+	glVertex3f(mOBB.CornerPoint(1).x, mOBB.CornerPoint(1).y, mOBB.CornerPoint(1).z);
+	glVertex3f(mOBB.CornerPoint(3).x, mOBB.CornerPoint(3).y, mOBB.CornerPoint(3).z);
+
+	glVertex3f(mOBB.CornerPoint(4).x, mOBB.CornerPoint(4).y, mOBB.CornerPoint(4).z);
+	glVertex3f(mOBB.CornerPoint(5).x, mOBB.CornerPoint(5).y, mOBB.CornerPoint(5).z);
+
+	glVertex3f(mOBB.CornerPoint(4).x, mOBB.CornerPoint(4).y, mOBB.CornerPoint(4).z);
+	glVertex3f(mOBB.CornerPoint(6).x, mOBB.CornerPoint(6).y, mOBB.CornerPoint(6).z);
+
+	glVertex3f(mOBB.CornerPoint(2).x, mOBB.CornerPoint(2).y, mOBB.CornerPoint(2).z);
+	glVertex3f(mOBB.CornerPoint(6).x, mOBB.CornerPoint(6).y, mOBB.CornerPoint(6).z);
+
+	glVertex3f(mOBB.CornerPoint(5).x, mOBB.CornerPoint(5).y, mOBB.CornerPoint(5).z);
+	glVertex3f(mOBB.CornerPoint(7).x, mOBB.CornerPoint(7).y, mOBB.CornerPoint(7).z);
+
+	glVertex3f(mOBB.CornerPoint(6).x, mOBB.CornerPoint(6).y, mOBB.CornerPoint(6).z);
+	glVertex3f(mOBB.CornerPoint(7).x, mOBB.CornerPoint(7).y, mOBB.CornerPoint(7).z);
+
+	glVertex3f(mOBB.CornerPoint(3).x, mOBB.CornerPoint(3).y, mOBB.CornerPoint(3).z);
+	glVertex3f(mOBB.CornerPoint(7).x, mOBB.CornerPoint(7).y, mOBB.CornerPoint(7).z);
 
 	glLineWidth(1.0f);
 	GLfloat const color2[3] = { (1.0f), (1.0f), (1.0f) };

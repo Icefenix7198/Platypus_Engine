@@ -83,7 +83,7 @@ bool ComponentMesh::Update()
 		if (drawVertexNormals) {	DrawVertexNormals();}
 		if (drawFaceNormals) { DrawFaceNormals(); }
 		if (drawAABB) { DrawGlobalAABB(); }
-		if (drawOBB) { /*DrawOBB();*/ }
+		if (drawOBB) { DrawOBB(); }
 		
 		//owner->objTransform->GenerateGlobalMatrix();
 		float4x4 m = owner->objTransform->globalTransform.Transposed();
@@ -252,7 +252,7 @@ bool ComponentMesh::DrawOBB()
 	if (mesh == nullptr)
 		return false;
 
-	GLfloat const color[3] = { (220.0 / 255), (10.0 / 255), (10.0 / 255) };
+	GLfloat const color[3] = { (0.0 / 255), (240.0 / 255), (240.0 / 255) };
 	glColor3fv(color); //Uses values from 1 to 0 no 255
 	glLineWidth(2.0f);
 	float3* OBB_points = nullptr;
@@ -344,6 +344,9 @@ void ComponentMesh::OnEditor()
 			butonChar.clear();
 			butonChar.append("Draw AABB");
 			ImGui::Checkbox(butonChar.append(idComponent).c_str(), &drawAABB);
+			butonChar.clear();
+			butonChar.append("Draw OBB");
+			ImGui::Checkbox(butonChar.append(idComponent).c_str(), &drawOBB);
 			
 			ImGui::Text("Number vertex %d", mesh->num_vertex);
 			ImGui::Text("Number normals %d", mesh->num_normals);

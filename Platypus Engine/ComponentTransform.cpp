@@ -120,6 +120,9 @@ void ComponentTransform::GenerateLocalMatrix()
 		mesh->GenerateLocalAABB();
 	}
 
+	rot.FromEulerXYZ(rot.x, rot.y, rot.z);
+	rot.Normalize();
+
 	localTransform = CreateMatrix(pos,scale, rot );
 }
 

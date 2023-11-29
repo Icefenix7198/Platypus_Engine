@@ -28,7 +28,7 @@ ComponentTransform::ComponentTransform()
 
 	Enable();
 
-	GenerateGlobalMatrix();
+	RecalculateMatrix();
 }
 
 ComponentTransform::ComponentTransform(GameObject* own)
@@ -53,7 +53,7 @@ ComponentTransform::ComponentTransform(GameObject* own)
 
 	Enable();
 
-	GenerateGlobalMatrix();
+	RecalculateMatrix();
 }
 
 ComponentTransform::ComponentTransform(aiVector3D vecPos, aiVector3D vecScale, aiQuaternion quatRot)
@@ -67,7 +67,7 @@ ComponentTransform::ComponentTransform(aiVector3D vecPos, aiVector3D vecScale, a
 	rotation = quatRot;
 	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
 
-	GenerateGlobalMatrix(); //Also makes the local matrix
+	RecalculateMatrix(); //Also makes the local matrix
 
 	Enable();
 }
@@ -90,22 +90,22 @@ void ComponentTransform::SetValues(aiVector3D translation, aiVector3D scaling, a
 void ComponentTransform::GenerateLocalMatrix()
 {
 	//Generate AABB if has component mesh (we do it here)
-	ComponentMesh* mesh = (ComponentMesh*)owner->GetComponentByType(ComponentType::MESH);
+	/*ComponentMesh* mesh = (ComponentMesh*)owner->GetComponentByType(ComponentType::MESH);
 	if (mesh != nullptr)
 	{
 		mesh->GenerateLocalAABB();
-	}
+	}*/
+	//float fix = 2.0f/2;
+	//rot = Quat::FromEulerXYZ(fix*rot.x, fix*rot.y, fix*rot.z); //TODO: Por algun motivo esta formula me los divide entre 2, porque? NPI
+	//rot = rot.Normalized();
 
-	rot = Quat::FromEulerXYZ(2*rot.x, 2*rot.y, 2*rot.z); //TODO: Por algun motivo esta formula me los divide entre 2, porque? NPI
-	rot.Normalize();
-
-	localTransform = CreateMatrix(pos,scale, rot );
+	localTransform = float4x4::FromTRS(pos, rot, scale);
 }
 
 void ComponentTransform::GenerateGlobalMatrix()
 {
 	//The operation depends of this, so just in case it doesn't exist yet 
-	GenerateLocalMatrix();
+	//GenerateLocalMatrix();
 
 	if (owner->parent == nullptr) //Si es el root su global es igual a su loca que es 0,0,0 en todo menos scale que es 1,1,1
 	{
@@ -130,6 +130,7 @@ float4x4 ComponentTransform::CreateMatrix(float3 translation, float3 scaling, Qu
 
 bool ComponentTransform::RecalculateMatrix()
 {
+	GenerateLocalMatrix();
 	GenerateGlobalMatrix();
 	
 	if (!owner->children.empty())
@@ -165,11 +166,12 @@ void ComponentTransform::OnEditor()
 		//float rota[3] = { RADTODEG * (rot.x), RADTODEG * (rot.y), RADTODEG * (rot.z) };//Values given in Radians,must translate to degrees
 		if (ImGui::DragFloat3("Rotation", &angles.x))
 		{
-			float3 aux; //Ya por probar haber si ayuda a evitar perdidas de info
-			aux.x = angles.x * DEGTORAD; aux.y = angles.y * DEGTORAD; aux.z = angles.z * DEGTORAD;
-			rot = Quat::FromEulerXYZ(2*aux.x, 2*aux.y, 2*aux.z);
-			//rot = Quat::FromEulerXYZ(rota[0], rota[1], rota[2]);
+			rot.x = angles.x * DEGTORAD; rot.y = angles.y * DEGTORAD; rot.z = angles.z * DEGTORAD;
+
+			float fix = 2.0f;
+			rot = Quat::FromEulerXYZ(fix * rot.x, fix * rot.y, fix * rot.z); //TODO: Por algun motivo esta formula me los divide entre 2, porque? NPI
 			rot = rot.Normalized();
+
 			RecalculateMatrix();
 		};
 

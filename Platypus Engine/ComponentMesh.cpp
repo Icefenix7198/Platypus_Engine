@@ -179,7 +179,7 @@ bool ComponentMesh::DrawFaceNormals()
 
 bool ComponentMesh::DrawGlobalAABB()
 {
-	GetGlobalAABB();
+	//GetGlobalAABB();
 	glBegin(GL_LINES);
 	GLfloat const color[3] = { (220.0 / 255), (10.0 / 255), (10.0 / 255) };
 	glColor3fv(color); //Uses values from 1 to 0 no 255

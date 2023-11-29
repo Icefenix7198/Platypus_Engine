@@ -590,7 +590,7 @@ void ModuleEditor::Inspector(GameObject* go)
 {
 	ImGui::Checkbox("Active ## GameObject", &go->active); //For future problems, 
 	//ImGui::SameLine();
-	//ImGui::InputText();
+	//ImGui::InputText("Name",&go->name.c_str());
 	for (int i = 0; i < go->components.size(); i++) 
 	{ 
 		//Print all components

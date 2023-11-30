@@ -530,59 +530,90 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 	int treeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
 	int leafFlags = treeFlags | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
 
+	//El drag and drop ha de ser generico asi que va aqui fuera
+	/*if (ImGui::BeginDragDropTarget()) {
+		const ImGuiPayload* payload = ImGui::AcceptDragDropPayload(DROP_ID_HIERARCHY_NODES, ImGuiDragDropFlags_SourceNoDisableHover);
+		if (payload != nullptr && payload->IsDataType(DROP_ID_HIERARCHY_NODES)) {
+			GameObject* obj = *(GameObject**)payload->Data;
+			if (obj != nullptr) {
+				App->objects->ReparentGameObject(obj, node);
+			}
+		}
+		ImGui::EndDragDropTarget();
+	}*/
+
+
 	int num_children = go->children.size();
-	
-	for (int i = 0; i < num_children; ++i)
+	if (num_children <= 0) 
 	{
-		ctp = go->children[i];
-		if(ctp == App->scene->selectedGO)
+		LOG("CHECKEO");
+	}
+	else{
+		for (int i = 0; i < num_children; ++i)
 		{
-			treeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_Selected;
-			//LOG("Selected Game Object")
-		}
-
-		if (ctp->children.size() > 0)
-		{
-			bool node_open = ImGui::TreeNodeEx((void*)(intptr_t)i, treeFlags, ctp->name.c_str());
-
-			if (ImGui::IsItemClicked())
+			ctp = go->children[i];
+			if (ctp == App->scene->selectedGO)
 			{
-				if (App->scene->selectedGO == ctp)
+				treeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_Selected;
+			}
+			else
+			{
+				treeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+			}
+
+			if (ctp->children.size() > 0)
+			{
+				bool node_open = ImGui::TreeNodeEx((void*)(intptr_t)i, treeFlags, ctp->name.c_str());
+
+				if (ImGui::IsItemClicked())
 				{
-					App->scene->selectedGO = App->scene->root; //No estoy seguro si se ha de poner nullptr o siempre ha de apuntar a algo
+					if (App->scene->selectedGO == ctp)
+					{
+						App->scene->selectedGO = App->scene->root; //No estoy seguro si se ha de poner nullptr o siempre ha de apuntar a algo
+					}
+					else
+					{
+						App->scene->selectedGO = ctp;
+					}
+
+				}
+
+
+				if (node_open)
+				{
+					GameObjectHierarchy(ctp); //If the game object has a child we call it recursive to print its childs
+					ImGui::TreePop();
+				}
+			}
+			else
+			{
+				if (ctp == App->scene->selectedGO)
+				{
+					leafFlags = leafFlags | ImGuiTreeNodeFlags_Selected;
 				}
 				else
 				{
-					App->scene->selectedGO = ctp;
-				}
-				
-			}
-				
-
-			if (node_open)
-			{
-				GameObjectHierarchy(ctp); //If the game object has a child we call it recursive to print its childs
-				ImGui::TreePop();
-			}
-		}
-		else
-		{
-			ImGui::TreeNodeEx((void*)(intptr_t)i, leafFlags, ctp->name.c_str()); // Leafs are game objects without childs
-			
-			if (ImGui::IsItemClicked())
-			{
-				if (App->scene->selectedGO == ctp)
-				{
-					App->scene->selectedGO = App->scene->root; //No estoy seguro si se ha de poner nullptr o siempre ha de apuntar a algo
-				}
-				else
-				{
-					App->scene->selectedGO = ctp;
+					leafFlags = treeFlags | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
 				}
 
+				ImGui::TreeNodeEx((void*)(intptr_t)i, leafFlags, ctp->name.c_str()); // Leafs are game objects without childs
+
+				if (ImGui::IsItemClicked())
+				{
+					if (App->scene->selectedGO == ctp)
+					{
+						App->scene->selectedGO = App->scene->root; //No estoy seguro si se ha de poner nullptr o siempre ha de apuntar a algo
+					}
+					else
+					{
+						App->scene->selectedGO = ctp;
+					}
+
+				}
 			}
 		}
 	}
+	
 	
 }
 

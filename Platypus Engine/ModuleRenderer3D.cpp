@@ -15,6 +15,7 @@
 #include "DevIL/include/ilu.h"
 #include "DevIL/include/ilut.h"
 
+#include "mmgr/mmgr.h"
 
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
 #pragma comment (lib, "glu32.lib") /* link Microsoft OpenGL lib   */

@@ -43,10 +43,6 @@ update_status ModuleScene::PreUpdate(float dt)
 			auto* actualList = &actual->parent->children;
 			if (actual != nullptr && newParent != nullptr)
 			{
-				//Precaution Measure
-				actual->active = false;
-				actual->parent->active = false;
-
 				//Add element to its new father list
 				newParent->children.push_back(actual);
 

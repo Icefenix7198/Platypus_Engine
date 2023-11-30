@@ -64,7 +64,6 @@ AABB ComponentMesh::GenerateLocalAABB()
 
 AABB ComponentMesh::GetGlobalAABB()
 {
-	//owner->objTransform->GenerateGlobalMatrix();
 	mOBB = GenerateLocalAABB();
 	mOBB.Transform(owner->objTransform->globalTransform);
 

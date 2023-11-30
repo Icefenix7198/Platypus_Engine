@@ -544,7 +544,7 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 		}
 		ImGui::EndDragDropTarget();
 	}
-	if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_SourceNoDisableHover)) {
+	if (ImGui::BeginDragDropSource(/*ImGuiDragDropFlags_SourceNoDisableHover*/)) {
 		ImGui::SetDragDropPayload("GameObject", &go, sizeof(GameObject)/*, ImGuiCond_Once*/);
 		ImGui::Text(go->name.c_str());
 		ImGui::EndDragDropSource();

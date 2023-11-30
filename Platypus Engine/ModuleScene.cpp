@@ -32,6 +32,37 @@ bool ModuleScene::Init()
 	return true;
 }
 
+update_status ModuleScene::PreUpdate(float dt)
+{
+	if (!pendingToReparent.empty())
+	{
+		for(int i = 0; i< pendingToReparent.size(); i++)
+		{
+			GameObject* actual = pendingToReparent.at(i).toMove;
+			GameObject* newParent = pendingToReparent.at(i).newParent;
+			auto* actualList = &actual->parent->children;
+			if (actual != nullptr && newParent != nullptr)
+			{
+				//Precaution Measure
+				actual->active = false;
+				actual->parent->active = false;
+
+				//Add element to its new father list
+				newParent->children.push_back(actual);
+
+				//Erase element from old parent list
+				actualList->erase(std::find(actualList->begin(), actualList->end(), actual));
+
+				actual->parent = newParent; //Quiza hacerlo asi pueda causar problemas por interrumpir un proceso, por eso esta el disable y enable, pero quiza no sea lo mas seguro.
+			}
+		}
+
+		pendingToReparent.empty();
+	}
+
+	return UPDATE_CONTINUE;
+}
+
 bool ModuleScene::CleanUp()
 {
 	return true;
@@ -47,30 +78,10 @@ GameObject* ModuleScene::CreateGameObject(GameObject* parent,std::string name)
 	return go;
 }
 
-GameObject* ModuleScene::ReparentGameObject(GameObject* actual, GameObject* newParent)
+void ModuleScene::RequestReparentGameObject(GameObject* actual, GameObject* newParent)
 {
-	GameObject* aux = nullptr;
-	GameObject* ret = nullptr;
-	bool last_state = actual->active;
-	auto* actualList = &actual->parent->children;
-	if (actual != nullptr && newParent != nullptr)
-	{
-		//Precaution Measure
-		actual->active = false;
-		actual->parent->active = false;
+	pendingToReparent.push_back({ actual,newParent });
 
-		//Add element to its new father list
-		newParent->children.push_back(actual);
-
-		//Erase element from old parent list
-		actualList->erase(std::find(actualList->begin(), actualList->end(), actual));
-		
-		actual->parent = newParent; //Quiza hacerlo asi pueda causar problemas por interrumpir un proceso, por eso esta el disable y enable, pero quiza no sea lo mas seguro.
-		actual->active = last_state;
-	}
-	
-
-	return ret;
 }
 
 int ModuleScene::UpdateGameObjects(GameObject* go)

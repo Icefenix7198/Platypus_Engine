@@ -539,7 +539,7 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 			GameObject* GameObjFromPayLoad = *(GameObject**)payload->Data;
 			if (GameObjFromPayLoad != nullptr) 
 			{
-				App->scene->ReparentGameObject(GameObjFromPayLoad, go);
+				App->scene->RequestReparentGameObject(GameObjFromPayLoad, go);
 			}
 		}
 		ImGui::EndDragDropTarget();

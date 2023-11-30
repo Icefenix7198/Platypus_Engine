@@ -23,6 +23,7 @@ public:
 
 	////GameObjects related
 	GameObject* CreateGameObject(GameObject* parent,std::string name = "GameObject"); //Crea un gameObject vacio
+	GameObject* ReparentGameObject(GameObject* actual,GameObject* newParent); //Hace el reparent, retorn nullptr si fallo, sino el nuevo padre del objeto.
 	int UpdateGameObjects(GameObject* go);
 
 	GameObject* root;

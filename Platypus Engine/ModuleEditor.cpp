@@ -531,16 +531,24 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 	int leafFlags = treeFlags | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
 
 	//El drag and drop ha de ser generico asi que va aqui fuera
-	/*if (ImGui::BeginDragDropTarget()) {
-		const ImGuiPayload* payload = ImGui::AcceptDragDropPayload(DROP_ID_HIERARCHY_NODES, ImGuiDragDropFlags_SourceNoDisableHover);
-		if (payload != nullptr && payload->IsDataType(DROP_ID_HIERARCHY_NODES)) {
-			GameObject* obj = *(GameObject**)payload->Data;
-			if (obj != nullptr) {
-				App->objects->ReparentGameObject(obj, node);
+	if (ImGui::BeginDragDropTarget()) {
+		//Payload es el tipo de objeto que arrastramos, como todo en ImGui, va por Tag
+		const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("GameObject", ImGuiDragDropFlags_SourceNoDisableHover);
+		if (payload != nullptr && payload->IsDataType("GameObject"))
+		{
+			GameObject* GameObjFromPayLoad = *(GameObject**)payload->Data;
+			if (GameObjFromPayLoad != nullptr) 
+			{
+				App->scene->ReparentGameObject(GameObjFromPayLoad, go);
 			}
 		}
 		ImGui::EndDragDropTarget();
-	}*/
+	}
+	if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_SourceNoDisableHover)) {
+		ImGui::SetDragDropPayload("GameObject", &go, sizeof(GameObject)/*, ImGuiCond_Once*/);
+		ImGui::Text(go->name.c_str());
+		ImGui::EndDragDropSource();
+	}
 
 
 	int num_children = go->children.size();
@@ -626,6 +634,7 @@ void ModuleEditor::Inspector(GameObject* go)
 	{
 		go->name.assign(nombre);
 	}
+	ImGui::Text(go->parent->name.c_str());
 	for (int i = 0; i < go->components.size(); i++) 
 	{ 
 		//Print all components

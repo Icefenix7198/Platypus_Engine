@@ -47,6 +47,32 @@ GameObject* ModuleScene::CreateGameObject(GameObject* parent,std::string name)
 	return go;
 }
 
+GameObject* ModuleScene::ReparentGameObject(GameObject* actual, GameObject* newParent)
+{
+	GameObject* aux = nullptr;
+	GameObject* ret = nullptr;
+	bool last_state = actual->active;
+	auto* actualList = &actual->parent->children;
+	if (actual != nullptr && newParent != nullptr)
+	{
+		//Precaution Measure
+		actual->active = false;
+		actual->parent->active = false;
+
+		//Add element to its new father list
+		newParent->children.push_back(actual);
+
+		//Erase element from old parent list
+		actualList->erase(std::find(actualList->begin(), actualList->end(), actual));
+		
+		actual->parent = newParent; //Quiza hacerlo asi pueda causar problemas por interrumpir un proceso, por eso esta el disable y enable, pero quiza no sea lo mas seguro.
+		actual->active = last_state;
+	}
+	
+
+	return ret;
+}
+
 int ModuleScene::UpdateGameObjects(GameObject* go)
 {
 	int numChildren = 0;

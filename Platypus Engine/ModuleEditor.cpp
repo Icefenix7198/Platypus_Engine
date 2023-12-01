@@ -530,27 +530,6 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 	int treeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
 	int leafFlags = treeFlags | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
 
-	//El drag and drop ha de ser generico asi que va aqui fuera
-	if (ImGui::BeginDragDropTarget()) {
-		//Payload es el tipo de objeto que arrastramos, como todo en ImGui, va por Tag
-		const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("GameObject", ImGuiDragDropFlags_SourceNoDisableHover);
-		if (payload != nullptr && payload->IsDataType("GameObject"))
-		{
-			GameObject* GameObjFromPayLoad = *(GameObject**)payload->Data;
-			if (GameObjFromPayLoad != nullptr) 
-			{
-				App->scene->RequestReparentGameObject(GameObjFromPayLoad, go);
-			}
-		}
-		ImGui::EndDragDropTarget();
-	}
-	if (ImGui::BeginDragDropSource(/*ImGuiDragDropFlags_SourceNoDisableHover*/)) {
-		ImGui::SetDragDropPayload("GameObject", &go, sizeof(GameObject)/*, ImGuiCond_Once*/);
-		ImGui::Text(go->name.c_str());
-		ImGui::EndDragDropSource();
-	}
-
-
 	int num_children = go->children.size();
 	if (num_children <= 0) 
 	{
@@ -586,6 +565,24 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 
 				}
 
+				if (ImGui::BeginDragDropTarget()) {
+					//Payload es el tipo de objeto que arrastramos, como todo en ImGui, va por Tag
+					const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("GameObject"/*, ImGuiDragDropFlags_SourceNoDisableHover*/);
+					if (payload != nullptr && payload->IsDataType("GameObject"))
+					{
+						GameObject* GameObjFromPayLoad = *(GameObject**)payload->Data;
+						if (GameObjFromPayLoad != nullptr)
+						{
+							App->scene->RequestReparentGameObject(GameObjFromPayLoad, ctp);
+						}
+					}
+					ImGui::EndDragDropTarget();
+				}
+				if (ImGui::BeginDragDropSource(/*ImGuiDragDropFlags_SourceNoDisableHover*/)) {
+					ImGui::SetDragDropPayload("GameObject", &ctp, sizeof(GameObject)/*, ImGuiCond_Once*/);
+					ImGui::Text(ctp->name.c_str());
+					ImGui::EndDragDropSource();
+				}
 
 				if (node_open)
 				{
@@ -617,6 +614,25 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 						App->scene->selectedGO = ctp;
 					}
 
+				}
+
+				if (ImGui::BeginDragDropTarget()) {
+					//Payload es el tipo de objeto que arrastramos, como todo en ImGui, va por Tag
+					const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("GameObject"/*, ImGuiDragDropFlags_SourceNoDisableHover*/);
+					if (payload != nullptr && payload->IsDataType("GameObject"))
+					{
+						GameObject* GameObjFromPayLoad = *(GameObject**)payload->Data;
+						if (GameObjFromPayLoad != nullptr)
+						{
+							App->scene->RequestReparentGameObject(GameObjFromPayLoad, ctp);
+						}
+					}
+					ImGui::EndDragDropTarget();
+				}
+				if (ImGui::BeginDragDropSource(/*ImGuiDragDropFlags_SourceNoDisableHover*/)) {
+					ImGui::SetDragDropPayload("GameObject", &ctp, sizeof(GameObject)/*, ImGuiCond_Once*/);
+					ImGui::Text(ctp->name.c_str());
+					ImGui::EndDragDropSource();
 				}
 			}
 		}

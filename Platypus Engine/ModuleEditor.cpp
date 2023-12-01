@@ -531,11 +531,131 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 	int leafFlags = treeFlags | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
 
 	int num_children = go->children.size();
-	if (num_children <= 0) 
+	if (go == App->scene->root) 
 	{
-		LOG("CHECKEO");
+		bool node_open = ImGui::TreeNodeEx((void*)(intptr_t)-1, treeFlags, go->name.c_str());
+		
+		//Root node only accept dragging into, not being dragged
+		if (ImGui::BeginDragDropTarget()) {
+			//Payload es el tipo de objeto que arrastramos, como todo en ImGui, va por Tag
+			const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("GameObject"/*, ImGuiDragDropFlags_SourceNoDisableHover*/);
+			if (payload != nullptr && payload->IsDataType("GameObject"))
+			{
+				GameObject* GameObjFromPayLoad = *(GameObject**)payload->Data;
+				if (GameObjFromPayLoad != nullptr)
+				{
+					App->scene->RequestReparentGameObject(GameObjFromPayLoad, go);
+				}
+			}
+			ImGui::EndDragDropTarget();
+		}
+
+		if (node_open)
+		{
+			for (int i = 0; i < num_children; ++i)
+			{
+				ctp = go->children[i];
+				if (ctp == App->scene->selectedGO)
+				{
+					treeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_Selected;
+				}
+				else
+				{
+					treeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+				}
+
+				if (ctp->children.size() > 0)
+				{
+					bool node_open = ImGui::TreeNodeEx((void*)(intptr_t)i, treeFlags, ctp->name.c_str());
+
+					if (ImGui::IsItemClicked())
+					{
+						if (App->scene->selectedGO == ctp)
+						{
+							App->scene->selectedGO = App->scene->root; //No estoy seguro si se ha de poner nullptr o siempre ha de apuntar a algo
+						}
+						else
+						{
+							App->scene->selectedGO = ctp;
+						}
+					}
+
+					if (ImGui::BeginDragDropTarget()) {
+						//Payload es el tipo de objeto que arrastramos, como todo en ImGui, va por Tag
+						const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("GameObject"/*, ImGuiDragDropFlags_SourceNoDisableHover*/);
+						if (payload != nullptr && payload->IsDataType("GameObject"))
+						{
+							GameObject* GameObjFromPayLoad = *(GameObject**)payload->Data;
+							if (GameObjFromPayLoad != nullptr)
+							{
+								App->scene->RequestReparentGameObject(GameObjFromPayLoad, ctp);
+							}
+						}
+						ImGui::EndDragDropTarget();
+					}
+					if (ImGui::BeginDragDropSource(/*ImGuiDragDropFlags_SourceNoDisableHover*/)) {
+						ImGui::SetDragDropPayload("GameObject", &ctp, sizeof(GameObject)/*, ImGuiCond_Once*/);
+						ImGui::Text(ctp->name.c_str());
+						ImGui::EndDragDropSource();
+					}
+
+					if (node_open)
+					{
+						GameObjectHierarchy(ctp); //If the game object has a child we call it recursive to print its childs
+						ImGui::TreePop();
+					}
+				}
+				else
+				{
+					if (ctp == App->scene->selectedGO)
+					{
+						leafFlags = leafFlags | ImGuiTreeNodeFlags_Selected;
+					}
+					else
+					{
+						leafFlags = treeFlags | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+					}
+
+					ImGui::TreeNodeEx((void*)(intptr_t)i, leafFlags, ctp->name.c_str()); // Leafs are game objects without childs
+
+					if (ImGui::IsItemClicked())
+					{
+						if (App->scene->selectedGO == ctp)
+						{
+							App->scene->selectedGO = App->scene->root; //No estoy seguro si se ha de poner nullptr o siempre ha de apuntar a algo
+						}
+						else
+						{
+							App->scene->selectedGO = ctp;
+						}
+					}
+
+					if (ImGui::BeginDragDropTarget()) {
+						//Payload es el tipo de objeto que arrastramos, como todo en ImGui, va por Tag
+						const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("GameObject"/*, ImGuiDragDropFlags_SourceNoDisableHover*/);
+						if (payload != nullptr && payload->IsDataType("GameObject"))
+						{
+							GameObject* GameObjFromPayLoad = *(GameObject**)payload->Data;
+							if (GameObjFromPayLoad != nullptr)
+							{
+								App->scene->RequestReparentGameObject(GameObjFromPayLoad, ctp);
+							}
+						}
+						ImGui::EndDragDropTarget();
+					}
+					if (ImGui::BeginDragDropSource(/*ImGuiDragDropFlags_SourceNoDisableHover*/)) {
+						ImGui::SetDragDropPayload("GameObject", &ctp, sizeof(GameObject)/*, ImGuiCond_Once*/);
+						ImGui::Text(ctp->name.c_str());
+						ImGui::EndDragDropSource();
+					}
+				}
+			}
+			ImGui::TreePop();
+		}
+
 	}
-	else{
+	else
+	{
 		for (int i = 0; i < num_children; ++i)
 		{
 			ctp = go->children[i];
@@ -562,7 +682,6 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 					{
 						App->scene->selectedGO = ctp;
 					}
-
 				}
 
 				if (ImGui::BeginDragDropTarget()) {
@@ -613,7 +732,6 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 					{
 						App->scene->selectedGO = ctp;
 					}
-
 				}
 
 				if (ImGui::BeginDragDropTarget()) {
@@ -637,8 +755,6 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 			}
 		}
 	}
-	
-	
 }
 
 void ModuleEditor::Inspector(GameObject* go)

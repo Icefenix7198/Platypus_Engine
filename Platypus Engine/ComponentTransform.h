@@ -43,11 +43,13 @@ public:
 	
 	//Sets the local transform in function of the values of the Component
 	void GenerateLocalMatrix();
-	void GenerateGlobalMatrix();
+	void GenerateGlobalMatrix(bool regenerateLocal = true);
 	float4x4 CreateMatrix(float3 translation, float3 scaling, Quat rotation);
 	
 	//Funcion recursiva actualizar all transforms
-	bool RecalculateMatrix();
+	bool RecalculateMatrix(bool regenerateLocal = true);
+	//Transforma la local para quedarse en el sitio
+	float4x4 ReparentLocalMatrix(GameObject* newParent);
 
 	//ImGui
 	void OnEditor();

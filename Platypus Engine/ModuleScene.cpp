@@ -9,6 +9,7 @@
 #include "aasimp.h"
 
 #include "Component.h"
+#include "ComponentTransform.h" //Para updatear la transform cuando el reparent, no se si haya que hacerlo de otra forma y no tener este include
 
 ModuleScene::ModuleScene(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -51,9 +52,13 @@ update_status ModuleScene::PreUpdate(float dt)
 
 				actual->parent = newParent; //Quiza hacerlo asi pueda causar problemas por interrumpir un proceso, por eso esta el disable y enable, pero quiza no sea lo mas seguro.
 			}
+
+			//Update transform
+			actual->objTransform->ReparentLocalMatrix(newParent);
+			actual->objTransform->RecalculateMatrix(false);
 		}
 
-		pendingToReparent.empty();
+		pendingToReparent.clear();
 	}
 
 	return UPDATE_CONTINUE;

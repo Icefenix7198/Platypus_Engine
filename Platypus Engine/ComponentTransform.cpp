@@ -92,10 +92,10 @@ void ComponentTransform::GenerateLocalMatrix()
 	localTransform = float4x4::FromTRS(pos, rot, scale);
 }
 
-void ComponentTransform::GenerateGlobalMatrix()
+void ComponentTransform::GenerateGlobalMatrix(bool regenerateLocal)
 {
-	//The operation depends of this, so just in case it doesn't exist yet 
-	GenerateLocalMatrix();
+	//The operation depends of this, so just in case it doesn't exist yet (but with reparent we don't want that executed
+	if (regenerateLocal) {	GenerateLocalMatrix();	}
 
 	if (owner->parent == nullptr) //Si es el root su global es igual a su loca que es 0,0,0 en todo menos scale que es 1,1,1
 	{
@@ -118,15 +118,15 @@ float4x4 ComponentTransform::CreateMatrix(float3 translation, float3 scaling, Qu
 	return m; //Translate*rotate*scale
 }
 
-bool ComponentTransform::RecalculateMatrix()
+bool ComponentTransform::RecalculateMatrix(bool regenerateLocal)
 {
-	GenerateGlobalMatrix();
+	GenerateGlobalMatrix(regenerateLocal);
 	
 	if (!owner->children.empty())
 	{
 		for (int i = 0; i < owner->children.size(); i++)
 		{
-			owner->children.at(i)->objTransform->RecalculateMatrix();
+			owner->children.at(i)->objTransform->RecalculateMatrix(regenerateLocal);
 		}
 	}
 	ComponentMesh* mesh = (ComponentMesh*)owner->GetComponentByType(ComponentType::MESH);
@@ -137,6 +137,17 @@ bool ComponentTransform::RecalculateMatrix()
 	
 
 	return true;
+}
+
+float4x4 ComponentTransform::ReparentLocalMatrix(GameObject* newParent)
+{
+	float4x4 newLocal = newLocal.identity;
+	float4x4 parentGlobal = newParent->objTransform->localTransform;
+	parentGlobal.Inverse();
+	newLocal = parentGlobal * globalTransform;
+	localTransform = newLocal;
+	newLocal.Decompose(pos, rot, scale);
+	return newLocal;
 }
 
 void ComponentTransform::OnEditor()

@@ -1,4 +1,3 @@
-#pragma once
 #ifndef MODULE_RESOURCES
 #define MODULE_RESOURCES
 

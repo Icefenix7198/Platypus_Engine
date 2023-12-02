@@ -96,10 +96,10 @@ void aasimp::Load(const char* file_path)
 			//ourMesh->VAO = 0;
 
 			//Generate buffers.If after this any of them is 0 there is an error
-			glGenBuffers(1, &ourMesh->VBO);
+			/*glGenBuffers(1, &ourMesh->VBO);
 			glGenBuffers(1, &ourMesh->VN);
 			glGenBuffers(1, &ourMesh->EBO);
-			glGenBuffers(1, &ourMesh->VUV);
+			glGenBuffers(1, &ourMesh->VUV);*/
 			
 			//TODO: MIRAR SI ESTO ES NECESARIO
 			/*glBindBuffer(GL_ARRAY_BUFFER, ourMesh->VBO);

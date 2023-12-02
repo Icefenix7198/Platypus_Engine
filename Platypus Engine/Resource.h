@@ -15,6 +15,7 @@ class Resource
 		uint32_t UUID;
 
 	public:
+		Resource();
 		Resource(uint32_t uid, ResourceType type);
 		virtual ~Resource();
 };

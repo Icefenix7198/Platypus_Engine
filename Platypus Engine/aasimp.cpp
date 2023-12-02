@@ -101,8 +101,8 @@ void aasimp::Load(const char* file_path)
 			glGenBuffers(1, &ourMesh->EBO);
 			glGenBuffers(1, &ourMesh->VUV);
 			
-
-			glBindBuffer(GL_ARRAY_BUFFER, ourMesh->VBO);
+			//TODO: MIRAR SI ESTO ES NECESARIO
+			/*glBindBuffer(GL_ARRAY_BUFFER, ourMesh->VBO);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(float)*ourMesh->num_vertex*3, ourMesh->vertex, GL_STATIC_DRAW); 
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -117,7 +117,7 @@ void aasimp::Load(const char* file_path)
 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ourMesh->EBO);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * ourMesh->num_index, ourMesh->index, GL_STATIC_DRAW); 
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);*/
 
 			/*glBindBuffer(GL_ARRAY_BUFFER, ourMesh->id_UVs);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(float) * ourMesh->num_UVs * 2, ourMesh->UVs, GL_STATIC_DRAW);

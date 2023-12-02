@@ -1,14 +1,9 @@
 #include "Resource.h"
 #include "ResourceMesh.h"
 
-Resource::Resource(uint32_t uid, ResourceType type)
+ResourceMesh::ResourceMesh()
 {
-
-}
-
-Resource::~Resource()
-{
-
+	type = ResourceType::MESH;
 }
 
 ResourceMesh::ResourceMesh(uint32_t uid, ResourceType type)

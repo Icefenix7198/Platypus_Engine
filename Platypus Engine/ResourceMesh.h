@@ -14,8 +14,6 @@ struct Mesh
 	uint id_normals = 0; //normal in VRAM
 	uint num_normals = 0;
 	float* normals = nullptr;
-	uint numFaces = 0;
-	float* faces = nullptr; //This is necesary to draw faces normals
 
 	uint id_vertex = 0; // unique vertex in VRAM
 	uint num_vertex = 0;
@@ -30,17 +28,19 @@ struct Mesh
 	GLuint EBO;
 	GLuint VBO;
 	GLuint VN; //Normales para las texturas
-	GLuint VUV;
+	GLuint VUV; //Vector de UVs
 };
 
 class ResourceMesh : public Resource
 {
-	public:
-		ResourceType type;
-		uint32_t UUID;
-		Mesh rMesh;
-
-	public:
+public:
+		ResourceMesh();
 		ResourceMesh(uint32_t uid, ResourceType type);
 		virtual ~ResourceMesh();
+public:
+	ResourceType type;
+	uint32_t UUID;
+	Mesh rMesh;
+
+	
 };

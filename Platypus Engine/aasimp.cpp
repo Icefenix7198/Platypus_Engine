@@ -213,7 +213,7 @@ void aasimp::LoadTexture(const char* path)
 {
 	//path = "Assets/3DObjects/baker_house/Baker_house.png";
 
-	Texture* texture = nullptr;
+	texture = nullptr;
 
 	ILuint new_image_id = 0;
 	ilGenImages(1, &new_image_id);

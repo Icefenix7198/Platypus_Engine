@@ -45,6 +45,7 @@ struct Mesh
 	GLuint VBO;
 	GLuint VN; //Normales para las texturas
 	GLuint VUV;
+
 };
 
 struct Texture
@@ -68,5 +69,5 @@ namespace aasimp
 }
 
 
-
+Texture* texture;
 void HierarcyGameObject(const aiScene* scene,aiNode* root, const char* name, GameObject* parent);

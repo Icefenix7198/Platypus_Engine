@@ -2,6 +2,8 @@
 #include "ModuleFileSystem.h"
 #include "Globals.h"
 
+#include "aasimp.h"
+
 #include <fstream>
 #include <filesystem>
 
@@ -153,6 +155,7 @@ ImportType ModuleFileSystem::GetTypeOfFullPath(const char* fullPath)
 	if (std::strcmp(fileType.c_str(), "png") == 0 || (std::strcmp(fileType.c_str(), "dds") == 0) || (std::strcmp(fileType.c_str(), "DDS") == 0))
 	{
 		ret = ImportType::TEXTURES;
+		aasimp::LoadTexture(fullPath);
 	}
 
 	return ret;

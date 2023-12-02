@@ -1,6 +1,7 @@
 #include "ComponentMaterial.h"
 
 #include "Application.h"
+#include "aasimp.h"
 
 #include "imGui/imgui.h"
 #include "imGui/backends/imgui_impl_opengl3.h"
@@ -61,8 +62,17 @@ void ComponentMaterial::OnEditor()
 			ImGui::EndTable();
 		}
 
-		ImGui::Text("Size:");
-		ImGui::Text("Path:");
+		if (texture != nullptr)
+		{
+			ImGui::Text("Width: %i", texture->width);
+			ImGui::Text("Height: %i", texture->heigth);
+			ImGui::Text("Path: %s", texture->name);
+			ImGui::Image((ImTextureID)texture->id, ImVec2(64, 64));
+		}
+		else
+		{
+			ImGui::Text("Path: Dropt it on the scene");
+		}
 
 		butonChar.clear();
 		butonChar.append("Checkers");

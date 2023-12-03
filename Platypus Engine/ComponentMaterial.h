@@ -25,7 +25,7 @@ public:
 
 	uint textureBuffer;
 
-	Color color{ 1,1,1,1 };
+	Color color{ 1,1,1,1};
 
 private:
 

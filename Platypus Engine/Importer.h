@@ -3,6 +3,7 @@
 
 enum ImporterType //Each type of archive will inherit of this importer
 {
+	NONE,
 	IMPORTER_FBX,
 	IMPORTER_MESH,
 	IMPORTER_MATERIAL,
@@ -14,7 +15,7 @@ class Importer
 public:
 
 	//Transform/copy values from asset file to our structure of info
-	virtual void Import(ImporterType type);
+	virtual void Import(ImporterType type, const char* pathFile);
 	//Save from our struct of info to library
 	virtual __int64 Save(); //Todo: Preguntar al profe si eltipo de la funcion esta bien o que 
 	//Load  info from library to our struct	

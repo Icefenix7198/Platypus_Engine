@@ -1,14 +1,7 @@
 #pragma once
 #include "Module.h"
 #include "Globals.h"
-
-enum ImportType
-{
-	NOTYPE,
-	MODEL,
-	TEXTURES,
-	MAXTYPES
-};
+#include "Importer.h"
 
 struct PathNode
 {
@@ -82,7 +75,7 @@ public:
 	std::string GetUniqueName(const char* path, const char* name) const;
 
 	//Add archive to assets.
-	ImportType GetTypeOfFullPath(const char* fullPath);
+	ImporterType GetTypeOfFullPath(const char* fullPath);
 	bool AddToAssets(const char* fullPathToAdd, const char* folder);
 
 public:

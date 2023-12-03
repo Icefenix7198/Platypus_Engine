@@ -4,6 +4,9 @@
 #include "ModuleFileSystem.h"
 #include "ImGui/backends/imgui_impl_sdl2.h"
 
+//Importers
+#include "Importer.h"
+
 #define MAX_KEYS 300
 
 ModuleInput::ModuleInput(Application* app, bool start_enabled) : Module(app, start_enabled)
@@ -125,32 +128,12 @@ update_status ModuleInput::PreUpdate(float dt)
 				std::string path;
 				path.assign(e.drop.file);
 
-				ImportType iType;
+				ImporterType iType;
 				
 				iType = App->fileSystem->GetTypeOfFullPath(path.c_str());
 
-
-				switch (iType)
-				{
-				case NOTYPE:
-					LOG("Could not load the droped file: %s", path.c_str());
-					break;
-				case MODEL:
-					aasimp::Load(path.c_str());
-					LOG("Model %s loaded", path.c_str());
-					break;
-				case TEXTURES:
-					aasimp::Load(path.c_str());
-					LOG("Image %s loaded", path.c_str());
-					break;
-				case MAXTYPES:
-					break;
-				default:
-					break;
-				}
-
-				
-				break;
+				Importer importador;
+				importador.Import(iType,path.c_str());
 			}
 		}
 	}

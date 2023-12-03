@@ -5,7 +5,7 @@
 #include "MathGeoLib/include/MathGeoLib.h"
 #include<string>
 
-struct Mesh
+struct _Mesh
 {
 	uint id_index = 0; // index in VRAM
 	uint num_index = 0;
@@ -40,7 +40,7 @@ public:
 public:
 	ResourceType type;
 	uint32_t UUID;
-	Mesh rMesh;
+	_Mesh rMesh;
 
 	
 };

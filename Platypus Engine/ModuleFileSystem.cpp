@@ -2,6 +2,7 @@
 #include "ModuleFileSystem.h"
 #include "Globals.h"
 
+#include "Importer.h"
 #include "aasimp.h"
 
 #include <fstream>
@@ -125,9 +126,9 @@ const char* ModuleFileSystem::GetWriteDir() const
 	return PHYSFS_getWriteDir();
 }
 
-ImportType ModuleFileSystem::GetTypeOfFullPath(const char* fullPath)
+ImporterType ModuleFileSystem::GetTypeOfFullPath(const char* fullPath)
 {
-	ImportType ret = ImportType::NOTYPE;
+	ImporterType ret = ImporterType::NONE;
 
 	std::string pathFile;
 	std::string fileType;
@@ -149,12 +150,12 @@ ImportType ModuleFileSystem::GetTypeOfFullPath(const char* fullPath)
 
 	if (std::strcmp(fileType.c_str(), "FBX") == 0 || (std::strcmp(fileType.c_str(), "fbx") == 0))
 	{
-		ret = ImportType::MODEL;
+		ret = ImporterType::IMPORTER_FBX;
 	}
 
 	if (std::strcmp(fileType.c_str(), "png") == 0 || (std::strcmp(fileType.c_str(), "dds") == 0) || (std::strcmp(fileType.c_str(), "DDS") == 0))
 	{
-		ret = ImportType::TEXTURES;
+		ret = ImporterType::IMPORTER_MATERIAL;
 		aasimp::LoadTexture(fullPath);
 	}
 

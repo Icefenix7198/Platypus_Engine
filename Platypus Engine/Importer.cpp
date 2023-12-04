@@ -6,6 +6,8 @@
 #include "ImporterFBX.h"
 #include "ImporterMesh.h"
 
+#include "aasimp.h"
+
 #include "SDL\include\SDL.h"
 #include "PhysFS\include\physfs.h" //Works better than direct.h
 
@@ -23,6 +25,8 @@ void Importer::Import(ImporterType type, const char* pathFile)
 	case IMPORTER_MESH:
 		break;
 	case IMPORTER_MATERIAL:
+		//TEMPORAL, HABRA QUE HACERLO CON EL IMPORTER
+		aasimp::LoadTexture(pathFile);
 		break;
 	case NUM_IMPORTERS:
 		break;

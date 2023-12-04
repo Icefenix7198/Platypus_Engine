@@ -326,7 +326,7 @@ void ModuleRenderer3D::DrawCubeDirectMode(float originX, float originY, float or
 
 }
 
-void ModuleRenderer3D::DrawMesh(Mesh* mesh, bool wireframe, Color color)
+void ModuleRenderer3D::DrawMesh(Mesh* mesh, bool wireframe, Color color, uint textureID)
 {
 	glBindTexture(GL_TEXTURE_2D, textureID);
 

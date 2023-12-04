@@ -89,17 +89,22 @@ bool ComponentMesh::Update()
 		
 		glPushMatrix();
 		glMultMatrixf(m.ptr());
-		Color col;
-		col = { 1,1,1,1 };
+		Color col = { 1,1,1,1 };
+		uint texID = 0;
 		if (owner->HasComponent(ComponentType::MATERIAL))
 		{
 			ComponentMaterial* cMate = (ComponentMaterial*)owner->GetComponentByType(ComponentType::MATERIAL);
 			if (cMate->active)
 			{
+				
 				col = cMate->color;
+				if (cMate->textureBuffer > 0 && cMate->active) {
+					//Enable texture
+					texID = cMate->textureBuffer;
+				}
 			}
 		}
-		App->renderer3D->DrawMesh(mesh, wireMode,col);
+		App->renderer3D->DrawMesh(mesh, wireMode,col,texID);
 		glPopMatrix();
 	}
 	

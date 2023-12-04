@@ -229,7 +229,7 @@ void aasimp::LoadTexture(const char* path)
 
 	if (ilLoadImage(path)) 
 	{
-		iluFlipImage(); 
+		//iluFlipImage(); 
 		std::string str;
 		str.assign(path);
 		/*ILubyte* textdata = ilGetData();*/
@@ -249,6 +249,20 @@ void aasimp::LoadTexture(const char* path)
 
 		vecTextures.push_back(texture);
 
+		if(App->scene->selectedGO != App->scene->root)
+		{
+			auto go = App->scene->selectedGO;
+			if(go->HasComponent(ComponentType::MATERIAL))
+			{
+				ComponentMaterial* cm = (ComponentMaterial*)go->GetComponentByType(ComponentType::MATERIAL);
+				cm->textureBuffer = texture->id;
+			}
+			else
+			{
+				ComponentMaterial* cm = (ComponentMaterial*)go->CreateComponent(ComponentType::MATERIAL);
+				cm->textureBuffer = texture->id;
+			}
+		}
 		/*if (has_been_dropped && App->objects->GetSelectedObject() != nullptr) {
 			ApplyTextureToSelectedObject(texture);
 		}*/

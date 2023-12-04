@@ -23,6 +23,7 @@ public:
 	bool checkers;
 	bool activeCheck;
 
+	//Texture ID
 	uint textureBuffer;
 
 	Color color{ 1,1,1,1};

@@ -15,6 +15,7 @@ ComponentMaterial::ComponentMaterial()
 ComponentMaterial::ComponentMaterial(GameObject* own)
 {
 	owner = own;
+	name = "Null";
 	type = ComponentType::MATERIAL;
 	color = { 1,1,1,1 };
 }
@@ -61,17 +62,17 @@ void ComponentMaterial::OnEditor()
 			ImGui::EndTable();
 		}
 
-		/*if (texture != nullptr)
+		if (name != "Null")
 		{
-			ImGui::Text("Width: %i", texture->width);
-			ImGui::Text("Height: %i", texture->heigth);
-			ImGui::Text("Path: %s", texture->name);
-			ImGui::Image((ImTextureID)texture->id, ImVec2(128, 128));
+			ImGui::Text("Width: %i", width);
+			ImGui::Text("Height: %i", heigth);
+			ImGui::Text("Path: %s", name);
+			ImGui::Image((ImTextureID)textureBuffer, ImVec2(128, 128));
 		}
 		else
 		{
-			ImGui::Text("Path: Dropt it on the scene");
-		}*/
+			ImGui::Text("Texture: Dropt it on the scene");
+		}
 
 		butonChar.clear();
 		butonChar.append("Checkers");

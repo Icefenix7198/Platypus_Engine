@@ -26,6 +26,11 @@ public:
 	//Texture ID
 	uint textureBuffer;
 
+	//Texture info
+	int width;
+	int heigth;
+	std::string name;
+
 	Color color{ 1,1,1,1};
 
 private:

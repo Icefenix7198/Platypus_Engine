@@ -119,7 +119,6 @@ void ImporterMesh::Import(const char* file_path)
 
 uint64_t ImporterMesh::Save(ResourceMesh* resMesh, char** buffer)
 {
-	buffer = nullptr;
 	_Mesh mesh = resMesh->rMesh;
 	//aType of info will be saved
 	uint ranges[4] = { mesh.num_index, mesh.num_vertex,mesh.num_normals,mesh.num_UVs };

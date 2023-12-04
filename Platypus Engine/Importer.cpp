@@ -2,6 +2,9 @@
 #include <direct.h>
 #include "Globals.h"
 
+#include "Application.h"
+#include "ModuleFileSystem.h"
+
 //List of importers
 #include "ImporterFBX.h"
 #include "ImporterMesh.h"
@@ -15,6 +18,14 @@
 
 void Importer::Import(ImporterType type, const char* pathFile)
 {
+	LOG("File Dropped with path %s", pathFile);
+
+	// Gives the path with only the document no the origin (aka without the C:User/ etc , only the /document.coso
+	std::string finalPath;
+	App->fileSystem->SplitFilePath(pathFile, nullptr, &finalPath); 
+		
+	
+
 	ImporterFBX importerFBX;
 	switch (type)
 	{

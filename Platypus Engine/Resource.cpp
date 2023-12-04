@@ -22,14 +22,17 @@ void Resource::LoadToLibrary(Resource* recurso, const char* filePath)
 	int size;
 	char* buffer = nullptr;
 	ImporterMesh impMesh;
-	ResourceType tipo = recurso->type;
+	std::string assetsPath;
 	switch (recurso->type)
 	{
 	case ResourceType::TEXTURE:
 		break;
 	case ResourceType::MESH:
+		
+		assetsPath.assign(ASSETS_MODELS);
+		assetsPath.append(filePath);
 		size = impMesh.Save((ResourceMesh*)recurso, &buffer);
-		App->fileSystem->Save(filePath,buffer,size);
+		App->fileSystem->Save(assetsPath.c_str(),buffer,size);
 		break;
 	case ResourceType::NUM_TYPES:
 		break;

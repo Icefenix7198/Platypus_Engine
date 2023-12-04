@@ -25,6 +25,9 @@ void log(const char file[], int line, const char* format, ...);
 #define PARTICLES_PATH "Library/ParticleSystems/"
 #define SHADERS_PATH "Library/Shaders/"
 #define MAPS_PATH "Library/Maps/"
+//Assets paths
+#define ASSETS_MODELS "Assets/Models/"
+#define ASSETS_TEXTURES "Assets/Textures/"
 
 #define CAP(n) ((n <= 0.0f) ? n=0.0f : (n >= 1.0f) ? n=1.0f : n=n)
 

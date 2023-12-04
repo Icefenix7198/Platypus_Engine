@@ -372,6 +372,9 @@
     <ClInclude Include="ResourceMesh.h">
       <Filter>Sources\Resources\ResourcesTypes</Filter>
     </ClInclude>
+    <ClInclude Include="ComponentCamera.h">
+      <Filter>Sources\Components\ComponentsType</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -580,6 +583,9 @@
     </ClCompile>
     <ClCompile Include="ResourceMesh.cpp">
       <Filter>Sources\Resources\ResourcesTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentCamera.cpp">
+      <Filter>Sources\Components\ComponentsType</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

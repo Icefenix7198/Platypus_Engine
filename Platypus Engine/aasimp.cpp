@@ -214,7 +214,7 @@ void aasimp::LoadTexture(const char* path)
 {
 	//path = "Assets/3DObjects/baker_house/Baker_house.png";
 
-	texture = nullptr;
+	Texture* texture = nullptr;
 
 	ILuint new_image_id = 0;
 	ilGenImages(1, &new_image_id);
@@ -242,8 +242,7 @@ void aasimp::LoadTexture(const char* path)
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		/*glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, texture->width, texture->heigth,
-			0, GL_RGBA, GL_UNSIGNED_BYTE, texture);*/
+
 		//Unbind texture
 		glBindTexture(GL_TEXTURE_2D, 0);
 
@@ -256,6 +255,9 @@ void aasimp::LoadTexture(const char* path)
 			{
 				ComponentMaterial* cm = (ComponentMaterial*)go->GetComponentByType(ComponentType::MATERIAL);
 				cm->textureBuffer = texture->id;
+				cm->name = texture->name;
+				cm->width = texture->width;
+				cm->heigth = texture->heigth;
 			}
 			else
 			{

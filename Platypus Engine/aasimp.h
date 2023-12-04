@@ -66,6 +66,4 @@ namespace aasimp
 	std::vector<Texture*> vecTextures;
 }
 
-
-Texture* texture;
 void HierarcyGameObject(const aiScene* scene,aiNode* root, const char* name, GameObject* parent);

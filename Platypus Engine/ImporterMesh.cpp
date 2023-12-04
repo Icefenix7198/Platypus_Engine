@@ -108,7 +108,7 @@ void ImporterMesh::Import(const char* file_path)
 			//Once all the info we want is loaded we save the mesh on library
 			Resource* recu = (Resource*)reMesh;
 			recu->type = ResourceType::MESH;
-			reMesh->LoadToLibrary(recu, file_path);
+			reMesh->SaveToLibrary(recu, scene->mRootNode->mChildren[i]->mName.C_Str());
 
 
 			//Copy reMesh.rMesh to vector of meshes

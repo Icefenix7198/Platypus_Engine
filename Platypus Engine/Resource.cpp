@@ -17,22 +17,28 @@ Resource::~Resource()
 
 }
 
-void Resource::LoadToLibrary(Resource* recurso, const char* filePath)
+void Resource::SaveToLibrary(Resource* recurso, const char* fileName)
 {
 	int size;
 	char* buffer = nullptr;
 	ImporterMesh impMesh;
+	std::string libraryPath;
 	std::string assetsPath;
+
+	//// Gives the path with only the document no the origin (aka without the C:User/ etc , only the /document.coso
+	//App->fileSystem->SplitFilePath(filePath, nullptr, &assetsPath);
+
 	switch (recurso->type)
 	{
 	case ResourceType::TEXTURE:
 		break;
 	case ResourceType::MESH:
 		
-		assetsPath.assign(ASSETS_MODELS);
-		assetsPath.append(filePath);
+		libraryPath.assign(MESHES_PATH);
+		libraryPath.append(fileName);
+		libraryPath.append(".CFF");
 		size = impMesh.Save((ResourceMesh*)recurso, &buffer);
-		App->fileSystem->Save(assetsPath.c_str(),buffer,size);
+		App->fileSystem->Save(libraryPath.c_str(),buffer,size);
 		break;
 	case ResourceType::NUM_TYPES:
 		break;

@@ -21,23 +21,23 @@ void Importer::Import(ImporterType type, const char* pathFile)
 	LOG("File Dropped with path %s", pathFile);
 
 	// Gives the path with only the document no the origin (aka without the C:User/ etc , only the /document.coso
-	std::string finalPath;
-	App->fileSystem->SplitFilePath(pathFile, nullptr, &finalPath); 
+	/*std::string finalPath; //Esto aqui no, se hace en el save
+	App->fileSystem->SplitFilePath(pathFile, nullptr, &finalPath); */
 		
-	std::string normalizedSmallPath = App->fileSystem->NormalizePath(finalPath.c_str());
+	std::string normalizedPath = App->fileSystem->NormalizePath(pathFile);
 
 	ImporterFBX importerFBX;
 	switch (type)
 	{
 	case IMPORTER_FBX:
 		
-		importerFBX.Import(normalizedSmallPath.c_str());
+		importerFBX.Import(normalizedPath.c_str());
 		break;
 	case IMPORTER_MESH:
 		break;
 	case IMPORTER_MATERIAL:
 		//TEMPORAL, HABRA QUE HACERLO CON EL IMPORTER
-		aasimp::LoadTexture(pathFile);
+		aasimp::LoadTexture(normalizedPath.c_str());
 		break;
 	case NUM_IMPORTERS:
 		break;

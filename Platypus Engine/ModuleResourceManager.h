@@ -33,6 +33,7 @@ public:
 private:
 	Resource* CreateNewResource(const char* assetsFile, ResourceType type);
 private:
+	//Mapa de todos los recursos cargados, pasamos referencias a estos recursos para usar meshes y materials 
 	std::map<uint32_t, Resource*> resources;
 };
 

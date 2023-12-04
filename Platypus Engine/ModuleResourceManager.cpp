@@ -1,7 +1,7 @@
 #include "Application.h"
 #include "ModuleResourceManager.h"
 
-
+#include "MathGeoLib/include/Algorithm/Random/LCG.h"
 #include "Component.h"
 #include "ComponentTransform.h" //Para updatear la transform cuando el reparent, no se si haya que hacerlo de otra forma y no tener este include
 
@@ -44,6 +44,14 @@ uint32_t ModuleResources::ImportFile(const char* assetsFile)
 	//UnloadResource(resource); //<-- unload the resource after importing, we should only use the ID
 	
 	return ret;
+}
+
+uint32_t ModuleResources::GenerateNewUID()
+{
+	LCG lcg;
+	//lcg.Seed();
+
+	return uint32_t();
 }
 
 

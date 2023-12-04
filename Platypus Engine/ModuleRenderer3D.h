@@ -32,7 +32,7 @@ public:
 
 	void DrawCubeDirectMode(float originX=0, float originY=0, float originZ=0, float size=1);
 	
-	void DrawMesh(Mesh* mesh, bool wireframe = false, Color col = {1,1,1,1}, uint textureID = 0);
+	void DrawMesh(Mesh* mesh, bool wireframe = false, Color col = {1,1,1,1}, uint checkersID = 0);
 	void DrawAllMeshes();
 	void CreateCheckers();
 
@@ -67,7 +67,7 @@ public:
 	GLuint EBO; //ELEMENT BUFFER OBJECT
 	GLuint VAO; //VERTEX ATRIBUTE OBJECT
 
-	GLuint textureID;
+	GLuint checkersID;
 	GLubyte checkerImage[CHECKERS_HEIGHT][CHECKERS_WIDTH][4];
 
 private:

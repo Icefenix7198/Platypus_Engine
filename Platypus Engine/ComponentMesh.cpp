@@ -102,6 +102,10 @@ bool ComponentMesh::Update()
 					//Enable texture
 					texID = cMate->textureBuffer;
 				}
+				if(cMate->checkers)
+				{
+					texID = App->renderer3D->checkersID;
+				}
 			}
 		}
 		App->renderer3D->DrawMesh(mesh, wireMode,col,texID);

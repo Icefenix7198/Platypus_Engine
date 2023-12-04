@@ -243,7 +243,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 		SDL_GL_MakeCurrent(backup_current_window, backup_current_context);
 	}
 
-	glDeleteTextures(1, &textureID);
+	glDeleteTextures(1, &checkersID);
 
 	SDL_GL_SwapWindow(App->window->window);
 	return UPDATE_CONTINUE;
@@ -326,9 +326,9 @@ void ModuleRenderer3D::DrawCubeDirectMode(float originX, float originY, float or
 
 }
 
-void ModuleRenderer3D::DrawMesh(Mesh* mesh, bool wireframe, Color color, uint textureID)
+void ModuleRenderer3D::DrawMesh(Mesh* mesh, bool wireframe, Color color, uint checkersID)
 {
-	glBindTexture(GL_TEXTURE_2D, textureID);
+	glBindTexture(GL_TEXTURE_2D, checkersID);
 
 	// activate and specify pointer to vertex array
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -397,8 +397,8 @@ void ModuleRenderer3D::CreateCheckers()
 	}
 
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-	glGenTextures(1, &textureID);
-	glBindTexture(GL_TEXTURE_2D, textureID);
+	glGenTextures(1, &checkersID);
+	glBindTexture(GL_TEXTURE_2D, checkersID);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);

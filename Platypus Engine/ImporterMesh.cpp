@@ -98,7 +98,7 @@ void ImporterMesh::Import(const char* file_path)
 
 			glBindBuffer(GL_ARRAY_BUFFER, reMesh->rMesh.VUV);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(math::float2) * reMesh->rMesh.num_UVs, reMesh->rMesh.UVs, GL_STATIC_DRAW);
-			App->renderer3D->textureID = reMesh->rMesh.VUV; //Esto tendra que ir fuera, importamos meshes no texturas.
+			App->renderer3D->checkersID = reMesh->rMesh.VUV; //Esto tendra que ir fuera, importamos meshes no texturas.
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, reMesh->rMesh.EBO);

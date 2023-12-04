@@ -24,14 +24,14 @@ void Importer::Import(ImporterType type, const char* pathFile)
 	std::string finalPath;
 	App->fileSystem->SplitFilePath(pathFile, nullptr, &finalPath); 
 		
-	
+	std::string normalizedSmallPath = App->fileSystem->NormalizePath(finalPath.c_str());
 
 	ImporterFBX importerFBX;
 	switch (type)
 	{
 	case IMPORTER_FBX:
 		
-		importerFBX.Import(pathFile);
+		importerFBX.Import(normalizedSmallPath.c_str());
 		break;
 	case IMPORTER_MESH:
 		break;

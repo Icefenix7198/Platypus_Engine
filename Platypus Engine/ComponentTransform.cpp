@@ -1,3 +1,4 @@
+#include "Component.h"
 #include "ComponentTransform.h"
 #include "ComponentMesh.h" //Necesary for AABBs
 #include "GameObject.h"

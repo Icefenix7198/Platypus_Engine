@@ -49,9 +49,9 @@ uint32_t ModuleResources::ImportFile(const char* assetsFile)
 uint32_t ModuleResources::GenerateNewUID()
 {
 	LCG lcg;
-	//lcg.Seed();
+	uint32_t num = lcg.IntFast();
 
-	return uint32_t();
+	return num;
 }
 
 

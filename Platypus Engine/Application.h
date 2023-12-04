@@ -11,6 +11,7 @@
 #include "ModuleEditor.h"
 #include "ModuleScene.h"
 #include "ModuleFileSystem.h"
+#include "ModuleResourceManager.h"
 
 #include<vector>
 
@@ -33,6 +34,7 @@ public:
 	ModuleEditor* editor;
 	ModuleScene* scene;
 	ModuleFileSystem* fileSystem;
+	ModuleResources* resources;
 
 	//Moved to public to control Delta Time
 	Timer	ms_timer;

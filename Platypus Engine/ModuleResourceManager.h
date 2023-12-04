@@ -15,7 +15,7 @@
 class ModuleResources : public Module
 {
 public:
-	ModuleResources(Application* app, bool start_enabled);
+	ModuleResources(Application* app, bool start_enabled = true);
 	~ModuleResources();
 
 	bool Init();

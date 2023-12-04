@@ -9,6 +9,7 @@ Application::Application()
 	editor = new ModuleEditor(this);
 	scene = new ModuleScene(this);
 	fileSystem = new ModuleFileSystem(this);
+	resources = new ModuleResources(this);
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
 	// They will CleanUp() in reverse order
@@ -19,6 +20,7 @@ Application::Application()
 	AddModule(input);
 	AddModule(editor);
 	AddModule(scene);
+	AddModule(resources);
 	AddModule(fileSystem);
 
 	// Renderer last!

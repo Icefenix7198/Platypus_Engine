@@ -1,6 +1,8 @@
 #ifndef __IMPORTER_H__
 #define __IMPORTER_H__
 
+#include "Resource.h"
+
 enum ImporterType //Each type of archive will inherit of this importer
 {
 	NONE,
@@ -20,7 +22,7 @@ public:
 	virtual __int64 Save(); //Todo: Preguntar al profe si eltipo de la funcion esta bien o que 
 	
 	//Load  info from library to our struct	
-	virtual void Load(char* buffer, ImporterType type);
+	virtual void Load(char* buffer, Resource* resource);
 };
 
 #endif __IMPORTER_H__

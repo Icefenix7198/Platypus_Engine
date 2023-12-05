@@ -8,11 +8,11 @@ class ImporterFBX : public Importer
 public:
 
 	//Transform/copy values from asset file to our structure of info
-	virtual void Import(const char* filePath);
+	void Import(const char* filePath);
 	//Save from our struct of info to library
-	virtual __int64 Save(); //Todo: Preguntar al profe si eltipo de la funcion esta bien o que 
+	__int64 Save(); //Todo: Preguntar al profe si eltipo de la funcion esta bien o que 
 	//Load  info from library to our struct	
-	virtual void Load();
+	void Load(char* buffer);
 
 };
 

@@ -21,7 +21,7 @@ public:
 	//Save from our struct of info to library
 	uint64_t Save(ResourceMesh* rMesh, char** buffer); //Todo: Preguntar al profe si eltipo de la funcion esta bien o que 
 	//Load  info from library to our struct	
-	virtual void Load(ResourceMesh &rMesh, char* buffer);
+	virtual void Load(ResourceMesh* rMesh, char* buffer);
 
 };
 

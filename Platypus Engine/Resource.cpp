@@ -1,6 +1,7 @@
 #include "Resource.h"
 #include "Application.h"
 
+#include "Importer.h"
 #include "ImporterMesh.h"
 
 Resource::Resource()
@@ -34,11 +35,12 @@ void Resource::SaveToLibrary(Resource* recurso, const char* fileName)
 	case ResourceType::TEXTURE:
 		break;
 	case ResourceType::MESH:
-		
+		ResourceMesh* resourceAsMesh = (ResourceMesh*)recurso;
+		resourceAsMesh->UUID = ID;
 		libraryPath.assign(MESHES_PATH);
 		libraryPath.append(std::to_string(ID));
-		libraryPath.append(".CFF");
-		size = impMesh.Save((ResourceMesh*)recurso, &buffer);
+		libraryPath.append(CFF);
+		size = impMesh.Save(resourceAsMesh, &buffer);
 		App->fileSystem->Save(libraryPath.c_str(),buffer,size);
 		break;
 	case ResourceType::NUM_TYPES:
@@ -48,15 +50,17 @@ void Resource::SaveToLibrary(Resource* recurso, const char* fileName)
 	}
 
 	//After saving the resource in library we load it
-	LoadFromLibrary(libraryPath.c_str());
-	//And create the meta
+	LoadFromLibrary(libraryPath.c_str(),recurso);
+	//And after it has been loaded we add it to the list of resources if it isn't already there
+
+
 }
 
-void Resource::LoadFromLibrary(const char* fileName)
+void Resource::LoadFromLibrary(const char* fileName, Resource* resourceToPass)
 {
 	char* buffer;
 	App->fileSystem->Load(fileName, &buffer);
 	Importer imp;
 	
-	imp.Load(buffer, App->fileSystem->GetTypeOfFullPath(fileName));
+	imp.Load(buffer,resourceToPass);
 }

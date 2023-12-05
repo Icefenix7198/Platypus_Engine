@@ -148,7 +148,7 @@ ImporterType ModuleFileSystem::GetTypeOfFullPath(const char* fullPath)
 		}
 	}
 
-	if (std::strcmp(fileType.c_str(), "FBX") == 0 || (std::strcmp(fileType.c_str(), "fbx") == 0) || (std::strcmp(fileType.c_str(), "CFF") == 0))
+	if (std::strcmp(fileType.c_str(), "FBX") == 0 || (std::strcmp(fileType.c_str(), "fbx") == 0) || (std::strcmp(fileType.c_str(), CFF) == 0))
 	{
 		ret = ImporterType::IMPORTER_FBX;
 	}

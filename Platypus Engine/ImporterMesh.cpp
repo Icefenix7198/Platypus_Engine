@@ -114,6 +114,7 @@ void ImporterMesh::Import(const char* file_path)
 			//Copy reMesh.rMesh to vector of meshes
 			//vecMeshes.push_back(reMesh.rMesh);
 		}
+		//Create Meta (we do it here because there is only one meta for Model no for Mesh, but we need a list of our resources Mesh in the meta)
 	}
 }
 
@@ -153,7 +154,7 @@ uint64_t ImporterMesh::Save(ResourceMesh* resMesh, char** buffer)
 	return size;
 }
 
-void ImporterMesh::Load(ResourceMesh &resMesh, char* buffer)
+void ImporterMesh::Load(ResourceMesh* resMesh, char* buffer)
 {
 	char* cursor = buffer;
 	// amount of indices / vertices / normals / UVs
@@ -164,32 +165,32 @@ void ImporterMesh::Load(ResourceMesh &resMesh, char* buffer)
 	memcpy(ranges, cursor, bytes);
 	cursor += bytes;
 
-	resMesh.rMesh.num_index = ranges[0];
-	resMesh.rMesh.num_vertex = ranges[1];
-	resMesh.rMesh.num_normals = ranges[2];
-	resMesh.rMesh.num_UVs = ranges[3];
+	resMesh->rMesh.num_index = ranges[0];
+	resMesh->rMesh.num_vertex = ranges[1];
+	resMesh->rMesh.num_normals = ranges[2];
+	resMesh->rMesh.num_UVs = ranges[3];
 
 	// Load index
-	bytes = sizeof(uint) * resMesh.rMesh.num_index;
-	resMesh.rMesh.index = new uint[resMesh.rMesh.num_index];
-	memcpy(resMesh.rMesh.index, cursor, bytes);
+	bytes = sizeof(uint) * resMesh->rMesh.num_index;
+	resMesh->rMesh.index = new uint[resMesh->rMesh.num_index];
+	memcpy(resMesh->rMesh.index, cursor, bytes);
 	cursor += bytes;
 
 	// Load vertex
-	bytes = sizeof(float) * resMesh.rMesh.num_vertex * 3;
-	resMesh.rMesh.vertex = new float[resMesh.rMesh.num_vertex];
-	memcpy(resMesh.rMesh.vertex, cursor, bytes);
+	bytes = sizeof(float) * resMesh->rMesh.num_vertex * 3;
+	resMesh->rMesh.vertex = new float[resMesh->rMesh.num_vertex];
+	memcpy(resMesh->rMesh.vertex, cursor, bytes);
 	cursor += bytes;
 
 	// Load normals
-	bytes = sizeof(float) * resMesh.rMesh.num_normals * 3;
-	resMesh.rMesh.normals = new float[resMesh.rMesh.num_normals];
-	memcpy(resMesh.rMesh.normals, cursor, bytes);
+	bytes = sizeof(float) * resMesh->rMesh.num_normals * 3;
+	resMesh->rMesh.normals = new float[resMesh->rMesh.num_normals];
+	memcpy(resMesh->rMesh.normals, cursor, bytes);
 	cursor += bytes;
 
 	// Load UVs
-	bytes = sizeof(float) * resMesh.rMesh.num_UVs * 2;
-	resMesh.rMesh.UVs = new math::float2[resMesh.rMesh.num_UVs];
-	memcpy(resMesh.rMesh.UVs, cursor, bytes);
+	bytes = sizeof(float) * resMesh->rMesh.num_UVs * 2;
+	resMesh->rMesh.UVs = new math::float2[resMesh->rMesh.num_UVs];
+	memcpy(resMesh->rMesh.UVs, cursor, bytes);
 	cursor += bytes;
 }

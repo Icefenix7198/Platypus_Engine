@@ -51,7 +51,21 @@ __int64 Importer::Save()
 	return 0;
 }
 
-void Importer::Load(char* buffer, ImporterType type)
+void Importer::Load(char* buffer, Resource* resources)
 {
-
+	ImporterMesh impMesh;
+	//ImporterMetrial impMaterial;
+	switch (resources->type)
+	{
+	case ResourceType::TEXTURE:
+		break;
+	case ResourceType::MESH:
+		impMesh.Load((ResourceMesh*)resources, buffer);
+		break;
+	case ResourceType::NUM_TYPES:
+		break;
+	default:
+		break;
+	}
+	
 }

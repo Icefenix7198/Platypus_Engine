@@ -20,6 +20,9 @@ __int64 ImporterFBX::Save()
 	return 0;
 }
 
-void ImporterFBX::Load()
+void ImporterFBX::Load(char* buffer)
 {
+	ResourceMesh* reMesh;
+	ImporterMesh impMesh;
+	impMesh.Load(reMesh, buffer);
 }

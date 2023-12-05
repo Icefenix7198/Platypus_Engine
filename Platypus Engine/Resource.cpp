@@ -35,12 +35,10 @@ void Resource::SaveToLibrary(Resource* recurso, const char* fileName)
 	case ResourceType::TEXTURE:
 		break;
 	case ResourceType::MESH:
-		ResourceMesh* resourceAsMesh = (ResourceMesh*)recurso;
-		resourceAsMesh->UUID = ID;
 		libraryPath.assign(MESHES_PATH);
 		libraryPath.append(std::to_string(ID));
 		libraryPath.append(CFF);
-		size = impMesh.Save(resourceAsMesh, &buffer);
+		size = impMesh.Save((ResourceMesh*)recurso, &buffer);
 		App->fileSystem->Save(libraryPath.c_str(),buffer,size);
 		break;
 	case ResourceType::NUM_TYPES:
@@ -50,9 +48,10 @@ void Resource::SaveToLibrary(Resource* recurso, const char* fileName)
 	}
 
 	//After saving the resource in library we load it
+	recurso->UUID = ID;
 	LoadFromLibrary(libraryPath.c_str(),recurso);
 	//And after it has been loaded we add it to the list of resources if it isn't already there
-	App->resources->ImportFile();
+	App->resources->AddResource(recurso);
 
 }
 

@@ -49,6 +49,7 @@ void Resource::SaveToLibrary(Resource* recurso, const char* fileName)
 
 	//After saving the resource in library we load it
 	LoadFromLibrary(libraryPath.c_str());
+	//And create the meta
 }
 
 void Resource::LoadFromLibrary(const char* fileName)

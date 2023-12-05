@@ -11,6 +11,7 @@ enum class ResourceType
 class Resource
 {
 	public:
+		std::string name;
 		ResourceType type;
 		uint32_t UUID;
 

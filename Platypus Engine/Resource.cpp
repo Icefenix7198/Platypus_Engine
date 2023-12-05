@@ -52,7 +52,7 @@ void Resource::SaveToLibrary(Resource* recurso, const char* fileName)
 	//After saving the resource in library we load it
 	LoadFromLibrary(libraryPath.c_str(),recurso);
 	//And after it has been loaded we add it to the list of resources if it isn't already there
-
+	App->resources->ImportFile();
 
 }
 

@@ -54,6 +54,16 @@ uint32_t ModuleResources::GenerateNewUID()
 	return num;
 }
 
+bool ModuleResources::AddResource(Resource* resource)
+{
+	bool ret = true;
+
+	resourcesInProject[resource->UUID] = resource;
+
+
+	return ret;
+}
+
 
 
 

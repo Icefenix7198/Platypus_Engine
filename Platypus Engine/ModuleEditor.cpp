@@ -74,24 +74,32 @@ void ModuleEditor::DrawEditor()
 		}
 		if (ImGui::BeginMenu("Assets"))
 		{
+			std::string path;
+			path.assign(ASSETS_MODELS);
 			if(ImGui::Button("Load BakerHouse"))
 			{
-				aasimp::Load("Assets/3DObjects/baker_house/BakerHouse.fbx");
+				//"C:\Users\ericsb\Documents\GitHub\Platypus_Engine\Platypus Engine\Game\Assets\MODELS\BakerHouse.fbx";
+				path.append("BakerHouse.fbx");
+				aasimp::Load(path.c_str());
+				
 			}
 			
 			if(ImGui::BeginMenu("Geometric Shapes"))
 			{
 				if (ImGui::Button("Create Cube"))
 				{
-					aasimp::Load("Assets/3DObjects/cube.fbx");
+					path.append("cube.fbx");
+					aasimp::Load(path.c_str());
 				}
 				if (ImGui::Button("Create Sphere"))
 				{
-					aasimp::Load("Assets/3DObjects/sphere.fbx");
+					path.append("sphere.fbx");
+					aasimp::Load(path.c_str());
 				}
 				if (ImGui::Button("Create Cylinder"))
 				{
-					aasimp::Load("Assets/3DObjects/cylinder.fbx");
+					path.append("cylinder.fbx");
+					aasimp::Load(path.c_str());
 				}
 
 				ImGui::EndMenu();
@@ -100,11 +108,13 @@ void ModuleEditor::DrawEditor()
 			{
 				if (ImGui::Button("Mike the mouse"))
 				{
-					aasimp::Load("Assets/3DObjects/mickey-mouse.FBX");
+					path.append("mickey-mouse.FBX");
+					aasimp::Load(path.c_str());
 				}
 				if (ImGui::Button("Create AgentP"))
 				{
-					aasimp::Load("Assets/3DObjects/perry.FBX");
+					path.append("perry.FBX");
+					aasimp::Load(path.c_str());
 				}
 				ImGui::EndMenu();
 			}

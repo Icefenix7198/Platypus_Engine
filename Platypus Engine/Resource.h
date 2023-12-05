@@ -19,4 +19,5 @@ class Resource
 		Resource(uint32_t uid, ResourceType type);
 		virtual ~Resource();
 		void SaveToLibrary(Resource* recurso, const char* fileName);
+		void LoadFromLibrary(const char* fileName);
 };

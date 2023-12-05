@@ -212,7 +212,6 @@ Mesh* AiMeshtoMesh(aiMesh* mesh)
 
 void aasimp::LoadTexture(const char* path)
 {
-	//path = "Assets/3DObjects/baker_house/Baker_house.png";
 
 	Texture* texture = nullptr;
 

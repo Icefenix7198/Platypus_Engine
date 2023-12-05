@@ -180,7 +180,11 @@ bool ModuleRenderer3D::Init()
 	ilutRenderer(ILUT_OPENGL);
 
 	//Load Baker House
-	aasimp::Load("Assets/3DObjects/baker_house/BakerHouse.fbx"); //It must be done in Renderer because OpenGL isn't inizialitzed in scene.
+	//"C:\Users\ericsb\Documents\GitHub\Platypus_Engine\Platypus Engine\Game\Assets\MODELS\BakerHouse.fbx";
+	std::string path = ASSETS_MODELS;
+	path.append("BakerHouse.fbx");
+	aasimp::Load(path.c_str());//It must be done in Renderer because OpenGL isn't inizialitzed in scene.
+	
 
 	return ret;
 }

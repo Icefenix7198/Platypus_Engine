@@ -48,4 +48,14 @@ void Resource::SaveToLibrary(Resource* recurso, const char* fileName)
 	}
 
 	//After saving the resource in library we load it
+	LoadFromLibrary(libraryPath.c_str());
+}
+
+void Resource::LoadFromLibrary(const char* fileName)
+{
+	char* buffer;
+	App->fileSystem->Load(fileName, &buffer);
+	Importer imp;
+	
+	imp.Load(buffer, App->fileSystem->GetTypeOfFullPath(fileName));
 }

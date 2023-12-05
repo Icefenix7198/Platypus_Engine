@@ -51,6 +51,7 @@ __int64 Importer::Save()
 	return 0;
 }
 
-void Importer::Load()
+void Importer::Load(char* buffer, ImporterType type)
 {
+
 }

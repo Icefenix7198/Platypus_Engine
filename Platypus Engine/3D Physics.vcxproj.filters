@@ -587,6 +587,12 @@
     <ClCompile Include="ComponentCamera.cpp">
       <Filter>Sources\Components\ComponentsType</Filter>
     </ClCompile>
+    <ClCompile Include="JSONHelper.h">
+      <Filter>Sources\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="JSONHelper.cpp">
+      <Filter>Sources\Tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="MathGeoLib\include\Geometry\KDTree.inl">

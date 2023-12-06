@@ -206,6 +206,8 @@
     <ClCompile Include="ImporterMesh.cpp" />
     <ClCompile Include="ImporterFBX.cpp" />
     <ClCompile Include="Importer.cpp" />
+    <ClCompile Include="JSONHelper.cpp" />
+    <ClCompile Include="JSONHelper.h" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="Main.cpp" />

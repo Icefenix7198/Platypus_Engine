@@ -32,6 +32,7 @@ public:
 	
 	void OnEditor();
 
+	uint32_t IDResourceMesh;
 	Mesh* mesh;
 	bool wireMode;
 	bool drawVertexNormals;

@@ -14,7 +14,9 @@ void ImporterFBX::Import(const char* pathFile)
 {
 	if(!App->fileSystem->Exists(pathFile))
 	{
-		App->fileSystem->DuplicateFile(pathFile,ASSETS_MODELS);
+		std::string str;
+		App->fileSystem->DuplicateFile(pathFile,ASSETS_MODELS,str);
+		//App->fileSystem->AddToAssets(pathFile, ASSETS_MODELS); //Doesen't work
 	}
 
 	ImporterMesh meshImporter;

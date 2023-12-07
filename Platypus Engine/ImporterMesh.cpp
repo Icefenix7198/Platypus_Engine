@@ -17,7 +17,7 @@ void ImporterMesh::Import(const char* file_path)
 	if (scene != nullptr && scene->HasMeshes())
 	{
 		//We save here all the resource meshes we import
-		std::vector<ResourceMesh*> meshes;
+		std::vector<Resource*> meshes;
 		// Use scene->mNumMeshes to iterate on scene->mMeshes array
 		for (int i = 0; i < scene->mNumMeshes; i++)
 		{
@@ -115,7 +115,7 @@ void ImporterMesh::Import(const char* file_path)
 			reMesh->SaveToLibrary(recu, scene->mRootNode->mChildren[i]->mName.C_Str());
 
 			//Add all meshes into an array for the meta
-			meshes.push_back((ResourceMesh*)recu);
+			meshes.push_back(recu);
 		}
 		//Create Meta (we do it here because there is only one meta for Model no for Mesh, but we need a list of our resources Mesh in the meta)
 		CreateMetaModel(file_path,meshes);
@@ -145,7 +145,7 @@ uint64_t ImporterMesh::Save(ResourceMesh* resMesh, char** buffer)
 	cursor += bytes;
 
 	//Store normals
-	bytes = sizeof(float) * mesh.num_normals * 3;
+	bytes = sizeof(float) * mesh.num_normals /** 3*/;
 	memcpy(cursor, mesh.normals, bytes);
 	cursor += bytes;
 
@@ -199,7 +199,7 @@ void ImporterMesh::Load(ResourceMesh* resMesh, char* buffer)
 	cursor += bytes;
 }
 
-void ImporterMesh::CreateMetaModel(const char* filePath,std::vector<ResourceMesh*> meshes)
+void ImporterMesh::CreateMetaModel(const char* filePath,std::vector<Resource*> meshes)
 {
 	JSON_Value* root_value = json_value_init_object();
 	JSON_Object* root_object = json_value_get_object(root_value);

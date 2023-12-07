@@ -24,7 +24,7 @@ public:
 	virtual void Load(ResourceMesh* rMesh, char* buffer);
 	
 	//JSON Things
-	void CreateMetaModel(const char* filePath, std::vector<ResourceMesh*> meshes);
+	void CreateMetaModel(const char* filePath, std::vector<Resource*> meshes);
 };
 
 #endif __IMPORTER_MESH_H__

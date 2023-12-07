@@ -57,7 +57,7 @@ void Resource::SaveToLibrary(Resource* recurso, const char* fileName)
 
 void Resource::LoadFromLibrary(const char* fileName, Resource* resourceToPass)
 {
-	char* buffer;
+	char* buffer = nullptr;
 	App->fileSystem->Load(fileName, &buffer);
 	Importer imp;
 	

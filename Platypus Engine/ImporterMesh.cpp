@@ -91,7 +91,6 @@ void ImporterMesh::Import(const char* file_path)
 			glGenBuffers(1, &reMesh->rMesh.EBO);
 			glGenBuffers(1, &reMesh->rMesh.VUV);
 
-			//TODO: MIRAR SI ESTO ES NECESARIO
 			glBindBuffer(GL_ARRAY_BUFFER, reMesh->rMesh.VBO);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(float)*reMesh->rMesh.num_vertex*3, reMesh->rMesh.vertex, GL_STATIC_DRAW);
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -119,7 +118,7 @@ void ImporterMesh::Import(const char* file_path)
 			meshes.push_back((ResourceMesh*)recu);
 		}
 		//Create Meta (we do it here because there is only one meta for Model no for Mesh, but we need a list of our resources Mesh in the meta)
-		CreateMetaModel(file_path);
+		CreateMetaModel(file_path,meshes);
 	}
 }
 
@@ -183,13 +182,13 @@ void ImporterMesh::Load(ResourceMesh* resMesh, char* buffer)
 
 	// Load vertex
 	bytes = sizeof(float) * resMesh->rMesh.num_vertex * 3;
-	resMesh->rMesh.vertex = new float[resMesh->rMesh.num_vertex];
+	resMesh->rMesh.vertex = new float[resMesh->rMesh.num_vertex*3];
 	memcpy(resMesh->rMesh.vertex, cursor, bytes);
 	cursor += bytes;
 
 	// Load normals
 	bytes = sizeof(float) * resMesh->rMesh.num_normals * 3;
-	resMesh->rMesh.normals = new float[resMesh->rMesh.num_normals];
+	resMesh->rMesh.normals = new float[resMesh->rMesh.num_normals*3];
 	memcpy(resMesh->rMesh.normals, cursor, bytes);
 	cursor += bytes;
 
@@ -200,7 +199,7 @@ void ImporterMesh::Load(ResourceMesh* resMesh, char* buffer)
 	cursor += bytes;
 }
 
-void ImporterMesh::CreateMetaModel(const char* filePath)
+void ImporterMesh::CreateMetaModel(const char* filePath,std::vector<ResourceMesh*> meshes)
 {
 	JSON_Value* root_value = json_value_init_object();
 	JSON_Object* root_object = json_value_get_object(root_value);
@@ -212,11 +211,15 @@ void ImporterMesh::CreateMetaModel(const char* filePath)
 		//Crear path
 		json_object_set_string(root_object, "FilePath", filePath);
 		json_object_set_string(root_object, "Name", App->fileSystem->GetNameFromPath(filePath).c_str());
-		json_object_set_number(root_object, "UUID", 25);
+		for (size_t i = 0; i < meshes.size(); i++)
+		{
+			std::string IDname = meshes.at(i)->name;
+			IDname.append(".UUID");
+			json_object_dotset_number(root_object, IDname.c_str(), meshes.at(i)->UUID);
+		}
 		//Dot set hace que si lo pones en un punto te lo ponga dentro de un {} del punto antes del 
-		json_object_dotset_string(root_object, "address.city", "Cupertino");
 		//Jason_parse_string lo mete en un array
-		json_object_dotset_value(root_object, "contact.emails", json_parse_string("[\"email@example.com\",\"email2@example.com\"]"));
+		//json_object_dotset_value(root_object, "contact.emails", json_parse_string("[\"email@example.com\",\"email2@example.com\"]"));
 		serialized_string = json_serialize_to_string_pretty(root_value);
 		puts(serialized_string);
 		

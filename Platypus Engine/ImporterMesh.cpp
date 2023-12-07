@@ -6,14 +6,18 @@
 
 #include "SDL\include\SDL.h"
 #include "PhysFS\include\physfs.h" //Works better than direct.h
+#include "parson-master/parson.h"
 
 #pragma comment (lib, "PhysFS/libx86/physfs.lib")
 
 void ImporterMesh::Import(const char* file_path)
 {
+
 	const aiScene* scene = aiImportFile(file_path, aiProcessPreset_TargetRealtime_MaxQuality);
 	if (scene != nullptr && scene->HasMeshes())
 	{
+		//We save here all the resource meshes we import
+		std::vector<ResourceMesh*> meshes;
 		// Use scene->mNumMeshes to iterate on scene->mMeshes array
 		for (int i = 0; i < scene->mNumMeshes; i++)
 		{
@@ -111,11 +115,11 @@ void ImporterMesh::Import(const char* file_path)
 			recu->name = scene->mRootNode->mChildren[i]->mName.C_Str();
 			reMesh->SaveToLibrary(recu, scene->mRootNode->mChildren[i]->mName.C_Str());
 
-
-			//Copy reMesh.rMesh to vector of meshes
-			//vecMeshes.push_back(reMesh.rMesh);
+			//Add all meshes into an array for the meta
+			meshes.push_back((ResourceMesh*)recu);
 		}
 		//Create Meta (we do it here because there is only one meta for Model no for Mesh, but we need a list of our resources Mesh in the meta)
+		CreateMetaModel(file_path);
 	}
 }
 
@@ -194,4 +198,35 @@ void ImporterMesh::Load(ResourceMesh* resMesh, char* buffer)
 	resMesh->rMesh.UVs = new math::float2[resMesh->rMesh.num_UVs];
 	memcpy(resMesh->rMesh.UVs, cursor, bytes);
 	cursor += bytes;
+}
+
+void ImporterMesh::CreateMetaModel(const char* filePath)
+{
+	JSON_Value* root_value = json_value_init_object();
+	JSON_Object* root_object = json_value_get_object(root_value);
+
+	//If there is no failure loading
+	if (root_value != nullptr && root_object != nullptr)
+	{
+		char* serialized_string = NULL;
+		//Crear path
+		json_object_set_string(root_object, "FilePath", filePath);
+		json_object_set_string(root_object, "Name", App->fileSystem->GetNameFromPath(filePath).c_str());
+		json_object_set_number(root_object, "UUID", 25);
+		//Dot set hace que si lo pones en un punto te lo ponga dentro de un {} del punto antes del 
+		json_object_dotset_string(root_object, "address.city", "Cupertino");
+		//Jason_parse_string lo mete en un array
+		json_object_dotset_value(root_object, "contact.emails", json_parse_string("[\"email@example.com\",\"email2@example.com\"]"));
+		serialized_string = json_serialize_to_string_pretty(root_value);
+		puts(serialized_string);
+		
+		//Crear el archivo en assets
+		std::string nameMeta;
+		nameMeta += ASSETS_MODELS;
+		nameMeta += App->fileSystem->GetNameFromPath(filePath, false);
+		nameMeta += ".meta";
+		json_serialize_to_file(root_value, nameMeta.c_str());
+		json_free_serialized_string(serialized_string);
+		json_value_free(root_value);
+	}
 }

@@ -22,7 +22,9 @@ public:
 	uint64_t Save(ResourceMesh* rMesh, char** buffer); //Todo: Preguntar al profe si eltipo de la funcion esta bien o que 
 	//Load  info from library to our struct	
 	virtual void Load(ResourceMesh* rMesh, char* buffer);
-
+	
+	//JSON Things
+	void CreateMetaModel(const char* filePath);
 };
 
 #endif __IMPORTER_MESH_H__

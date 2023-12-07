@@ -61,13 +61,6 @@ void ModuleEditor::DrawEditor()
 	{
 		if (ImGui::BeginMenu("File"))
 		{
-			if (ImGui::Button("JSON TEST"))
-			{
-				JSONHelper::CreateMetaModel("C:/Users/ericsb/Documents/GitHub/Platypus_Engine/Platypus Engine/Game/Assets/MODELS/BakerHouse.fbx");
-			}
-			
-
-
 			ImGui::EndMenu();
 		}
 		if (ImGui::BeginMenu("Edit"))

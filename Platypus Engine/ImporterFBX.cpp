@@ -14,8 +14,15 @@ void ImporterFBX::Import(const char* pathFile)
 {
 	if(!App->fileSystem->Exists(pathFile))
 	{
-		std::string str;
-		App->fileSystem->DuplicateFile(pathFile,ASSETS_MODELS,str);
+		std::string originInspector;
+		originInspector.assign(pathFile);
+		int pos = originInspector.find("Assets");
+		if (pos == -1)
+		{
+			std::string str;
+			App->fileSystem->DuplicateFile(pathFile,ASSETS_MODELS,str);
+		}
+		
 		//App->fileSystem->AddToAssets(pathFile, ASSETS_MODELS); //Doesen't work
 	}
 

@@ -62,42 +62,13 @@ void JSONHelper::WriteQuaternion(JSON_Object* obj, const char* name, float* valu
 	json_object_set_value(obj, name, goArray);
 }
 
-//TODO: Make some safer code and remove duplicated code on readvector and readquat
 Quat JSONHelper::ReadQuaternion(JSON_Object* obj, const char* name)
 {
 	JSON_Array* vecArray = json_object_dotget_array(obj, name);
 	return Quat(json_array_get_number(vecArray, 0), json_array_get_number(vecArray, 1), json_array_get_number(vecArray, 2), json_array_get_number(vecArray, 3));
 }
 
-void JSONHelper::CreateMetaModel(const char* filePath)
-{
-	//JSON_Value* root_value = json_value_init_object();
-	JSON_Value* root_value = json_value_init_object();
-	JSON_Object* root_object = json_value_get_object(root_value);
-	
-	//If there is no failure loading
-	if (root_value != nullptr && root_object != nullptr)
-	{	
-		char* serialized_string = NULL;
-		//Crear path
-		json_object_set_string(root_object, "FilePath", filePath);
-		json_object_set_string(root_object, "name", "John Smith");
-		json_object_set_number(root_object, "UUID", 25);
-		//Dot set hace que si lo pones en un punto te lo ponga dentro de un {} del punto antes del 
-		json_object_dotset_string(root_object, "address.city", "Cupertino");
-		//Jason_parse_string lo mete en un array
-		json_object_dotset_value(root_object, "contact.emails", json_parse_string("[\"email@example.com\",\"email2@example.com\"]"));
-		serialized_string = json_serialize_to_string_pretty(root_value);
-		puts(serialized_string);
-		std::string nameMeta;
-		nameMeta += ASSETS_MODELS;
-		nameMeta += App->fileSystem->GetNameFromPath(filePath, false);
-		nameMeta += ".meta";
-		json_serialize_to_file(root_value, nameMeta.c_str());
-		json_free_serialized_string(serialized_string);
-		json_value_free(root_value);
-	}
-}
+
 
 Config::Config(JSON_Object* _nObj)
 {

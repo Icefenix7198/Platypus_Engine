@@ -162,6 +162,32 @@ ImporterType ModuleFileSystem::GetTypeOfFullPath(const char* fullPath)
 	return ret;
 }
 
+std::string ModuleFileSystem::GetNameFromPath(const char* path, bool withoutPoint)
+{
+	//Get name
+	std::string fPathFull; //String with name path
+	fPathFull.assign(path);
+	int posSlash = fPathFull.find_last_of("/"); //Find the last / of the file, will have the name of the fbx as the others are folders. (returns int position)
+	if (posSlash == -1) //In case model uses \\ instead of /
+	{
+		posSlash = fPathFull.find_last_of("\\");
+	}
+	int nameLength = 0;
+	if (withoutPoint) 
+	{
+		nameLength = fPathFull.find_last_of(".") - posSlash - 1; //Size of the word, the -1 is to not take the "."
+	}
+	else
+	{
+		nameLength = fPathFull.length() - posSlash - 1;
+	}
+
+	std::string name;
+	name.assign(fPathFull, posSlash + 1, nameLength); //We add a +1 to not write the /, 
+
+	return name;
+}
+
 bool ModuleFileSystem::AddToAssets(const char* fullPathToAdd, const char* folder)
 {
 	bool ret = false;

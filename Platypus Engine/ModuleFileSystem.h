@@ -76,6 +76,7 @@ public:
 
 	//Add archive to assets.
 	ImporterType GetTypeOfFullPath(const char* fullPath);
+	std::string GetNameFromPath(const char* path, bool withoutPoint);
 	bool AddToAssets(const char* fullPathToAdd, const char* folder);
 
 public:

@@ -14,6 +14,7 @@
 #include "Component.h"
 
 #include "Importer.h" //Lo pongo aqui porque solo es un text temporal
+#include "JSONHelper.h"
 
 ModuleEditor::ModuleEditor(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -60,6 +61,12 @@ void ModuleEditor::DrawEditor()
 	{
 		if (ImGui::BeginMenu("File"))
 		{
+			if (ImGui::Button("JSON TEST"))
+			{
+				JSONHelper::CreateMetaModel("C:/Users/ericsb/Documents/GitHub/Platypus_Engine/Platypus Engine/Game/Assets/MODELS/BakerHouse.fbx");
+			}
+			
+
 
 			ImGui::EndMenu();
 		}

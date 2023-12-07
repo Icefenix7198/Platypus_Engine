@@ -29,7 +29,7 @@ namespace JSONHelper
 	Quat ReadQuaternion(JSON_Object* obj, const char* name);
 
 	//Cosas del Importer
-	void CreateMetaModel();
+	void CreateMetaModel(const char* filePath);
 }
 
 struct Config

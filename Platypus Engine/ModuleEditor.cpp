@@ -791,3 +791,9 @@ void ModuleEditor::Inspector(GameObject* go)
 		go->CreateComponent(ComponentType::MATERIAL);
 	}
 }
+
+void ModuleEditor::AssetsMenu()
+{
+	//App->fileSystem->GetAllFiles();
+
+}

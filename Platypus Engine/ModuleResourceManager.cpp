@@ -64,6 +64,15 @@ bool ModuleResources::AddResource(Resource* resource)
 	return ret;
 }
 
+Resource* ModuleResources::RequestResource(uint32_t uid)
+{
+	Resource* ret = nullptr;
+
+	auto value = resourcesInProject.find(uid);
+
+	return ret;
+}
+
 
 
 

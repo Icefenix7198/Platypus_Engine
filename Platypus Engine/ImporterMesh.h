@@ -12,6 +12,8 @@
 
 #include "MathGeoLib/include/MathGeoLib.h"
 
+#include "GameObject.h"
+
 class ImporterMesh : public Importer
 {
 public:
@@ -25,6 +27,9 @@ public:
 	
 	//JSON Things
 	void CreateMetaModel(const char* filePath, std::vector<Resource*> meshes);
+
+	//Create herarchy
+	void CreateGameObjectHierarchy(const aiScene* scene, aiNode* root, const char* name, GameObject* parent, std::vector<Resource*> meshes);
 };
 
 #endif __IMPORTER_MESH_H__

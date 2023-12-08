@@ -10,6 +10,8 @@
 #include "ImGui/backends/imgui_impl_opengl3.h"
 
 #include "aasimp.h"
+#include "ResourceMesh.h"
+#include "ImporterFBX.h"
 
 #include "DevIL/include/il.h"
 #include "DevIL/include/ilu.h"
@@ -183,7 +185,8 @@ bool ModuleRenderer3D::Init()
 	//"C:\Users\ericsb\Documents\GitHub\Platypus_Engine\Platypus Engine\Game\Assets\MODELS\BakerHouse.fbx";
 	std::string path = ASSETS_MODELS;
 	path.append("BakerHouse.fbx");
-	aasimp::Load(path.c_str());//It must be done in Renderer because OpenGL isn't inizialitzed in scene.
+	ImporterFBX impFBX;
+	impFBX.Import(path.c_str());//It must be done in Renderer because OpenGL isn't inizialitzed in scene.
 	
 
 	return ret;
@@ -330,7 +333,7 @@ void ModuleRenderer3D::DrawCubeDirectMode(float originX, float originY, float or
 
 }
 
-void ModuleRenderer3D::DrawMesh(Mesh* mesh, bool wireframe, Color color, uint checkersID)
+void ModuleRenderer3D::DrawMesh(_Mesh* mesh, bool wireframe, Color color, uint checkersID)
 {
 	glBindTexture(GL_TEXTURE_2D, checkersID);
 
@@ -375,17 +378,6 @@ void ModuleRenderer3D::DrawMesh(Mesh* mesh, bool wireframe, Color color, uint ch
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glColor4f(1, 1, 1, 1);
 
-}
-
-void ModuleRenderer3D::DrawAllMeshes()
-{
-	//aasimp::
-	auto aux = aasimp::vecMeshes;
-	for (int i = 0; i < aux.size(); i++)
-	{
-		//LOG("DAM activated %d", i)
-		DrawMesh(aux.at(i));
-	}
 }
 
 void ModuleRenderer3D::CreateCheckers()

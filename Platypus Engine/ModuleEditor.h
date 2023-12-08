@@ -37,6 +37,8 @@ public:
 
 	void Inspector(GameObject* go);
 
+	void AssetsMenu();
+
 	int cpuCache;
 	int cpus;
 	int ram;

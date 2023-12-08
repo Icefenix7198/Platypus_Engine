@@ -17,8 +17,6 @@
 #include "DevIL/include/ilu.h"
 #include "DevIL/include/ilut.h"
 
-#include "ComponentCamera.h"
-
 #include "mmgr/mmgr.h"
 
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
@@ -232,7 +230,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	
 	App->editor->DrawEditor();
-
+	
 	Grid.Render();
 	// Rendering
 	ImGui::Render();

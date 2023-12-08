@@ -790,10 +790,6 @@ void ModuleEditor::Inspector(GameObject* go)
 	{
 		go->CreateComponent(ComponentType::MATERIAL);
 	}
-	if (ImGui::Button("Add Camera"))
-	{
-		go->CreateComponent(ComponentType::CAMERA);
-	}
 }
 
 void ModuleEditor::AssetsMenu()

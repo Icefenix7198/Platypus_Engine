@@ -5,7 +5,6 @@
 #include "ComponentTransform.h"
 #include "ComponentMesh.h"
 #include "ComponentMaterial.h"
-#include "ComponentCamera.h"
 
 #include "Application.h"
 #include "ModuleScene.h"
@@ -307,10 +306,6 @@ void HierarcyGameObject(const aiScene* scene,aiNode* root,const char* name,GameO
 					//Material
 					ComponentMaterial* cMaterial;
 					cMaterial = (ComponentMaterial*)gm->CreateComponent(ComponentType::MATERIAL);
-
-					//Camera
-					ComponentCamera* cCamera;
-					cCamera = (ComponentCamera*)gm->CreateComponent(ComponentType::CAMERA);
 				}
 
 			}

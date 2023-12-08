@@ -263,7 +263,7 @@ void ImporterMesh::CreateGameObjectHierarchy(const aiScene* scene, aiNode* root,
 				{
 					if(strcmp(meshes.at(i)->name.c_str(),name) == 0)
 					{
-						cMesh->resource = (ResourceMesh*)meshes.at(i);
+						cMesh->resourceMesh = (ResourceMesh*)meshes.at(i);
 					}
 				}
 				
@@ -304,7 +304,7 @@ void ImporterMesh::CreateGameObjectHierarchy(const aiScene* scene, aiNode* root,
 					{
 						if (strcmp(meshes.at(i)->name.c_str(), name) == 0)
 						{
-							cMesh->resource = (ResourceMesh*)meshes.at(i);
+							cMesh->resourceMesh = (ResourceMesh*)meshes.at(i);
 						}
 					}
 				}
@@ -334,7 +334,7 @@ void ImporterMesh::CreateGameObjectHierarchy(const aiScene* scene, aiNode* root,
 					{
 						if (strcmp(meshes.at(i)->name.c_str(), name) == 0)
 						{
-							cMesh->resource = (ResourceMesh*)meshes.at(i);
+							cMesh->resourceMesh = (ResourceMesh*)meshes.at(i);
 						}
 					}
 				}
@@ -346,90 +346,3 @@ void ImporterMesh::CreateGameObjectHierarchy(const aiScene* scene, aiNode* root,
 }
 
 
-void HierarcyGameObject(const aiScene* scene, aiNode* root, const char* name, GameObject* parent)
-{
-	if (root->mNumChildren > 1)
-	{
-		if (root->mNumMeshes > 0)
-		{
-			for (int i = 0; i < root->mNumMeshes; i++)
-			{
-				//Transform 
-				aiVector3D translation, scaling;
-				aiQuaternion rotation;
-				root->mTransformation.Decompose(scaling, rotation, translation);
-				GameObject* gm = App->scene->CreateGameObject(parent, name);
-				gm->objTransform->SetValues(translation, scaling, rotation);
-
-				//Mesh
-				ComponentMesh* cMesh; //Create reference to modify compoent mesh
-				cMesh = (ComponentMesh*)gm->CreateComponent(ComponentType::MESH); //Create component mesh
-				cMesh->IDResourceMesh;
-
-				//Material
-				ComponentMaterial* cMaterial;
-				cMaterial = (ComponentMaterial*)gm->CreateComponent(ComponentType::MATERIAL);
-			}
-
-		}
-		else
-		{
-			parent = App->scene->CreateGameObject(parent, name);
-		}
-
-
-		for (int i = 0; i < root->mNumChildren; i++)
-		{
-			HierarcyGameObject(scene, root->mChildren[i], root->mChildren[i]->mName.C_Str(), parent);
-		}
-	}
-	else
-	{
-		if (root->mNumChildren > 0)
-		{
-			if (root->mNumMeshes > 0)
-			{
-				for (int i = 0; i < root->mNumMeshes; i++)
-				{
-					aiVector3D translation, scaling;
-					aiQuaternion rotation;
-					root->mTransformation.Decompose(scaling, rotation, translation);
-					LOG("Create GamoObject for mesh %s", name);
-					GameObject* gm = App->scene->CreateGameObject(parent, name);
-					gm->objTransform->SetValues(translation, scaling, rotation);
-					ComponentMesh* cMesh; //Create reference to modify compoent mesh
-					cMesh = (ComponentMesh*)gm->CreateComponent(ComponentType::MESH); //Create component mesh
-					//uint* numMesh = root->mMeshes; //mMeshes is a number to to the scene mMeshes array
-					//cMesh->mesh = AiMeshtoMesh(scene->mMeshes[numMesh[i]]); //TODO ERIC: Es un aiMesh, hay que convertirlo a Mesh normal
-				}
-
-			}
-
-
-			HierarcyGameObject(scene, root->mChildren[0], root->mChildren[0]->mName.C_Str(), parent);
-
-		}
-		else
-		{
-
-			if (root->mNumMeshes > 0)
-			{
-				for (int i = 0; i < root->mNumMeshes; i++)
-				{
-					aiVector3D translation, scaling;
-					aiQuaternion rotation;
-					root->mTransformation.Decompose(scaling, rotation, translation);
-					LOG("Create GamoObject for mesh %s", name)
-						GameObject* gm = App->scene->CreateGameObject(parent, name);
-					gm->objTransform->SetValues(translation, scaling, rotation);
-					ComponentMesh* cMesh; //Create reference to modify compoent mesh
-					cMesh = (ComponentMesh*)gm->CreateComponent(ComponentType::MESH); //Create component mesh
-					//uint* numMesh = root->mMeshes; //mMeshes is a number to to the scene mMeshes array
-					//cMesh->mesh = AiMeshtoMesh(scene->mMeshes[numMesh[i]]); //TODO ERIC: Es un aiMesh, hay que convertirlo a Mesh normal
-				}
-
-			}
-
-		}
-	}
-}

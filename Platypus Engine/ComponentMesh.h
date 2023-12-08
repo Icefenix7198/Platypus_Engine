@@ -4,6 +4,7 @@
 #include "Globals.h"
 #include "Component.h"
 #include "aasimp.h"
+#include "ResourceMesh.h"
 
 #include "Application.h"
 
@@ -33,6 +34,7 @@ public:
 	void OnEditor();
 
 	uint32_t IDResourceMesh;
+	ResourceMesh* resourceMesh;
 	Mesh* mesh;
 	bool wireMode;
 	bool drawVertexNormals;

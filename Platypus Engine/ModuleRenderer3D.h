@@ -8,6 +8,7 @@
 #include "Primitive.h"
 #include "Glew/include/glew.h"
 #include "aasimp.h"
+#include "ResourceMesh.h"
 
 //todo: REMOVE this before 1st delivery!!
 #include "glmath.h"
@@ -33,7 +34,7 @@ public:
 	void DrawCubeDirectMode(float originX=0, float originY=0, float originZ=0, float size=1);
 	
 	void DrawMesh(Mesh* mesh, bool wireframe = false, Color col = {1,1,1,1}, uint checkersID = 0);
-	void DrawAllMeshes();
+	void DrawMesh(_Mesh mesh, bool wireframe = false, Color color = {1,1,1,1}, uint checkersID = 0);
 	void CreateCheckers();
 
 	//Drawing Mode

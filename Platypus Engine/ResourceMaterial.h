@@ -5,6 +5,20 @@
 #include "MathGeoLib/include/MathGeoLib.h"
 #include<string>
 
+struct _Texture
+{	
+	//Texture ID
+	GLuint textureBuffer;
+
+	//Texture info
+	int width;
+	int heigth;
+	std::string name;
+
+	_Texture() {}
+	_Texture(std::string _name, GLuint _id, int w, int h) { name = _name, textureBuffer = _id, width = w, heigth = h; };
+};
+
 class ResourceMaterial : public Resource
 {
 public:
@@ -14,4 +28,5 @@ public:
 public:
 	ResourceType type;
 	uint32_t UUID;
+	_Texture tex;
 };

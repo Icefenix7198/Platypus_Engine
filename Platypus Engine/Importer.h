@@ -17,7 +17,7 @@ class Importer
 public:
 
 	//Transform/copy values from asset file to our structure of info
-	virtual void Import(ImporterType type, const char* pathFile);
+	virtual void Import(const char* pathFile);
 	//Save from our struct of info to library
 	virtual __int64 Save(); //Todo: Preguntar al profe si eltipo de la funcion esta bien o que 
 	

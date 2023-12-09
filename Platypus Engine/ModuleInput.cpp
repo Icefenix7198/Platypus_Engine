@@ -128,12 +128,8 @@ update_status ModuleInput::PreUpdate(float dt)
 				std::string path;
 				path.assign(e.drop.file);
 
-				ImporterType iType;
-				
-				iType = App->fileSystem->GetTypeOfFullPath(path.c_str());
-
 				Importer importador;
-				importador.Import(iType,path.c_str());
+				importador.Import(path.c_str());
 			}
 		}
 	}

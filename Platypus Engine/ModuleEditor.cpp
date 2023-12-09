@@ -9,6 +9,7 @@
 #include "mmgr/mmgr.h"
 
 #include "aasimp.h"
+#include "Importer.h"
 
 #include "GameObject.h"
 #include "Component.h"
@@ -74,13 +75,14 @@ void ModuleEditor::DrawEditor()
 		}
 		if (ImGui::BeginMenu("Assets"))
 		{
+			Importer importer;
 			std::string path;
 			path.assign(ASSETS_MODELS);
 			if(ImGui::Button("Load BakerHouse"))
 			{
 				//"C:\Users\ericsb\Documents\GitHub\Platypus_Engine\Platypus Engine\Game\Assets\MODELS\BakerHouse.fbx";
 				path.append("BakerHouse.fbx");
-				aasimp::Load(path.c_str());
+				importer.Import(path.c_str());
 				
 			}
 			
@@ -89,17 +91,17 @@ void ModuleEditor::DrawEditor()
 				if (ImGui::Button("Create Cube"))
 				{
 					path.append("cube.fbx");
-					aasimp::Load(path.c_str());
+					importer.Import(path.c_str());
 				}
 				if (ImGui::Button("Create Sphere"))
 				{
 					path.append("sphere.fbx");
-					aasimp::Load(path.c_str());
+					importer.Import(path.c_str());
 				}
 				if (ImGui::Button("Create Cylinder"))
 				{
 					path.append("cylinder.fbx");
-					aasimp::Load(path.c_str());
+					importer.Import(path.c_str());
 				}
 
 				ImGui::EndMenu();
@@ -109,12 +111,12 @@ void ModuleEditor::DrawEditor()
 				if (ImGui::Button("Mike the mouse"))
 				{
 					path.append("mickey-mouse.FBX");
-					aasimp::Load(path.c_str());
+					importer.Import(path.c_str());
 				}
 				if (ImGui::Button("Create AgentP"))
 				{
 					path.append("perry.FBX");
-					aasimp::Load(path.c_str());
+					importer.Import(path.c_str());
 				}
 				ImGui::EndMenu();
 			}
@@ -128,11 +130,11 @@ void ModuleEditor::DrawEditor()
 				//Activate
 			}
 			
-			if (ImGui::Button("CreateGameObject"))
+			if (ImGui::Button("CreateEmptyGameObject"))
 			{
 				App->scene->CreateGameObject(App->scene->root);
 			}
-			if (ImGui::Button("CreateChildGameObject"))
+			if (ImGui::Button("CreateChildEmptyGameObject"))
 			{
 				if (App->scene->root->children.size()>0)
 				{

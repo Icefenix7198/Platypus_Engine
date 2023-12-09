@@ -16,10 +16,10 @@
 
 #pragma comment (lib, "PhysFS/libx86/physfs.lib")
 
-void Importer::Import(ImporterType type, const char* pathFile)
+void Importer::Import(const char* pathFile)
 {
 	LOG("File Dropped with path %s", pathFile);
-
+	ImporterType type = App->fileSystem->GetTypeOfFullPath(pathFile);
 	// Gives the path with only the document no the origin (aka without the C:User/ etc , only the /document.coso
 	/*std::string finalPath; //Esto aqui no, se hace en el save
 	App->fileSystem->SplitFilePath(pathFile, nullptr, &finalPath); */

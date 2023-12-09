@@ -13,17 +13,18 @@
 #include "MathGeoLib/include/MathGeoLib.h"
 
 #include "GameObject.h"
+#include "ResourceMaterial.h"
 
 class ImporterMaterial : public Importer
 {
 public:
 
 	//Transform/copy values from asset file to our structure of info
-	virtual void Import(const char* filePath);
+	void Import(const char* filePath);
 	//Save from our struct of info to library
-	uint64_t Save(/*ResourceMesh* rMesh,*/ char** buffer); //Todo: Preguntar al profe si eltipo de la funcion esta bien o que 
+	uint64_t Save(ResourceMaterial* rMaterial, char** buffer); //Todo: Preguntar al profe si eltipo de la funcion esta bien o que 
 	//Load  info from library to our struct	
-	virtual void Load(/*ResourceMesh* rMesh,*/ char* buffer);
+	void Load(/*ResourceMesh* rMesh,*/ char* buffer);
 	
 	//JSON Things
 	void CreateMetaTexture(const char* filePath, std::vector<Resource*> meshes);

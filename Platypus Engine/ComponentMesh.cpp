@@ -3,6 +3,7 @@
 #include "ComponentTransform.h"
 
 #include "Application.h"
+#include "ComponentCamera.h"
 
 #include "imGui/imgui.h"
 #include "imGui/backends/imgui_impl_opengl3.h"
@@ -108,8 +109,24 @@ bool ComponentMesh::Update()
 				}
 			}
 		}
-		App->renderer3D->DrawMesh(resourceMesh->rMesh, wireMode,col,texID);
-		glPopMatrix();
+		if (App->scene->selectedGO->HasComponent(CAMERA))
+		{
+			ComponentCamera* camera = (ComponentCamera*)App->scene->selectedGO->GetComponentByType(CAMERA);
+			if (camera->ContainsAaBox(localAABB))
+			{
+				App->renderer3D->DrawMesh(resourceMesh->rMesh, wireMode, col, texID);
+				glPopMatrix();
+			}
+			else
+			{
+				return true;
+			}
+		}
+		else
+		{
+			App->renderer3D->DrawMesh(resourceMesh->rMesh, wireMode, col, texID);
+			glPopMatrix();
+		}
 	}
 	
 	return true;

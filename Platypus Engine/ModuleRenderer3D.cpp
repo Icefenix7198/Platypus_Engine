@@ -13,6 +13,8 @@
 #include "ResourceMesh.h"
 #include "ImporterFBX.h"
 
+#include "ComponentCamera.h"
+
 #include "DevIL/include/il.h"
 #include "DevIL/include/ilu.h"
 #include "DevIL/include/ilut.h"
@@ -230,6 +232,12 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	
 	App->editor->DrawEditor();
+
+	if (App->scene->selectedGO->HasComponent(CAMERA))
+	{
+		ComponentCamera* camera = (ComponentCamera*)App->scene->selectedGO->GetComponentByType(CAMERA);
+		camera->DrawCameraLines();
+	}
 	
 	Grid.Render();
 	// Rendering

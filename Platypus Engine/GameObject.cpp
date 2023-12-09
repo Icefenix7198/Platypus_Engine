@@ -4,6 +4,7 @@
 #include "ComponentMaterial.h"
 #include "ComponentMesh.h"
 #include "ComponentTransform.h"
+#include "ComponentCamera.h"
 
 GameObject::GameObject()
 {
@@ -88,6 +89,15 @@ Component* GameObject::CreateComponent(ComponentType type)
 		//Create component material
 		LOG("Create Component Transform")
 		ret = new ComponentMaterial(this);
+		ret->type = type;
+		components.push_back(ret);
+
+		break;
+	case CAMERA:
+
+		//Create component material
+		LOG("Create Component Camera")
+			ret = new ComponentCamera(this);
 		ret->type = type;
 		components.push_back(ret);
 

@@ -375,6 +375,12 @@
     <ClInclude Include="ComponentCamera.h">
       <Filter>Sources\Components\ComponentsType</Filter>
     </ClInclude>
+    <ClInclude Include="ImporterMaterial.h">
+      <Filter>Sources\Importers\ImportersTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceMaterial.h">
+      <Filter>Sources\Resources\ResourcesTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -592,6 +598,12 @@
     </ClCompile>
     <ClCompile Include="JSONHelper.cpp">
       <Filter>Sources\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="ImporterMaterial.cpp">
+      <Filter>Sources\Importers\ImportersTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceMaterial.cpp">
+      <Filter>Sources\Resources\ResourcesTypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

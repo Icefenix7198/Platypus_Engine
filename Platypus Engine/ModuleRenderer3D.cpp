@@ -186,9 +186,9 @@ bool ModuleRenderer3D::Init()
 	//Load Baker House
 	//"C:\Users\ericsb\Documents\GitHub\Platypus_Engine\Platypus Engine\Game\Assets\MODELS\BakerHouse.fbx";
 	std::string path = ASSETS_MODELS;
-	path.append("BakerHouse.fbx");
+	path.append("Street environment_V01.FBX");
 	ImporterFBX impFBX;
-	//impFBX.Import(path.c_str());//It must be done in Renderer because OpenGL isn't inizialitzed in scene.
+	impFBX.Import(path.c_str());//It must be done in Renderer because OpenGL isn't inizialitzed in scene.
 	
 
 	return ret;

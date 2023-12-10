@@ -346,10 +346,6 @@ void ImporterMesh::CreateGameObjectHierarchy(const aiScene* scene, aiNode* root,
 				}
 
 			}
-			else
-			{
-				parent = App->scene->CreateGameObject(parent, root->mName.C_Str());
-			}
 
 			CreateGameObjectHierarchy(scene, root->mChildren[0], root->mChildren[0]->mName.C_Str(), parent,meshes);
 		}

@@ -21,7 +21,6 @@ A videogame motor for third grade of the career at CITM Terrasa, made by Andreu 
 # Features
 
 - You can create a cube, shpere and a cylinder.
-- You can drag an drop fbx files from your device to the program.
 - You can show the vertex and face normals of a game object.
 - Every game object has three components: transform, mesh and material.
 - The project starts with a house charged. 

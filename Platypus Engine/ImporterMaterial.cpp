@@ -26,7 +26,7 @@
 
 void ImporterMaterial::Import(const char* file_path)
 {
-	ResourceMaterial* texture = nullptr;
+	ResourceMaterial* texture = new ResourceMaterial;
 	ILuint new_image_id = 0;
 	ilGenImages(1, &new_image_id);
 	ilBindImage(new_image_id);
@@ -45,6 +45,10 @@ void ImporterMaterial::Import(const char* file_path)
 		str.assign(file_path);
 		/*ILubyte* textdata = ilGetData();*/
 		texture->tex = _Texture(str, ilutGLBindTexImage(), (int)ilGetInteger(IL_IMAGE_WIDTH), (int)ilGetInteger(IL_IMAGE_HEIGHT));
+		texture->tex.name = str;
+		texture->tex.width = (int)ilGetInteger(IL_IMAGE_WIDTH);
+		texture->tex.heigth = (int)ilGetInteger(IL_IMAGE_HEIGHT);
+		texture->tex.textureBuffer = ilutGLBindTexImage();
 		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 		glBindTexture(GL_TEXTURE_2D, texture->tex.textureBuffer);
 
@@ -64,15 +68,12 @@ void ImporterMaterial::Import(const char* file_path)
 			if (go->HasComponent(ComponentType::MATERIAL))
 			{
 				ComponentMaterial* cm = (ComponentMaterial*)go->GetComponentByType(ComponentType::MATERIAL);
-				cm->textureBuffer = texture->tex.textureBuffer;
-				cm->name = texture->name;
-				cm->width = texture->tex.width;
-				cm->heigth = texture->tex.heigth;
+				cm->resource = texture;
 			}
 			else
 			{
 				ComponentMaterial* cm = (ComponentMaterial*)go->CreateComponent(ComponentType::MATERIAL);
-				cm->textureBuffer = texture->tex.textureBuffer;
+				cm->resource = texture;
 			}
 		}
 

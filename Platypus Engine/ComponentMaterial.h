@@ -5,6 +5,8 @@
 #include "GameObject.h"
 #include "Component.h"
 
+#include "ResourceMaterial.h"
+
 #include <vector>
 #include <string>
 #include "Color.h"
@@ -30,7 +32,7 @@ public:
 	int width;
 	int heigth;
 	std::string name;
-
+	ResourceMaterial* resource;
 	Color color{ 1,1,1,1};
 
 private:

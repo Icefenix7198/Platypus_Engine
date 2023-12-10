@@ -64,10 +64,10 @@ void ComponentMaterial::OnEditor()
 
 		if (name != "Null")
 		{
-			ImGui::Text("Width: %i", width);
-			ImGui::Text("Height: %i", heigth);
-			ImGui::Text("Path: %s", name);
-			ImGui::Image((ImTextureID)textureBuffer, ImVec2(128, 128));
+			ImGui::Text("Width: %i", resource->tex.width);
+			ImGui::Text("Height: %i", resource->tex.heigth);
+			ImGui::Text("Path: %s", resource->tex.name);
+			ImGui::Image((ImTextureID)resource->tex.textureBuffer, ImVec2(128, 128));
 		}
 		else
 		{

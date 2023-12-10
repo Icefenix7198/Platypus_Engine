@@ -99,9 +99,9 @@ bool ComponentMesh::Update()
 			{
 				
 				col = cMate->color;
-				if (cMate->textureBuffer > 0 && cMate->active) {
+				if (cMate->resource->tex.textureBuffer > 0 && cMate->active) {
 					//Enable texture
-					texID = cMate->textureBuffer;
+					texID = cMate->resource->tex.textureBuffer;
 				}
 				if(cMate->checkers)
 				{

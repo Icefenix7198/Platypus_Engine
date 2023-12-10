@@ -8,6 +8,7 @@
 //List of importers
 #include "ImporterFBX.h"
 #include "ImporterMesh.h"
+#include "ImporterMaterial.h"
 
 #include "aasimp.h"
 
@@ -27,6 +28,7 @@ void Importer::Import(const char* pathFile)
 	std::string normalizedPath = App->fileSystem->NormalizePath(pathFile);
 
 	ImporterFBX importerFBX;
+	ImporterMaterial importerMaterial;
 	switch (type)
 	{
 	case IMPORTER_FBX:
@@ -36,8 +38,7 @@ void Importer::Import(const char* pathFile)
 	case IMPORTER_MESH:
 		break;
 	case IMPORTER_MATERIAL:
-		//TEMPORAL, HABRA QUE HACERLO CON EL IMPORTER
-		aasimp::LoadTexture(normalizedPath.c_str());
+		importerMaterial.Import(normalizedPath.c_str());
 		break;
 	case NUM_IMPORTERS:
 		break;

@@ -38,7 +38,7 @@ void ImporterMesh::ExtractMesh(const aiScene* scene, aiNode* root, std::vector<R
 	int ret = 0; //Quiza hay que hacer que no se setee a 0 si no es root node?
 	for (int i = 0; i < root->mNumChildren; i++)
 	{
-		if (root->mChildren[i]->mNumMeshes>0)
+		if (root->mChildren[i]->mNumMeshes>0 && root->mChildren[i]->mNumMeshes <= 1)
 		{
 			ResourceMesh* reMesh = new ResourceMesh;
 			reMesh->type = ResourceType::MESH;

@@ -17,6 +17,7 @@
 //GameObjects creation
 #include "ComponentMesh.h"
 #include "ComponentTransform.h"
+#include "ComponentMaterial.h"
 
 #pragma comment (lib, "PhysFS/libx86/physfs.lib")
 #pragma comment (lib, "DevIL/libx86/DevIL.lib")
@@ -57,23 +58,23 @@ void ImporterMaterial::Import(const char* file_path)
 		glBindTexture(GL_TEXTURE_2D, 0);
 
 
-		/*if (App->scene->selectedGO != App->scene->root)
+		if (App->scene->selectedGO != App->scene->root)
 		{
 			auto go = App->scene->selectedGO;
 			if (go->HasComponent(ComponentType::MATERIAL))
 			{
 				ComponentMaterial* cm = (ComponentMaterial*)go->GetComponentByType(ComponentType::MATERIAL);
-				cm->textureBuffer = texture->id;
+				cm->textureBuffer = texture->tex.textureBuffer;
 				cm->name = texture->name;
-				cm->width = texture->width;
-				cm->heigth = texture->heigth;
+				cm->width = texture->tex.width;
+				cm->heigth = texture->tex.heigth;
 			}
 			else
 			{
 				ComponentMaterial* cm = (ComponentMaterial*)go->CreateComponent(ComponentType::MATERIAL);
-				cm->textureBuffer = texture->id;
+				cm->textureBuffer = texture->tex.textureBuffer;
 			}
-		}*/
+		}
 
 		LOG("Texture successfully loaded: %s", file_path);
 	}

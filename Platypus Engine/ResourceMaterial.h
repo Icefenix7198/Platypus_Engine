@@ -8,14 +8,14 @@
 struct _Texture
 {	
 	//Texture ID
-	GLuint textureBuffer;
+	GLuint textureBuffer = 0;
 
 	//Texture info
-	int width;
-	int heigth;
+	int width = 0;
+	int heigth = 0;
 	std::string name;
 
-	_Texture() {}
+	_Texture() {};
 	_Texture(std::string _name, GLuint _id, int w, int h) { name = _name, textureBuffer = _id, width = w, heigth = h; };
 };
 

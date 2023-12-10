@@ -1410,8 +1410,8 @@ static void ShowDemoWindowWidgets()
                 {
                     char label[32];
                     sprintf(label, "Item %d", i);
-                    ImGui::TableNextColumn();
-                    ImGui::Selectable(label, &selected[i]); // FIXME-TABLE: Selection overlap
+                    //ImGui::TableNextColumn();
+                    //ImGui::Selectable(label, &selected[i]); // FIXME-TABLE: Selection overlap
                 }
                 ImGui::EndTable();
             }

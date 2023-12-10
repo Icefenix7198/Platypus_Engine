@@ -188,7 +188,7 @@ bool ModuleRenderer3D::Init()
 	std::string path = ASSETS_MODELS;
 	path.append("BakerHouse.fbx");
 	ImporterFBX impFBX;
-	impFBX.Import(path.c_str());//It must be done in Renderer because OpenGL isn't inizialitzed in scene.
+	//impFBX.Import(path.c_str());//It must be done in Renderer because OpenGL isn't inizialitzed in scene.
 	
 
 	return ret;

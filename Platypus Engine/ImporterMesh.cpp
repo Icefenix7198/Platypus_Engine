@@ -27,6 +27,7 @@ void ImporterMesh::Import(const char* file_path)
 		CreateMetaModel(file_path,meshes);
 
 		CreateGameObjectHierarchy(scene, scene->mRootNode, App->fileSystem->GetNameFromPath(file_path).c_str(), App->scene->root, meshes);
+		meshes.clear();
 		aiReleaseImport(scene);
 	}
 }
@@ -277,9 +278,9 @@ void ImporterMesh::CreateGameObjectHierarchy(const aiScene* scene, aiNode* root,
 {
 	if (root->mNumChildren > 1)
 	{
-		if (root->mNumMeshes > 0)
+		if (root->mNumMeshes > 0 && root->mNumMeshes<=1)
 		{
-			for (int i = 0; i < root->mNumMeshes; i++)
+			//for (int i = 0; i < root->mNumMeshes; i++)
 			{
 				//Transform 
 				aiVector3D translation, scaling;
@@ -296,6 +297,7 @@ void ImporterMesh::CreateGameObjectHierarchy(const aiScene* scene, aiNode* root,
 					if(strcmp(meshes.at(i)->name.c_str(),name) == 0)
 					{
 						cMesh->resourceMesh = (ResourceMesh*)meshes.at(i);
+						break;
 					}
 				}
 				
@@ -320,9 +322,9 @@ void ImporterMesh::CreateGameObjectHierarchy(const aiScene* scene, aiNode* root,
 	{
 		if (root->mNumChildren > 0)
 		{
-			if (root->mNumMeshes > 0)
+			if (root->mNumMeshes > 0 && root->mNumMeshes <= 1)
 			{
-				for (int i = 0; i < root->mNumMeshes; i++)
+				//for (int i = 0; i < root->mNumMeshes; i++)
 				{
 					aiVector3D translation, scaling;
 					aiQuaternion rotation;
@@ -338,22 +340,24 @@ void ImporterMesh::CreateGameObjectHierarchy(const aiScene* scene, aiNode* root,
 						if (strcmp(meshes.at(i)->name.c_str(), name) == 0)
 						{
 							cMesh->resourceMesh = (ResourceMesh*)meshes.at(i);
+							break;
 						}
 					}
 				}
 
 			}
-
+			else
+			{
+				parent = App->scene->CreateGameObject(parent, root->mName.C_Str());
+			}
 
 			CreateGameObjectHierarchy(scene, root->mChildren[0], root->mChildren[0]->mName.C_Str(), parent,meshes);
-
 		}
 		else
 		{
-
-			if (root->mNumMeshes > 0)
+			if (root->mNumMeshes > 0 && root->mNumMeshes <= 1)
 			{
-				for (int i = 0; i < root->mNumMeshes; i++)
+				//for (int i = 0; i < root->mNumMeshes; i++)
 				{
 					aiVector3D translation, scaling;
 					aiQuaternion rotation;
@@ -368,12 +372,11 @@ void ImporterMesh::CreateGameObjectHierarchy(const aiScene* scene, aiNode* root,
 						if (strcmp(meshes.at(i)->name.c_str(), name) == 0)
 						{
 							cMesh->resourceMesh = (ResourceMesh*)meshes.at(i);
+							break;
 						}
 					}
 				}
-
 			}
-
 		}
 	}
 }

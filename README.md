@@ -25,12 +25,28 @@ A videogame motor for third grade of the career at CITM Terrasa, made by Andreu 
 - You can show the vertex and face normals of a game object.
 - Every game object has three components: transform, mesh and material.
 - The project starts with a house charged. 
-- There are two fbx that you can charge to the engine (to see Mike the mouse you will have to zoom out!!!!). (AjentP doesen't wor, it will close the program!!!)
+- There are two fbx that you can charge to the engine (to see Mike the mouse you will have to zoom out!!!!).
 - You can se the UV checkers of a gameobject, but they can't have a texture.
+- Component camera with frustum culling, custom settings and raycast.
+- In the window Inspector, you can modify the position, rotation and scale of an object.
+- In the window Inspector, you can delete an object.
+- In the Heriarchy window, you can reparent the game objects.
+- You can import meshes and textures.
+- All meshses use a bounding volume.
 
 ## Windows
 
 - Heriarchy window were you can select a created or lodaded game object.
-- Inspector window were you can acces to de components of the game object.
+- Inspector window were you can acces to de components of the game object and crate some components.
 - Configuration window were you can configurate the window, see the mouse information, the fps, and hardware information.
 - Console window that prints libraries initialitzation and information of game objects loading.
+- Assets window, where you can se the assets that you uploaded to your project.
+
+## Resource Manager
+
+- Creates a .meta for every model droped on the scene (doesn't duplicate).
+- Creates a copy of the dragged and droped outerfiles.
+- Creates a folder called Library. In this folder there are stored our custom format meshes (.pry).
+- If a model is already loaded, doesen't import used stored meshes.
+- If a model has cff and .meta, doesn't import the model, instead, loads the already saved meshes.
+- The components use less memory as they reuse the same resorces loaded in the project.

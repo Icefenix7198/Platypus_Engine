@@ -233,12 +233,29 @@ void ImporterMesh::CreateMetaModel(const char* filePath,std::vector<Resource*> m
 		//Crear path
 		json_object_set_string(root_object, "FilePath", filePath);
 		json_object_set_string(root_object, "Name", App->fileSystem->GetNameFromPath(filePath).c_str());
+		json_object_set_number(root_object, "NumMeshes", meshes.size());
+		
+		//Create array of all meshes
+		JSON_Array* arr;
+		JSON_Value* new_val = json_value_init_array();
+		arr = json_value_get_array(new_val);
+		json_object_dotset_value(root_object, "Meshes", new_val);
+		//We create the value to assign and insert into the array
+		JSON_Value* arrayRecord;
+		arrayRecord = json_value_init_object();
 		for (size_t i = 0; i < meshes.size(); i++)
 		{
 			std::string IDname = meshes.at(i)->name;
-			IDname.append(".UUID");
-			json_object_dotset_number(root_object, IDname.c_str(), meshes.at(i)->UUID);
+			//IDname.append(".UUID");
+			//TODO: Seria mas correcto hacerlo con un value pero ahora mismo la cabeza me dice que nanai
+			/*json_value
+			json_array_append_value(arr, arrayRecord);*/
+			json_array_append_string(arr, IDname.c_str());
+			json_array_append_number(arr,meshes.at(i)->UUID);
+			
+			//json_object_dotset_number(root_object, IDname.c_str(), meshes.at(i)->UUID);
 		}
+		
 		//Dot set hace que si lo pones en un punto te lo ponga dentro de un {} del punto antes del 
 		//Jason_parse_string lo mete en un array
 		//json_object_dotset_value(root_object, "contact.emails", json_parse_string("[\"email@example.com\",\"email2@example.com\"]"));

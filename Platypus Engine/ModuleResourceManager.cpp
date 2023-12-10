@@ -69,7 +69,11 @@ Resource* ModuleResources::RequestResource(uint32_t uid)
 	Resource* ret = nullptr;
 
 	auto value = resourcesInProject.find(uid);
-
+	if (value != resourcesInProject.end())
+	{
+		//Assign ret to the resource
+		ret = value->second;
+	}
 	return ret;
 }
 

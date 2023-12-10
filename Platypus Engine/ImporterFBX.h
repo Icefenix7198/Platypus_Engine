@@ -2,6 +2,7 @@
 #define __IMPORTER_FBX_H__
 
 #include "Importer.h"
+#include <vector>
 
 class ImporterFBX : public Importer
 {
@@ -13,6 +14,9 @@ public:
 	__int64 Save(); //Todo: Preguntar al profe si eltipo de la funcion esta bien o que 
 	//Load  info from library to our struct	
 	void Load(char* buffer);
+
+	//JSON Things
+	const char* GetMetaUUID(const char* filePath,std::vector<uint32_t> &vecUUIDmeshes, std::vector<std::string>& vecNameMeshes);
 
 };
 

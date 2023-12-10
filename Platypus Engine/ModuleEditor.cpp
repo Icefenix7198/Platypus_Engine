@@ -242,20 +242,28 @@ void ModuleEditor::DrawEditor()
 		}
 		
 	}
+	ImGuiID dockspace_id;
 	if (showConsole)
 	{
 		//Set size and position of console
+		
+		/*ImGui::SetNextWindowDockID(dockspace_id, ImGuiCond_Once);*/
 		ImGui::SetNextWindowPos(ImVec2(main_viewport->WorkPos.x + 220, main_viewport->WorkPos.y + (main_viewport->Size.y - 220)), ImGuiCond_Once);
 		ImGui::SetNextWindowSize(ImVec2(800, 220), ImGuiCond_Once);
 
 		ImGui::Begin("Console", &showConsole);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked				
-		//ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_FirstUseEver);
+		//dockspace_id = ImGui::GetID("Assets");
+		dockspace_id = ImGui::GetID("Console");
+		ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f));
 		ConsoleLog(consoleLog);
 
 		ImGui::End();
 	}
 	if (assetsWindow)
 	{
+		ImGui::SetNextWindowDockID(dockspace_id, ImGuiCond_Once);
+		//ImGui::SetNextWindowPos(ImVec2(main_viewport->WorkPos.x + 220, main_viewport->WorkPos.y + (main_viewport->Size.y - 220)), ImGuiCond_Once);
+		//ImGui::SetNextWindowSize(ImVec2(800, 220), ImGuiCond_Once);
 		ImGui::Begin("Assets", &assetsWindow);
 		AssetsMenu();
 		ImGui::End();

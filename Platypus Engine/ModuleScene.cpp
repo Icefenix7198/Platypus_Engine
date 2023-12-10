@@ -61,6 +61,34 @@ update_status ModuleScene::PreUpdate(float dt)
 		pendingToReparent.clear();
 	}
 
+	if (!pendingToDelete.empty())
+	{
+		for (int i = 0; i < pendingToDelete.size(); i++)
+		{
+			//Hacemos que deje de apuntar al GameObject el selected
+			if (App->scene->selectedGO == pendingToDelete.at(i)) 
+			{
+				App->scene->selectedGO = App->scene->root; 
+			}
+
+			auto* actualList = &pendingToDelete.at(i)->parent->children;
+			//Erase from its parent children vector
+			for (int j = 0; j < actualList->size(); j++)
+			{
+				if(actualList->at(j) == pendingToDelete.at(i));
+				{
+					actualList->erase(std::find(actualList->begin(), actualList->end(), pendingToDelete.at(i)));
+				}
+			}
+			pendingToDelete.at(i)->~GameObject();
+			//delete pendingToDelete.at(i);
+			pendingToDelete.at(i) = nullptr;
+			if (App->scene->selectedGO == pendingToDelete.at(i)) { App->scene->selectedGO = root; }
+		}
+
+		pendingToDelete.clear();
+	}
+
 	return UPDATE_CONTINUE;
 }
 
@@ -77,6 +105,11 @@ GameObject* ModuleScene::CreateGameObject(GameObject* parent,std::string name)
 	selectedGO = go;
 
 	return go;
+}
+
+void ModuleScene::RequestDeleteGameObject(GameObject* go)
+{
+	pendingToDelete.push_back(go);
 }
 
 void ModuleScene::RequestReparentGameObject(GameObject* actual, GameObject* newParent)

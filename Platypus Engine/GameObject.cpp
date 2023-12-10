@@ -42,6 +42,7 @@ GameObject::~GameObject()
 		delete (*it);
 		(*it) = nullptr;
 	}
+	//delete this;
 }
 
 void GameObject::Update()

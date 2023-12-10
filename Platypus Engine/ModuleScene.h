@@ -30,6 +30,7 @@ public:
 	////GameObjects related
 	GameObject* CreateGameObject(GameObject* parent,std::string name = "GameObject"); //Crea un gameObject vacio
 	void RequestReparentGameObject(GameObject* actual,GameObject* newParent); //Hace el reparent, retorn nullptr si fallo, sino el nuevo padre del objeto.
+	void RequestDeleteGameObject(GameObject* go);
 	int UpdateGameObjects(GameObject* go);
 
 	GameObject* root;
@@ -38,6 +39,7 @@ public:
 	
 private:
 	std::vector<reParentPair> pendingToReparent;
+	std::vector<GameObject*> pendingToDelete;
 };
 
 #endif //MODULE_SCENE

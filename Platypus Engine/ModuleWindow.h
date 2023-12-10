@@ -61,7 +61,7 @@ private:
 	// Configuration -----------
 	int SCREEN_WIDTH = 1280;
 	int SCREEN_HEIGHT = 1024;
-	float SCREEN_SIZE = 0.7; //1 originalmente pero se nos salia de la pantalla
+	float SCREEN_SIZE = 0.8; //1 originalmente pero se nos salia de la pantalla
 	bool WIN_FULLSCREEN = false;
 	bool WIN_RESIZABLE = true;
 	bool WIN_BORDERLESS = false;

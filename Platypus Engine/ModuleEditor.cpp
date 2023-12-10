@@ -779,31 +779,42 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 
 void ModuleEditor::Inspector(GameObject* go)
 {
-	ImGui::Checkbox("Active ## GameObject", &go->active); //For future problems, 
-	//ImGui::SameLine();
-	char* nombre = (char*)go->name.c_str();
-	if(ImGui::InputText("Name",nombre,40)) 
+	if (go != nullptr)
 	{
-		go->name.assign(nombre);
+		ImGui::Checkbox("Active ## GameObject", &go->active); //For future problems, 
+		//ImGui::SameLine();
+		char* nombre = (char*)go->name.c_str();
+		if(ImGui::InputText("Name",nombre,40)) 
+		{
+			go->name.assign(nombre);
+		}
+		ImGui::SameLine(); 
+		ImGui::PushStyleColor(ImGuiCol_Button, { 0.7,0.1,0.1,1 }); //ImGuiCol is the type of widget, the color go from 0 to 1, usable for AAW
+		if (ImGui::Button("Delete"))
+		{
+			App->scene->RequestDeleteGameObject(go);
+		}
+		ImGui::PopStyleColor();
+		ImGui::Text(go->parent->name.c_str());
+		for (int i = 0; i < go->components.size(); i++) 
+		{ 
+			//Print all components
+			go->components.at(i)->OnEditor();
+		}
+		if(ImGui::Button("Add Mesh"))
+		{
+			go->CreateComponent(ComponentType::MESH);
+		}
+		if (ImGui::Button("Add Material"))
+		{
+			go->CreateComponent(ComponentType::MATERIAL);
+		}
+		if (ImGui::Button("Add Camera"))
+		{
+			go->CreateComponent(ComponentType::CAMERA);
+		}
 	}
-	ImGui::Text(go->parent->name.c_str());
-	for (int i = 0; i < go->components.size(); i++) 
-	{ 
-		//Print all components
-		go->components.at(i)->OnEditor();
-	}
-	if(ImGui::Button("Add Mesh"))
-	{
-		go->CreateComponent(ComponentType::MESH);
-	}
-	if (ImGui::Button("Add Material"))
-	{
-		go->CreateComponent(ComponentType::MATERIAL);
-	}
-	if (ImGui::Button("Add Camera"))
-	{
-		go->CreateComponent(ComponentType::CAMERA);
-	}
+	
 }
 
 void ModuleEditor::AssetsMenu()

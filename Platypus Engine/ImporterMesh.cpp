@@ -16,7 +16,6 @@
 
 void ImporterMesh::Import(const char* file_path)
 {
-
 	const aiScene* scene = aiImportFile(file_path, aiProcessPreset_TargetRealtime_MaxQuality);
 	if (scene != nullptr && scene->HasMeshes())
 	{
@@ -32,126 +31,117 @@ void ImporterMesh::Import(const char* file_path)
 	}
 }
 
-int ImporterMesh::ExtractMesh(const aiScene* scene, aiNode* root, std::vector<Resource*> &meshes, int extraNums)
+void ImporterMesh::ExtractMesh(const aiScene* scene, aiNode* root, std::vector<Resource*> &meshes)
 {
 	int step = 0;
 	int ret = 0; //Quiza hay que hacer que no se setee a 0 si no es root node?
 	for (int i = 0; i < root->mNumChildren; i++)
 	{
-		ResourceMesh* reMesh = new ResourceMesh;
-		reMesh->type = ResourceType::MESH;
-		//Copy Vertex
-		scene->mNumMeshes;
-		reMesh->rMesh.num_vertex = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mNumVertices; //Copy the num of Vertex to our mesh from the imported mesh
-
-		reMesh->rMesh.vertex = new float[reMesh->rMesh.num_vertex * 3]; //Create array of vertex of size equal to the imported mesh
-		memcpy(reMesh->rMesh.vertex, scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mVertices, sizeof(float) * reMesh->rMesh.num_vertex * 3); //Copy the vertices array into mesh Vertex array 
-
-		LOG("New mesh with %d vertices", reMesh->rMesh.num_vertex);
-
-		//Copy faces/indexes
-		if (scene->mMeshes[root->mChildren[i]->mMeshes[0]]->HasFaces())
+		if (root->mChildren[i]->mNumMeshes>0)
 		{
-			reMesh->rMesh.num_index = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mNumFaces * 3; //Get the number of indixes (it will be 3 for each triangle/face)
+			ResourceMesh* reMesh = new ResourceMesh;
+			reMesh->type = ResourceType::MESH;
+			//Copy Vertex
+			scene->mNumMeshes;
+			reMesh->rMesh.num_vertex = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mNumVertices; //Copy the num of Vertex to our mesh from the imported mesh
 
-			reMesh->rMesh.index = new uint[reMesh->rMesh.num_index]; // assume each face is a triangle
-			for (uint j = 0; j < scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mNumFaces; ++j)
+			reMesh->rMesh.vertex = new float[reMesh->rMesh.num_vertex * 3]; //Create array of vertex of size equal to the imported mesh
+			memcpy(reMesh->rMesh.vertex, scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mVertices, sizeof(float) * reMesh->rMesh.num_vertex * 3); //Copy the vertices array into mesh Vertex array 
+
+			LOG("New mesh with %d vertices", reMesh->rMesh.num_vertex);
+
+			//Copy faces/indexes
+			if (scene->mMeshes[root->mChildren[i]->mMeshes[0]]->HasFaces())
 			{
-				if (scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mFaces[j].mNumIndices != 3)
-				{
-					LOG("WARNING, geometry face with != 3 indices!");
-				}
-				else
-				{
-					memcpy(&reMesh->rMesh.index[j * 3], scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mFaces[j].mIndices, 3 * sizeof(uint)); //Copy in index array 
-				}
+				reMesh->rMesh.num_index = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mNumFaces * 3; //Get the number of indixes (it will be 3 for each triangle/face)
 
+				reMesh->rMesh.index = new uint[reMesh->rMesh.num_index]; // assume each face is a triangle
+				for (uint j = 0; j < scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mNumFaces; ++j)
+				{
+					if (scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mFaces[j].mNumIndices != 3)
+					{
+						LOG("WARNING, geometry face with != 3 indices!");
+					}
+					else
+					{
+						memcpy(&reMesh->rMesh.index[j * 3], scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mFaces[j].mIndices, 3 * sizeof(uint)); //Copy in index array 
+					}
+
+				}
 			}
-		}
 
-		//Copy normals
-		if (scene->mMeshes[root->mChildren[i]->mMeshes[0]]->HasNormals())
-		{
-			reMesh->rMesh.num_normals = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mNumVertices * 3; //Get the number of normals (it will be 3 for each triangle/face)
-
-			reMesh->rMesh.normals = new float[reMesh->rMesh.num_normals]; // assume each face is a triangle (so it will have 3 normals)
-			memcpy(reMesh->rMesh.normals, scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mNormals, sizeof(float) * reMesh->rMesh.num_normals); //Copy the vertices array into mesh Vertex array 
-
-			LOG("New mesh with %d normals", reMesh->rMesh.num_normals);
-
-		}
-
-		// Copy UV
-		uint UV_index = 0;
-		if (scene->mMeshes[root->mChildren[i]->mMeshes[0]]->HasTextureCoords(UV_index))
-		{
-			reMesh->rMesh.num_UVs = reMesh->rMesh.num_vertex;
-			reMesh->rMesh.UVs = new float2[reMesh->rMesh.num_UVs];
-			for (uint k = 0; k < scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mNumVertices; k++) //There is one UV per vertex
+			//Copy normals
+			if (scene->mMeshes[root->mChildren[i]->mMeshes[0]]->HasNormals())
 			{
-				reMesh->rMesh.UVs[k].x = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mTextureCoords[UV_index][k].x;
-				reMesh->rMesh.UVs[k].y = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mTextureCoords[UV_index][k].y;
+				reMesh->rMesh.num_normals = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mNumVertices * 3; //Get the number of normals (it will be 3 for each triangle/face)
+
+				reMesh->rMesh.normals = new float[reMesh->rMesh.num_normals]; // assume each face is a triangle (so it will have 3 normals)
+				memcpy(reMesh->rMesh.normals, scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mNormals, sizeof(float) * reMesh->rMesh.num_normals); //Copy the vertices array into mesh Vertex array 
+
+				LOG("New mesh with %d normals", reMesh->rMesh.num_normals);
 			}
-			LOG("New mesh with %d texture coordinates", reMesh->rMesh.num_UVs);
+
+			// Copy UV
+			uint UV_index = 0;
+			if (scene->mMeshes[root->mChildren[i]->mMeshes[0]]->HasTextureCoords(UV_index))
+			{
+				reMesh->rMesh.num_UVs = reMesh->rMesh.num_vertex;
+				reMesh->rMesh.UVs = new float2[reMesh->rMesh.num_UVs];
+				for (uint k = 0; k < scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mNumVertices; k++) //There is one UV per vertex
+				{
+					reMesh->rMesh.UVs[k].x = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mTextureCoords[UV_index][k].x;
+					reMesh->rMesh.UVs[k].y = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mTextureCoords[UV_index][k].y;
+				}
+				LOG("New mesh with %d texture coordinates", reMesh->rMesh.num_UVs);
+			}
+
+			//BUFFERS
+			reMesh->rMesh.VBO = 0; //Buffer de vertices
+			reMesh->rMesh.VN = 0;
+			reMesh->rMesh.EBO = 0;
+			reMesh->rMesh.VUV = 0;
+
+			//Generate buffers.If after this any of them is 0 there is an error
+			glGenBuffers(1, &reMesh->rMesh.VBO);
+			glGenBuffers(1, &reMesh->rMesh.VN);
+			glGenBuffers(1, &reMesh->rMesh.EBO);
+			glGenBuffers(1, &reMesh->rMesh.VUV);
+
+			glBindBuffer(GL_ARRAY_BUFFER, reMesh->rMesh.VBO);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(float) * reMesh->rMesh.num_vertex * 3, reMesh->rMesh.vertex, GL_STATIC_DRAW);
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+			glBindBuffer(GL_ARRAY_BUFFER, reMesh->rMesh.VN);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(float) * reMesh->rMesh.num_normals, reMesh->rMesh.normals, GL_STATIC_DRAW);
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+			glBindBuffer(GL_ARRAY_BUFFER, reMesh->rMesh.VUV);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(math::float2) * reMesh->rMesh.num_UVs, reMesh->rMesh.UVs, GL_STATIC_DRAW);
+			App->renderer3D->checkersID = reMesh->rMesh.VUV; //Esto tendra que ir fuera, importamos meshes no texturas.
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, reMesh->rMesh.EBO);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * reMesh->rMesh.num_index, reMesh->rMesh.index, GL_STATIC_DRAW);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+			//Once all the info we want is loaded we save the mesh on library
+			Resource* recu = (Resource*)reMesh;
+			recu->type = ResourceType::MESH;
+			//El +1 es para evitar el ""
+			//recu->name = scene->mMeshes[i+extraNums+1]->mName.C_Str();
+			recu->name = root->mChildren[i]->mName.C_Str();
+			reMesh->SaveToLibrary(recu, recu->name.c_str());
+			//scene->mMeshes[0]->mName.C_Str();
+
+			//Add all meshes into an array for the meta
+			meshes.push_back(recu);
 		}
 
-		//BUFFERS
-		reMesh->rMesh.VBO = 0; //Buffer de vertices
-		reMesh->rMesh.VN = 0;
-		reMesh->rMesh.EBO = 0;
-		reMesh->rMesh.VUV = 0;
-
-		//reMesh->rMesh.VAO = 0;
-
-		//Generate buffers.If after this any of them is 0 there is an error
-		glGenBuffers(1, &reMesh->rMesh.VBO);
-		glGenBuffers(1, &reMesh->rMesh.VN);
-		glGenBuffers(1, &reMesh->rMesh.EBO);
-		glGenBuffers(1, &reMesh->rMesh.VUV);
-
-		glBindBuffer(GL_ARRAY_BUFFER, reMesh->rMesh.VBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(float) * reMesh->rMesh.num_vertex * 3, reMesh->rMesh.vertex, GL_STATIC_DRAW);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-		glBindBuffer(GL_ARRAY_BUFFER, reMesh->rMesh.VN);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(float) * reMesh->rMesh.num_normals, reMesh->rMesh.normals, GL_STATIC_DRAW);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-		glBindBuffer(GL_ARRAY_BUFFER, reMesh->rMesh.VUV);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(math::float2) * reMesh->rMesh.num_UVs, reMesh->rMesh.UVs, GL_STATIC_DRAW);
-		App->renderer3D->checkersID = reMesh->rMesh.VUV; //Esto tendra que ir fuera, importamos meshes no texturas.
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, reMesh->rMesh.EBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(uint) * reMesh->rMesh.num_index, reMesh->rMesh.index, GL_STATIC_DRAW);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-		//Once all the info we want is loaded we save the mesh on library
-		Resource* recu = (Resource*)reMesh;
-		recu->type = ResourceType::MESH;
-		//El +1 es para evitar el ""
-		//recu->name = scene->mMeshes[i+extraNums+1]->mName.C_Str();
-		recu->name = root->mChildren[i]->mName.C_Str();
-		reMesh->SaveToLibrary(recu, recu->name.c_str());
-		//scene->mMeshes[0]->mName.C_Str();
-
-		//Add all meshes into an array for the meta
-		meshes.push_back(recu);
-
-		//ret = 0;
 		if (root->mChildren[i]->mNumChildren >0)
 		{
-			//ret += root->mChildren[i]->mNumChildren;
-			//How many childs had the past node
-			step = root->mNumChildren + extraNums;
-			/*for (int j = 0; j < root->mChildren[i]->mNumChildren; j++)
-			{*/
-				ret += ExtractMesh(scene, root->mChildren[i]/*->mChildren[j]*/, meshes,step);
-			/*}*/
+			ExtractMesh(scene, root->mChildren[i], meshes);
 		}
-		ret += 1;
 	}
-	return ret;
 }
 
 uint64_t ImporterMesh::Save(ResourceMesh* resMesh, char** buffer)

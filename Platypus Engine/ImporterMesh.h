@@ -20,7 +20,7 @@ public:
 
 	//Transform/copy values from asset file to our structure of info
 	virtual void Import(const char* filePath);
-	int ExtractMesh(const aiScene* scene, aiNode* root, std::vector<Resource*> &vecSaveMeshes, int extraNums = 0);
+	void ExtractMesh(const aiScene* scene, aiNode* root, std::vector<Resource*> &vecSaveMeshes);
 	//Save from our struct of info to library
 	uint64_t Save(ResourceMesh* rMesh, char** buffer); //Todo: Preguntar al profe si eltipo de la funcion esta bien o que 
 	//Load  info from library to our struct	

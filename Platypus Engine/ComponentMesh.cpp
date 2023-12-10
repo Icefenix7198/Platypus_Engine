@@ -115,18 +115,13 @@ bool ComponentMesh::Update()
 			if (camera->ContainsAaBox(localAABB))
 			{
 				App->renderer3D->DrawMesh(resourceMesh->rMesh, wireMode, col, texID);
-				glPopMatrix();
-			}
-			else
-			{
-				return true;
 			}
 		}
 		else
 		{
 			App->renderer3D->DrawMesh(resourceMesh->rMesh, wireMode, col, texID);
-			glPopMatrix();
 		}
+		glPopMatrix();
 	}
 	
 	return true;

@@ -56,6 +56,7 @@ private:
 	bool showConfig = true;
 	bool showDemo = false;
 	bool showInspector = true; //No se si inspector es la palabra correcta
+	bool assetsWindow = true;
 
 	//For generic position in screen
 	const ImGuiViewport* main_viewport;

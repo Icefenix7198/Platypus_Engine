@@ -10,6 +10,7 @@
 
 #include "aasimp.h"
 #include "Importer.h"
+#include "ImporterFBX.h"
 
 #include "GameObject.h"
 #include "Component.h"
@@ -253,7 +254,12 @@ void ModuleEditor::DrawEditor()
 
 		ImGui::End();
 	}
-
+	if (assetsWindow)
+	{
+		ImGui::Begin("Assets", &assetsWindow);
+		AssetsMenu();
+		ImGui::End();
+	}
 	
 }
 
@@ -800,6 +806,33 @@ void ModuleEditor::Inspector(GameObject* go)
 
 void ModuleEditor::AssetsMenu()
 {
-	//App->fileSystem->GetAllFiles();
+	if (ImGui::CollapsingHeader("Models"))
+	{
+		std::vector<std::string> listObjects;
+		App->fileSystem->GetAllFilesWithExtension(ASSETS_MODELS, "fbx", listObjects);
+		App->fileSystem->GetAllFilesWithExtension(ASSETS_MODELS, "FBX", listObjects);
 
+		for (size_t i = 0; i < listObjects.size(); i++)
+		{
+			const char* nameM = listObjects.at(i).c_str();
+			if (ImGui::Button(nameM))
+			{
+				
+			}
+		}
+	}
+
+	if (ImGui::CollapsingHeader("Textures"))
+	{
+		std::vector<std::string> listTextures;
+		App->fileSystem->GetAllFilesWithExtension(ASSETS_TEXTURES, "png", listTextures);
+		App->fileSystem->GetAllFilesWithExtension(ASSETS_TEXTURES, "PNG", listTextures);
+
+		for (size_t i = 0; i < listTextures.size(); i++)
+		{
+			const char* nameT = listTextures.at(i).c_str();
+			ImGui::Image((ImTextureID)nameT, ImVec2(32, 32));
+			ImGui::Button(nameT);
+		}
+	}
 }

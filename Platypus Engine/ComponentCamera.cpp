@@ -23,7 +23,7 @@ ComponentCamera::ComponentCamera() : nearDistance(0.1f), farDistance(500.0f), fo
 	frustum.nearPlaneDistance = nearDistance;
 	frustum.farPlaneDistance = farDistance;
 
-	frustum.verticalFov = 60.0f * DEGTORAD;
+	frustum.verticalFov = fov * DEGTORAD;
 	frustum.horizontalFov = 2.0f * atanf(tanf(frustum.verticalFov / 2.0f) * ((16.0f / 9.0f)));
 
 	frustum.pos = float3::zero;
@@ -35,20 +35,21 @@ ComponentCamera::ComponentCamera(GameObject* own) : nearDistance(1.0f), farDista
 	type = ComponentType::CAMERA;
 
 	frustum.type = FrustumType::PerspectiveFrustum;
-	frustum.front = owner->objTransform->localTransform.WorldZ();
-	frustum.up = owner->objTransform->localTransform.WorldY();
+	frustum.front = owner->objTransform->globalTransform.WorldZ();
+	frustum.up = owner->objTransform->globalTransform.WorldY();
 
 	frustum.nearPlaneDistance = nearDistance;
 	frustum.farPlaneDistance = farDistance;
 
 	frustum.verticalFov = 60.0f * DEGTORAD;
-	frustum.horizontalFov = 2.0f * atanf(tanf(fov * DEGTORAD / 2.0f) * ((16.0f / 9.0f)));
+	frustum.horizontalFov = 2.0f * atanf(tanf(frustum.verticalFov/ 2.0f) * 1.7);
 
 	frustum.pos = owner->objTransform->pos;
 }
 
 ComponentCamera::~ComponentCamera()
 {
+	owner->GetComponentByType(CAMERA)->~Component();
 }
 
 void ComponentCamera::OnEditor()
@@ -79,11 +80,11 @@ void ComponentCamera::OnEditor()
 			this->~ComponentCamera();
 		}
 
-		if (ImGui::DragFloat("Near Plane Distance", &nearDistance, 0.1f, 0.01f, nearDistance))
+		if (ImGui::DragFloat("Near Plane Distance", &nearDistance, 0.1f, 0.1f, farDistance))
 		{
 			frustum.nearPlaneDistance = nearDistance;
 		}
-		if (ImGui::DragFloat("Far Plane Distance", &farDistance, 0.1f, 10000.0f, farDistance))
+		if (ImGui::DragFloat("Far Plane Distance", &farDistance, 0.1f, nearDistance, 1000.0f))
 		{
 			frustum.farPlaneDistance = farDistance;
 		}
@@ -92,7 +93,8 @@ void ComponentCamera::OnEditor()
 
 		if (ImGui::DragFloat("FOV", &fov, 0.1f, 1.0f, 180.0f))
 		{
-			frustum.verticalFov = fov;
+			frustum.verticalFov = fov * DEGTORAD;
+			frustum.horizontalFov = 2.0f * atanf(tanf(frustum.verticalFov / 2.0f) * 1.7);
 		}
 	}
 }

@@ -15,11 +15,11 @@ ComponentMesh::ComponentMesh()
 	wireMode = false;
 	drawVertexNormals = drawFaceNormals = false;
 	drawAABB = true;
-	mesh = nullptr;
+	resourceMesh = nullptr;
 	type = ComponentType::MESH;
 	Enable();
 
-	if (mesh != nullptr) { GetGlobalAABB(); }
+	if (resourceMesh != nullptr) { GetGlobalAABB(); }
 }
 
 ComponentMesh::ComponentMesh(GameObject* own)
@@ -28,30 +28,21 @@ ComponentMesh::ComponentMesh(GameObject* own)
 	wireMode = false;
 	drawVertexNormals = drawFaceNormals = false;
 	drawAABB = true;
-	mesh = nullptr;
+	resourceMesh = nullptr;
 
 	type = ComponentType::MESH;
 	Enable();
 
-	if (mesh != nullptr) { GetGlobalAABB(); }
-}
-
-ComponentMesh::ComponentMesh(Mesh* _mesh)
-{
-	wireMode = false;
-	drawVertexNormals = drawFaceNormals = false;
-	drawOBB = drawAABB = true;
-	mesh = _mesh;
-	Enable();
-
-	if (mesh != nullptr) { GetGlobalAABB(); }
+	if (resourceMesh != nullptr) { GetGlobalAABB(); }
 }
 
 ComponentMesh::~ComponentMesh()
 {
-	if (mesh != nullptr)
+	if (resourceMesh != nullptr)
 	{
-		delete mesh;
+		resourceMesh = nullptr;
+		//delete resourceMesh;
+
 	}
 }
 
@@ -79,17 +70,19 @@ bool ComponentMesh::Update()
 	//Draw mesh
 	// To DO: Transformation
 	if(resourceMesh!=nullptr && active)
-	{
-		if (drawVertexNormals) {	DrawVertexNormals();}
-		if (drawFaceNormals) { DrawFaceNormals(); }
-		if (drawAABB) { DrawGlobalAABB(); }
-		if (drawOBB) { DrawOBB(); }
-		
+	{		
 		//owner->objTransform->GenerateGlobalMatrix();
 		float4x4 m = owner->objTransform->globalTransform.Transposed();
 		
 		glPushMatrix();
 		glMultMatrixf(m.ptr());
+
+		//Va debajo de la matrix para intentar que se mueva a donde debe estar
+		if (drawVertexNormals) {	DrawVertexNormals();}
+		if (drawFaceNormals) { DrawFaceNormals(); }
+		if (drawAABB) { DrawGlobalAABB(); }
+		if (drawOBB) { DrawOBB(); }
+
 		Color col = { 1,1,1,1 };
 		uint texID = 0;
 		if (owner->HasComponent(ComponentType::MATERIAL))
@@ -99,7 +92,7 @@ bool ComponentMesh::Update()
 			{
 				
 				col = cMate->color;
-				if (cMate->resource->tex.textureBuffer > 0 && cMate->active) {
+				if (cMate->resource != nullptr && cMate->active) {
 					//Enable texture
 					texID = cMate->resource->tex.textureBuffer;
 				}
@@ -129,7 +122,7 @@ bool ComponentMesh::Update()
 
 bool ComponentMesh::DrawVertexNormals()
 {
-	if(mesh != nullptr)
+	if(resourceMesh != nullptr)
 	{
 		//glLineWidth(2.0f); //Not very good, not supported in a lot of systems values different from 1
 		glBegin(GL_LINES);
@@ -137,9 +130,9 @@ bool ComponentMesh::DrawVertexNormals()
 		//glColor3b();
 		GLfloat const color[3] = { (1.0 / 255), (240.0 / 255), (30.0 / 255) };
 		glColor3fv(color); //Uses values from 1 to 0 no 255
-		for (int i = 0; i <= mesh->num_vertex; i++)
+		for (int i = 0; i <= resourceMesh->rMesh.num_vertex; i++)
 		{
-			glVertex3f(mesh->vertex[i*3], resourceMesh->rMesh.vertex[i*3 + 1], resourceMesh->rMesh.vertex[i*3 + 2]);
+			glVertex3f(resourceMesh->rMesh.vertex[i*3], resourceMesh->rMesh.vertex[i*3 + 1], resourceMesh->rMesh.vertex[i*3 + 2]);
 			glVertex3f(resourceMesh->rMesh.vertex[i*3] + resourceMesh->rMesh.normals[i*3], resourceMesh->rMesh.vertex[i*3 + 1] + resourceMesh->rMesh.normals[i*3 + 1], resourceMesh->rMesh.vertex[i*3 + 2] + resourceMesh->rMesh.normals[i*3 + 2]);
 		}
 		glEnd();
@@ -269,7 +262,7 @@ bool ComponentMesh::DrawGlobalAABB()
 
 bool ComponentMesh::DrawOBB()
 {
-	if (mesh == nullptr)
+	if (resourceMesh == nullptr)
 		return false;
 
 	GLfloat const color[3] = { (0.0 / 255), (240.0 / 255), (240.0 / 255) };
@@ -350,7 +343,7 @@ void ComponentMesh::OnEditor()
 			this->~ComponentMesh();
 		}
 
-		if (mesh != nullptr)
+		if (resourceMesh != nullptr)
 		{
 			butonChar.clear();
 			butonChar.append("Wireframe Mode");

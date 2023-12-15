@@ -78,6 +78,7 @@ update_status ModuleScene::PreUpdate(float dt)
 				if(actualList->at(j) == pendingToDelete.at(i));
 				{
 					actualList->erase(std::find(actualList->begin(), actualList->end(), pendingToDelete.at(i)));
+					break;
 				}
 			}
 			pendingToDelete.at(i)->~GameObject();

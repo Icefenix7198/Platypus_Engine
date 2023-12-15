@@ -32,7 +32,7 @@ public:
 	int width;
 	int heigth;
 	std::string name;
-	ResourceMaterial* resource;
+	ResourceMaterial* resource = nullptr;
 	Color color{ 1,1,1,1};
 
 private:

@@ -35,7 +35,6 @@ public:
 
 	uint32_t IDResourceMesh;
 	ResourceMesh* resourceMesh;
-	Mesh* mesh;
 	bool wireMode;
 	bool drawVertexNormals;
 	bool drawFaceNormals;

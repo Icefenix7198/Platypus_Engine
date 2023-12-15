@@ -45,10 +45,10 @@ void ImporterMaterial::Import(const char* file_path)
 		str.assign(file_path);
 		/*ILubyte* textdata = ilGetData();*/
 		texture->tex = _Texture(str, ilutGLBindTexImage(), (int)ilGetInteger(IL_IMAGE_WIDTH), (int)ilGetInteger(IL_IMAGE_HEIGHT));
-		texture->tex.name = str;
-		texture->tex.width = (int)ilGetInteger(IL_IMAGE_WIDTH);
-		texture->tex.heigth = (int)ilGetInteger(IL_IMAGE_HEIGHT);
-		texture->tex.textureBuffer = ilutGLBindTexImage();
+		//texture->tex.name = str;
+		//texture->tex.width = (int)ilGetInteger(IL_IMAGE_WIDTH);
+		//texture->tex.heigth = (int)ilGetInteger(IL_IMAGE_HEIGHT);
+		//texture->tex.textureBuffer = ilutGLBindTexImage();
 		glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 		glBindTexture(GL_TEXTURE_2D, texture->tex.textureBuffer);
 

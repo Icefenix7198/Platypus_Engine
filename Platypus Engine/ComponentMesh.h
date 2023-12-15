@@ -18,7 +18,6 @@ public:
 
 	ComponentMesh();
 	ComponentMesh(GameObject* own);
-	ComponentMesh(Mesh* _mesh);
 	~ComponentMesh();
 
 	AABB GenerateLocalAABB();

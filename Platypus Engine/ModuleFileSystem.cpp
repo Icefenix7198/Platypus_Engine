@@ -156,7 +156,6 @@ ImporterType ModuleFileSystem::GetTypeOfFullPath(const char* fullPath)
 	if (std::strcmp(fileType.c_str(), "png") == 0 || (std::strcmp(fileType.c_str(), "dds") == 0) || (std::strcmp(fileType.c_str(), "DDS") == 0))
 	{
 		ret = ImporterType::IMPORTER_MATERIAL;
-		aasimp::LoadTexture(fullPath);
 	}
 
 	return ret;

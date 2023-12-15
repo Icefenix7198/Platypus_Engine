@@ -8,11 +8,17 @@
 #include "PhysFS\include\physfs.h" //Works better than direct.h
 #include "parson-master/parson.h"
 
+//Assimp loading 
+#include "Assimp/include/cimport.h"
+#include "Assimp/include/scene.h"
+#include "Assimp/include/postprocess.h"
+
 //GameObjects creation
 #include "ComponentMesh.h"
 #include "ComponentTransform.h"
 
 #pragma comment (lib, "PhysFS/libx86/physfs.lib")
+#pragma comment (lib, "Assimp/libx86/assimp.lib")
 
 void ImporterMesh::Import(const char* file_path)
 {
@@ -87,11 +93,11 @@ void ImporterMesh::ExtractMesh(const aiScene* scene, aiNode* root, std::vector<R
 			if (scene->mMeshes[root->mChildren[i]->mMeshes[0]]->HasTextureCoords(UV_index))
 			{
 				reMesh->rMesh.num_UVs = reMesh->rMesh.num_vertex;
-				reMesh->rMesh.UVs = new float2[reMesh->rMesh.num_UVs];
+				reMesh->rMesh.UVs = new float[reMesh->rMesh.num_UVs*2];
 				for (uint k = 0; k < scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mNumVertices; k++) //There is one UV per vertex
 				{
-					reMesh->rMesh.UVs[k].x = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mTextureCoords[UV_index][k].x;
-					reMesh->rMesh.UVs[k].y = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mTextureCoords[UV_index][k].y;
+					reMesh->rMesh.UVs[2*k] = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mTextureCoords[UV_index][k].x;
+					reMesh->rMesh.UVs[2*k+1] = scene->mMeshes[root->mChildren[i]->mMeshes[0]]->mTextureCoords[UV_index][k].y;
 				}
 				LOG("New mesh with %d texture coordinates", reMesh->rMesh.num_UVs);
 			}
@@ -117,7 +123,7 @@ void ImporterMesh::ExtractMesh(const aiScene* scene, aiNode* root, std::vector<R
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 			glBindBuffer(GL_ARRAY_BUFFER, reMesh->rMesh.VUV);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(math::float2) * reMesh->rMesh.num_UVs, reMesh->rMesh.UVs, GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(float) * reMesh->rMesh.num_UVs * 2, reMesh->rMesh.UVs, GL_STATIC_DRAW);
 			App->renderer3D->checkersID = reMesh->rMesh.VUV; //Esto tendra que ir fuera, importamos meshes no texturas.
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -217,7 +223,7 @@ void ImporterMesh::Load(ResourceMesh* resMesh, char* buffer)
 
 	// Load UVs
 	bytes = sizeof(float) * resMesh->rMesh.num_UVs * 2;
-	resMesh->rMesh.UVs = new math::float2[resMesh->rMesh.num_UVs];
+	resMesh->rMesh.UVs = new float[resMesh->rMesh.num_UVs*2];
 	memcpy(resMesh->rMesh.UVs, cursor, bytes);
 	cursor += bytes;
 }

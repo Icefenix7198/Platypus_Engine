@@ -341,54 +341,6 @@ void ModuleRenderer3D::DrawCubeDirectMode(float originX, float originY, float or
 
 }
 
-
-void ModuleRenderer3D::DrawMesh(Mesh* mesh, bool wireframe, Color color, uint checkersID)
-{
-	glBindTexture(GL_TEXTURE_2D, checkersID);
-
-	// activate and specify pointer to vertex array
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_NORMAL_ARRAY);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
-	// activate and specify pointer to vertex array
-	glVertexPointer(3, GL_FLOAT, 0, mesh->vertex);
-
-	//Bind normals buffers
-	glNormalPointer(GL_FLOAT, 0, mesh->normals);
-
-	glTexCoordPointer(2, GL_FLOAT, 0, mesh->UVs);
-
-	//Draw Lines or Full
-	if (wireframeMode || wireframe)
-	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	}
-	else
-	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		glColor4f(color.r, color.g, color.b, color.a);
-	}
-
-	// Draw mesh
-	//glDrawElements(GL_TRIANGLES, mesh->num_index, GL_UNSIGNED_INT, mesh->index);
-	glDrawElements(GL_TRIANGLES, mesh->num_index, GL_UNSIGNED_INT, mesh->index);
-
-	glBindVertexArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER,0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
-
-	// deactivate vertex arrays after drawing
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisableClientState(GL_NORMAL_ARRAY);
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	glBindTexture(GL_TEXTURE_2D, 0);
-	glColor4f(1, 1, 1, 1);
-
-}
-
 void ModuleRenderer3D::DrawMesh(_Mesh mesh, bool wireframe, Color color, uint checkersID)
 {
 	glBindTexture(GL_TEXTURE_2D, checkersID);

@@ -21,7 +21,7 @@ struct _Mesh
 
 	uint id_UVs = 0; // unique vertex in VRAM
 	GLuint num_UVs = 0;
-	math::float2* UVs = nullptr;
+	float* UVs = nullptr;
 
 
 	GLuint VAO;

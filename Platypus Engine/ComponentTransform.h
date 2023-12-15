@@ -5,10 +5,11 @@
 #include "GameObject.h"
 #include "Component.h"
 #include "MathGeoLib/include/Math/float3.h"
-#include "aasimp.h"
 #include "Assimp/include/quaternion.h"
 #include "Assimp/include/vector3.h"
 #include "MathGeoLib/include/Math/Quat.h"
+#include "MathGeoLib/include/Math/float4x4.h"
+
 
 #include <vector>
 #include <string>
@@ -22,7 +23,6 @@ public:
 
 	ComponentTransform();
 	ComponentTransform(GameObject* own);
-	ComponentTransform(aiVector3D vecPos); //Only position
 	ComponentTransform(aiVector3D vecPos, aiVector3D vecScale, aiQuaternion quatRot); //All parameters
 
 	~ComponentTransform();

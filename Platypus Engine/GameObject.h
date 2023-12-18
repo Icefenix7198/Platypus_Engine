@@ -20,6 +20,10 @@ public:
 	GameObject(std::string name, GameObject* parent, bool active = true);
 	~GameObject();
 
+	//UUID 
+	uint32_t GetUUID() { return UUID; };
+	void SetUUID(uint32_t ID) { UUID = ID; };
+
 	void Update();
 	Component* CreateComponent(ComponentType type);
 	bool HasComponent(ComponentType type);
@@ -36,5 +40,5 @@ public:
 	GameObject* parent;
 	std::vector<GameObject*> children;
 private:
-
+	uint32_t UUID;
 };

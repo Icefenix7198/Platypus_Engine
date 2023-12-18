@@ -173,4 +173,19 @@ Component* GameObject::GetComponentByType(ComponentType _type, int num)
 	return ret;
 }
 
+int GameObject::GetNumComponentOfAKind(ComponentType _type)
+{
+	int ret = 0;
+
+	for (int i = 0; i < components.size(); i++)
+	{
+		if (components.at(i)->type == _type)
+		{
+			ret++;
+		}
+	}
+
+	return ret;
+}
+
 

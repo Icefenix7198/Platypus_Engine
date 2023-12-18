@@ -22,6 +22,11 @@ public:
 	Component();
 	~Component();
 
+	//UUID
+	uint32_t UUID; 
+	uint32_t GetUUID() { return UUID; };
+	void SetUUID(uint32_t ID) { UUID = ID; };
+
 	ComponentType type;
 	bool active;
 	GameObject* owner;
@@ -33,7 +38,7 @@ public:
 	virtual void OnEditor();
 
 private:
-
+	
 };
 
 #endif //!__COMPONENT_H__

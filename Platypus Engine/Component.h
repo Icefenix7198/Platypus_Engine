@@ -23,7 +23,7 @@ public:
 	~Component();
 
 	//UUID
-	uint32_t UUID; 
+	uint32_t UUID; //Aqui hay que ponerlo en publico que sino no lo heredara bien
 	uint32_t GetUUID() { return UUID; };
 	void SetUUID(uint32_t ID) { UUID = ID; };
 

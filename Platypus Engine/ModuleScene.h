@@ -36,7 +36,9 @@ public:
 	GameObject* root;
 	GameObject* selectedGO = nullptr;
 
-	
+	//Serialization
+	void CreateMetaGameObject(GameObject* go);
+
 private:
 	std::vector<reParentPair> pendingToReparent;
 	std::vector<GameObject*> pendingToDelete;

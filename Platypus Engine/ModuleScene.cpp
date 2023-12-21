@@ -8,6 +8,9 @@
 #include <gl/GLU.h>
 #include "aasimp.h"
 
+//JSON for Serialization
+#include "parson-master/parson.h"
+
 #include "Component.h"
 #include "ComponentTransform.h" //Para updatear la transform cuando el reparent, no se si haya que hacerlo de otra forma y no tener este include
 
@@ -107,7 +110,8 @@ GameObject* ModuleScene::CreateGameObject(GameObject* parent,std::string name)
 
 	return go;
 }
-
+
+
 void ModuleScene::RequestDeleteGameObject(GameObject* go)
 {
 	pendingToDelete.push_back(go);
@@ -127,9 +131,7 @@ int ModuleScene::UpdateGameObjects(GameObject* go)
 		if (go->children.at(i)->active)
 		{
 			numChildren++;
-			numChildren += UpdateGameObjects(go->children.at(i));
-
-			
+			numChildren += UpdateGameObjects(go->children.at(i));			
 		}	
 	}
 	
@@ -139,6 +141,90 @@ int ModuleScene::UpdateGameObjects(GameObject* go)
 	return numChildren; //Returns the number of active GameObjects
 }
 
+void ModuleScene::CreateMetaGameObject(GameObject* go)
+{
+	JSON_Value* root_value = json_value_init_object();
+	JSON_Object* root_object = json_value_get_object(root_value);
 
+	//If there is no failure loading
+	if (root_value != nullptr && root_object != nullptr)
+	{
+		char* serialized_string = NULL;
+		//Crear path
+		json_object_set_string(root_object, "Name", go->name.c_str());
+		json_object_set_number(root_object, "UUID", go->GetUUID());
+		json_object_set_number(root_object, "NumChildren", go->children.size());
+		json_object_set_number(root_object, "NumCompoments", go->components.size());
+
+		//Create array of all Components
+		JSON_Array* arr;
+		JSON_Value* new_val = json_value_init_array();
+		arr = json_value_get_array(new_val);
+		json_object_dotset_value(root_object, "Components", new_val);
+
+		//We create the value to assign and insert into the array
+		JSON_Value* arrayComponents;
+		arrayComponents = json_value_init_object();
+		for (size_t i = 0; i < go->components.size(); i++)
+		{
+			//IDname.append(".UUID");
+			//TODO: Seria mas correcto hacerlo con un value pero ahora mismo la cabeza me dice que nanai
+			/*json_value
+			json_array_append_value(arr, arrayRecord);*/
+			//json_array_append_string(arr, IDname.c_str());
+
+			//Childrens
+			JSON_Value* children;
+			children = json_value_init_object();
+			JSON_Object* child_object = json_value_get_object(children);
+
+			json_object_set_number(child_object, "UUID", go->components.at(i)->UUID);
+			//json_array_append_value(arr2, children);
+
+			json_array_append_number(arr, go->components.at(i)->UUID);
+			json_array_append_number(arr, (int)go->components.at(i)->type);
+
+			//Y aqui un switch para crear en funcion del tipo
+		}
+
+		JSON_Array* arr2;
+		JSON_Value* new_val2 = json_value_init_array();
+		arr2 = json_value_get_array(new_val2);
+		json_object_dotset_value(root_object, "Children", new_val2);
+
+		//We create the value to assign and insert into the array
+		
+		for (size_t i = 0; i < go->children.size(); i++)
+		{
+			//IDname.append(".UUID");
+			//TODO: Seria mas correcto hacerlo con un value pero ahora mismo la cabeza me dice que nanai //ERIC: Creo que un value tampoco seria correcto?
+			
+			//json_value
+			
+			//Childrens
+			JSON_Value* children;
+			children = json_value_init_object();
+			JSON_Object* child_object = json_value_get_object(children);
+
+			json_object_set_number(child_object,"UUID", go->components.at(i)->UUID);
+			json_array_append_value(arr2, children);
+		}
+
+		//Dot set hace que si lo pones en un punto te lo ponga dentro de un {} del punto antes del 
+		//Jason_parse_string lo mete en un array
+		//json_object_dotset_value(root_object, "contact.emails", json_parse_string("[\"email@example.com\",\"email2@example.com\"]"));
+		serialized_string = json_serialize_to_string_pretty(root_value);
+		puts(serialized_string);
+
+		//Crear el archivo en assets
+		std::string nameMeta;
+		nameMeta += ASSETS_MODELS;
+		//nameMeta += App->fileSystem->GetNameFromPath(filePath, false);
+		nameMeta += ".meta";
+		json_serialize_to_file(root_value, nameMeta.c_str());
+		json_free_serialized_string(serialized_string);
+		json_value_free(root_value);
+	}
+}
 
 

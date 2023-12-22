@@ -35,6 +35,7 @@ ComponentTransform::ComponentTransform()
 ComponentTransform::ComponentTransform(GameObject* own)
 {
 	owner = own;
+	UUID = App->resources->GenerateNewUID();
 
 	translation.x = 0;
 	translation.y = 0;

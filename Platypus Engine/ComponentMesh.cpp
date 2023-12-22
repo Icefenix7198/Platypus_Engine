@@ -25,6 +25,7 @@ ComponentMesh::ComponentMesh()
 ComponentMesh::ComponentMesh(GameObject* own)
 {
 	owner = own;
+	UUID = App->resources->GenerateNewUID();
 	wireMode = false;
 	drawVertexNormals = drawFaceNormals = false;
 	drawAABB = true;

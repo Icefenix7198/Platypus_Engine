@@ -15,6 +15,7 @@ ComponentMaterial::ComponentMaterial()
 ComponentMaterial::ComponentMaterial(GameObject* own)
 {
 	owner = own;
+	UUID = App->resources->GenerateNewUID();
 	name = "Null";
 	type = ComponentType::MATERIAL;
 	color = { 1,1,1,1 };

@@ -28,6 +28,7 @@ void log(const char file[], int line, const char* format, ...);
 //Assets paths
 #define ASSETS_MODELS "Assets/Models/"
 #define ASSETS_TEXTURES "Assets/Textures/"
+#define ASSETS_GAMEOBJECTS "Assets/Game_Objects/";
 //CFF
 #define CFF ".pry"
 

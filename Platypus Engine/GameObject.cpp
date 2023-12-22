@@ -27,6 +27,7 @@ GameObject::GameObject(std::string _name, GameObject* _parent, bool _active)
 	name = _name;
 	parent = _parent;
 	active = _active;
+	UUID = App->resources->GenerateNewUID();
 	CreateComponent(ComponentType::TRANSFORM);
 }
 

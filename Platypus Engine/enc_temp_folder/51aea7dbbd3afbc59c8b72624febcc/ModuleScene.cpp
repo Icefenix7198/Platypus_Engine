@@ -173,6 +173,7 @@ void ModuleScene::CreateMetaGameObject(GameObject* go)
 			component = json_value_init_object();
 			JSON_Object* child_object = json_value_get_object(component);
 
+			json_object_set_number(child_object, "Owner", go->components.at(i)->owner->GetUUID());
 			json_object_set_number(child_object, "UUID", go->components.at(i)->UUID);
 			json_object_set_number(child_object, "Type", (int)go->components.at(i)->type);
 

@@ -1,0 +1,20 @@
+{
+    "Name": "City_building_026",
+    "UUID": 3378511165,
+    "Active": true,
+    "NumChildren": 0,
+    "NumCompoments": 2,
+    "Components": [
+        {
+            "Owner": 3378511165,
+            "UUID": 3409492510,
+            "Type": 0
+        },
+        {
+            "Owner": 3378511165,
+            "UUID": 3455372749,
+            "Type": 1
+        }
+    ],
+    "Children": []
+}

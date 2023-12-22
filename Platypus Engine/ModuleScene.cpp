@@ -141,7 +141,7 @@ int ModuleScene::UpdateGameObjects(GameObject* go)
 	return numChildren; //Returns the number of active GameObjects
 }
 
-void ModuleScene::CreateMetaGameObject(GameObject* go)
+void ModuleScene::CreateSerializationGameObject(GameObject* go)
 {
 	JSON_Value* root_value = json_value_init_object();
 	JSON_Object* root_object = json_value_get_object(root_value);
@@ -154,6 +154,7 @@ void ModuleScene::CreateMetaGameObject(GameObject* go)
 		json_object_set_string(root_object, "Name", go->name.c_str());
 		json_object_set_number(root_object, "UUID", go->GetUUID());
 		json_object_set_boolean(root_object, "Active", go->active);
+		json_object_set_boolean(root_object, "IsRoot", go==App->scene->root);
 		json_object_set_number(root_object, "NumChildren", go->children.size());
 		json_object_set_number(root_object, "NumCompoments", go->components.size());
 
@@ -205,7 +206,7 @@ void ModuleScene::CreateMetaGameObject(GameObject* go)
 			json_array_append_value(arr2, children);
 
 			//Recursivity to create all game objects
-			CreateMetaGameObject(go->children.at(i));
+			CreateSerializationGameObject(go->children.at(i));
 		}
 
 		//Dot set hace que si lo pones en un punto te lo ponga dentro de un {} del punto antes del 
@@ -222,6 +223,35 @@ void ModuleScene::CreateMetaGameObject(GameObject* go)
 		json_free_serialized_string(serialized_string);
 		json_value_free(root_value);
 	}
+}
+
+void ModuleScene::CreateGameObjectFromSerialization()
+{
+	std::vector<std::string> listJsons;
+
+	//Por algun motivo solo el assets funciona
+	const char* directory = ASSETS_GAMEOBJECTS;
+	App->fileSystem->GetAllFilesWithExtension(directory, "json", listJsons);
+
+	for (size_t i = 0; i < listJsons.size(); ++i)
+	{
+		JSON_Value* root_value = json_parse_file(listJsons.at(i).c_str());
+		JSON_Object* root_object = json_value_get_object(root_value);
+
+		bool isRoot = json_object_get_boolean(root_object, "IsRoot");
+	}
+	/*JSON_Value* root_value = json_parse_file(filePath);
+	JSON_Object* root_object = json_value_get_object(root_value);
+
+	int numMeshes = json_object_get_number(root_object, "NumMeshes");
+
+	JSON_Array* arr = json_object_get_array(root_object, "Meshes");
+	for (int i = 0; i < numMeshes; i++)
+	{
+		vecNameMeshes.push_back(json_array_get_string(arr, i * 2));
+		vecUUIDmeshes.push_back(json_array_get_number(arr, i * 2 + 1));
+	}*/
+	/*return json_object_get_string(root_object, "Name");*/
 }
 
 

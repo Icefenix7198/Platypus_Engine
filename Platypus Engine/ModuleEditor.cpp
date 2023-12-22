@@ -145,7 +145,7 @@ void ModuleEditor::DrawEditor()
 			}
 			if (ImGui::Button("Save Scene"))
 			{
-				App->scene->CreateMetaGameObject(App->scene->root);
+				App->scene->CreateSerializationGameObject(App->scene->root);
 			}
 			
 			

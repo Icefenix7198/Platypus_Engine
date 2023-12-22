@@ -37,7 +37,9 @@ public:
 	GameObject* selectedGO = nullptr;
 
 	//Serialization
-	void CreateMetaGameObject(GameObject* go);
+	void CreateSerializationGameObject(GameObject* go);
+	void InitCreateGOFromSerialization();
+	void CreateGObFromSerializationRecursively(std::vector<std::string> listJsons, GameObject* go, const char* jsonName);
 
 private:
 	std::vector<reParentPair> pendingToReparent;

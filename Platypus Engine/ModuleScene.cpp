@@ -225,7 +225,7 @@ void ModuleScene::CreateSerializationGameObject(GameObject* go)
 	}
 }
 
-void ModuleScene::CreateGameObjectFromSerialization()
+void ModuleScene::InitCreateGOFromSerialization()
 {
 	std::vector<std::string> listJsons;
 

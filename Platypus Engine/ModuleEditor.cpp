@@ -787,7 +787,7 @@ void ModuleEditor::GameObjectHierarchy(GameObject* go)
 
 void ModuleEditor::Inspector(GameObject* go)
 {
-	if (go != nullptr)
+	if (go != nullptr )
 	{
 		ImGui::Checkbox("Active ## GameObject", &go->active); //For future problems, 
 		//ImGui::SameLine();

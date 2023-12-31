@@ -20,6 +20,7 @@ struct newGameObject
 {
 	GameObject* parent;
 	std::string name;
+	uint32_t UUID;
 };
 
 class ModuleScene : public Module
@@ -34,8 +35,8 @@ public:
 	bool CleanUp() override;
 
 	////GameObjects related
-	GameObject* CreateGameObject(GameObject* parent,std::string name = "GameObject"); //Crea un gameObject vacio
-	void RequestCreateGameObject(GameObject* parent, std::string name = "GameObject" );
+	GameObject* CreateGameObject(GameObject* parent,std::string name = "GameObject",uint32_t UUID = 0); //Crea un gameObject vacio
+	void RequestCreateGameObject(GameObject* parent, std::string name = "GameObject", uint32_t UUID = 0);
 	void RequestReparentGameObject(GameObject* actual,GameObject* newParent); //Hace el reparent, retorn nullptr si fallo, sino el nuevo padre del objeto.
 	void RequestDeleteGameObject(GameObject* go);
 	int UpdateGameObjects(GameObject* go);

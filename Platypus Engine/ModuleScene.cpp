@@ -90,7 +90,8 @@ update_status ModuleScene::PreUpdate(float dt)
 			pendingToDelete.at(i)->~GameObject();
 			//delete pendingToDelete.at(i);
 			pendingToDelete.at(i) = nullptr;
-			if (App->scene->selectedGO == pendingToDelete.at(i)) { App->scene->selectedGO = root; }
+			//Doing other thing will cause an exception as we could be trying to access with inspector to smt that doesn't exist
+			App->scene->selectedGO = root;
 		}
 
 		pendingToDelete.clear();
@@ -100,7 +101,7 @@ update_status ModuleScene::PreUpdate(float dt)
 	{
 		for (int i = 0; i < pendingToCreate.size(); i++)
 		{
-			GameObject* ref = CreateGameObject(pendingToCreate.at(i).parent, pendingToCreate.at(i).name);
+			GameObject* ref = CreateGameObject(pendingToCreate.at(i).parent, pendingToCreate.at(i).name, pendingToCreate.at(i).UUID);
 			//Asumiremos de momento que siempre que queramos crear un GO de momento 
 			if(pendingToCreate.at(i).parent == nullptr)
 			{
@@ -120,20 +121,24 @@ bool ModuleScene::CleanUp()
 	return true;
 }
 
-GameObject* ModuleScene::CreateGameObject(GameObject* parent,std::string name)
+GameObject* ModuleScene::CreateGameObject(GameObject* parent,std::string name,uint32_t UUID)
 {
 	GameObject* go = new GameObject(name,parent,true);
 	if (parent != nullptr) { parent->children.push_back(go); }
 	go->CreateComponent(ComponentType::TRANSFORM);
 	selectedGO = go;
+	if (UUID!=0)
+	{
+		go->SetUUID(UUID);
+	}
 
 	return go;
 }
 
 //For the future?
-void ModuleScene::RequestCreateGameObject(GameObject* parent, std::string name)
+void ModuleScene::RequestCreateGameObject(GameObject* parent, std::string name, uint32_t UUID)
 {
-	pendingToCreate.push_back({ parent,name });
+	pendingToCreate.push_back({ parent,name,UUID });
 }
 
 
@@ -253,15 +258,14 @@ void ModuleScene::CreateSerializationGameObject(GameObject* go)
 void ModuleScene::InitCreateGOFromSerialization()
 {
 	std::vector<std::string> listJsons;
-	std::vector<std::string> listJsons2;
 	
 	//Get all files with the extension
 	App->fileSystem->GetAllFilesWithExtension(ASSETS_GAMEOBJECTS, "json", listJsons);
 	
 	//Search root node
-	for (size_t i = 0; i < listJsons.size(); ++i)
+	for (int i = 0; i < listJsons.size(); ++i)
 	{
-		//Get add its origin path for the parser to work
+		//Get add its origin path for the parser to work ("/Assest/Folder/Nombre.json")
 		std::string pathFile;
 		pathFile.assign(ASSETS_GAMEOBJECTS);
 		pathFile += listJsons.at(i).c_str();
@@ -272,42 +276,107 @@ void ModuleScene::InitCreateGOFromSerialization()
 		bool isRoot = json_object_get_boolean(root_object, "IsRoot");
 		if(isRoot && root_object != NULL)
 		{
-			//We destroy all old game objects
-			for (int i=0;i<root->children.size();i++) 
+			//We destroy all old game objects (the childrens of the root)
+			for (int j = root->children.size()-1;j>=0;--j) //We do it in the inverse order just in case to not mess with the size of the list
 			{
-				RequestDeleteGameObject(root->children.at(i));
+				RequestDeleteGameObject(root->children.at(j));
 			}
-			RequestCreateGameObject(nullptr, json_object_get_string(root_object,"Name"));
+			//RequestCreateGameObject(nullptr, json_object_get_string(root_object,"Name"));
+			//We assign all the values of the new root to the old root (becose we never erase it)
+
+			//For each child the Json root has we call the recursive GO creator metod
+			int numChilds = json_object_get_number(root_object, "NumChildren");
+			JSON_Array* childArr = json_object_get_array(root_object, "Children");
+			
+			//Navigate array of children 
+			for (int c = 0; c < numChilds; ++c)
+			{
+				//Get the Json object of the array
+				JSON_Object* obj = json_array_get_object(childArr, c);
+				//Get the Name and UUID of the child
+				std::string name = json_object_get_string(obj, "Name");
+				uint32_t UUID = json_object_get_number(obj, "UUID");
+				
+				//Search inside the list of Jsons
+				for (int a = 0; a < listJsons.size(); ++a)
+				{
+
+					if (strcmp(name.c_str(), App->fileSystem->GetNameFromPath(listJsons.at(a).c_str()).c_str())==0)
+					{
+						//Test if UUID is correct
+						std::string pathJson;
+						pathJson.assign(ASSETS_GAMEOBJECTS);
+						pathJson += listJsons.at(a).c_str();
+
+						JSON_Value* root_value2 = json_parse_file(pathJson.c_str());
+						JSON_Object* root_object2 = json_value_get_object(root_value2);
+
+						//Check if ID is also correct, in case of posible name duplication
+						uint32_t ID = json_object_get_number(root_object2, "UUID");
+						if(UUID == ID)
+						{
+							CreateGObFromSerializationRecursively(listJsons, root, App->fileSystem->GetNameFromPath(listJsons.at(a).c_str()).c_str());
+							break;
+						}
+					}
+				}
+			}
+
 			break;
 		}
 	}
 }
 
-void ModuleScene::CreateGObFromSerializationRecursively(std::vector<std::string> listJsons, GameObject* go, const char* jsonName)
+void ModuleScene::CreateGObFromSerializationRecursively(std::vector<std::string> listJsons, GameObject* parent, const char* jsonName)
 {
-	//Por algun motivo solo el assets funciona
-	const char* directory = ASSETS_GAMEOBJECTS;
-	App->fileSystem->GetAllFilesWithExtension(directory, "json", listJsons);
+	//Create this game Object
+	RequestCreateGameObject(parent, jsonName);
 
-	for (size_t i = 0; i < listJsons.size(); ++i)
-	{
-		JSON_Value* root_value = json_parse_file(listJsons.at(i).c_str());
-		JSON_Object* root_object = json_value_get_object(root_value);
+	//Create next game objects recursively
+	std::string pathFile;
+	pathFile.assign(ASSETS_GAMEOBJECTS);
+	pathFile += jsonName;
+	pathFile += ".json";
 
-		bool isRoot = json_object_get_boolean(root_object, "IsRoot");
-	}
-	/*JSON_Value* root_value = json_parse_file(filePath);
+	JSON_Value* root_value = json_parse_file(pathFile.c_str());
 	JSON_Object* root_object = json_value_get_object(root_value);
 
-	int numMeshes = json_object_get_number(root_object, "NumMeshes");
+	int numChilds = json_object_get_number(root_object, "NumChildren");
+	JSON_Array* childArr = json_object_get_array(root_object, "Children");
 
-	JSON_Array* arr = json_object_get_array(root_object, "Meshes");
-	for (int i = 0; i < numMeshes; i++)
+	//Navigate array of children 
+	for (int i = 0; i < numChilds; ++i)
 	{
-		vecNameMeshes.push_back(json_array_get_string(arr, i * 2));
-		vecUUIDmeshes.push_back(json_array_get_number(arr, i * 2 + 1));
-	}*/
-	/*return json_object_get_string(root_object, "Name");*/
+		//Get the Json object of the array
+		JSON_Object* obj = json_array_get_object(childArr, i);
+		//Get the Name and UUID of the child
+		std::string name = json_object_get_string(obj, "Name");
+		uint32_t UUID = json_object_get_number(obj, "UUID");
+
+		//Search inside the list of Jsons
+		for (int j = 0; j < listJsons.size(); ++j)
+		{
+
+			if (strcmp(name.c_str(), App->fileSystem->GetNameFromPath(listJsons.at(j).c_str()).c_str()) == 0)
+			{
+				//Test if UUID is correct
+				std::string pathJson;
+				pathJson.assign(ASSETS_GAMEOBJECTS);
+				pathJson += listJsons.at(j).c_str();
+
+				JSON_Value* root_value2 = json_parse_file(pathJson.c_str());
+				JSON_Object* root_object2 = json_value_get_object(root_value2);
+
+				//Check if ID is also correct, in case of posible name duplication
+				uint32_t ID = json_object_get_number(root_object2, "UUID");
+				if (UUID == ID)
+				{
+					CreateGObFromSerializationRecursively(listJsons, root, App->fileSystem->GetNameFromPath(listJsons.at(j).c_str()).c_str());
+					break;
+				}
+			}
+		}
+	}
 }
 
 

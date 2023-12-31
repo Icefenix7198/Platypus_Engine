@@ -147,6 +147,10 @@ void ModuleEditor::DrawEditor()
 			{
 				App->scene->CreateSerializationGameObject(App->scene->root);
 			}
+			if (ImGui::Button("Load Scene"))
+			{
+				App->scene->InitCreateGOFromSerialization();
+			}
 			
 			
 

@@ -1,9 +1,10 @@
 #include "Application.h"
 #include "ModuleScene.h"
+#include "Globals.h"
 #include "imGui/imgui.h"
 #include "imGui/backends/imgui_impl_opengl3.h"
 #include "imGui/backends/imgui_impl_SDL2.h"
-#include "Globals.h"
+
 #include <gl/GL.h>
 #include <gl/GLU.h>
 #include "aasimp.h"
@@ -73,15 +74,17 @@ update_status ModuleScene::PreUpdate(float dt)
 			{
 				App->scene->selectedGO = App->scene->root; 
 			}
-
-			auto* actualList = &pendingToDelete.at(i)->parent->children;
-			//Erase from its parent children vector
-			for (int j = 0; j < actualList->size(); j++)
+			if (pendingToDelete.at(i)->parent != nullptr)
 			{
-				if(actualList->at(j) == pendingToDelete.at(i));
+				auto* actualList = &pendingToDelete.at(i)->parent->children;
+				//Erase from its parent children vector
+				for (int j = 0; j < actualList->size(); j++)
 				{
-					actualList->erase(std::find(actualList->begin(), actualList->end(), pendingToDelete.at(i)));
-					break;
+					if(actualList->at(j) == pendingToDelete.at(i));
+					{
+						actualList->erase(std::find(actualList->begin(), actualList->end(), pendingToDelete.at(i)));
+						break;
+					}
 				}
 			}
 			pendingToDelete.at(i)->~GameObject();
@@ -91,6 +94,22 @@ update_status ModuleScene::PreUpdate(float dt)
 		}
 
 		pendingToDelete.clear();
+	}
+
+	if (!pendingToCreate.empty())
+	{
+		for (int i = 0; i < pendingToCreate.size(); i++)
+		{
+			GameObject* ref = CreateGameObject(pendingToCreate.at(i).parent, pendingToCreate.at(i).name);
+			//Asumiremos de momento que siempre que queramos crear un GO de momento 
+			if(pendingToCreate.at(i).parent == nullptr)
+			{
+				if (root == nullptr)
+				{
+					root = ref;
+				}
+			}
+		}
 	}
 
 	return UPDATE_CONTINUE;
@@ -109,6 +128,12 @@ GameObject* ModuleScene::CreateGameObject(GameObject* parent,std::string name)
 	selectedGO = go;
 
 	return go;
+}
+
+//For the future?
+void ModuleScene::RequestCreateGameObject(GameObject* parent, std::string name)
+{
+	pendingToCreate.push_back({ parent,name });
 }
 
 
@@ -228,7 +253,38 @@ void ModuleScene::CreateSerializationGameObject(GameObject* go)
 void ModuleScene::InitCreateGOFromSerialization()
 {
 	std::vector<std::string> listJsons;
+	std::vector<std::string> listJsons2;
+	
+	//Get all files with the extension
+	App->fileSystem->GetAllFilesWithExtension(ASSETS_GAMEOBJECTS, "json", listJsons);
+	
+	//Search root node
+	for (size_t i = 0; i < listJsons.size(); ++i)
+	{
+		//Get add its origin path for the parser to work
+		std::string pathFile;
+		pathFile.assign(ASSETS_GAMEOBJECTS);
+		pathFile += listJsons.at(i).c_str();
 
+		JSON_Value* root_value = json_parse_file(pathFile.c_str());
+		JSON_Object* root_object = json_value_get_object(root_value);
+
+		bool isRoot = json_object_get_boolean(root_object, "IsRoot");
+		if(isRoot && root_object != NULL)
+		{
+			//We destroy all old game objects
+			for (int i=0;i<root->children.size();i++) 
+			{
+				RequestDeleteGameObject(root->children.at(i));
+			}
+			RequestCreateGameObject(nullptr, json_object_get_string(root_object,"Name"));
+			break;
+		}
+	}
+}
+
+void ModuleScene::CreateGObFromSerializationRecursively(std::vector<std::string> listJsons, GameObject* go, const char* jsonName)
+{
 	//Por algun motivo solo el assets funciona
 	const char* directory = ASSETS_GAMEOBJECTS;
 	App->fileSystem->GetAllFilesWithExtension(directory, "json", listJsons);

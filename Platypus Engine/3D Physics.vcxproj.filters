@@ -381,6 +381,9 @@
     <ClInclude Include="ResourceMaterial.h">
       <Filter>Sources\Resources\ResourcesTypes</Filter>
     </ClInclude>
+    <ClInclude Include="ComponentParticleSystem.h">
+      <Filter>Sources\Components\ComponentsType</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -604,6 +607,9 @@
     </ClCompile>
     <ClCompile Include="ResourceMaterial.cpp">
       <Filter>Sources\Resources\ResourcesTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentParticleSystem.cpp">
+      <Filter>Sources\Components\ComponentsType</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,7 @@
 #include "MathGeoLib/include/Math/Quat.h"
 #include "MathGeoLib/include/Math/float4x4.h"
 
+#include "EmmiterInstance.h"
 
 #include <vector>
 #include <string>
@@ -25,6 +26,12 @@ public:
 	ComponentParticleSystem(GameObject* own);
 
 	~ComponentParticleSystem();
+
+	//Particle emmiter creator
+	void CreateParticleEmitter();
+
+
+	std::vector<EmitterInstance> emitters;
 
 	//Matrix Values
 	aiVector3D translation, scaling;

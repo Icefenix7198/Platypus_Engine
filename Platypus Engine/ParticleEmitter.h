@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ComponentParticleSystem.h"
+#include "ParticleModule.h"
 #include <vector>
 
 #ifndef __PARTICLE_EMITTER_H__
@@ -19,6 +20,8 @@ public:
 	void Init();
 	void UpdateModules();
 	void DrawParticles();
+
+	std::vector<ParticleModule> vecModules;
 
 private:
 

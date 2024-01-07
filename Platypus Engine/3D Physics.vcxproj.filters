@@ -70,6 +70,9 @@
     <Filter Include="Sources\Resources\ResourcesTypes">
       <UniqueIdentifier>{31867d68-473e-455a-86aa-42adafee12ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Tools\ParticleThings">
+      <UniqueIdentifier>{138fdadd-83ce-465c-a511-ade3d7a1cc4a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -384,6 +387,21 @@
     <ClInclude Include="ComponentParticleSystem.h">
       <Filter>Sources\Components\ComponentsType</Filter>
     </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Sources\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleModule.h">
+      <Filter>Sources\Tools\ParticleThings</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEmitter.h">
+      <Filter>Sources\Tools\ParticleThings</Filter>
+    </ClInclude>
+    <ClInclude Include="EmmiterInstance.h">
+      <Filter>Sources\Tools\ParticleThings</Filter>
+    </ClInclude>
+    <ClInclude Include="Emmiter.h">
+      <Filter>Sources\Tools\ParticleThings</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -610,6 +628,18 @@
     </ClCompile>
     <ClCompile Include="ComponentParticleSystem.cpp">
       <Filter>Sources\Components\ComponentsType</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleEmitter.cpp">
+      <Filter>Sources\Tools\ParticleThings</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleModule.cpp">
+      <Filter>Sources\Tools\ParticleThings</Filter>
+    </ClCompile>
+    <ClCompile Include="EmmiterInstance.cpp">
+      <Filter>Sources\Tools\ParticleThings</Filter>
+    </ClCompile>
+    <ClCompile Include="Emmiter.cpp">
+      <Filter>Sources\Tools\ParticleThings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

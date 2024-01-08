@@ -378,6 +378,7 @@
     <ClInclude Include="ResourceMaterial.h">
       <Filter>Sources\Resources\ResourcesTypes</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="ComponentParticleSystem.h">
       <Filter>Sources\Components\ComponentsType</Filter>
     </ClInclude>
@@ -396,6 +397,8 @@
     <ClInclude Include="Emmiter.h">
       <Filter>Sources\Tools\ParticleThings</Filter>
     </ClInclude>
+=======
+>>>>>>> parent of 4de821e (Estructura basica WIP)
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -617,6 +620,7 @@
     <ClCompile Include="ResourceMaterial.cpp">
       <Filter>Sources\Resources\ResourcesTypes</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="ComponentParticleSystem.cpp">
       <Filter>Sources\Components\ComponentsType</Filter>
     </ClCompile>
@@ -635,6 +639,8 @@
     <ClCompile Include="Particle.cpp">
       <Filter>Sources\Containers</Filter>
     </ClCompile>
+=======
+>>>>>>> parent of 4de821e (Estructura basica WIP)
   </ItemGroup>
   <ItemGroup>
     <None Include="MathGeoLib\include\Geometry\KDTree.inl">

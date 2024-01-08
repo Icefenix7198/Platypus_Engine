@@ -14,7 +14,6 @@ enum ComponentType
 	MESH,
 	MATERIAL,
 	CAMERA,
-	PARTICLE,
 };
 
 class Component

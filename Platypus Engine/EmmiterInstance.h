@@ -5,6 +5,8 @@
 #include "Particle.h"
 #include <vector>
 
+#include "Emmiter.h"
+
 //Esto no es muy mi estilo, lo tengo que cambiar
 class Emitter;
 class C_ParticleSystem;

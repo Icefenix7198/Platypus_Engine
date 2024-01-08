@@ -9,6 +9,8 @@
 #include "imGui/backends/imgui_impl_opengl3.h"
 #include "imGui/backends/imgui_impl_SDL2.h"
 
+#include "EmmiterInstance.h"
+
 ComponentParticleSystem::ComponentParticleSystem()
 {
 

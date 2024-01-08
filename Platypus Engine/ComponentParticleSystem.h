@@ -1,3 +1,4 @@
+#pragma once
 #ifndef __COMPONENT_PARTICLE_H__
 #define __COMPONENT_PARTICLE_H__
 
@@ -15,6 +16,7 @@
 #include <vector>
 #include <string>
 
+class EmmiterInstance;
 
 class ComponentParticleSystem : public Component
 {

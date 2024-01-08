@@ -4,6 +4,7 @@
 #include "ModuleRenderer3D.h"
 
 #include "Emmiter.h"
+#include "Particle.h"
 //#include "ResourceMaterial.h"
 //#include "ParticleModule.h"
 

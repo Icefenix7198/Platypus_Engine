@@ -8,7 +8,6 @@
 #include <gl/GLU.h>
 #include "mmgr/mmgr.h"
 
-#include "aasimp.h"
 #include "Importer.h"
 #include "ImporterFBX.h"
 

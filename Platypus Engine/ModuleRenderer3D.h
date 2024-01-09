@@ -7,7 +7,6 @@
 #include "MathGeoLib/include/Math/float4x4.h"
 #include "Primitive.h"
 #include "Glew/include/glew.h"
-#include "aasimp.h"
 #include "ResourceMesh.h"
 
 //todo: REMOVE this before 1st delivery!!

@@ -3,7 +3,6 @@
 
 #include "Globals.h"
 #include "Component.h"
-#include "aasimp.h"
 #include "ResourceMesh.h"
 
 #include "Application.h"

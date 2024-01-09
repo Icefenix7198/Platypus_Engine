@@ -10,8 +10,6 @@
 #include "ImporterMesh.h"
 #include "ImporterMaterial.h"
 
-#include "aasimp.h"
-
 #include "SDL\include\SDL.h"
 #include "PhysFS\include\physfs.h" //Works better than direct.h
 

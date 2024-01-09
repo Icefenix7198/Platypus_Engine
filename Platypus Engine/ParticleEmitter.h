@@ -1,29 +1,33 @@
 #pragma once
-
-#include "ComponentParticleSystem.h"
-#include "ParticleModule.h"
-#include <vector>
-
 #ifndef __PARTICLE_EMITTER_H__
 #define __PARTICLE_EMITTER_H__ 
 
+#include "ComponentParticleSystem.h"
+#include "Particle.h"
+#include <vector>
+
+//Ellos generan y controlan las particulas
 class ParticleEmitter
 {
 public:
 	ParticleEmitter();
 	~ParticleEmitter();
 
-//std::vector<Particle>
-//Emitter *
+	std::vector<Particle> listParticles;
 	ComponentParticleSystem* owner;
 
-	void Init();
-	void UpdateModules();
-	void DrawParticles();
+	void Init(ComponentParticleSystem* component);
 
-	std::vector<ParticleModule> vecModules;
+	void Update(float dt);
+	void DrawParticles();
+	void Reset();
+
+	void SpawnParticle();
 
 private:
+	void KillDeadParticles();
+	void KillAllParticles();
+	void UpdateModules(float dt);
 
 };
 #endif //__PARTICLE_EMITTER_H__

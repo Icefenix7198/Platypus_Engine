@@ -3,7 +3,6 @@
 #include "Globals.h"
 
 #include "Importer.h"
-#include "aasimp.h"
 
 #include <fstream>
 #include <filesystem>

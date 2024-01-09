@@ -127,7 +127,7 @@ GameObject* ModuleScene::CreateGameObject(GameObject* parent,std::string name,ui
 	if (parent != nullptr) { parent->children.push_back(go); }
 	go->CreateComponent(ComponentType::TRANSFORM);
 	selectedGO = go;
-	if (UUID!=0U)
+	if (UUID!=0)
 	{
 		go->SetUUID(UUID);
 	}
@@ -315,7 +315,7 @@ void ModuleScene::InitCreateGOFromSerialization()
 						uint32_t ID = json_object_get_number(root_object2, "UUID");
 						if(UUID == ID)
 						{
-							CreateGObFromSerializationRecursively(listJsons, root, App->fileSystem->GetNameFromPath(listJsons.at(a).c_str()).c_str(),ID);
+							CreateGObFromSerializationRecursively(listJsons, root, App->fileSystem->GetNameFromPath(listJsons.at(a).c_str()).c_str());
 							break;
 						}
 					}
@@ -327,11 +327,10 @@ void ModuleScene::InitCreateGOFromSerialization()
 	}
 }
 
-void ModuleScene::CreateGObFromSerializationRecursively(std::vector<std::string> listJsons, GameObject* parent, const char* jsonName,uint32_t UUID)
+void ModuleScene::CreateGObFromSerializationRecursively(std::vector<std::string> listJsons, GameObject* parent, const char* jsonName)
 {
 	//Create this game Object
-	//RequestCreateGameObject(parent, jsonName,UUID);
-	GameObject* go = CreateGameObject(parent, jsonName, UUID);
+	RequestCreateGameObject(parent, jsonName);
 
 	//Create next game objects recursively
 	std::string pathFile;
@@ -372,7 +371,7 @@ void ModuleScene::CreateGObFromSerializationRecursively(std::vector<std::string>
 				uint32_t ID = json_object_get_number(root_object2, "UUID");
 				if (UUID == ID)
 				{
-					CreateGObFromSerializationRecursively(listJsons, go, App->fileSystem->GetNameFromPath(listJsons.at(j).c_str()).c_str(),ID);
+					CreateGObFromSerializationRecursively(listJsons, root, App->fileSystem->GetNameFromPath(listJsons.at(j).c_str()).c_str());
 					break;
 				}
 			}

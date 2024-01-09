@@ -47,7 +47,7 @@ public:
 	//Serialization
 	void CreateSerializationGameObject(GameObject* go);
 	void InitCreateGOFromSerialization();
-	void CreateGObFromSerializationRecursively(std::vector<std::string> listJsons, GameObject* go, const char* jsonName,uint32_t UUID);
+	void CreateGObFromSerializationRecursively(std::vector<std::string> listJsons, GameObject* go, const char* jsonName);
 
 private:
 	std::vector<reParentPair> pendingToReparent;

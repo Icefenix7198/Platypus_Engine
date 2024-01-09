@@ -58,6 +58,9 @@
     <Filter Include="Sources\Importers">
       <UniqueIdentifier>{046951a4-bfe3-4543-8a1f-a638cde93a1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Importers\Aasimp">
+      <UniqueIdentifier>{838e75cd-541f-465b-b235-abf47587e54a}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Sources\Importers\ImportersTypes">
       <UniqueIdentifier>{3dca5b96-793a-4a97-95c8-aca8f808fe0b}</UniqueIdentifier>
     </Filter>
@@ -66,9 +69,6 @@
     </Filter>
     <Filter Include="Sources\Resources\ResourcesTypes">
       <UniqueIdentifier>{31867d68-473e-455a-86aa-42adafee12ee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\Tools\ParticleThings">
-      <UniqueIdentifier>{138fdadd-83ce-465c-a511-ade3d7a1cc4a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -330,6 +330,9 @@
     <ClInclude Include="parson-master\parson.h">
       <Filter>Externals\Parson</Filter>
     </ClInclude>
+    <ClInclude Include="aasimp.h">
+      <Filter>Sources\Importers\Aasimp</Filter>
+    </ClInclude>
     <ClInclude Include="ModuleScene.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
@@ -378,27 +381,9 @@
     <ClInclude Include="ResourceMaterial.h">
       <Filter>Sources\Resources\ResourcesTypes</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="ComponentParticleSystem.h">
       <Filter>Sources\Components\ComponentsType</Filter>
     </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Sources\Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleModule.h">
-      <Filter>Sources\Tools\ParticleThings</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleEmitter.h">
-      <Filter>Sources\Tools\ParticleThings</Filter>
-    </ClInclude>
-    <ClInclude Include="EmmiterInstance.h">
-      <Filter>Sources\Tools\ParticleThings</Filter>
-    </ClInclude>
-    <ClInclude Include="Emmiter.h">
-      <Filter>Sources\Tools\ParticleThings</Filter>
-    </ClInclude>
-=======
->>>>>>> parent of 4de821e (Estructura basica WIP)
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -566,6 +551,9 @@
     <ClCompile Include="parson-master\parson.c">
       <Filter>Externals\Parson</Filter>
     </ClCompile>
+    <ClCompile Include="aasimp.cpp">
+      <Filter>Sources\Importers\Aasimp</Filter>
+    </ClCompile>
     <ClCompile Include="ModuleScene.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
@@ -620,27 +608,9 @@
     <ClCompile Include="ResourceMaterial.cpp">
       <Filter>Sources\Resources\ResourcesTypes</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="ComponentParticleSystem.cpp">
       <Filter>Sources\Components\ComponentsType</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleEmitter.cpp">
-      <Filter>Sources\Tools\ParticleThings</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleModule.cpp">
-      <Filter>Sources\Tools\ParticleThings</Filter>
-    </ClCompile>
-    <ClCompile Include="EmmiterInstance.cpp">
-      <Filter>Sources\Tools\ParticleThings</Filter>
-    </ClCompile>
-    <ClCompile Include="Emmiter.cpp">
-      <Filter>Sources\Tools\ParticleThings</Filter>
-    </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Sources\Containers</Filter>
-    </ClCompile>
-=======
->>>>>>> parent of 4de821e (Estructura basica WIP)
   </ItemGroup>
   <ItemGroup>
     <None Include="MathGeoLib\include\Geometry\KDTree.inl">

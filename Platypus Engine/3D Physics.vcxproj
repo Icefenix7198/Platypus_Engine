@@ -82,23 +82,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="aasimp.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentCamera.h" />
     <ClInclude Include="ComponentMaterial.h" />
+    <ClInclude Include="ComponentParticleSystem.h" />
     <ClInclude Include="ComponentTransform.h" />
     <ClInclude Include="ComponentMesh.h" />
-    <ClInclude Include="Emmiter.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="glmath.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="ImporterMaterial.h" />
     <ClInclude Include="ModuleResourceManager.h" />
-    <ClInclude Include="Particle.h" />
-    <ClInclude Include="ParticleEmitter.h" />
-    <ClInclude Include="EmmiterInstance.h" />
-    <ClInclude Include="ParticleModule.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="imGui\backends\imgui_impl_opengl3.h" />
     <ClInclude Include="imGui\backends\imgui_impl_opengl3_loader.h" />
@@ -191,14 +188,15 @@
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="aasimp.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentCamera.cpp" />
     <ClCompile Include="ComponentMaterial.cpp" />
+    <ClCompile Include="ComponentParticleSystem.cpp" />
     <ClCompile Include="ComponentTransform.cpp" />
     <ClCompile Include="ComponentMesh.cpp" />
-    <ClCompile Include="Emmiter.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="glmath.cpp" />
     <ClCompile Include="imGui\backends\imgui_impl_opengl3.cpp" />
@@ -260,10 +258,6 @@
     <ClCompile Include="ModuleScene.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="parson-master\parson.c" />
-    <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="ParticleEmitter.cpp" />
-    <ClCompile Include="EmmiterInstance.cpp" />
-    <ClCompile Include="ParticleModule.cpp" />
     <ClCompile Include="Primitive.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="ResourceMaterial.cpp" />

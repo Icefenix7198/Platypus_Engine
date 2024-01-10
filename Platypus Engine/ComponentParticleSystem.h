@@ -27,6 +27,7 @@ public:
 	~ComponentParticleSystem();
 
 	//Vector de Emmiters, los emmiters son quienes crean las particulas
+	std::vector<ParticleEmitter> allEmitters;
 
 	//Matrix Values
 	aiVector3D translation, scaling;

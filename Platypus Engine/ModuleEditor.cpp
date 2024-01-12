@@ -820,6 +820,10 @@ void ModuleEditor::Inspector(GameObject* go)
 		{
 			go->CreateComponent(ComponentType::CAMERA);
 		}
+		if (ImGui::Button("Add ParticleSystem"))
+		{
+			go->CreateComponent(ComponentType::PARTICLE);
+		}
 	}
 	
 }

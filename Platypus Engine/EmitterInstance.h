@@ -7,6 +7,12 @@
 //#include "ParticleEmitter.h"
 #include <vector>
 
+enum EmiterType
+{
+	SPAWN,
+	MAX,
+};
+
 class ParticleEmitter;
 
 //Plantillas para los Emitters, que seran los settings de las particulas
@@ -16,11 +22,7 @@ public:
 	EmitterInstance();
 	~EmitterInstance();
 
-	enum EmiterType
-	{
-		SPAWN,
-		MAX,
-	};
+	EmiterType type;
 
 	virtual void Spawn(EmitterInstance* emitter, Particle* particle) = 0;
 	virtual void Update(float dt, ParticleEmitter* emitter) /*= 0*/;

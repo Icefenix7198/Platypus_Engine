@@ -1,3 +1,4 @@
+#pragma once
 #ifndef __COMPONENT_PARTICLE_H__
 #define __COMPONENT_PARTICLE_H__
 
@@ -10,10 +11,12 @@
 #include "MathGeoLib/include/Math/Quat.h"
 #include "MathGeoLib/include/Math/float4x4.h"
 
+#include "ParticleEmitter.h"
 
 #include <vector>
 #include <string>
 
+class ParticleEmitter;
 
 class ComponentParticleSystem : public Component
 {
@@ -27,21 +30,9 @@ public:
 	~ComponentParticleSystem();
 
 	//Vector de Emmiters, los emmiters son quienes crean las particulas
+	//ParticleEmitter* CreateEmitter();
+
 	std::vector<ParticleEmitter> allEmitters;
-
-	//Matrix Values
-	aiVector3D translation, scaling;
-	aiQuaternion rotation;
-
-	void SetValues(aiVector3D translation, aiVector3D scaling, aiQuaternion rotation);
-	
-	float3 pos;
-	float3 scale;
-	math::Quat rot;
-	float3 angles; //Only for display
-
-	float4x4 localTransform;
-	float4x4 globalTransform;
 	
 	//ImGui
 	void OnEditor();

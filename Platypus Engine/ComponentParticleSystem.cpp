@@ -25,16 +25,12 @@ ComponentParticleSystem::~ComponentParticleSystem()
 {
 }
 
-void ComponentParticleSystem::SetValues(aiVector3D translation, aiVector3D scaling, aiQuaternion rotation)
-{
-	pos = { translation.x,translation.y,translation.z };
-
-	scale = { scaling.x, scaling.y, scaling.z };
-
-	rot = { rotation.x, rotation.y, rotation.z, rotation.w };
-}
-
-
+//ParticleEmitter ComponentParticleSystem::CreateEmitter()
+//{
+//	//allEmitters.push_back();
+//
+//	return ParticleEmitter();
+//}
 
 void ComponentParticleSystem::OnEditor()
 {
@@ -43,6 +39,7 @@ void ComponentParticleSystem::OnEditor()
 
 		ImGui::Checkbox("##ParticleSystem", &active);
 		
+		//Crear emitter
 		
 	}
 }

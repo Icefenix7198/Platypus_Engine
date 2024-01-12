@@ -3,8 +3,14 @@
 #define __PARTICLE_EMITTER_H__ 
 
 #include "ComponentParticleSystem.h"
+#include "EmitterInstance.h"
 #include "Particle.h"
 #include <vector>
+
+#define MAXPARTICLES 200
+
+class ComponentParticleSystem;
+class EmitterInstance;
 
 //Ellos generan y controlan las particulas
 class ParticleEmitter
@@ -14,6 +20,7 @@ public:
 	~ParticleEmitter();
 
 	std::vector<Particle> listParticles;
+	std::vector<EmitterInstance*> modules; //Son las Particle module del power, son las settings
 	ComponentParticleSystem* owner;
 
 	void Init(ComponentParticleSystem* component);

@@ -386,6 +386,46 @@ void ModuleRenderer3D::DrawMesh(_Mesh mesh, bool wireframe, Color color, uint ch
 	glColor4f(1, 1, 1, 1);
 
 }
+void ModuleRenderer3D::DrawParticles(Particle particle)
+{
+	glPushMatrix();
+	//glMultMatrixf(particle->position);
+
+	//Binding particle Texture
+	if (/*particle.mat*/ true)
+	{
+		if (/*ResourceTexture* rTex = particle.mat->hTexture.Get()*/ true)
+		{
+			if (/*rTex && rTex->buffer != 0*/ true)
+			{
+				glBindTexture(GL_TEXTURE_2D, /*rTex->buffer*/ 0);
+			}
+		}
+	}
+
+	glColor4f(particle.color.r, particle.color.g, particle.color.b, particle.color.a);
+
+	//Drawing to tris in direct mode
+	glBegin(GL_TRIANGLES);
+
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(.5f, -.5f, .0f);
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(-.5f, .5f, .0f);
+	glTexCoord2f(0.0f, 0.0f);
+	glVertex3f(-.5f, -.5f, .0f);
+
+	glTexCoord2f(1.0f, 0.0f);
+	glVertex3f(.5f, -.5f, .0f);
+	glTexCoord2f(1.0f, 1.0f);
+	glVertex3f(.5f, .5f, .0f);
+	glTexCoord2f(0.0f, 1.0f);
+	glVertex3f(-.5f, .5f, .0f);
+
+	glEnd();
+	glPopMatrix();
+	glBindTexture(GL_TEXTURE_2D, 0);
+}
 void ModuleRenderer3D::CreateCheckers()
 {
 	for (int i = 0; i < CHECKERS_HEIGHT; i++) {

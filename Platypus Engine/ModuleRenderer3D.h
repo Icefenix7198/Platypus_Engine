@@ -9,6 +9,8 @@
 #include "Glew/include/glew.h"
 #include "ResourceMesh.h"
 
+#include "Particle.h"
+
 //todo: REMOVE this before 1st delivery!!
 #include "glmath.h"
 
@@ -33,6 +35,9 @@ public:
 	void DrawCubeDirectMode(float originX=0, float originY=0, float originZ=0, float size=1);
 	
 	void DrawMesh(_Mesh mesh, bool wireframe = false, Color color = {1,1,1,1}, uint checkersID = 0);
+
+	void DrawParticles(Particle particle);
+
 	void CreateCheckers();
 
 	//Drawing Mode

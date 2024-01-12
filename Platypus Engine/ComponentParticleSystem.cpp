@@ -43,8 +43,11 @@ void ComponentParticleSystem::OnEditor()
 	{
 		ImGui::Checkbox("##ParticleSystem", &active);
 		
+		int treeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+		int leafFlags = treeFlags | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+
 		//Crear emitter
-		if (ImGui::CollapsingHeader("Emitters"))
+		if (ImGui::TreeNodeEx((void*)(intptr_t)-1, treeFlags, "Emitters"))
 		{
 			for (int i = 0; i < allEmitters.size(); i++)
 			{
@@ -53,7 +56,7 @@ void ComponentParticleSystem::OnEditor()
 				nameEmitter.append("Particle Emitter ");
 				nameEmitter.append(std::to_string(i+1));
 
-				if (ImGui::CollapsingHeader(nameEmitter.c_str()))
+				if (ImGui::TreeNodeEx((void*)(intptr_t)i, (!allEmitters.at(i)->modules.empty()) ? treeFlags : leafFlags, nameEmitter.c_str())) //nameEmitter.c_str()
 				{
 					auto listModule = allEmitters.at(i)->modules;
 					for (int j = 0; j < listModule.size(); j++)
@@ -69,50 +72,47 @@ void ComponentParticleSystem::OnEditor()
 						default:
 							break;
 						}
-
-
-
 					}
-					if (ImGui::CollapsingHeader("Create Emitter"))
+					if (!allEmitters.at(i)->modules.empty())
 					{
-						for (int k = 0; k < EmiterType::MAX; k++)
-						{
-							std::string emitterType;
-
-							switch (k)
-							{
-							case SPAWN:
-								emitterType.assign("Spawn Emitter");
-
-								break;
-							case MAX:
-								break;
-							default:
-								break;
-							}
-							if (ImGui::Button(emitterType.c_str()))
-							{
-								allEmitters.at(i)->CreateEmitterByType((EmiterType)k);
-							}
-
-						}
-						ImGui::End;
+						ImGui::TreePop();
 					}
-					
-					
 				}
-				ImGui::End;
+				if (ImGui::CollapsingHeader("Create Emitter"))
+				{
+					for (int k = 0; k < EmiterType::MAX; k++)
+					{
+						std::string emitterType;
+
+						switch (k)
+						{
+						case SPAWN:
+							emitterType.assign("Spawn Emitter");
+
+							break;
+						case MAX:
+							break;
+						default:
+							break;
+						}
+						if (ImGui::Button(emitterType.c_str()))
+						{
+							allEmitters.at(i)->CreateEmitterByType((EmiterType)k);
+						}
+
+					}
+					//ImGui::End();
+					//ImGui::TreePop();
+				}
+				
 			}
 			if(ImGui::Button("Create Particle Emitter"))
 			{
 				CreateEmitter();
 			}
 
-			ImGui::End;
+			ImGui::TreePop();
 		}
-			//ImGui::EndTabBar();
-		/*}*/
-		//ImGui::EndTabItem();
 	}
 }
 

@@ -28,7 +28,7 @@ public:
 	virtual void Spawn(EmitterInstance* emitter, Particle* particle) = 0;
 	virtual void Update(float dt, ParticleEmitter* emitter) /*= 0*/;
 	
-
+	bool unique = true; //Si es unique solo puede haber uno de ese tipo
 private:
 
 };
@@ -37,6 +37,9 @@ struct EmitterBase : EmitterInstance
 {
 	void Spawn(EmitterInstance* emitter, Particle* particle);
 	void Update(float dt, ParticleEmitter* emitter);
+
+	//Variable unica, posicion donde spawnean
+	float3 emitterOrigin = float3::zero;
 };
 
 struct EmitterDestructor : EmitterInstance

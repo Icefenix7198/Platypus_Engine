@@ -12,9 +12,9 @@ public:
 	~Particle();
 
 	float3 position;
-	Quat worldRotation;
+	Quat worldRotation; //Para el billboarding
 	float lifetime;
-	float4 velocity;
+	float4 velocity; // (x,y,z son los vectores, normalizados, w es la intensidad de la velocidad)
 	Color color;
 
 private:

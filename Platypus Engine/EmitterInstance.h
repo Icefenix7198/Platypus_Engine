@@ -10,6 +10,7 @@
 enum EmiterType
 {
 	SPAWN,
+	DESTROY,
 	MAX,
 };
 
@@ -36,6 +37,12 @@ struct EmitterBase : EmitterInstance
 {
 	void Spawn(EmitterInstance* emitter, Particle* particle);
 	void Update(float dt, ParticleEmitter* emitter);
+};
+
+struct EmitterDestructor : EmitterInstance
+{
+	void Spawn(EmitterInstance* emitter, Particle* particle);
+	void Update(float dt, ParticleEmitter* emitter, float maxTime = 1.0f);
 };
 
 

@@ -39,6 +39,16 @@ ParticleEmitter* ComponentParticleSystem::CreateEmitter()
 
 void ComponentParticleSystem::OnEditor()
 {
+	std::string butonChar;
+
+	//Give an ID to each colapsing header to be able to have more than one of the same time
+	//This must be done due to ImGui using the names as the ids of all menus and things
+	int myPosInComponents = owner->GetComponentPosition(this);
+	std::string idComponent;
+	idComponent.append("##");
+	idComponent.append(std::to_string(myPosInComponents).c_str());
+
+	butonChar.append(butonChar.append(idComponent).c_str());
 	if(ImGui::CollapsingHeader("ParticleSystem"))
 	{
 		ImGui::Checkbox("##ParticleSystem", &active);
@@ -67,6 +77,9 @@ void ComponentParticleSystem::OnEditor()
 						case SPAWN:
 							ImGui::Text(particleModule.append("Spawn ##").append(std::to_string(j)).c_str());
 							break;
+						case DESTROY:
+							ImGui::Text(particleModule.append("Destroy ##").append(std::to_string(j)).c_str());
+							break;
 						case MAX:
 							break;
 						default:
@@ -78,7 +91,8 @@ void ComponentParticleSystem::OnEditor()
 						ImGui::TreePop();
 					}
 				}
-				if (ImGui::CollapsingHeader("Create Emitter"))
+				std::string CEid;
+				if (ImGui::CollapsingHeader(CEid.append("Create Emitter").append(std::to_string(i)).c_str()))
 				{
 					for (int k = 0; k < EmiterType::MAX; k++)
 					{
@@ -88,7 +102,9 @@ void ComponentParticleSystem::OnEditor()
 						{
 						case SPAWN:
 							emitterType.assign("Spawn Emitter");
-
+							break;
+						case DESTROY:
+							emitterType.assign("Destroy Emitter");
 							break;
 						case MAX:
 							break;
@@ -104,12 +120,21 @@ void ComponentParticleSystem::OnEditor()
 					//ImGui::End();
 					//ImGui::TreePop();
 				}
+				std::string numParticlesWithID = "Particles";
+				
+				int numParticles = allEmitters.at(i)->listParticles.size();
+				if (ImGui::SliderInt(numParticlesWithID.append(std::to_string(i)).c_str(), &numParticles,0,MAXPARTICLES))
+				{
+					
+				}
 				
 			}
+
 			if(ImGui::Button("Create Particle Emitter"))
 			{
 				CreateEmitter();
 			}
+			
 
 			ImGui::TreePop();
 		}

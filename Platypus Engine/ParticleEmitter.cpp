@@ -22,6 +22,9 @@ EmitterInstance* ParticleEmitter::CreateEmitterByType(uint type)
 		nuevoEmitter = new EmitterBase;
 		nuevoEmitter->type = EmiterType::SPAWN;
 		break;
+	case DESTROY:
+		nuevoEmitter = new EmitterDestructor;
+		nuevoEmitter->type = EmiterType::DESTROY;
 	case MAX:
 		break;
 	default:
@@ -43,21 +46,31 @@ void ParticleEmitter::KillDeadParticles()
 	for (int i = 0; i < listParticles.size(); i++)
 	{
 		//Si la particula esta muerta eliminarla del vector
-		if (true)
+		if (listParticles.at(i).lifetime >= 1.0f)
 		{
 			particlesToDelete.push_back(i);
 		}
 	}
 
 	//Leemos de final a principio la lista de particulas para eliminarlas y que no haya problemas de cambio de tamaño
-	for (size_t i = 0; i < 10; i++)
+	int num = 0;
+	for (int j = particlesToDelete.size()-1; j >= 0; --j)
 	{
+		num = listParticles.size();
 		for (auto it = listParticles.rbegin(); it != listParticles.rend(); it++)
 		{
-			//listParticles.erase(it);
+			--num;
+			if (particlesToDelete.at(j)==num)
+			{
+				//listParticles.erase(std::find(listParticles.begin(), listParticles.end(), it));
+			}
 		}
 	}
+}
 
+void ParticleEmitter::KillAllParticles()
+{
+	listParticles.clear();
 }
 
 void ParticleEmitter::UpdateModules(float dt)
@@ -98,5 +111,24 @@ void ParticleEmitter::DrawParticles()
 		auto par = listParticles.at(i);
 		App->renderer3D->DrawParticles(par);
 		//Draw particles a traves de moduleRenderer
+	}
+}
+
+void ParticleEmitter::Reset()
+{
+	emitterTime = 0;
+
+	KillAllParticles();
+}
+
+void ParticleEmitter::SpawnParticle(uint particlesToAdd)
+{
+	if (listParticles.size()<MAXPARTICLES)
+	{
+		for (int i = 0; i < particlesToAdd; i++)
+		{
+			Particle particula = Particle();
+			listParticles.push_back(particula);
+		}
 	}
 }

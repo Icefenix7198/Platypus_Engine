@@ -31,7 +31,7 @@ public:
 	void DrawParticles();
 	void Reset();
 
-	void SpawnParticle();
+	void SpawnParticle(uint particlesToAdd = 1);
 
 	EmitterInstance* CreateEmitterByType(uint type);
 

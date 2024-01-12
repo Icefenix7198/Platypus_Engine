@@ -23,6 +23,8 @@ public:
 	std::vector<EmitterInstance*> modules; //Son las Particle module del power, son las settings
 	ComponentParticleSystem* owner;
 
+	float emitterTime = 0; //Tiempo de las particulas
+
 	void Init(ComponentParticleSystem* component);
 
 	void Update(float dt);
@@ -30,6 +32,8 @@ public:
 	void Reset();
 
 	void SpawnParticle();
+
+	EmitterInstance* CreateEmitterByType(uint type);
 
 private:
 	void KillDeadParticles();

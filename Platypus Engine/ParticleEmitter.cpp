@@ -1,13 +1,37 @@
 #include "ParticleEmitter.h"
+#include "EmitterInstance.h"
 //#include "ModuleRenderer3D.h"
 #include "Application.h"
 
 ParticleEmitter::ParticleEmitter()
 {
+	//Quiza haya que meterle alguna info? IDK
+	
 }
 
 ParticleEmitter::~ParticleEmitter()
 {
+}
+
+EmitterInstance* ParticleEmitter::CreateEmitterByType(uint type)
+{
+	EmitterInstance* nuevoEmitter = nullptr;
+	switch ((EmiterType)type)
+	{
+	case SPAWN:
+		nuevoEmitter = new EmitterBase;
+		nuevoEmitter->type = EmiterType::SPAWN;
+		break;
+	case MAX:
+		break;
+	default:
+		break;
+	}
+
+	//
+	modules.push_back(nuevoEmitter);
+
+	return nuevoEmitter;
 }
 
 void ParticleEmitter::KillDeadParticles()
@@ -44,9 +68,18 @@ void ParticleEmitter::UpdateModules(float dt)
 	}
 }
 
+void ParticleEmitter::Init(ComponentParticleSystem* component)
+{
+	//Si el numero de particles es fijo y lo que hay pues
+	this->owner = component;
+	//listParticles.resize(MAXPARTICLES);
+	//array de indices de particulas (int*)
+	//particleIndices = new unsigned int[MAXPARTICLES]
+}
+
 void ParticleEmitter::Update(float dt)
 {
-	//emmiterTime += dt;
+	emitterTime += dt;
 
 	//Eliminar las particulas de la lista que ya acabaron su tiempo de vida
 	KillDeadParticles();

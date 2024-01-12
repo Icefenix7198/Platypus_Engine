@@ -93,7 +93,6 @@
     <ClInclude Include="ComponentTransform.h" />
     <ClInclude Include="ComponentMesh.h" />
     <ClInclude Include="EmitterInstance.h" />
-    <ClInclude Include="EmitterSpawn.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="glmath.h" />
     <ClInclude Include="Globals.h" />

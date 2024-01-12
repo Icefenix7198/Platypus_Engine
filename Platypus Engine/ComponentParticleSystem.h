@@ -30,9 +30,9 @@ public:
 	~ComponentParticleSystem();
 
 	//Vector de Emmiters, los emmiters son quienes crean las particulas
-	//ParticleEmitter* CreateEmitter();
+	ParticleEmitter* CreateEmitter();
 
-	std::vector<ParticleEmitter> allEmitters;
+	std::vector<ParticleEmitter*> allEmitters;
 	
 	//ImGui
 	void OnEditor();

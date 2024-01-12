@@ -70,9 +70,6 @@
     <Filter Include="Sources\Components\ComponentsType\ParticlesThings">
       <UniqueIdentifier>{4e8a283f-f0b9-4657-8abf-67ed086e4831}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Components\ComponentsType\ParticlesThings\Emitters">
-      <UniqueIdentifier>{a994fa4a-8570-4bf9-9f6f-219d35f74d57}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -389,9 +386,6 @@
     </ClInclude>
     <ClInclude Include="EmitterInstance.h">
       <Filter>Sources\Components\ComponentsType\ParticlesThings</Filter>
-    </ClInclude>
-    <ClInclude Include="EmitterSpawn.h">
-      <Filter>Sources\Components\ComponentsType\ParticlesThings\Emitters</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">
       <Filter>Sources\Containers</Filter>

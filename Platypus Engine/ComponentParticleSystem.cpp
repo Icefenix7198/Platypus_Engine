@@ -27,55 +27,89 @@ ComponentParticleSystem::~ComponentParticleSystem()
 {
 }
 
-//ParticleEmitter ComponentParticleSystem::CreateEmitter()
-//{
-//	//allEmitters.push_back();
-//
-//	return ParticleEmitter();
-//}
+ParticleEmitter* ComponentParticleSystem::CreateEmitter()
+{
+	//Creamos un nuevo emisor
+	ParticleEmitter* emisor = new ParticleEmitter;
+	allEmitters.push_back(emisor);
+	emisor->Init(this);
+
+	return emisor;
+}
 
 void ComponentParticleSystem::OnEditor()
 {
 	if(ImGui::CollapsingHeader("ParticleSystem"))
 	{
-
 		ImGui::Checkbox("##ParticleSystem", &active);
 		
 		//Crear emitter
-		/*if (ImGui::BeginTabBar("ParticlesEmitters"))
-		{*/
-		ImGui::SameLine;
-			if (ImGui::CollapsingHeader("Emitters"))
+		if (ImGui::CollapsingHeader("Emitters"))
+		{
+			for (int i = 0; i < allEmitters.size(); i++)
 			{
-				for (int i = 0; i < allEmitters.size(); i++)
-				{
-					std::string nameEmitter;
-					//ImGui::Text("ParticleEmmiter %i", i);
-					nameEmitter.append("Emitter ");
-					nameEmitter.append(std::to_string(i+1));
+				std::string nameEmitter;
+				//ImGui::Text("ParticleEmmiter %i", i);
+				nameEmitter.append("Particle Emitter ");
+				nameEmitter.append(std::to_string(i+1));
 
-					if (ImGui::CollapsingHeader(nameEmitter.c_str()))
+				if (ImGui::CollapsingHeader(nameEmitter.c_str()))
+				{
+					auto listModule = allEmitters.at(i)->modules;
+					for (int j = 0; j < listModule.size(); j++)
 					{
-						auto listModule = allEmitters.at(i).modules;
-						for(int i = 0; i < listModule.size(); i++)
+						std::string particleModule; //Les opciones
+						switch (listModule.at(j)->type)
 						{
-							switch (listModule.at(i)->type)
+						case SPAWN:
+							ImGui::Text(particleModule.append("Spawn ##").append(std::to_string(j)).c_str());
+							break;
+						case MAX:
+							break;
+						default:
+							break;
+						}
+
+
+
+					}
+					if (ImGui::CollapsingHeader("Create Emitter"))
+					{
+						for (int k = 0; k < EmiterType::MAX; k++)
+						{
+							std::string emitterType;
+
+							switch (k)
 							{
 							case SPAWN:
-								ImGui::Text("Spawn");
+								emitterType.assign("Spawn Emitter");
+
 								break;
 							case MAX:
 								break;
 							default:
 								break;
 							}
+							if (ImGui::Button(emitterType.c_str()))
+							{
+								allEmitters.at(i)->CreateEmitterByType((EmiterType)k);
+							}
+
 						}
-							
+						ImGui::End;
 					}
-					ImGui::End;
+					
+					
 				}
 				ImGui::End;
 			}
+			if(ImGui::Button("Create Particle Emitter"))
+			{
+				CreateEmitter();
+			}
+
+			ImGui::End;
+		}
 			//ImGui::EndTabBar();
 		/*}*/
 		//ImGui::EndTabItem();

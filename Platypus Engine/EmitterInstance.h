@@ -16,7 +16,7 @@ enum EmiterType
 class ParticleEmitter;
 
 //Plantillas para los Emitters, que seran los settings de las particulas
-class EmitterInstance //En Thor Engine esto seria el particle Module
+struct EmitterInstance //En Thor Engine esto seria el particle Module
 {
 public:
 	EmitterInstance();
@@ -26,8 +26,17 @@ public:
 
 	virtual void Spawn(EmitterInstance* emitter, Particle* particle) = 0;
 	virtual void Update(float dt, ParticleEmitter* emitter) /*= 0*/;
+	
 
 private:
 
 };
+
+struct EmitterBase : EmitterInstance
+{
+	void Spawn(EmitterInstance* emitter, Particle* particle);
+	void Update(float dt, ParticleEmitter* emitter);
+};
+
+
 #endif //__EMITTER_INSTANCE_H__

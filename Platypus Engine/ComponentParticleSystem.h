@@ -29,6 +29,8 @@ public:
 
 	~ComponentParticleSystem();
 
+	bool Update(float dt);
+
 	//Vector de Emmiters, los emmiters son quienes crean las particulas
 	ParticleEmitter* CreateEmitter();
 

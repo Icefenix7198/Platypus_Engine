@@ -20,11 +20,27 @@ ComponentParticleSystem::ComponentParticleSystem(GameObject* own)
 {
 	owner = own;
 	UUID = App->resources->GenerateNewUID();
+	active = true;
 }
 
 
 ComponentParticleSystem::~ComponentParticleSystem()
 {
+	for(auto it = allEmitters.rbegin(); it != allEmitters.rend(); ++it)
+	{
+		//(it*)->~ParticleEmitter;
+	}
+}
+
+bool ComponentParticleSystem::Update(float dt)
+{
+	bool ret = true;
+	for (unsigned int i = 0; i < allEmitters.size(); ++i)
+	{
+		allEmitters.at(i)->Update(dt);
+	}
+
+	return ret;
 }
 
 ParticleEmitter* ComponentParticleSystem::CreateEmitter()
@@ -51,7 +67,17 @@ void ComponentParticleSystem::OnEditor()
 	butonChar.append(butonChar.append(idComponent).c_str());
 	if(ImGui::CollapsingHeader("ParticleSystem"))
 	{
-		ImGui::Checkbox("##ParticleSystem", &active);
+		butonChar.clear();
+		butonChar.append("##Particle System Active");
+		ImGui::Checkbox(butonChar.append(idComponent).c_str(), &active); //El doble ## hace que no se muestre el texto. Es necesario poner un nombre distinto a cada checkbox y boton ya que ImGui usa el nombre como la ID
+		ImGui::SameLine();
+
+		butonChar.clear();
+		butonChar.append("Delete component");
+		if (ImGui::Button(butonChar.append(idComponent).c_str()))
+		{
+			this->~ComponentParticleSystem();
+		}
 		
 		int treeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
 		int leafFlags = treeFlags | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
@@ -72,14 +98,44 @@ void ComponentParticleSystem::OnEditor()
 					for (int j = 0; j < listModule.size(); j++)
 					{
 						std::string particleModule; //Les opciones
+
+						//BASE
+						
+						//SPAWN
+						//DESTROY
 						switch (listModule.at(j)->type)
 						{
-						case SPAWN:
-							ImGui::Text(particleModule.append("Spawn ##").append(std::to_string(j)).c_str());
+						case BASE:
+						{
+							ImGui::Text(particleModule.append("Base ##").append(std::to_string(j)).c_str());
+
+							//Positions
 							break;
+						}
+						case SPAWN:
+						{	ImGui::Text(particleModule.append("Spawn ##").append(std::to_string(j)).c_str());
+
+							int numParticles;
+							std::string numParticlesWithID = "Particles ##";
+						
+							EmitterSpawner* eSpawner = (EmitterSpawner*)listModule.at(j);
+							numParticles = eSpawner->numParticlesToSpawn;
+
+							//Numero particulas que libera el 
+							if (ImGui::SliderInt(numParticlesWithID.append(std::to_string(i)).c_str(), &numParticles, 0, MAXPARTICLES))
+							{
+
+								eSpawner->numParticlesToSpawn = numParticles;
+							}
+						
+
+						break;
+						}
 						case DESTROY:
+						{
 							ImGui::Text(particleModule.append("Destroy ##").append(std::to_string(j)).c_str());
 							break;
+						}	
 						case MAX:
 							break;
 						default:
@@ -100,6 +156,8 @@ void ComponentParticleSystem::OnEditor()
 
 						switch (k)
 						{
+						case BASE:
+							emitterType.assign("Base Emitter");
 						case SPAWN:
 							emitterType.assign("Spawn Emitter");
 							break;
@@ -119,15 +177,7 @@ void ComponentParticleSystem::OnEditor()
 					}
 					//ImGui::End();
 					//ImGui::TreePop();
-				}
-				std::string numParticlesWithID = "Particles";
-				
-				int numParticles = allEmitters.at(i)->listParticles.size();
-				if (ImGui::SliderInt(numParticlesWithID.append(std::to_string(i)).c_str(), &numParticles,0,MAXPARTICLES))
-				{
-					
-				}
-				
+				}				
 			}
 
 			if(ImGui::Button("Create Particle Emitter"))

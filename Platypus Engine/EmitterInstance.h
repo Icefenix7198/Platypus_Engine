@@ -9,6 +9,7 @@
 
 enum EmiterType
 {
+	BASE,
 	SPAWN,
 	DESTROY,
 	MAX,
@@ -25,7 +26,7 @@ public:
 
 	EmiterType type;
 
-	virtual void Spawn(EmitterInstance* emitter, Particle* particle) = 0;
+	virtual void Spawn(ParticleEmitter* emitter, Particle* particle) = 0;
 	virtual void Update(float dt, ParticleEmitter* emitter) /*= 0*/;
 	
 	bool unique = true; //Si es unique solo puede haber uno de ese tipo
@@ -35,17 +36,28 @@ private:
 
 struct EmitterBase : EmitterInstance
 {
-	void Spawn(EmitterInstance* emitter, Particle* particle);
+	void Spawn(ParticleEmitter* emitter, Particle* particle);
 	void Update(float dt, ParticleEmitter* emitter);
 
 	//Variable unica, posicion donde spawnean
 	float3 emitterOrigin = float3::zero;
 };
 
+struct EmitterSpawner : EmitterInstance
+{
+	void Spawn(ParticleEmitter* emitter, Particle* particle);
+	void Update(float dt, ParticleEmitter* emitter);
+
+	//Variable unica, ritmo de spawn
+	float spawnRatio = 0.1f; //Dividir en current time por cuantas se spawnean (?)
+	float currentTimer = 0.0f;
+	int numParticlesToSpawn = 1;
+};
+
 struct EmitterDestructor : EmitterInstance
 {
-	void Spawn(EmitterInstance* emitter, Particle* particle);
-	void Update(float dt, ParticleEmitter* emitter, float maxTime = 1.0f);
+	void Spawn(ParticleEmitter* emitter, Particle* particle);
+	void Update(float dt, ParticleEmitter* emitter);
 };
 
 

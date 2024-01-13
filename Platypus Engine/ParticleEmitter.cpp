@@ -15,16 +15,42 @@ ParticleEmitter::~ParticleEmitter()
 
 EmitterInstance* ParticleEmitter::CreateEmitterByType(uint type)
 {
+	//Some emittter instances cannot be made twice so have an unique value
+	for (int i = 0; i < modules.size(); i++)
+	{
+		if(modules.at(i)->unique && modules.at(i)->type==type)
+		{
+			return nullptr;
+		}
+	}
+
 	EmitterInstance* nuevoEmitter = nullptr;
 	switch ((EmiterType)type)
 	{
-	case SPAWN:
-		nuevoEmitter = new EmitterBase;
+	case BASE:
+	{
+		nuevoEmitter = new EmitterSpawner;
 		nuevoEmitter->type = EmiterType::SPAWN;
+		nuevoEmitter->unique = true;
+
 		break;
+	}
+	case SPAWN:
+	{	
+		nuevoEmitter = new EmitterSpawner;
+		nuevoEmitter->type = EmiterType::SPAWN;
+		nuevoEmitter->unique = true;
+	
+		break;
+	}
 	case DESTROY:
+	{	
 		nuevoEmitter = new EmitterDestructor;
 		nuevoEmitter->type = EmiterType::DESTROY;
+		nuevoEmitter->unique = true;
+
+		break;
+	}
 	case MAX:
 		break;
 	default:

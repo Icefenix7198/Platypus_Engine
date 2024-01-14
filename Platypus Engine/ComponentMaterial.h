@@ -21,6 +21,7 @@ public:
 	void OnEditor();
 
 	bool Update();
+	bool GetActive();
 
 	bool checkers;
 	bool activeCheck;

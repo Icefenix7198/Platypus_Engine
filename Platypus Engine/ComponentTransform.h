@@ -27,6 +27,8 @@ public:
 
 	~ComponentTransform();
 
+	bool GetActive();
+
 	//Matrix Values
 	aiVector3D translation, scaling;
 	aiQuaternion rotation;

@@ -78,6 +78,11 @@ ComponentTransform::~ComponentTransform()
 {
 }
 
+bool ComponentTransform::GetActive()
+{
+	return active;
+}
+
 void ComponentTransform::SetValues(aiVector3D translation, aiVector3D scaling, aiQuaternion rotation)
 {
 	pos = { translation.x,translation.y,translation.z };

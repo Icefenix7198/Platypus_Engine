@@ -36,7 +36,7 @@ public:
 	
 	void DrawMesh(_Mesh mesh, bool wireframe = false, Color color = {1,1,1,1}, uint checkersID = 0);
 
-	void DrawParticles(Particle particle);
+	void DrawParticles(Particle* particle);
 
 	void CreateCheckers();
 

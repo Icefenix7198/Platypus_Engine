@@ -121,6 +121,11 @@ bool ComponentMesh::Update()
 	return true;
 }
 
+bool ComponentMesh::GetActive()
+{
+	return active;
+}
+
 bool ComponentMesh::DrawVertexNormals()
 {
 	if(resourceMesh != nullptr)

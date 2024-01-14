@@ -22,14 +22,16 @@ class ComponentParticleSystem : public Component
 {
 public:
 
-	bool active;
+	bool active = true;
 
 	ComponentParticleSystem();
 	ComponentParticleSystem(GameObject* own);
 
 	~ComponentParticleSystem();
-
+	
+	bool Update();
 	bool Update(float dt);
+	bool GetActive();
 
 	//Vector de Emmiters, los emmiters son quienes crean las particulas
 	ParticleEmitter* CreateEmitter();

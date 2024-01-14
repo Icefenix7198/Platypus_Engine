@@ -24,6 +24,7 @@ public:
 	AABB GetGlobalAABB();
 
 	bool Update();
+	bool GetActive();
 	bool DrawVertexNormals();
 	bool DrawFaceNormals();
 	bool DrawGlobalAABB();

@@ -91,6 +91,11 @@ bool ComponentMaterial::Update()
 	return false;
 }
 
+bool ComponentMaterial::GetActive()
+{
+	return active;
+}
+
 
 
 

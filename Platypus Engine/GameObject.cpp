@@ -51,7 +51,7 @@ void GameObject::Update()
 {
 	for(int i = 0; i<components.size(); i++)
 	{
-		if (components.at(i)->active)
+		if (components.at(i)->GetActive())
 		{
 			components.at(i)->Update();
 		}
@@ -62,6 +62,7 @@ Component* GameObject::CreateComponent(ComponentType type)
 {
 	bool nonTransform = true; //Only one transform can exist at a time
 	Component* ret = nullptr;
+	
 	switch (type)
 	{
 	case TRANSFORM:
@@ -100,17 +101,17 @@ Component* GameObject::CreateComponent(ComponentType type)
 
 		//Create component material
 		LOG("Create Component Camera")
-			ret = new ComponentCamera(this);
+		ret = new ComponentCamera(this);
 		ret->type = type;
 		components.push_back(ret);
-
 		break;
 
 	case PARTICLE:
 
 		//Create component material
 		LOG("Create Component Particle")
-			ret = new ComponentParticleSystem(this);
+		ret = new ComponentParticleSystem(this);
+		ret->active = true;
 		ret->type = type;
 		components.push_back(ret);
 

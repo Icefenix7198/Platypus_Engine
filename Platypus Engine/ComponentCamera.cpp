@@ -107,6 +107,11 @@ bool ComponentCamera::Update()
 	return false;
 }
 
+bool ComponentCamera::GetActive()
+{
+	return active;
+}
+
 void ComponentCamera::StartCamera()
 {
 	glEnable(GL_DEPTH_TEST);

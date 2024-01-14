@@ -11,7 +11,7 @@ enum EmiterType
 {
 	BASE,
 	SPAWN,
-	DESTROY,
+	POSITION,
 	MAX,
 };
 
@@ -54,10 +54,17 @@ struct EmitterSpawner : EmitterInstance
 	int numParticlesToSpawn = 1;
 };
 
-struct EmitterDestructor : EmitterInstance
+struct EmitterPosition : EmitterInstance
 {
 	void Spawn(ParticleEmitter* emitter, Particle* particle);
 	void Update(float dt, ParticleEmitter* emitter);
+
+	float GetModuleVec(float3 vec);
+
+	bool randomized = false; //Si la direccion es solo la uno o un numero random entre la 1 y la 2
+	float3 direction1 = {0,0,0};
+	float3 direction2 = { 0,0,0 };
+	float particleSpeed = 1.0f;
 };
 
 

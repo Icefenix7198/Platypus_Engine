@@ -29,8 +29,8 @@ EmitterInstance* ParticleEmitter::CreateEmitterByType(uint type)
 	{
 	case BASE:
 	{
-		nuevoEmitter = new EmitterSpawner;
-		nuevoEmitter->type = EmiterType::SPAWN;
+		nuevoEmitter = new EmitterBase;
+		nuevoEmitter->type = EmiterType::BASE;
 		nuevoEmitter->unique = true;
 
 		break;
@@ -43,10 +43,10 @@ EmitterInstance* ParticleEmitter::CreateEmitterByType(uint type)
 	
 		break;
 	}
-	case DESTROY:
+	case POSITION:
 	{	
-		nuevoEmitter = new EmitterDestructor;
-		nuevoEmitter->type = EmiterType::DESTROY;
+		nuevoEmitter = new EmitterPosition;
+		nuevoEmitter->type = EmiterType::POSITION;
 		nuevoEmitter->unique = true;
 
 		break;
@@ -72,25 +72,16 @@ void ParticleEmitter::KillDeadParticles()
 	for (int i = 0; i < listParticles.size(); i++)
 	{
 		//Si la particula esta muerta eliminarla del vector
-		if (listParticles.at(i).lifetime >= 1.0f)
+		if (listParticles.at(i)->lifetime >= 1.0f)
 		{
 			particlesToDelete.push_back(i);
 		}
 	}
 
 	//Leemos de final a principio la lista de particulas para eliminarlas y que no haya problemas de cambio de tamaño
-	int num = 0;
 	for (int j = particlesToDelete.size()-1; j >= 0; --j)
 	{
-		num = listParticles.size();
-		for (auto it = listParticles.rbegin(); it != listParticles.rend(); it++)
-		{
-			--num;
-			if (particlesToDelete.at(j)==num)
-			{
-				//listParticles.erase(std::find(listParticles.begin(), listParticles.end(), it));
-			}
-		}
+		listParticles.erase(listParticles.begin()+ particlesToDelete.at(j));
 	}
 }
 
@@ -103,7 +94,7 @@ void ParticleEmitter::UpdateModules(float dt)
 {
 	for (int i = 0; i < modules.size() ; ++i)
 	{
-		modules[i]->Update(2.0f, this);
+		modules[i]->Update(dt, this);
 	}
 }
 
@@ -153,7 +144,11 @@ void ParticleEmitter::SpawnParticle(uint particlesToAdd)
 	{
 		for (int i = 0; i < particlesToAdd; i++)
 		{
-			Particle particula = Particle();
+			Particle* particula = new Particle();
+			for (int i = 0; i < modules.size(); i++)
+			{
+				modules.at(i)->Spawn(this,particula);
+			}
 			listParticles.push_back(particula);
 		}
 	}

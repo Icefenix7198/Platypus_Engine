@@ -19,7 +19,7 @@ public:
 	ParticleEmitter();
 	~ParticleEmitter();
 
-	std::vector<Particle> listParticles;
+	std::vector<Particle*> listParticles;
 	std::vector<EmitterInstance*> modules; //Son las Particle module del power, son las settings
 	ComponentParticleSystem* owner;
 

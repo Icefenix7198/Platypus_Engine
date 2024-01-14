@@ -10,10 +10,12 @@
 #include "imGui/backends/imgui_impl_SDL2.h"
 
 #include "EmitterInstance.h"
+#include "ParticleEmitter.h"
 
 ComponentParticleSystem::ComponentParticleSystem()
 {
-
+	active = true;
+	Enable();
 }
 
 ComponentParticleSystem::ComponentParticleSystem(GameObject* own)
@@ -21,6 +23,7 @@ ComponentParticleSystem::ComponentParticleSystem(GameObject* own)
 	owner = own;
 	UUID = App->resources->GenerateNewUID();
 	active = true;
+	Enable();
 }
 
 
@@ -28,8 +31,14 @@ ComponentParticleSystem::~ComponentParticleSystem()
 {
 	for(auto it = allEmitters.rbegin(); it != allEmitters.rend(); ++it)
 	{
-		//(it*)->~ParticleEmitter;
+		delete (*it);
+		(*it) = nullptr;
 	}
+}
+
+bool ComponentParticleSystem::Update()
+{
+	return Update(App->dt);
 }
 
 bool ComponentParticleSystem::Update(float dt)
@@ -41,6 +50,11 @@ bool ComponentParticleSystem::Update(float dt)
 	}
 
 	return ret;
+}
+
+bool ComponentParticleSystem::GetActive()
+{
+	return active;
 }
 
 ParticleEmitter* ComponentParticleSystem::CreateEmitter()
@@ -69,7 +83,13 @@ void ComponentParticleSystem::OnEditor()
 	{
 		butonChar.clear();
 		butonChar.append("##Particle System Active");
-		ImGui::Checkbox(butonChar.append(idComponent).c_str(), &active); //El doble ## hace que no se muestre el texto. Es necesario poner un nombre distinto a cada checkbox y boton ya que ImGui usa el nombre como la ID
+		if (ImGui::Checkbox(butonChar.append(idComponent).c_str(), &this->active)) //El doble ## hace que no se muestre el texto. Es necesario poner un nombre distinto a cada checkbox y boton ya que ImGui usa el nombre como la ID
+		{
+			if(active)
+			{
+				Enable();
+			}
+		} 
 		ImGui::SameLine();
 
 		butonChar.clear();
@@ -102,7 +122,7 @@ void ComponentParticleSystem::OnEditor()
 						//BASE
 						
 						//SPAWN
-						//DESTROY
+						//POSITION
 						switch (listModule.at(j)->type)
 						{
 						case BASE:
@@ -110,6 +130,8 @@ void ComponentParticleSystem::OnEditor()
 							ImGui::Text(particleModule.append("Base ##").append(std::to_string(j)).c_str());
 
 							//Positions
+							EmitterBase* bSpawner = (EmitterBase*)listModule.at(j);
+							ImGui::DragFloat3("Initial Pos.", &(bSpawner->emitterOrigin[0]), 0.1f);
 							break;
 						}
 						case SPAWN:
@@ -124,14 +146,13 @@ void ComponentParticleSystem::OnEditor()
 							//Numero particulas que libera el 
 							if (ImGui::SliderInt(numParticlesWithID.append(std::to_string(i)).c_str(), &numParticles, 0, MAXPARTICLES))
 							{
-
 								eSpawner->numParticlesToSpawn = numParticles;
 							}
 						
 
 						break;
 						}
-						case DESTROY:
+						case POSITION:
 						{
 							ImGui::Text(particleModule.append("Destroy ##").append(std::to_string(j)).c_str());
 							break;
@@ -158,10 +179,11 @@ void ComponentParticleSystem::OnEditor()
 						{
 						case BASE:
 							emitterType.assign("Base Emitter");
+							break;
 						case SPAWN:
 							emitterType.assign("Spawn Emitter");
 							break;
-						case DESTROY:
+						case POSITION:
 							emitterType.assign("Destroy Emitter");
 							break;
 						case MAX:

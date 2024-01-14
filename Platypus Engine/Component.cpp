@@ -3,6 +3,7 @@
 
 Component::Component()
 {
+	active = true;
 }
 
 Component::~Component()
@@ -24,6 +25,11 @@ bool Component::Update()
 bool Component::Disable()
 {
 	return false;
+}
+
+bool Component::GetActive()
+{
+	return active;
 }
 
 void Component::OnEditor()

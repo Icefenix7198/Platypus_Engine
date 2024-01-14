@@ -18,6 +18,7 @@ public:
 	void OnEditor();
 
 	bool Update();
+	bool GetActive();
 
 	void StartCamera();
 	void DrawCameraLines();

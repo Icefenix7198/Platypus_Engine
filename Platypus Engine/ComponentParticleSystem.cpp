@@ -130,8 +130,8 @@ void ComponentParticleSystem::OnEditor()
 							ImGui::Text(particleModule.append("Base ##").append(std::to_string(j)).c_str());
 
 							//Positions
-							EmitterBase* bSpawner = (EmitterBase*)listModule.at(j);
-							ImGui::DragFloat3("Initial Pos.", &(bSpawner->emitterOrigin[0]), 0.1f);
+							EmitterBase* eBase = (EmitterBase*)listModule.at(j);
+							ImGui::DragFloat3("Initial Pos.", &(eBase->emitterOrigin[0]), 0.1f);
 							break;
 						}
 						case SPAWN:
@@ -154,7 +154,21 @@ void ComponentParticleSystem::OnEditor()
 						}
 						case POSITION:
 						{
-							ImGui::Text(particleModule.append("Destroy ##").append(std::to_string(j)).c_str());
+							EmitterPosition* ePosition = (EmitterPosition*)listModule.at(j);
+
+							ImGui::Text(particleModule.append("Position ##").append(std::to_string(j)).c_str());
+							ImGui::Checkbox("Random Movement", &ePosition->randomized);
+							if (ePosition->randomized)
+							{
+								ImGui::DragFloat3("Range 1", &(ePosition->direction1[0]), 0.1f);
+								ImGui::DragFloat3("Range 2", &(ePosition->direction2[0]), 0.1f);
+							}
+							else
+							{
+								ImGui::DragFloat3("Position", &(ePosition->direction1[0]), 0.1f);
+							}
+							ImGui::DragFloat("Speed", &(ePosition->particleSpeed));
+
 							break;
 						}	
 						case MAX:
@@ -184,7 +198,7 @@ void ComponentParticleSystem::OnEditor()
 							emitterType.assign("Spawn Emitter");
 							break;
 						case POSITION:
-							emitterType.assign("Destroy Emitter");
+							emitterType.assign("Position Emitter");
 							break;
 						case MAX:
 							break;

@@ -388,8 +388,11 @@ void ModuleRenderer3D::DrawMesh(_Mesh mesh, bool wireframe, Color color, uint ch
 }
 void ModuleRenderer3D::DrawParticles(Particle* particle)
 {
+	//Matrix transform de la particula
+	float4x4 m = float4x4::FromTRS(particle->position, particle->worldRotation, particle->size).Transposed();
+
 	glPushMatrix();
-	//glMultMatrixf(particle->position);
+	glMultMatrixf(m.ptr());
 
 	//Binding particle Texture
 	if (/*particle.mat*/ true)

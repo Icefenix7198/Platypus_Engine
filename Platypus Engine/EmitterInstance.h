@@ -13,7 +13,7 @@ enum EmiterType
 	SPAWN,
 	POSITION,
 	ROTATION,
-	SIZE,
+	SIZEPARTICLE,
 	COLOR,
 	MAX,
 };
@@ -70,6 +70,34 @@ struct EmitterPosition : EmitterInstance
 	float3 direction1 = {0,0,0};
 	float3 direction2 = { 0,0,0 };
 	float particleSpeed = 1.0f;
+};
+
+struct EmitterRotation : EmitterInstance
+{
+	void Spawn(ParticleEmitter* emitter, Particle* particle);
+	void Update(float dt, ParticleEmitter* emitter);
+
+	
+};
+
+struct EmitterSize : EmitterInstance
+{
+	void Spawn(ParticleEmitter* emitter, Particle* particle);
+	void Update(float dt, ParticleEmitter* emitter);
+
+
+};
+
+struct EmitterColor : EmitterInstance
+{
+	void Spawn(ParticleEmitter* emitter, Particle* particle);
+	void Update(float dt, ParticleEmitter* emitter);
+
+	bool progresive = false;
+	float startChange = 0.0f; //Range from 0 to 1 as lifetime
+	float stopChange = 1.0f; //Range from 0 to 1 as lifetime
+	Color color1 = {0,0,0,1};
+	Color color2 = {1,1,1,1};
 };
 
 

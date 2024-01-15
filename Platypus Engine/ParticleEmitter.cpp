@@ -15,7 +15,7 @@ ParticleEmitter::~ParticleEmitter()
 
 EmitterInstance* ParticleEmitter::CreateEmitterByType(uint type)
 {
-	//Some emittter instances cannot be made twice so have an unique value
+	//MOST emittter instances cannot be made twice so have an unique value
 	for (int i = 0; i < modules.size(); i++)
 	{
 		if(modules.at(i)->unique && modules.at(i)->type==type)
@@ -47,6 +47,30 @@ EmitterInstance* ParticleEmitter::CreateEmitterByType(uint type)
 	{	
 		nuevoEmitter = new EmitterPosition;
 		nuevoEmitter->type = EmiterType::POSITION;
+		nuevoEmitter->unique = true;
+
+		break;
+	}
+	case ROTATION:
+	{
+		nuevoEmitter = new EmitterRotation;
+		nuevoEmitter->type = EmiterType::ROTATION;
+		nuevoEmitter->unique = true;
+
+		break;
+	}
+	case SIZEPARTICLE:
+	{
+		nuevoEmitter = new EmitterSize;
+		nuevoEmitter->type = EmiterType::SIZEPARTICLE;
+		nuevoEmitter->unique = true;
+
+		break;
+	}
+	case COLOR:
+	{
+		nuevoEmitter = new EmitterColor;
+		nuevoEmitter->type = EmiterType::COLOR;
 		nuevoEmitter->unique = true;
 
 		break;

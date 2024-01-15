@@ -183,7 +183,37 @@ void ComponentParticleSystem::OnEditor()
 							ImGui::DragFloat("Speed", &(ePosition->particleSpeed),0.2F);
 
 							break;
-						}	
+						}
+						case ROTATION:
+						{
+							ImGui::Text(particleModule.append("Rotation ##").append(std::to_string(j)).c_str());
+							break;
+						}
+						case SIZEPARTICLE:
+						{
+							ImGui::Text(particleModule.append("Scale ##").append(std::to_string(j)).c_str());
+							break;
+						}
+						case COLOR:
+						{
+							EmitterColor* eColor = (EmitterColor*)listModule.at(j);
+
+							ImGui::Text(particleModule.append("Color ##").append(std::to_string(j)).c_str());
+
+							ImGui::Checkbox("Progresive Color", &(eColor->progresive));
+							ImGui::ColorEdit4("First Color", &(eColor->color1));
+							if(eColor->progresive)
+							{
+								if(ImGui::ColorEdit4("End Color", &(eColor->color2)));
+								{
+									eColor->color2 = eColor->color2;
+								}
+								ImGui::SliderFloat("Start Change", &(eColor->startChange), 0.0f, (eColor->stopChange-0.05f));
+								ImGui::SliderFloat("Stop Change", &(eColor->stopChange), eColor->startChange+0.05f, 1.0f);
+							}
+							
+							break;
+						}
 						case MAX:
 							//Color 
 							//ImGui::ColorEdit4;
@@ -214,6 +244,15 @@ void ComponentParticleSystem::OnEditor()
 							break;
 						case POSITION:
 							emitterType.assign("Position Emitter");
+							break;
+						case ROTATION:
+							emitterType.assign("Rotation Emitter");
+							break;
+						case SIZEPARTICLE:
+							emitterType.assign("Scale Emitter");
+							break;
+						case COLOR:
+							emitterType.assign("Color Emitter");
 							break;
 						case MAX:
 							break;

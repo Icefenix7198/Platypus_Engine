@@ -147,3 +147,57 @@ void EmitterSpawner::Update(float dt, ParticleEmitter* emitter)
 		currentTimer -= (spawnRatio * numToSpawn);
 	}
 }
+
+void EmitterRotation::Spawn(ParticleEmitter* emitter, Particle* particle)
+{
+}
+
+void EmitterRotation::Update(float dt, ParticleEmitter* emitter)
+{
+}
+
+void EmitterSize::Spawn(ParticleEmitter* emitter, Particle* particle)
+{
+}
+
+void EmitterSize::Update(float dt, ParticleEmitter* emitter)
+{
+}
+
+void EmitterColor::Spawn(ParticleEmitter* emitter, Particle* particle)
+{
+	particle->color = color1;
+}
+
+void EmitterColor::Update(float dt, ParticleEmitter* emitter)
+{
+	if(progresive)
+	{
+		float timeForLerp = stopChange - startChange;
+		for (int i = 0; i < emitter->listParticles.size(); i++)
+		{
+			float actualLT = emitter->listParticles.at(i)->lifetime;
+
+			if (startChange<= actualLT && actualLT  <= stopChange)
+			{
+				/*(color1.r<color2.r) 
+					? emitter->listParticles.at(i)->color.r = color1.r + (color2.r * (actualLT / timeForLerp)) 
+					: emitter->listParticles.at(i)->color.r = color1.r - (color2.r * (actualLT / timeForLerp));
+				(color1.g < color2.g) 
+					? emitter->listParticles.at(i)->color.g = color1.g + (color2.g * (actualLT / timeForLerp)) 
+					: emitter->listParticles.at(i)->color.g = color1.g - (color2.g * (actualLT / timeForLerp));
+				(color1.b < color2.b) 
+					? emitter->listParticles.at(i)->color.b = color1.b + (color2.b * (actualLT / timeForLerp)) 
+					: emitter->listParticles.at(i)->color.b = color1.b - (color2.b * (actualLT / timeForLerp));
+				(color1.a < color2.a) 
+					? emitter->listParticles.at(i)->color.a = color1.a + (color2.a * (actualLT / timeForLerp)) 
+					: emitter->listParticles.at(i)->color.a = color1.a - (color2.a * (actualLT / timeForLerp));*/
+				emitter->listParticles.at(i)->color.r = color1.r + ((color2.r - color1.r) * (actualLT / timeForLerp)); //Lerp red
+				emitter->listParticles.at(i)->color.g = color1.g + ((color2.g - color1.g) * (actualLT / timeForLerp)); //Lerp green
+				emitter->listParticles.at(i)->color.b = color1.b + ((color2.b - color1.b) * (actualLT / timeForLerp)); //Lerp blue
+				emitter->listParticles.at(i)->color.a = color1.a + ((color2.a - color1.a) * (actualLT / timeForLerp)); //Lerp alpha
+
+			}			
+		}
+	}
+}

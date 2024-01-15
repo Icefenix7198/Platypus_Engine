@@ -394,6 +394,11 @@ void ModuleRenderer3D::DrawParticles(Particle* particle)
 	glPushMatrix();
 	glMultMatrixf(m.ptr());
 
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_ALPHA_TEST);
+	glAlphaFunc(GL_GREATER, 0.0f);
+
 	//Binding particle Texture
 	if (/*particle.mat*/ true)
 	{
@@ -428,6 +433,8 @@ void ModuleRenderer3D::DrawParticles(Particle* particle)
 	glEnd();
 	glPopMatrix();
 	glBindTexture(GL_TEXTURE_2D, 0);
+	glDisable(GL_BLEND);
+	glDisable(GL_ALPHA_TEST);
 }
 void ModuleRenderer3D::CreateCheckers()
 {

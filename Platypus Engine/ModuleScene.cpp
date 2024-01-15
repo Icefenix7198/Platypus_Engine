@@ -13,6 +13,8 @@
 
 #include "Component.h"
 #include "ComponentTransform.h" //Para updatear la transform cuando el reparent, no se si haya que hacerlo de otra forma y no tener este include
+#include "ComponentMesh.h"
+#include "ComponentMaterial.h"
 #include "ComponentCamera.h"
 #include "ComponentParticleSystem.h"
 
@@ -491,6 +493,8 @@ void ModuleScene::CreateGObFromSerializationRecursively(std::vector<std::string>
 		case MESH:
 		{
 			ComponentMesh* coMesh = (ComponentMesh*)go->CreateComponent(type);
+			coMesh->SetUUID(UUID);
+			//coMesh->IDResourceMesh;
 			break;
 		}
 		case MATERIAL:

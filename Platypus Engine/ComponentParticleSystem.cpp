@@ -132,6 +132,7 @@ void ComponentParticleSystem::OnEditor()
 							//Positions
 							EmitterBase* eBase = (EmitterBase*)listModule.at(j);
 							ImGui::DragFloat3("Initial Pos.", &(eBase->emitterOrigin[0]), 0.1f);
+							ImGui::DragFloat("Life Time", &(eBase->particlesLifeTime), 0.5F, 1.0F, 720.0F);
 							break;
 						}
 						case SPAWN:
@@ -142,15 +143,27 @@ void ComponentParticleSystem::OnEditor()
 						
 							EmitterSpawner* eSpawner = (EmitterSpawner*)listModule.at(j);
 							numParticles = eSpawner->numParticlesToSpawn;
-
 							//Numero particulas que libera el 
-							if (ImGui::SliderInt(numParticlesWithID.append(std::to_string(i)).c_str(), &numParticles, 0, MAXPARTICLES))
+							
+							ImGui::Checkbox("Time Based Spawn", &(eSpawner->basedTimeSpawn));
+							if (eSpawner->basedTimeSpawn)
 							{
-								eSpawner->numParticlesToSpawn = numParticles;
+								float ratio = eSpawner->spawnRatio - 1.0f;
+								if (ImGui::SliderFloat("Delay", &ratio, 0.0f, 11.0f))
+								{
+									eSpawner->spawnRatio = ratio + 1.0f;
+								}
 							}
-						
+							else
+							{
+								if (ImGui::SliderInt(numParticlesWithID.append(std::to_string(i)).c_str(), &numParticles, 0, MAXPARTICLES))
+								{
+									eSpawner->numParticlesToSpawn = numParticles;
+								}
+							}
+							
 
-						break;
+							break;
 						}
 						case POSITION:
 						{
@@ -167,11 +180,13 @@ void ComponentParticleSystem::OnEditor()
 							{
 								ImGui::DragFloat3("Position", &(ePosition->direction1[0]), 0.1f);
 							}
-							ImGui::DragFloat("Speed", &(ePosition->particleSpeed));
+							ImGui::DragFloat("Speed", &(ePosition->particleSpeed),0.2F);
 
 							break;
 						}	
 						case MAX:
+							//Color 
+							//ImGui::ColorEdit4;
 							break;
 						default:
 							break;

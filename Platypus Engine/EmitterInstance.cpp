@@ -16,6 +16,7 @@ void EmitterInstance::Update(float dt, ParticleEmitter* emitter)
 
 void EmitterBase::Spawn(ParticleEmitter* emitter, Particle* particle)
 {
+	particle->oneOverMaxLifetime = 1 / particlesLifeTime;
 	float3 position = emitter->owner->owner->objTransform->pos;
 	particle->position += position + emitterOrigin; //Se inicializan desde 0,0,0 asi que no deberia haber problema en hacer += pero deberia ser lo mismo.
 }
@@ -124,10 +125,23 @@ void EmitterSpawner::Spawn(ParticleEmitter* emitter, Particle* particle)
 
 void EmitterSpawner::Update(float dt, ParticleEmitter* emitter)
 {
-	int remainingParticlesToSpawn = numParticlesToSpawn - emitter->listParticles.size();
-	if (remainingParticlesToSpawn>0)
+	if(!basedTimeSpawn)
 	{
-		emitter->SpawnParticle(remainingParticlesToSpawn);
+		int remainingParticlesToSpawn = numParticlesToSpawn - emitter->listParticles.size();
+		if (remainingParticlesToSpawn>0)
+		{
+			emitter->SpawnParticle(remainingParticlesToSpawn);
+		}
 	}
-	
+	else
+	{
+		currentTimer += dt;
+		int numToSpawn = 0;
+		if (currentTimer>spawnRatio)
+		{
+			numToSpawn = currentTimer / spawnRatio;
+			emitter->SpawnParticle(numToSpawn);
+		}
+		currentTimer -= (spawnRatio * numToSpawn);
+	}
 }

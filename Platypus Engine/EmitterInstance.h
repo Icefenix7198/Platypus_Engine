@@ -41,6 +41,7 @@ struct EmitterBase : EmitterInstance
 
 	//Variable unica, posicion donde spawnean
 	float3 emitterOrigin = float3::zero;
+	float particlesLifeTime;
 };
 
 struct EmitterSpawner : EmitterInstance
@@ -49,6 +50,7 @@ struct EmitterSpawner : EmitterInstance
 	void Update(float dt, ParticleEmitter* emitter);
 
 	//Variable unica, ritmo de spawn
+	bool basedTimeSpawn;
 	float spawnRatio = 0.1f; //Dividir en current time por cuantas se spawnean (?)
 	float currentTimer = 0.0f;
 	int numParticlesToSpawn = 1;

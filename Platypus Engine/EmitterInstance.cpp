@@ -98,8 +98,8 @@ void EmitterPosition::Spawn(ParticleEmitter* emitter, Particle* particle)
 	{
 		float modul1 = GetModuleVec(direction1);
 		particle->velocity.x += direction1.x / modul1;
-		particle->velocity.y += direction1.x / modul1;
-		particle->velocity.z += direction1.x / modul1;
+		particle->velocity.y += direction1.y / modul1;
+		particle->velocity.z += direction1.z / modul1;
 		
 	}
 
@@ -111,6 +111,8 @@ void EmitterPosition::Update(float dt, ParticleEmitter* emitter)
 	for (int i = 0; i < emitter->listParticles.size(); i++)
 	{
 		emitter->listParticles.at(i)->position.x += emitter->listParticles.at(i)->velocity.x * emitter->listParticles.at(i)->velocity.w * dt;
+		emitter->listParticles.at(i)->position.y += emitter->listParticles.at(i)->velocity.y * emitter->listParticles.at(i)->velocity.w * dt;
+		emitter->listParticles.at(i)->position.z += emitter->listParticles.at(i)->velocity.z * emitter->listParticles.at(i)->velocity.w * dt;
 	}
 }
 

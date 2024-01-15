@@ -12,6 +12,9 @@ enum EmiterType
 	BASE,
 	SPAWN,
 	POSITION,
+	ROTATION,
+	SIZE,
+	COLOR,
 	MAX,
 };
 
@@ -41,7 +44,7 @@ struct EmitterBase : EmitterInstance
 
 	//Variable unica, posicion donde spawnean
 	float3 emitterOrigin = float3::zero;
-	float particlesLifeTime;
+	float particlesLifeTime = 1.0f;
 };
 
 struct EmitterSpawner : EmitterInstance

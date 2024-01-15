@@ -180,18 +180,6 @@ void EmitterColor::Update(float dt, ParticleEmitter* emitter)
 
 			if (startChange<= actualLT && actualLT  <= stopChange)
 			{
-				/*(color1.r<color2.r) 
-					? emitter->listParticles.at(i)->color.r = color1.r + (color2.r * (actualLT / timeForLerp)) 
-					: emitter->listParticles.at(i)->color.r = color1.r - (color2.r * (actualLT / timeForLerp));
-				(color1.g < color2.g) 
-					? emitter->listParticles.at(i)->color.g = color1.g + (color2.g * (actualLT / timeForLerp)) 
-					: emitter->listParticles.at(i)->color.g = color1.g - (color2.g * (actualLT / timeForLerp));
-				(color1.b < color2.b) 
-					? emitter->listParticles.at(i)->color.b = color1.b + (color2.b * (actualLT / timeForLerp)) 
-					: emitter->listParticles.at(i)->color.b = color1.b - (color2.b * (actualLT / timeForLerp));
-				(color1.a < color2.a) 
-					? emitter->listParticles.at(i)->color.a = color1.a + (color2.a * (actualLT / timeForLerp)) 
-					: emitter->listParticles.at(i)->color.a = color1.a - (color2.a * (actualLT / timeForLerp));*/
 				emitter->listParticles.at(i)->color.r = color1.r + ((color2.r - color1.r) * (actualLT / timeForLerp)); //Lerp red
 				emitter->listParticles.at(i)->color.g = color1.g + ((color2.g - color1.g) * (actualLT / timeForLerp)); //Lerp green
 				emitter->listParticles.at(i)->color.b = color1.b + ((color2.b - color1.b) * (actualLT / timeForLerp)); //Lerp blue

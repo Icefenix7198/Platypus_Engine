@@ -145,13 +145,13 @@ void ComponentParticleSystem::OnEditor()
 							numParticles = eSpawner->numParticlesToSpawn;
 							//Numero particulas que libera el 
 							
-							ImGui::Checkbox("Time Based Spawn", &(eSpawner->basedTimeSpawn));
+							ImGui::Checkbox("(Time / Num) Spawn ", &(eSpawner->basedTimeSpawn));
 							if (eSpawner->basedTimeSpawn)
 							{
-								float ratio = eSpawner->spawnRatio - 1.0f;
-								if (ImGui::SliderFloat("Delay", &ratio, 0.0f, 11.0f))
+
+								if (ImGui::SliderFloat("Delay", &(eSpawner->spawnRatio), 0.0f, 1.0f))
 								{
-									eSpawner->spawnRatio = ratio + 1.0f;
+
 								}
 							}
 							else

@@ -115,19 +115,24 @@ void ComponentParticleSystem::OnEditor()
 				if (ImGui::TreeNodeEx((void*)(intptr_t)i, (!allEmitters.at(i)->modules.empty()) ? treeFlags : leafFlags, nameEmitter.c_str())) //nameEmitter.c_str()
 				{
 					auto listModule = allEmitters.at(i)->modules;
+					int securityCheckTree = 999;
 					for (int j = 0; j < listModule.size(); j++)
 					{
-						std::string particleModule; //Les opciones
-
-						//BASE
 						
-						//SPAWN
-						//POSITION
+						std::string particleModule; //Les opciones
+						std::string deleteButton; //Lo creamos aqui fuera para evitar petadas, pero como la ID va por nombre ha de ser un string para diferenciarlos
 						switch (listModule.at(j)->type)
 						{
 						case BASE:
 						{
 							ImGui::Text(particleModule.append("Base ##").append(std::to_string(j)).c_str());
+							ImGui::SameLine();
+							deleteButton.append("Delete ##").append(std::to_string(j));
+							if(ImGui::SmallButton(deleteButton.c_str()))
+							{
+								securityCheckTree = allEmitters.at(i)->DestroyEmitter(j);
+							}
+							deleteButton.clear();
 
 							//Positions
 							EmitterBase* eBase = (EmitterBase*)listModule.at(j);
@@ -137,6 +142,13 @@ void ComponentParticleSystem::OnEditor()
 						}
 						case SPAWN:
 						{	ImGui::Text(particleModule.append("Spawn ##").append(std::to_string(j)).c_str());
+							ImGui::SameLine();
+							deleteButton.append("Delete ##").append(std::to_string(j));
+							if (ImGui::SmallButton(deleteButton.c_str()))
+							{
+								securityCheckTree = allEmitters.at(i)->DestroyEmitter(j);
+							}
+							deleteButton.clear();
 
 							int numParticles;
 							std::string numParticlesWithID = "Particles ##";
@@ -161,7 +173,6 @@ void ComponentParticleSystem::OnEditor()
 									eSpawner->numParticlesToSpawn = numParticles;
 								}
 							}
-							
 
 							break;
 						}
@@ -170,6 +181,13 @@ void ComponentParticleSystem::OnEditor()
 							EmitterPosition* ePosition = (EmitterPosition*)listModule.at(j);
 
 							ImGui::Text(particleModule.append("Position ##").append(std::to_string(j)).c_str());
+							ImGui::SameLine();
+							deleteButton.append("Delete ##").append(std::to_string(j));
+							if (ImGui::SmallButton(deleteButton.c_str()))
+							{
+								securityCheckTree = allEmitters.at(i)->DestroyEmitter(j);
+							}
+							deleteButton.clear();
 							ImGui::Checkbox("Random Movement", &ePosition->randomized);
 							if (ePosition->randomized)
 							{
@@ -187,11 +205,25 @@ void ComponentParticleSystem::OnEditor()
 						case ROTATION:
 						{
 							ImGui::Text(particleModule.append("Rotation ##").append(std::to_string(j)).c_str());
+							ImGui::SameLine();
+							deleteButton.append("Delete ##").append(std::to_string(j));
+							if (ImGui::SmallButton(deleteButton.c_str()))
+							{
+								securityCheckTree = allEmitters.at(i)->DestroyEmitter(j);
+							}
+							deleteButton.clear();
 							break;
 						}
 						case SIZEPARTICLE:
 						{
 							ImGui::Text(particleModule.append("Scale ##").append(std::to_string(j)).c_str());
+							ImGui::SameLine();
+							deleteButton.append("Delete ##").append(std::to_string(j));
+							if (ImGui::SmallButton(deleteButton.c_str()))
+							{
+								securityCheckTree = allEmitters.at(i)->DestroyEmitter(j);
+							}
+							deleteButton.clear();
 							break;
 						}
 						case COLOR:
@@ -199,6 +231,13 @@ void ComponentParticleSystem::OnEditor()
 							EmitterColor* eColor = (EmitterColor*)listModule.at(j);
 
 							ImGui::Text(particleModule.append("Color ##").append(std::to_string(j)).c_str());
+							ImGui::SameLine();
+							deleteButton.append("Delete ##").append(std::to_string(j));
+							if (ImGui::SmallButton(deleteButton.c_str()))
+							{
+								securityCheckTree = allEmitters.at(i)->DestroyEmitter(j);
+							}
+							deleteButton.clear();
 
 							ImGui::Checkbox("Progresive Color", &(eColor->progresive));
 							ImGui::ColorEdit4("First Color", &(eColor->color1));
@@ -222,7 +261,7 @@ void ComponentParticleSystem::OnEditor()
 							break;
 						}
 					}
-					if (!allEmitters.at(i)->modules.empty())
+					if (!allEmitters.at(i)->modules.empty() || securityCheckTree == 0) //Necesario para que no pete el tree pop
 					{
 						ImGui::TreePop();
 					}

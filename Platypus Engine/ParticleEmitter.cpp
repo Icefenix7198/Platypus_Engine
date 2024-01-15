@@ -87,6 +87,15 @@ EmitterInstance* ParticleEmitter::CreateEmitterByType(uint type)
 	return nuevoEmitter;
 }
 
+int ParticleEmitter::DestroyEmitter(uint pos)
+{
+	if (modules.size()>=pos)
+	{
+		modules.erase(modules.begin() + pos);
+	}
+	return modules.size(); //Para un check de seguridad porque sino el arbol peta
+}
+
 void ParticleEmitter::KillDeadParticles()
 {
 	//Añadimos en una lista todas las posiciones de particulas que queremos eliminar

@@ -34,6 +34,7 @@ public:
 	void SpawnParticle(uint particlesToAdd = 1);
 
 	EmitterInstance* CreateEmitterByType(uint type);
+	int DestroyEmitter(uint pos);
 
 private:
 	void KillDeadParticles();

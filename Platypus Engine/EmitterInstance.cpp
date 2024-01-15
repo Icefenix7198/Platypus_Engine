@@ -1,5 +1,6 @@
 #include "EmitterInstance.h"
 #include "ComponentTransform.h"
+#include "Application.h"
 
 EmitterInstance::EmitterInstance()
 {
@@ -128,6 +129,11 @@ float EmitterPosition::GetModuleVec(float3 vec)
 	return sqrt( (vec.x*vec.x) + (vec.y * vec.y) + (vec.z * vec.z) );
 }
 
+EmitterPosition::EmitterPosition()
+{
+	particleSpeed = 10.0f;
+}
+
 void EmitterSpawner::Spawn(ParticleEmitter* emitter, Particle* particle)
 {
 }
@@ -161,14 +167,40 @@ void EmitterRotation::Spawn(ParticleEmitter* emitter, Particle* particle)
 
 void EmitterRotation::Update(float dt, ParticleEmitter* emitter)
 {
+	float4x4* camaraMatrix = (float4x4*)App->camera->GetViewMatrix();
+	float3 tempPos;
+	Quat tempRot;
+	float3 tempSca;
+	camaraMatrix->Decompose(tempPos, tempRot, tempSca);
+
+	for (int i = 0; i < emitter->listParticles.size(); i++)
+	{
+		emitter->listParticles.at(i)->worldRotation = tempRot;
+	}
 }
 
 void EmitterSize::Spawn(ParticleEmitter* emitter, Particle* particle)
 {
+	particle->size *= sizeMultiplier1;
 }
 
 void EmitterSize::Update(float dt, ParticleEmitter* emitter)
 {
+	if (progresive)
+	{
+		float3 base = float3::one;
+		float timeForLerp = stopChange - startChange;
+		for (int i = 0; i < emitter->listParticles.size(); i++)
+		{
+			float actualLT = emitter->listParticles.at(i)->lifetime;
+
+			if (startChange <= actualLT && actualLT <= stopChange)
+			{
+				emitter->listParticles.at(i)->size = base * (sizeMultiplier1 + ((sizeMultiplier2 - sizeMultiplier1) * (actualLT / timeForLerp))); //Lerp size multiplication
+
+			}
+		}
+	}
 }
 
 void EmitterColor::Spawn(ParticleEmitter* emitter, Particle* particle)

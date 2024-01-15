@@ -216,6 +216,8 @@ void ComponentParticleSystem::OnEditor()
 						}
 						case SIZEPARTICLE:
 						{
+							EmitterSize* eSize = (EmitterSize*)listModule.at(j);
+
 							ImGui::Text(particleModule.append("Scale ##").append(std::to_string(j)).c_str());
 							ImGui::SameLine();
 							deleteButton.append("Delete ##").append(std::to_string(j));
@@ -224,6 +226,15 @@ void ComponentParticleSystem::OnEditor()
 								securityCheckTree = allEmitters.at(i)->DestroyEmitter(j);
 							}
 							deleteButton.clear();
+							
+							ImGui::Checkbox("Progresive Scaling", &(eSize->progresive));
+							ImGui::SliderFloat("First Scale", &(eSize->sizeMultiplier1), 0.1f, 10.0f);
+							if (eSize->progresive)
+							{
+								ImGui::SliderFloat("End Scale", &(eSize->sizeMultiplier2), 0.1f, 10.0f);
+								ImGui::SliderFloat("Start Change", &(eSize->startChange), 0.0f, (eSize->stopChange - 0.05f));
+								ImGui::SliderFloat("Stop Change", &(eSize->stopChange), eSize->startChange + 0.05f, 1.0f);
+							}
 							break;
 						}
 						case COLOR:

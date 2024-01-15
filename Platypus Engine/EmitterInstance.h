@@ -53,7 +53,7 @@ struct EmitterSpawner : EmitterInstance
 	void Update(float dt, ParticleEmitter* emitter);
 
 	//Variable unica, ritmo de spawn
-	bool basedTimeSpawn;
+	bool basedTimeSpawn = false;
 	float spawnRatio = 0.2f; //Dividir en current time por cuantas se spawnean 
 	float currentTimer = 0.0f;
 	int numParticlesToSpawn = 1;
@@ -70,14 +70,14 @@ struct EmitterPosition : EmitterInstance
 	float3 direction1 = {0,0,0};
 	float3 direction2 = { 0,0,0 };
 	float particleSpeed = 1.0f;
+
+	EmitterPosition();
 };
 
 struct EmitterRotation : EmitterInstance
 {
 	void Spawn(ParticleEmitter* emitter, Particle* particle);
 	void Update(float dt, ParticleEmitter* emitter);
-
-	
 };
 
 struct EmitterSize : EmitterInstance
@@ -85,7 +85,13 @@ struct EmitterSize : EmitterInstance
 	void Spawn(ParticleEmitter* emitter, Particle* particle);
 	void Update(float dt, ParticleEmitter* emitter);
 
-
+	bool progresive = false;
+	float startChange = 0.0f; //Range from 0 to 1 as lifetime
+	float stopChange = 1.0f; //Range from 0 to 1 as lifetime
+	float sizeMultiplier1 = 1.0f;
+	float sizeMultiplier2 = 1.0f;
+	
+	
 };
 
 struct EmitterColor : EmitterInstance

@@ -35,10 +35,13 @@ void EmitterPosition::Spawn(ParticleEmitter* emitter, Particle* particle)
 { 
 	if (randomized)
 	{
+		//X
 		float x1 = direction1.x;
 		float x2 = direction2.x;
+		//Y
 		float y1 = direction1.y;
 		float y2 = direction2.y;
+		//Z
 		float z1 = direction1.z;
 		float z2 = direction2.z;
 
@@ -81,13 +84,17 @@ void EmitterPosition::Spawn(ParticleEmitter* emitter, Particle* particle)
 			minZ = z1;
 		}
 
-		float random = ((float)rand()) / (float)RAND_MAX;
+		float randomX = ((float)rand()) / (float)RAND_MAX;
 		float rangeX = maxX - minX;
-		float fX = (random * rangeX) + minX;
+		float fX = (randomX * rangeX) + minX;
+
+		float randomY = ((float)rand()) / (float)RAND_MAX;
 		float rangeY = maxY - minY;
-		float fY = (random * rangeY) + minY;
+		float fY = (randomY * rangeY) + minY;
+
+		float randomZ = ((float)rand()) / (float)RAND_MAX;
 		float rangeZ = maxZ - minZ;
-		float fZ = (random * rangeZ) + minZ;
+		float fZ = (randomZ * rangeZ) + minZ;
 
 		float newModul = GetModuleVec({fX,fY,fZ});
 		particle->velocity.x += fX / newModul;

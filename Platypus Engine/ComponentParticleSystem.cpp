@@ -161,7 +161,7 @@ void ComponentParticleSystem::OnEditor()
 							if (eSpawner->basedTimeSpawn)
 							{
 
-								if (ImGui::SliderFloat("Delay", &(eSpawner->spawnRatio), 0.0f, 1.0f))
+								if (ImGui::SliderFloat("Delay", &(eSpawner->spawnRatio), 0.1f, 1.0f))
 								{
 
 								}

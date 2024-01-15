@@ -16,6 +16,7 @@ ParticleEmitter::~ParticleEmitter()
 EmitterInstance* ParticleEmitter::CreateEmitterByType(uint type)
 {
 	//MOST emittter instances cannot be made twice so have an unique value
+	
 	for (int i = 0; i < modules.size(); i++)
 	{
 		if(modules.at(i)->unique && modules.at(i)->type==type)

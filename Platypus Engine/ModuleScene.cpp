@@ -13,6 +13,8 @@
 
 #include "Component.h"
 #include "ComponentTransform.h" //Para updatear la transform cuando el reparent, no se si haya que hacerlo de otra forma y no tener este include
+#include "ComponentCamera.h"
+#include "ComponentParticleSystem.h"
 
 ModuleScene::ModuleScene(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -207,6 +209,64 @@ void ModuleScene::CreateSerializationGameObject(GameObject* go)
 			json_object_set_number(child_object, "Type", (int)go->components.at(i)->type);
 
 			//Y aqui un switch para crear en funcion del tipo
+			switch (go->components.at(i)->type)
+			{
+			case TRANSFORM:
+			{
+
+				ComponentTransform* cTransform = (ComponentTransform*)go->components.at(i);
+
+				JSON_Array* arrTransform;
+				
+				//Position
+				JSON_Value* jValuePos = json_value_init_array();
+				arrTransform = json_value_get_array(jValuePos);
+
+				json_object_dotset_value(child_object, "Position", jValuePos);
+				json_array_append_number(arrTransform, cTransform->pos.x);
+				json_array_append_number(arrTransform, cTransform->pos.y);
+				json_array_append_number(arrTransform, cTransform->pos.z);
+
+				//Rotation
+				JSON_Value* jValueRot = json_value_init_array();
+				arrTransform = json_value_get_array(jValueRot);
+
+				json_object_dotset_value(child_object, "Rotation", jValueRot);
+				json_array_append_number(arrTransform, cTransform->rot.x);
+				json_array_append_number(arrTransform, cTransform->rot.y);
+				json_array_append_number(arrTransform, cTransform->rot.z);
+				json_array_append_number(arrTransform, cTransform->rot.w);
+
+				//Scale
+				JSON_Value* jValueScale = json_value_init_array();
+				arrTransform = json_value_get_array(jValueScale);
+
+				json_object_dotset_value(child_object, "Scale", jValueScale);
+				json_array_append_number(arrTransform, cTransform->scale.x);
+				json_array_append_number(arrTransform, cTransform->scale.y);
+				json_array_append_number(arrTransform, cTransform->scale.z);
+				
+				break;
+			}
+			case MESH:
+			{
+				break;
+			}
+			case MATERIAL:
+			{
+				break;
+			}	
+			case CAMERA:
+			{
+				break;
+			}
+			case PARTICLE:
+			{
+				break;
+			}
+			default:
+				break;
+			}
 			
 			json_array_append_value(arr, component);
 		}
@@ -219,12 +279,7 @@ void ModuleScene::CreateSerializationGameObject(GameObject* go)
 		//We create the value to assign and insert into the array
 		
 		for (size_t i = 0; i < go->children.size(); i++)
-		{
-			//IDname.append(".UUID");
-			//TODO: Seria mas correcto hacerlo con un value pero ahora mismo la cabeza me dice que nanai //ERIC: Creo que un value tampoco seria correcto?
-			
-			//json_value
-			
+		{			
 			//Childrens
 			JSON_Value* children;
 			children = json_value_init_object();
@@ -280,8 +335,54 @@ void ModuleScene::InitCreateGOFromSerialization()
 			{
 				RequestDeleteGameObject(root->children.at(j));
 			}
-			//RequestCreateGameObject(nullptr, json_object_get_string(root_object,"Name"));
+
 			//We assign all the values of the new root to the old root (becose we never erase it)
+			//For each component on the Json root has we assign the value to the new root
+			int numComponents = json_object_get_number(root_object, "NumCompoments");
+			JSON_Array* componentsArr = json_object_get_array(root_object, "Components");
+			for (int co = 0; co < numComponents; co++)
+			{
+				//Get the Json object of the array
+				JSON_Object* obj = json_array_get_object(componentsArr, co);
+
+				//Get the Type and UUID of the child
+				ComponentType type = (ComponentType)json_object_get_number(obj, "Name");
+				uint32_t UUID = json_object_get_number(obj, "UUID");
+
+				if (type == ComponentType::TRANSFORM)
+				{
+					//Assign UUID
+					root->objTransform->SetUUID(UUID);
+
+					//Get position array
+					JSON_Array* posArr = json_object_get_array(obj, "Position");
+					
+					//Get elements of position
+					float posX = json_array_get_number(posArr, 0);
+					float posY = json_array_get_number(posArr, 1);
+					float posZ = json_array_get_number(posArr, 2);
+					
+
+					//Get rotation array
+					JSON_Array* rotArr = json_object_get_array(obj, "Rotation");
+
+					//Get elements of position
+					float rotX = json_array_get_number(rotArr, 0);
+					float rotY = json_array_get_number(rotArr, 1);
+					float rotZ = json_array_get_number(rotArr, 2);
+					float rotW = json_array_get_number(rotArr, 3);
+
+					//Get position array
+					JSON_Array* scaleArr = json_object_get_array(obj, "Scale");
+
+					//Get elements of position
+					float scaleX = json_array_get_number(scaleArr, 0);
+					float scaleY = json_array_get_number(scaleArr, 1);
+					float scaleZ = json_array_get_number(scaleArr, 2);
+
+					root->objTransform->SetValues({ posX ,posY ,posZ }, { scaleX ,scaleY ,scaleZ }, { rotX ,rotY ,rotZ ,rotW });
+				}
+			}
 
 			//For each child the Json root has we call the recursive GO creator metod
 			int numChilds = json_object_get_number(root_object, "NumChildren");
@@ -341,6 +442,76 @@ void ModuleScene::CreateGObFromSerializationRecursively(std::vector<std::string>
 	JSON_Value* root_value = json_parse_file(pathFile.c_str());
 	JSON_Object* root_object = json_value_get_object(root_value);
 
+	//For each component on the Json root has we craete a new 
+	int numComponents = json_object_get_number(root_object, "NumCompoments");
+	JSON_Array* componentsArr = json_object_get_array(root_object, "Components");
+	for (int co = 0; co < numComponents; co++)
+	{
+		//Get the Json object of the array
+		JSON_Object* obj = json_array_get_object(componentsArr, co);
+
+		//Get the Type and UUID of the child
+		ComponentType type = (ComponentType)json_object_get_number(obj, "Name");
+		uint32_t UUID = json_object_get_number(obj, "UUID");
+
+		switch (type)
+		{
+		case TRANSFORM:
+		{
+			//Get position array
+			JSON_Array* posArr = json_object_get_array(obj, "Position");
+
+			go->objTransform->SetUUID(UUID);
+
+			//Get elements of position
+			float posX = json_array_get_number(posArr, 0);
+			float posY = json_array_get_number(posArr, 1);
+			float posZ = json_array_get_number(posArr, 2);
+
+
+			//Get rotation array
+			JSON_Array* rotArr = json_object_get_array(obj, "Rotation");
+
+			//Get elements of position
+			float rotX = json_array_get_number(rotArr, 0);
+			float rotY = json_array_get_number(rotArr, 1);
+			float rotZ = json_array_get_number(rotArr, 2);
+			float rotW = json_array_get_number(rotArr, 3);
+
+			//Get position array
+			JSON_Array* scaleArr = json_object_get_array(obj, "Scale");
+
+			//Get elements of position
+			float scaleX = json_array_get_number(scaleArr, 0);
+			float scaleY = json_array_get_number(scaleArr, 1);
+			float scaleZ = json_array_get_number(scaleArr, 2);
+
+			go->objTransform->SetValues({ posX ,posY ,posZ }, { scaleX ,scaleY ,scaleZ }, { rotX ,rotY ,rotZ ,rotW });
+		}
+		case MESH:
+		{
+			ComponentMesh* coMesh = (ComponentMesh*)go->CreateComponent(type);
+			break;
+		}
+		case MATERIAL:
+		{
+			ComponentMaterial* coMaterial = (ComponentMaterial*)go->CreateComponent(type);
+			break;
+		}
+		case CAMERA:
+		{
+			//ComponentCamera* coMesh = (ComponentCamera*)go->CreateComponent(type); //No se puede hacer porque ANDREU ni siquiera lo hizo un componente
+			break;
+		}
+		case PARTICLE:
+		{
+			ComponentParticleSystem* coParticle = (ComponentParticleSystem*)go->CreateComponent(type);
+			break;
+		}
+		default:
+			break;
+		}
+	}
 	int numChilds = json_object_get_number(root_object, "NumChildren");
 	JSON_Array* childArr = json_object_get_array(root_object, "Children");
 

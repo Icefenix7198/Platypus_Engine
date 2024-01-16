@@ -54,6 +54,13 @@ bool ComponentParticleSystem::Update(float dt)
 			allEmitters.at(i)->Update(dt);
 		}
 	}
+	else
+	{
+		for (unsigned int i = 0; i < allEmitters.size(); ++i)
+		{
+			allEmitters.at(i)->Reset();
+		}
+	}
 	
 
 	return ret;
@@ -295,7 +302,7 @@ void ComponentParticleSystem::OnEditor()
 					}
 				}
 				std::string CEid;
-				if (ImGui::CollapsingHeader(CEid.append("Create Emitter").append(std::to_string(i)).c_str()))
+				if (ImGui::CollapsingHeader(CEid.append("Create Emitter ##").append(std::to_string(i)).c_str()))
 				{
 					for (int k = 0; k < EmiterType::MAX; k++)
 					{
@@ -334,13 +341,19 @@ void ComponentParticleSystem::OnEditor()
 					}
 					//ImGui::End();
 					//ImGui::TreePop();
-				}				
+				}
+				std::string SEid;
+				if ( ImGui::Button( SEid.append("Create Emitter ##").append(std::to_string(i)).c_str() ) )
+				{
+					SaveEmmiterJSON(allEmitters.at(i));
+				}
 			}
 
 			if(ImGui::Button("Create Particle Emitter"))
 			{
 				CreateEmitter();
 			}
+			
 			
 
 			ImGui::TreePop();
@@ -699,21 +712,19 @@ ParticleEmitter* ComponentParticleSystem::LoadEmitterFromMeta(const char* pathMe
 			JSON_Array* colArr1 = json_object_get_array(modulo, "Color1");
 
 			//Get elements of position
-			float R1 = json_array_get_number(colArr1, 0);
-			float G1 = json_array_get_number(colArr1, 1);
-			float B1 = json_array_get_number(colArr1, 2);
-			float A1 = json_array_get_number(colArr1, 3);
-			eColor->color1 = { R1,G1,B1,A1 };
+			eColor->color1.r = (float)json_array_get_number(colArr1, 0);
+			eColor->color1.g = (float)json_array_get_number(colArr1, 1);
+			eColor->color1.b = (float)json_array_get_number(colArr1, 2);
+			eColor->color1.a = (float)json_array_get_number(colArr1, 3);
 
 			//Get COLOR array
 			JSON_Array* colArr2 = json_object_get_array(modulo, "Color2");
 
 			//Get elements of position
-			float R2 = json_array_get_number(colArr2, 0);
-			float G2 = json_array_get_number(colArr2, 1);
-			float B2 = json_array_get_number(colArr2, 2);
-			float A2 = json_array_get_number(colArr2, 3);
-			eColor->color1 = { R2,G2,B2,A2 };
+			eColor->color2.r = (float)json_array_get_number(colArr2, 0);
+			eColor->color2.g = (float)json_array_get_number(colArr2, 1);
+			eColor->color2.b = (float)json_array_get_number(colArr2, 2);
+			eColor->color2.a = (float)json_array_get_number(colArr2, 3);
 
 			break;
 		}

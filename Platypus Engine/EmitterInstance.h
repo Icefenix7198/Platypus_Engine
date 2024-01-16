@@ -39,39 +39,40 @@ private:
 
 struct EmitterBase : EmitterInstance
 {
+	EmitterBase();
 	void Spawn(ParticleEmitter* emitter, Particle* particle);
 	void Update(float dt, ParticleEmitter* emitter);
 
 	//Variable unica, posicion donde spawnean
-	float3 emitterOrigin = float3::zero;
-	float particlesLifeTime = 1.0f;
+	float3 emitterOrigin;
+	float particlesLifeTime;
 };
 
 struct EmitterSpawner : EmitterInstance
 {
+	EmitterSpawner();
 	void Spawn(ParticleEmitter* emitter, Particle* particle);
 	void Update(float dt, ParticleEmitter* emitter);
 
 	//Variable unica, ritmo de spawn
-	bool basedTimeSpawn = false;
-	float spawnRatio = 0.2f; //Dividir en current time por cuantas se spawnean 
-	float currentTimer = 0.0f;
-	int numParticlesToSpawn = 1;
+	bool basedTimeSpawn;
+	float spawnRatio; //Dividir en current time por cuantas se spawnean 
+	float currentTimer;
+	int numParticlesToSpawn;
 };
 
 struct EmitterPosition : EmitterInstance
 {
+	EmitterPosition();
 	void Spawn(ParticleEmitter* emitter, Particle* particle);
 	void Update(float dt, ParticleEmitter* emitter);
 
 	float GetModuleVec(float3 vec);
 
-	bool randomized = false; //Si la direccion es solo la uno o un numero random entre la 1 y la 2
-	float3 direction1 = {0,0,0};
-	float3 direction2 = { 0,0,0 };
-	float particleSpeed = 1.0f;
-
-	EmitterPosition();
+	bool randomized; //Si la direccion es solo la uno o un numero random entre la 1 y la 2
+	float3 direction1;
+	float3 direction2;
+	float particleSpeed;
 };
 
 struct EmitterRotation : EmitterInstance
@@ -82,28 +83,30 @@ struct EmitterRotation : EmitterInstance
 
 struct EmitterSize : EmitterInstance
 {
+	EmitterSize();
 	void Spawn(ParticleEmitter* emitter, Particle* particle);
 	void Update(float dt, ParticleEmitter* emitter);
 
-	bool progresive = false;
-	float startChange = 0.0f; //Range from 0 to 1 as lifetime
-	float stopChange = 1.0f; //Range from 0 to 1 as lifetime
-	float sizeMultiplier1 = 1.0f;
-	float sizeMultiplier2 = 1.0f;
+	bool progresive;
+	float startChange; //Range from 0 to 1 as lifetime
+	float stopChange; //Range from 0 to 1 as lifetime
+	float sizeMultiplier1;
+	float sizeMultiplier2;
 	
 	
 };
 
 struct EmitterColor : EmitterInstance
 {
+	EmitterColor();
 	void Spawn(ParticleEmitter* emitter, Particle* particle);
 	void Update(float dt, ParticleEmitter* emitter);
 
-	bool progresive = false;
-	float startChange = 0.0f; //Range from 0 to 1 as lifetime
-	float stopChange = 1.0f; //Range from 0 to 1 as lifetime
-	Color color1 = {0,0,0,1};
-	Color color2 = {1,1,1,1};
+	bool progresive;
+	float startChange; //Range from 0 to 1 as lifetime
+	float stopChange; //Range from 0 to 1 as lifetime
+	Color color1;
+	Color color2;
 };
 
 

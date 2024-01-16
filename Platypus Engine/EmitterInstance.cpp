@@ -15,11 +15,23 @@ void EmitterInstance::Update(float dt, ParticleEmitter* emitter)
 
 }
 
+EmitterBase::EmitterBase()
+{
+	emitterOrigin = float3::zero;
+	particlesLifeTime = 1.0f;
+}
+
 void EmitterBase::Spawn(ParticleEmitter* emitter, Particle* particle)
 {
 	particle->oneOverMaxLifetime = 1 / particlesLifeTime;
-	float3 position = emitter->owner->owner->objTransform->pos;
+	float4x4 matrix = emitter->owner->owner->objTransform->globalTransform;
+	float3 position;
+	Quat rotation;
+	float3 escale;
+	matrix.Decompose(position, rotation, escale);
 	particle->position += position + emitterOrigin; //Se inicializan desde 0,0,0 asi que no deberia haber problema en hacer += pero deberia ser lo mismo.
+	particle->worldRotation = rotation;
+	particle->size = escale;
 }
 
 void EmitterBase::Update(float dt, ParticleEmitter* emitter)
@@ -28,8 +40,15 @@ void EmitterBase::Update(float dt, ParticleEmitter* emitter)
 	{
 		//Actualizamos el tiempo de vida de cada particula
 		emitter->listParticles.at(i)->lifetime += emitter->listParticles.at(i)->oneOverMaxLifetime * dt;
-		emitter->listParticles.at(i)->position;
 	}
+}
+
+EmitterPosition::EmitterPosition()
+{
+	randomized = false; //Si la direccion es solo la uno o un numero random entre la 1 y la 2
+	direction1 = {0,0,0};
+	direction2 = {0,0,0};
+	particleSpeed = 1.0f;
 }
 
 void EmitterPosition::Spawn(ParticleEmitter* emitter, Particle* particle)
@@ -131,9 +150,12 @@ float EmitterPosition::GetModuleVec(float3 vec)
 	return sqrt( (vec.x*vec.x) + (vec.y * vec.y) + (vec.z * vec.z) );
 }
 
-EmitterPosition::EmitterPosition()
+EmitterSpawner::EmitterSpawner()
 {
-	particleSpeed = 10.0f;
+	basedTimeSpawn = false;
+	spawnRatio = 0.2f; //Dividir en current time por cuantas se spawnean 
+	currentTimer = 0.0f;
+	numParticlesToSpawn = 5;
 }
 
 void EmitterSpawner::Spawn(ParticleEmitter* emitter, Particle* particle)
@@ -181,6 +203,15 @@ void EmitterRotation::Update(float dt, ParticleEmitter* emitter)
 	}
 }
 
+EmitterSize::EmitterSize()
+{
+	progresive = false;
+	startChange = 0.0f; //Range from 0 to 1 as lifetime
+	stopChange = 1.0f; //Range from 0 to 1 as lifetime
+	sizeMultiplier1 = 1.0f;
+	sizeMultiplier2 = 1.0f;
+}
+
 void EmitterSize::Spawn(ParticleEmitter* emitter, Particle* particle)
 {
 	particle->size *= sizeMultiplier1;
@@ -208,6 +239,15 @@ void EmitterSize::Update(float dt, ParticleEmitter* emitter)
 void EmitterColor::Spawn(ParticleEmitter* emitter, Particle* particle)
 {
 	particle->color = color1;
+}
+
+EmitterColor::EmitterColor()
+{
+	progresive = false;
+	startChange = 0.0f; //Range from 0 to 1 as lifetime
+	stopChange = 1.0f; //Range from 0 to 1 as lifetime
+	color1 = { 0,0,0,1 };
+	color2 = { 1,1,1,1 };
 }
 
 void EmitterColor::Update(float dt, ParticleEmitter* emitter)

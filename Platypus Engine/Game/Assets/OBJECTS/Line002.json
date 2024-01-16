@@ -1,1 +1,1 @@
-{"Name":"Line002","UUID":2428006272,"Active":true,"IsRoot":false,"NumChildren":0,"NumCompoments":2,"Components":[{"UUID":2501247564,"Type":0,"Position":[0,0,0],"Rotation":[0,0,0,0],"Scale":[1,1,1]},{"UUID":2557779816,"Type":1}],"Children":[]}
+{"Name":"Line002","UUID":2893545523,"Active":true,"IsRoot":false,"NumChildren":0,"NumCompoments":2,"Components":[{"UUID":2930723137,"Type":0,"Position":[0,0,0],"Rotation":[0,0,0,0],"Scale":[1,1,1]},{"UUID":2966717194,"Type":1,"MeshUUID":2274959352}],"Children":[]}

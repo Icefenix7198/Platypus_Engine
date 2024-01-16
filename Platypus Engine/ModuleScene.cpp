@@ -252,6 +252,9 @@ void ModuleScene::CreateSerializationGameObject(GameObject* go)
 			}
 			case MESH:
 			{
+				ComponentMesh* cMesh = (ComponentMesh*)go->components.at(i);
+				Resource* recurso = (Resource*)cMesh->resourceMesh;
+				json_object_set_number(child_object, "MeshUUID", recurso->UUID);
 				break;
 			}
 			case MATERIAL:
@@ -453,7 +456,7 @@ void ModuleScene::CreateGObFromSerializationRecursively(std::vector<std::string>
 		JSON_Object* obj = json_array_get_object(componentsArr, co);
 
 		//Get the Type and UUID of the child
-		ComponentType type = (ComponentType)json_object_get_number(obj, "Name");
+		ComponentType type = (ComponentType)json_object_get_number(obj, "Type");
 		uint32_t UUID = json_object_get_number(obj, "UUID");
 
 		switch (type)
@@ -489,11 +492,22 @@ void ModuleScene::CreateGObFromSerializationRecursively(std::vector<std::string>
 			float scaleZ = json_array_get_number(scaleArr, 2);
 
 			go->objTransform->SetValues({ posX ,posY ,posZ }, { scaleX ,scaleY ,scaleZ }, { rotX ,rotY ,rotZ ,rotW });
+			break;
 		}
 		case MESH:
 		{
 			ComponentMesh* coMesh = (ComponentMesh*)go->CreateComponent(type);
 			coMesh->SetUUID(UUID);
+			uint32_t MeshID = json_object_get_number(obj, "MeshUUID"); //En principio no hay que acceder mas profundo porque esta en el object que es cada componente
+			Resource* resMesh = new ResourceMesh;
+			resMesh->type = ResourceType::MESH;
+			resMesh->UUID = MeshID;
+			std::string pathIDLibrary;
+			pathIDLibrary = MESHES_PATH;
+			pathIDLibrary += std::to_string(MeshID); //JSON UUID AQUI
+			pathIDLibrary += CFF;
+			coMesh->resourceMesh->LoadFromLibrary(pathIDLibrary.c_str(), resMesh);
+			coMesh->resourceMesh = (ResourceMesh*)resMesh;
 			//coMesh->IDResourceMesh;
 			break;
 		}

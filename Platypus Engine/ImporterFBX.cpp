@@ -15,7 +15,7 @@
 
 #pragma comment (lib, "PhysFS/libx86/physfs.lib")
 
-void ImporterFBX::Import(const char* pathFile)
+void ImporterFBX::Import(const char* pathFile, GameObject* assignedGO)
 {
 	std::vector<std::string> metas;
 	App->fileSystem->GetAllFilesWithExtension(ASSETS_MODELS, "meta", metas);

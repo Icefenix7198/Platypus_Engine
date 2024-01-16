@@ -1,1 +1,1 @@
-{"Name":"Plane001","UUID":2815377516,"Active":true,"IsRoot":false,"NumChildren":0,"NumCompoments":2,"Components":[{"UUID":2874624987,"Type":0,"Position":[0,0,0],"Rotation":[0,0,0,0],"Scale":[1,1,1]},{"UUID":2911176012,"Type":1}],"Children":[]}
+{"Name":"Plane001","UUID":3156086314,"Active":true,"IsRoot":false,"NumChildren":0,"NumCompoments":2,"Components":[{"UUID":3195143695,"Type":0,"Position":[0,0,0],"Rotation":[0,0,0,0],"Scale":[1,1,1]},{"UUID":3235941601,"Type":1,"MeshUUID":143812735}],"Children":[]}

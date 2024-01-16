@@ -269,6 +269,8 @@ void ModuleEditor::DrawEditor()
 			ImGui::EndTabBar();
 		}
 	}
+	ImGui::SetNextWindowPos(ImVec2(main_viewport->WorkPos.x + 500, main_viewport->WorkPos.y + 20), ImGuiCond_Once);
+	ImGui::SetNextWindowSize(ImVec2(70, 75), ImGuiCond_Once);
 	if (ImGui::Begin("Timer"))
 	{
 		if (isplaying == false)

@@ -116,6 +116,61 @@ update_status ModuleScene::PreUpdate(float dt)
 		}
 	}
 
+	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_LALT) == KEY_REPEAT)
+	{
+		GameObject* firework = CreateGameObject(App->scene->root);
+		ComponentParticleSystem* pfirework = (ComponentParticleSystem*)firework->CreateComponent(ComponentType::PARTICLE);
+		ParticleEmitter* efirework = (ParticleEmitter*)pfirework->CreateEmitter();
+		EmitterBase* bfirework = (EmitterBase*)efirework->CreateEmitterByType(BASE);
+		bfirework->particlesLifeTime = 5.0;
+		EmitterSpawner* sfirework = (EmitterSpawner*)efirework->CreateEmitterByType(SPAWN);
+		sfirework->numParticlesToSpawn = 101;
+		EmitterPosition* pofirework = (EmitterPosition*)efirework->CreateEmitterByType(POSITION);
+		pofirework->direction1 = float3(-0.4, 6.0, 0);
+		pofirework->acceleration = true;
+		pofirework->particleSpeed1 = 18.00;
+		pofirework->particleSpeed2 = 12.200;
+		efirework->CreateEmitterByType(ROTATION);
+		EmitterSize* sifirework = (EmitterSize*)efirework->CreateEmitterByType(SIZEPARTICLE);
+		sifirework->progresive = true;
+		sifirework->sizeMultiplier1 = 0.1;
+		sifirework->sizeMultiplier2 = 0.411;
+		EmitterColor* cofirework = (EmitterColor*)efirework->CreateEmitterByType(COLOR);
+		cofirework->progresive = true;
+		cofirework->color1 = Color(255, 255, 0, 255);
+		cofirework->color2 = Color(255, 255, 255, 0);
+		cofirework->startChange = 0.0;
+		cofirework->stopChange = 0.2;
+
+
+		GameObject* explosion = CreateGameObject(App->scene->root);
+		ComponentParticleSystem* pexplosion = (ComponentParticleSystem*)explosion->CreateComponent(ComponentType::PARTICLE);
+		ParticleEmitter* eexplosion= (ParticleEmitter*)pexplosion->CreateEmitter();
+		EmitterBase* bexplosion = (EmitterBase*)eexplosion->CreateEmitterByType(BASE);
+		bexplosion->emitterOrigin = float3(0.0,17.1,0.0);
+		bexplosion->particlesLifeTime = 5.0;
+		EmitterSpawner* sexplosion = (EmitterSpawner*)eexplosion->CreateEmitterByType(SPAWN);
+		sexplosion->numParticlesToSpawn = 63;
+		EmitterPosition* poexplosion = (EmitterPosition*)eexplosion->CreateEmitterByType(POSITION);
+		poexplosion->randomized = true;
+		poexplosion->direction1 = float3(-1.0, -1.0, -1.0);
+		poexplosion->direction2 = float3(1.0, 1.0, 1.0);
+		poexplosion->acceleration = true;
+		poexplosion->particleSpeed1 = 2.2;
+		poexplosion->particleSpeed2 = 1.1;
+		eexplosion->CreateEmitterByType(ROTATION);
+		EmitterSize* siexplosion = (EmitterSize*)eexplosion->CreateEmitterByType(SIZEPARTICLE);
+		siexplosion->progresive = true;
+		siexplosion->sizeMultiplier1 = 0.315;
+		siexplosion->sizeMultiplier2 = 0.1;
+		EmitterColor* coexplosion = (EmitterColor*)eexplosion->CreateEmitterByType(COLOR);
+		coexplosion->progresive = true;
+		coexplosion->color1 = Color(255, 0, 0, 0);
+		coexplosion->color2 = Color(0, 0, 255, 255);
+		coexplosion->startChange = 0.3;
+		coexplosion->stopChange = 0.35;
+	}
+
 	return UPDATE_CONTINUE;
 }
 

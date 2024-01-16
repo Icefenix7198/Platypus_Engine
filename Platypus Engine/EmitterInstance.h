@@ -89,6 +89,7 @@ struct EmitterSize : EmitterInstance
 	void Spawn(ParticleEmitter* emitter, Particle* particle);
 	void Update(float dt, ParticleEmitter* emitter);
 
+	float3 originalSize; //Para gestionar si se escala el GameObject
 	bool progresive;
 	float startChange; //Range from 0 to 1 as lifetime
 	float stopChange; //Range from 0 to 1 as lifetime

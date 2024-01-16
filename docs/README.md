@@ -11,11 +11,19 @@ Also this engine, contains an implementation of a particle system, making posibl
 
 ##  About us
 **Éric Segovia Baena**  (eric.segovia@estudiantat.upc.edu)
+- Resource manager
+- Game objects
+- Serialitzation of the scene
+- Component transform
+- Component mesh
+- Comonent material
+- Partycle system
+- Heriarchy of game objects
 (imagen y cosas que has hecho Eric)
 
 **Andreu Miró Sabaté**  (andreu.miro@estudiantat.upc.edu)
 
-<img src="/andreu_imagen.jpg" />
+![](/assets/imagen_andreu.jpg)
 
 - Camera System
 - Frustum Culling

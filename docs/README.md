@@ -57,6 +57,8 @@ Each emitter can have the next options:
   
 ## Trailer
 
+![](https://www.youtube.com/watch?v=ZT09cbbbHG4)
+
 ## Link
 
 > Link to github: [Platypus Engine](https://github.com/Icefenix7198/Platypus_Engine)

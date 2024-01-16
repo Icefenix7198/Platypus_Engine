@@ -105,10 +105,12 @@ void EmitterPosition::Spawn(ParticleEmitter* emitter, Particle* particle)
 	else
 	{
 		float modul1 = GetModuleVec(direction1);
-		particle->velocity.x += direction1.x / modul1;
-		particle->velocity.y += direction1.y / modul1;
-		particle->velocity.z += direction1.z / modul1;
-		
+		if(modul1>0)
+		{
+			particle->velocity.x += direction1.x / modul1;
+			particle->velocity.y += direction1.y / modul1;
+			particle->velocity.z += direction1.z / modul1;
+		}		
 	}
 
 	particle->velocity.w += particleSpeed;

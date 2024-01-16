@@ -2,6 +2,7 @@
 #include "EmitterInstance.h"
 //#include "ModuleRenderer3D.h"
 #include "Application.h"
+#include "ComponentTransform.h"
 
 ParticleEmitter::ParticleEmitter()
 {
@@ -179,10 +180,22 @@ void ParticleEmitter::SpawnParticle(uint particlesToAdd)
 		for (int i = 0; i < particlesToAdd; i++)
 		{
 			Particle* particula = new Particle();
-			for (int i = 0; i < modules.size(); i++)
+			for (int m = 0; m < modules.size(); ++m)
 			{
-				modules.at(i)->Spawn(this,particula);
+				modules.at(m)->Spawn(this,particula);
 			}
+			float lineToZ = (App->camera->Position.z - (particula->position.z + owner->owner->objTransform->pos.z + (particula->velocity.z * particula->velocity.w)));
+			for (int j = 0; j < listParticles.size(); ++j)
+			{
+				float lineToZVec = (App->camera->Position.z - (listParticles.at(j)->position.z + owner->owner->objTransform->pos.z + +(listParticles.at(j)->velocity.z * listParticles.at(j)->velocity.w)));
+				if(lineToZVec * lineToZVec < lineToZ * lineToZ) //Si la particula esta mas lejos se printa primero para las transparencias
+				{
+					listParticles.emplace(listParticles.begin() + j, particula);
+					break;
+				}
+				
+			}
+			//Si no esta lo suficientemente lejos se coloca al final
 			listParticles.push_back(particula);
 		}
 	}

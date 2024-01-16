@@ -56,15 +56,6 @@ private:
 	std::vector<reParentPair> pendingToReparent;
 	std::vector<GameObject*> pendingToDelete;
 	std::vector<newGameObject> pendingToCreate;
-
-	enum LoadingSteps
-	{
-		PRIMERACARGA,
-		PRIMERGUARDADO,
-		SEGUNDOGUARDADO,
-		PLAY,
-		MAX,
-	};
 };
 
 #endif //MODULE_SCENE

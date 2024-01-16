@@ -372,7 +372,7 @@ void ModuleScene::CreateSerializationGameObject(GameObject* go)
 	}
 }
 
-void ModuleScene::InitCreateGOFromSerialization()
+void ModuleScene::InitCreateGOFromSerialization(bool fistTime)
 {
 	std::vector<std::string> listJsons;
 	

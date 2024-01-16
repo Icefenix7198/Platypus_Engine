@@ -364,7 +364,7 @@ void ComponentParticleSystem::OnEditor()
 					allEmitters.at(i)->name.assign(textInfo);
 				}*/
 				std::string SEid;
-				if ( ImGui::Button( SEid.append("Save Emitter ##").append(std::to_string(i)).c_str() ) )
+				if ( ImGui::Button( SEid.append("Create Emitter ##").append(std::to_string(i)).c_str() ) )
 				{
 					SaveEmmiterJSON(allEmitters.at(i));
 				}

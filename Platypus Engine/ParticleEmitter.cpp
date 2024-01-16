@@ -7,6 +7,7 @@
 ParticleEmitter::ParticleEmitter()
 {
 	//Quiza haya que meterle alguna info? IDK
+	name = "";
 	
 }
 

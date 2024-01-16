@@ -72,7 +72,9 @@ struct EmitterPosition : EmitterInstance
 	bool randomized; //Si la direccion es solo la uno o un numero random entre la 1 y la 2
 	float3 direction1;
 	float3 direction2;
-	float particleSpeed;
+	bool acceleration;
+	float particleSpeed1;
+	float particleSpeed2;
 };
 
 struct EmitterRotation : EmitterInstance

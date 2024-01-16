@@ -188,17 +188,27 @@ void ComponentParticleSystem::OnEditor()
 								securityCheckTree = allEmitters.at(i)->DestroyEmitter(j);
 							}
 							deleteButton.clear();
-							ImGui::Checkbox("Random Movement", &ePosition->randomized);
+							ImGui::Checkbox("Random Movement ##POSITION", &ePosition->randomized);
 							if (ePosition->randomized)
 							{
-								ImGui::DragFloat3("Range 1", &(ePosition->direction1[0]), 0.1f);
-								ImGui::DragFloat3("Range 2", &(ePosition->direction2[0]), 0.1f);
+								ImGui::DragFloat3("Range 1 ##POSITION", &(ePosition->direction1[0]), 0.1f);
+								ImGui::DragFloat3("Range 2 ##POSITION", &(ePosition->direction2[0]), 0.1f);
 							}
 							else
 							{
 								ImGui::DragFloat3("Position", &(ePosition->direction1[0]), 0.1f);
 							}
-							ImGui::DragFloat("Speed ##POSITION", &(ePosition->particleSpeed),0.2F);
+							ImGui::Checkbox("Acceraltion ##POSITION", &ePosition->acceleration);
+							if (ePosition->acceleration)
+							{
+								ImGui::DragFloat("SpeedInit ##POSITION", &(ePosition->particleSpeed1), 0.2F);
+								ImGui::DragFloat("SpeedFinal ##POSITION", &(ePosition->particleSpeed2), 0.2F);
+							}
+							else
+							{
+								ImGui::DragFloat("Speed ##POSITION", &(ePosition->particleSpeed1), 0.2F);
+							}
+							
 
 							break;
 						}

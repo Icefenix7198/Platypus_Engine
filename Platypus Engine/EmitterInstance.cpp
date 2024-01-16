@@ -48,7 +48,10 @@ EmitterPosition::EmitterPosition()
 	randomized = false; //Si la direccion es solo la uno o un numero random entre la 1 y la 2
 	direction1 = {0,0,0};
 	direction2 = {0,0,0};
-	particleSpeed = 1.0f;
+	acceleration = false;
+	particleSpeed1 = 1.0f;
+	particleSpeed2 = 0.0f;
+	
 }
 
 void EmitterPosition::Spawn(ParticleEmitter* emitter, Particle* particle)
@@ -132,13 +135,18 @@ void EmitterPosition::Spawn(ParticleEmitter* emitter, Particle* particle)
 		}		
 	}
 
-	particle->velocity.w += particleSpeed;
+	particle->velocity.w += particleSpeed1;
 }
 
 void EmitterPosition::Update(float dt, ParticleEmitter* emitter)
 {
+	
 	for (int i = 0; i < emitter->listParticles.size(); i++)
 	{
+		//Acceleration
+		float actualLT = emitter->listParticles.at(i)->lifetime;
+		emitter->listParticles.at(i)->velocity.w = particleSpeed1 + ((particleSpeed2 - particleSpeed1) * (actualLT / 1.0f));
+
 		emitter->listParticles.at(i)->position.x += emitter->listParticles.at(i)->velocity.x * emitter->listParticles.at(i)->velocity.w * dt;
 		emitter->listParticles.at(i)->position.y += emitter->listParticles.at(i)->velocity.y * emitter->listParticles.at(i)->velocity.w * dt;
 		emitter->listParticles.at(i)->position.z += emitter->listParticles.at(i)->velocity.z * emitter->listParticles.at(i)->velocity.w * dt;

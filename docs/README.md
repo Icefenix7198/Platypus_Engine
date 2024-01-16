@@ -12,7 +12,7 @@ Also this engine, contains an implementation of a particle system, making posibl
 ##  About us
 **Éric Segovia Baena**  (eric.segovia@estudiantat.upc.edu)
 
-![](/docs/assets/imagen_Eric.jpg)
+![FotoEric](/docs/assets/imagen_Eric.jpg)
 
 - Resource manager
 - Game objects
@@ -25,7 +25,7 @@ Also this engine, contains an implementation of a particle system, making posibl
 
 **Andreu Miró Sabaté**  (andreu.miro@estudiantat.upc.edu)
 
-![](/docs/assets/imagen_andreu.jpg)
+![FotoAndreu](/docs/assets/imagen_andreu.jpg)
 
 - Camera System
 - Frustum Culling

@@ -43,8 +43,8 @@ public:
 
 	const char* SaveMetaEmitters(); //Returns the Meta Path File
 	uint32_t SaveEmmiterJSON(ParticleEmitter* emitter);
-	void LoadEmitterFromMeta(const char* pathMeta);
-	void LoadEmmiterJSON(const char* path);
+	ParticleEmitter* LoadEmitterFromMeta(const char* pathMeta);
+	void LoadAllEmmitersJSON(const char* path);
 
 private:
 };

@@ -40,6 +40,7 @@ ComponentParticleSystem::~ComponentParticleSystem()
 
 bool ComponentParticleSystem::Update()
 {
+	//Si la primera vez que se ejecuta
 	return Update(App->dt);
 }
 
@@ -489,7 +490,7 @@ uint32_t ComponentParticleSystem::SaveEmmiterJSON(ParticleEmitter * emitter)
 				JSON_Value* jValueDir2 = json_value_init_array();
 				arrInitialDir2 = json_value_get_array(jValueDir2);
 
-				json_object_dotset_value(child_object, "Direction1", jValueDir2);
+				json_object_dotset_value(child_object, "Direction2", jValueDir2);
 				json_array_append_number(arrInitialDir2, ePosition->direction2.x);
 				json_array_append_number(arrInitialDir2, ePosition->direction2.y);
 				json_array_append_number(arrInitialDir2, ePosition->direction2.z);
@@ -498,8 +499,8 @@ uint32_t ComponentParticleSystem::SaveEmmiterJSON(ParticleEmitter * emitter)
 				json_object_set_boolean(child_object, "Accelerates", ePosition->acceleration);
 
 				//Speed
-				json_object_set_boolean(child_object, "Speed1", ePosition->particleSpeed1);
-				json_object_set_boolean(child_object, "Speed2", ePosition->particleSpeed2);
+				json_object_set_number(child_object, "Speed1", ePosition->particleSpeed1);
+				json_object_set_number(child_object, "Speed2", ePosition->particleSpeed2);
 
 				break;
 			}
@@ -591,20 +592,153 @@ uint32_t ComponentParticleSystem::SaveEmmiterJSON(ParticleEmitter * emitter)
 	return docID;
 }
 
-void ComponentParticleSystem::LoadEmmiterJSON(const char* path)
+ParticleEmitter* ComponentParticleSystem::LoadEmitterFromMeta(const char* pathMeta)
 {
-/*JSON_Value* root_value = json_parse_file(filePath.c_str());
-JSON_Object* root_object = json_value_get_object(root_value);
+	ParticleEmitter* pE = new ParticleEmitter;
+	JSON_Value* root_value = json_parse_file(pathMeta);
+	JSON_Object* root_object = json_value_get_object(root_value);
 
-int numMeshes = json_object_get_number(root_object, "NumMeshes");
+	int numEmitters = json_object_get_number(root_object, "ModulesSize");
 
-JSON_Array* arr = json_object_get_array(root_object, "Meshes");
-for (int i = 0; i < numMeshes; i++)
+	JSON_Array* arr = json_object_get_array(root_object, "Emitters");
+	for (int i = 0; i < numEmitters; i++)
+	{
+		JSON_Object* modulo = json_array_get_object(arr, i);
+		
+		EmiterType type = (EmiterType)json_object_get_number(modulo, "Type");
+		
+		EmitterInstance* instancia = pE->CreateEmitterByType(type);
+
+		switch (type)
+		{
+		case BASE:
+		{
+			EmitterBase* eBase = (EmitterBase*)instancia;
+			eBase->particlesLifeTime = (float)json_object_get_number(modulo, "Lifetime");
+
+			//Get position array
+			JSON_Array* posArr = json_object_get_array(modulo, "Position");
+
+			//Get elements of position
+			float posX = json_array_get_number(posArr, 0);
+			float posY = json_array_get_number(posArr, 1);
+			float posZ = json_array_get_number(posArr, 2);
+			eBase->emitterOrigin = { posX,posY,posZ };
+
+			break;
+		}
+		case SPAWN:
+		{
+			EmitterSpawner* eSpawn = (EmitterSpawner*)instancia;
+
+			eSpawn->basedTimeSpawn = json_object_get_boolean(modulo, "TimeBased");
+			eSpawn->numParticlesToSpawn = json_object_get_number(modulo, "NumParticles");
+			eSpawn->spawnRatio = (float)json_object_get_number(modulo, "SpawnRatio");
+			
+			break;
+		}
+		case POSITION:
+		{
+			EmitterPosition* ePos = (EmitterPosition*)instancia;
+
+			ePos->randomized = json_object_get_boolean(modulo, "Random");
+			ePos->particleSpeed1 = json_object_get_number(modulo, "Speed1");
+			ePos->particleSpeed2 = json_object_get_number(modulo, "Speed2");
+			ePos->acceleration = json_object_get_boolean(modulo, "Accelerates");
+
+			//Get position array
+			JSON_Array* dirArr1 = json_object_get_array(modulo, "Direction1");
+
+			//Get elements of position
+			float posX1 = json_array_get_number(dirArr1, 0);
+			float posY1 = json_array_get_number(dirArr1, 1);
+			float posZ1 = json_array_get_number(dirArr1, 2);
+			ePos->direction1 = { posX1,posY1,posZ1 };
+
+			//Get position array
+			JSON_Array* dirArr2 = json_object_get_array(modulo, "Direction2");
+
+			//Get elements of position
+			float posX2 = json_array_get_number(dirArr2, 0);
+			float posY2 = json_array_get_number(dirArr2, 1);
+			float posZ2 = json_array_get_number(dirArr2, 2);
+			ePos->direction2 = { posX2,posY2,posZ2 };
+
+			break;
+		}
+		case ROTATION:
+		{
+			break; 
+		}
+		case SIZEPARTICLE:
+		{
+			EmitterSize* eSize = (EmitterSize*)instancia;
+
+			eSize->progresive = json_object_get_boolean(modulo, "Progressive");
+			eSize->sizeMultiplier1 = (float)json_object_get_number(modulo, "Size1");
+			eSize->sizeMultiplier2 = (float)json_object_get_number(modulo, "Size2");
+			eSize->startChange = (float)json_object_get_number(modulo, "TimeStart");
+			eSize->stopChange = (float)json_object_get_number(modulo, "TimeStop");
+			break;
+		}
+		case COLOR:
+		{
+			EmitterColor* eColor = (EmitterColor*)instancia;
+
+			eColor->progresive = json_object_get_boolean(modulo, "Progressive");
+
+			eColor->startChange = (float)json_object_get_number(modulo, "TimeStart");
+			eColor->stopChange = (float)json_object_get_number(modulo, "TimeStop");
+
+			//Get COLOR array
+			JSON_Array* colArr1 = json_object_get_array(modulo, "Color1");
+
+			//Get elements of position
+			float R1 = json_array_get_number(colArr1, 0);
+			float G1 = json_array_get_number(colArr1, 1);
+			float B1 = json_array_get_number(colArr1, 2);
+			float A1 = json_array_get_number(colArr1, 3);
+			eColor->color1 = { R1,G1,B1,A1 };
+
+			//Get COLOR array
+			JSON_Array* colArr2 = json_object_get_array(modulo, "Color2");
+
+			//Get elements of position
+			float R2 = json_array_get_number(colArr2, 0);
+			float G2 = json_array_get_number(colArr2, 1);
+			float B2 = json_array_get_number(colArr2, 2);
+			float A2 = json_array_get_number(colArr2, 3);
+			eColor->color1 = { R2,G2,B2,A2 };
+
+			break;
+		}
+		case MAX:
+			break;
+		default:
+			break;
+		}
+	}
+	return pE;
+}
+
+void ComponentParticleSystem::LoadAllEmmitersJSON(const char* path)
 {
-	vecNameMeshes.push_back(json_array_get_string(arr, i * 2));
-	vecUUIDmeshes.push_back(json_array_get_number(arr, i * 2 + 1));
-}*/
-//return json_object_get_string(root_object, "Name");
+	JSON_Value* root_value = json_parse_file(path);
+	JSON_Object* root_object = json_value_get_object(root_value);
+
+	int numEmitters = json_object_get_number(root_object, "NumEmitters");
+
+	JSON_Array* arr = json_object_get_array(root_object, "Emitters");
+	for (int i = 0; i < numEmitters; i++)
+	{
+		uint32_t emmiterID = json_array_get_number(arr,i);
+
+		std::string pathEmitter;
+		pathEmitter += PARTICLES_PATH;
+		pathEmitter += std::to_string(emmiterID);
+		pathEmitter += PAR;
+		this->allEmitters.push_back(LoadEmitterFromMeta(pathEmitter.c_str()));
+	}
 }
 
 

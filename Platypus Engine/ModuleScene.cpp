@@ -527,6 +527,16 @@ void ModuleScene::CreateGObFromSerializationRecursively(std::vector<std::string>
 		case PARTICLE:
 		{
 			ComponentParticleSystem* coParticle = (ComponentParticleSystem*)go->CreateComponent(type);
+
+			uint32_t ID = json_object_get_number(obj, "UUID");
+			coParticle->SetUUID(UUID);
+			std::string pathJSON;
+
+			pathJSON += ASSETS_PARTICLES;
+			pathJSON += std::to_string(ID);
+			pathJSON += ".meta";
+
+			coParticle->LoadAllEmmitersJSON(pathJSON.c_str());
 			break;
 		}
 		default:

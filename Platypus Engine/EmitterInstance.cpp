@@ -24,6 +24,10 @@ EmitterBase::EmitterBase()
 void EmitterBase::Spawn(ParticleEmitter* emitter, Particle* particle)
 {
 	particle->oneOverMaxLifetime = 1 / particlesLifeTime;
+	if (true)
+	{
+		float4x4 matrix = emitter->owner->owner->objTransform->globalTransform;
+	}
 	float4x4 matrix = emitter->owner->owner->objTransform->globalTransform;
 	float3 position;
 	Quat rotation;

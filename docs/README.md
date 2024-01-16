@@ -59,7 +59,7 @@ Each emitter can have the next options:
   
 ## Trailer
 
-![https://www.youtube.com/watch?v=ZT09cbbbHG4](/docs/assets/video.jpg)
+[![A video to show the engine](/docs/assets/video.jpg)](https://www.youtube.com/watch?v=ZT09cbbbHG4)
 
 ## Link
 

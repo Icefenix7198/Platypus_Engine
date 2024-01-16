@@ -35,7 +35,7 @@ A videogame motor for third grade of the career at CITM Terrasa, made by Andreu 
 - Component particle system that emits squared meshes as particles. It has 6 different settings that can affect multiple parameters: Base (Starting position and lifetime) ,Spawn ( Time based spawn or maximun number based spawn, with spawn ratio and max particules modificable in both) , Position (Movement direction, with the option to be randomized in a given range, speed of the particules and modificable acceleration o deceleration), Rotation (make particle allways look at camara), Scale (Change initial size of particale or make it change size over time) and Color (Color and transparency, and change over time)
 -Scene serialization to save and load scenes with its componet transform, mesh and particle.
 -Pause and play button that affects particles
-- 1: Create a firework particle (only works in Play Mode).
+- 1 + Alt: Create a firework particle (only works in Play Mode).
 
 ## Windows
 

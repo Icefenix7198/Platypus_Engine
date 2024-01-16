@@ -11,6 +11,9 @@ Also this engine, contains an implementation of a particle system, making posibl
 
 ##  About us
 **Éric Segovia Baena**  (eric.segovia@estudiantat.upc.edu)
+
+![](/docs/assets/imagen_Eric.jpg)
+
 - Resource manager
 - Game objects
 - Serialitzation of the scene
@@ -19,7 +22,6 @@ Also this engine, contains an implementation of a particle system, making posibl
 - Comonent material
 - Partycle system
 - Heriarchy of game objects
-(imagen y cosas que has hecho Eric)
 
 **Andreu Miró Sabaté**  (andreu.miro@estudiantat.upc.edu)
 
@@ -57,7 +59,7 @@ Each emitter can have the next options:
   
 ## Trailer
 
-![](https://www.youtube.com/watch?v=ZT09cbbbHG4)
+![https://www.youtube.com/watch?v=ZT09cbbbHG4](/docs/assets/video.jpg)
 
 ## Link
 

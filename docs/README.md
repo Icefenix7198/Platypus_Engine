@@ -63,7 +63,8 @@ Each emitter can have the next options:
 
 ## Link
 
-> Link to github: [Platypus Engine](https://github.com/Icefenix7198/Platypus_Engine)
+> Link to github: [Platypus Engine](https://github.com/Icefenix7198/Platypus_Engine)  /
+> Link of the release: [Platypus Engine Release](https://github.com/Icefenix7198/Platypus_Engine/releases/tag/v1.1)
 
 ## License
 

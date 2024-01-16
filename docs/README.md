@@ -23,7 +23,7 @@ Also this engine, contains an implementation of a particle system, making posibl
 
 **Andreu Miró Sabaté**  (andreu.miro@estudiantat.upc.edu)
 
-![](/assets/imagen_andreu.jpg)
+![](/docs/assets/imagen_andreu.jpg)
 
 - Camera System
 - Frustum Culling

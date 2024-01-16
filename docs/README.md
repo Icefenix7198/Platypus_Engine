@@ -12,7 +12,7 @@ Also this engine, contains an implementation of a particle system, making posibl
 ##  About us
 **Éric Segovia Baena**  (eric.segovia@estudiantat.upc.edu)
 
-![FotoEric](/docs/assets/imagen_Eric.jpg)
+![FotoEric](https://github.com/Icefenix7198/Platypus_Engine/blob/main/docs/assets/imagen_Eric.jpg)
 
 - Resource manager
 - Game objects

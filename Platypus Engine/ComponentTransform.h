@@ -41,7 +41,7 @@ public:
 	float3 angles; //Only for display
 
 	float4x4 localTransform;
-	float4x4 globalTransform;
+	float4x4 globalTransform = float4x4::zero;
 	
 	//Sets the local transform in function of the values of the Component
 	void GenerateLocalMatrix();
@@ -52,7 +52,7 @@ public:
 	bool RecalculateMatrix(bool regenerateLocal = true);
 	//Transforma la local para quedarse en el sitio
 	float4x4 ReparentLocalMatrix(GameObject* newParent);
-
+	float4x4 GetGlobalMatrix() { return globalTransform; }
 	//ImGui
 	void OnEditor();
 

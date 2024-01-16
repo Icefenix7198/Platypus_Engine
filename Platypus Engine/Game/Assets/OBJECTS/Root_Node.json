@@ -1,1 +1,1 @@
-{"Name":"Root_Node","UUID":2779950805,"Active":true,"IsRoot":true,"NumChildren":1,"NumCompoments":1,"Components":[{"UUID":2836691920,"Type":0,"Position":[0,0,0],"Rotation":[0,0,0,0],"Scale":[1,1,1]}],"Children":[{"Name":"GameObject","UUID":2677233035}]}
+{"Name":"Root_Node","UUID":679925105,"Active":true,"IsRoot":true,"NumChildren":1,"NumCompoments":1,"Components":[{"UUID":3452591115,"Type":0,"Position":[0,0,0],"Rotation":[0,0,0,0],"Scale":[1,1,1]}],"Children":[{"Name":"Street environment_V01","UUID":2929441781}]}

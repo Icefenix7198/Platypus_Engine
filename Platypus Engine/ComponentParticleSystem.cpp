@@ -599,6 +599,7 @@ uint32_t ComponentParticleSystem::SaveEmmiterJSON(ParticleEmitter * emitter)
 ParticleEmitter* ComponentParticleSystem::LoadEmitterFromMeta(const char* pathMeta)
 {
 	ParticleEmitter* pE = new ParticleEmitter;
+	pE->owner = this;
 	JSON_Value* root_value = json_parse_file(pathMeta);
 	JSON_Object* root_object = json_value_get_object(root_value);
 

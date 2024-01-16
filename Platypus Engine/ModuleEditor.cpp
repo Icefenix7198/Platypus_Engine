@@ -277,7 +277,7 @@ void ModuleEditor::DrawEditor()
 			{
 				isplaying = true;
 				ispaused = false;
-				App->scene->CreateSerializationGameObject(App->scene->root);
+				//App->scene->CreateSerializationGameObject(App->scene->root);
 				dtsaved = 0.0f;
 			}
 		}
@@ -302,7 +302,7 @@ void ModuleEditor::DrawEditor()
 			if (ImGui::Button("Stop"))
 			{
 				isplaying = false;
-				App->scene->InitCreateGOFromSerialization();
+				//App->scene->InitCreateGOFromSerialization();
 			}
 		}
 		ImGui::End();

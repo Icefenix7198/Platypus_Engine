@@ -41,6 +41,7 @@ public:
 
 	float GetPlayDT() { return dtsaved; }
 	bool GetPaused() { return ispaused; }
+	void SetPlayDT(bool pause) { ispaused = pause; }
 
 	int cpuCache;
 	int cpus;

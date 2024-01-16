@@ -1,5 +1,6 @@
 #include "EmitterInstance.h"
 #include "ComponentTransform.h"
+#include "GameObject.h"
 #include "Application.h"
 
 EmitterInstance::EmitterInstance()
@@ -24,18 +25,18 @@ EmitterBase::EmitterBase()
 void EmitterBase::Spawn(ParticleEmitter* emitter, Particle* particle)
 {
 	particle->oneOverMaxLifetime = 1 / particlesLifeTime;
-	if (true)
-	{
-		float4x4 matrix = emitter->owner->owner->objTransform->globalTransform;
+	
+	ComponentTransform* cTra = (ComponentTransform*)emitter->owner->owner->GetComponentByType(TRANSFORM);
+	if (cTra != nullptr) {
+		float4x4 matrix = cTra->GetGlobalMatrix();
+		float3 position;
+		Quat rotation;
+		float3 escale;
+		matrix.Decompose(position, rotation, escale);
+		particle->position += position + emitterOrigin; //Se inicializan desde 0,0,0 asi que no deberia haber problema en hacer += pero deberia ser lo mismo.
+		particle->worldRotation = rotation;
+		particle->size = escale;
 	}
-	float4x4 matrix = emitter->owner->owner->objTransform->globalTransform;
-	float3 position;
-	Quat rotation;
-	float3 escale;
-	matrix.Decompose(position, rotation, escale);
-	particle->position += position + emitterOrigin; //Se inicializan desde 0,0,0 asi que no deberia haber problema en hacer += pero deberia ser lo mismo.
-	particle->worldRotation = rotation;
-	particle->size = escale;
 }
 
 void EmitterBase::Update(float dt, ParticleEmitter* emitter)

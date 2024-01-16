@@ -267,6 +267,9 @@ void ModuleScene::CreateSerializationGameObject(GameObject* go)
 			}
 			case PARTICLE:
 			{
+				ComponentParticleSystem* cParticle = (ComponentParticleSystem*)go->components.at(i);
+
+				json_object_set_string(child_object,"FilePath", cParticle->SaveMetaEmitters());
 				break;
 			}
 			default:

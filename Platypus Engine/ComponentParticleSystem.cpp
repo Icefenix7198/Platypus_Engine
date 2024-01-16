@@ -12,6 +12,8 @@
 #include "EmitterInstance.h"
 #include "ParticleEmitter.h"
 
+#include "parson-master/parson.h" //For JSONs
+
 ComponentParticleSystem::ComponentParticleSystem()
 {
 	active = true;
@@ -339,6 +341,270 @@ void ComponentParticleSystem::OnEditor()
 			ImGui::TreePop();
 		}
 	}
+}
+
+const char* ComponentParticleSystem::SaveMetaEmitters()
+{
+	std::string filePath;
+
+	JSON_Value* root_value = json_value_init_object();
+	JSON_Object* root_object = json_value_get_object(root_value);
+
+	//If there is no failure loading
+	if (root_value != nullptr && root_object != nullptr)
+	{
+		
+		//Crear path
+		char* serialized_string = NULL;
+
+		json_object_set_string(root_object, "FilePath", filePath.c_str());
+		json_object_set_number(root_object, "NumEmitters", allEmitters.size());
+		json_object_set_number(root_object, "OwnerID", this->GetUUID());
+
+		//Create array of all emitters UUID
+		JSON_Array* arr;
+		JSON_Value* new_val = json_value_init_array();
+
+		arr = json_value_get_array(new_val);
+		json_object_dotset_value(root_object, "Emitters", new_val);
+		//We create the value to assign and insert into the array
+		JSON_Value* arrayRecord;
+		arrayRecord = json_value_init_object();
+		//We call save Emitter in Json for each mesh and we save their UUID
+		for (int i = 0; i < allEmitters.size(); i++)
+		{
+			json_array_append_number(arr,SaveEmmiterJSON(allEmitters.at(i)));
+		}
+
+		
+		serialized_string = json_serialize_to_string_pretty(root_value);
+		puts(serialized_string);
+
+		//Crear el archivo en assets
+		std::string nameMeta;
+		nameMeta += ASSETS_PARTICLES;
+		nameMeta += std::to_string(this->GetUUID());
+		nameMeta += ".meta";
+		json_serialize_to_file(root_value, nameMeta.c_str());
+		json_free_serialized_string(serialized_string);
+		json_value_free(root_value);
+
+		return nameMeta.c_str();
+	}
+}
+
+uint32_t ComponentParticleSystem::SaveEmmiterJSON(ParticleEmitter * emitter)
+{
+	uint32_t docID = App->resources->GenerateNewUID();
+	JSON_Value* root_value = json_value_init_object();
+	JSON_Object* root_object = json_value_get_object(root_value);
+
+	//If there is no failure loading
+	if (root_value != nullptr && root_object != nullptr)
+	{
+
+		//Crear path
+		char* serialized_string = NULL;
+
+		json_object_set_number(root_object, "ModulesSize", emitter->modules.size());
+		json_object_set_number(root_object, "OwnerID", owner->GetUUID());
+
+		//Create array of all modules info
+		JSON_Array* arr;
+		JSON_Value* new_val = json_value_init_array();
+
+		arr = json_value_get_array(new_val);
+		json_object_dotset_value(root_object, "Emitters", new_val);
+		//We call save Emitter in Json for each mesh and we save their UUID
+		for (int i = 0; i < emitter->modules.size(); i++)
+		{
+			//Components (son object)
+			JSON_Value* modulo;
+			modulo = json_value_init_object();
+			JSON_Object* child_object = json_value_get_object(modulo);
+
+			json_object_set_number(child_object, "Type", (int)emitter->modules.at(i)->type);
+
+			//Y aqui un switch para crear en funcion del tipo
+			switch (emitter->modules.at(i)->type)
+			{
+			case BASE:
+			{
+				EmitterBase* eBase = (EmitterBase*)emitter->modules.at(i);
+
+				//Lifetime
+				json_object_set_number(child_object, "Lifetime", eBase->particlesLifeTime);
+				//InitialPosition
+				JSON_Array* arrInitialPos;
+
+				//Position
+				JSON_Value* jValuePos = json_value_init_array();
+				arrInitialPos = json_value_get_array(jValuePos);
+
+				json_object_dotset_value(child_object, "Position", jValuePos);
+				json_array_append_number(arrInitialPos, eBase->emitterOrigin.x);
+				json_array_append_number(arrInitialPos, eBase->emitterOrigin.y);
+				json_array_append_number(arrInitialPos, eBase->emitterOrigin.z);
+
+				break;
+			}
+			case SPAWN:
+			{
+				EmitterSpawner* eSpawn = (EmitterSpawner*)emitter->modules.at(i);
+
+				//Time of num based
+				json_object_set_boolean(child_object, "TimeBased", eSpawn->basedTimeSpawn);
+				//ParticlesToSpawn
+				json_object_set_number(child_object, "NumParticles", eSpawn->numParticlesToSpawn);
+				//SpawnSpeed
+				json_object_set_number(child_object, "SpawnRatio", eSpawn->spawnRatio);
+
+				break;
+			}
+			case POSITION:
+			{
+				EmitterPosition* ePosition = (EmitterPosition*)emitter->modules.at(i);
+
+				//Random
+				json_object_set_boolean(child_object, "Random", ePosition->randomized);
+
+				//Directions
+				//InitialDirection
+				JSON_Array* arrInitialDir1;
+
+				//Position
+				JSON_Value* jValueDir1 = json_value_init_array();
+				arrInitialDir1 = json_value_get_array(jValueDir1);
+
+				json_object_dotset_value(child_object, "Direction1", jValueDir1);
+				json_array_append_number(arrInitialDir1, ePosition->direction1.x);
+				json_array_append_number(arrInitialDir1, ePosition->direction1.y);
+				json_array_append_number(arrInitialDir1, ePosition->direction1.z);
+
+				ePosition->direction1;
+				//SecondDirection
+				JSON_Array* arrInitialDir2;
+
+				//Position
+				JSON_Value* jValueDir2 = json_value_init_array();
+				arrInitialDir2 = json_value_get_array(jValueDir2);
+
+				json_object_dotset_value(child_object, "Direction1", jValueDir2);
+				json_array_append_number(arrInitialDir2, ePosition->direction2.x);
+				json_array_append_number(arrInitialDir2, ePosition->direction2.y);
+				json_array_append_number(arrInitialDir2, ePosition->direction2.z);
+
+				//Accelerate
+				json_object_set_boolean(child_object, "Accelerates", ePosition->acceleration);
+
+				//Speed
+				json_object_set_boolean(child_object, "Speed1", ePosition->particleSpeed1);
+				json_object_set_boolean(child_object, "Speed2", ePosition->particleSpeed2);
+
+				break;
+			}
+			case ROTATION:
+			{
+				//Doesn't store any value (Don't have different billboarding orientations)
+
+				break;
+			}
+			case SIZEPARTICLE:
+			{	
+				EmitterSize* eSize = (EmitterSize*)emitter->modules.at(i);
+
+				//Bool size increases progresivly
+				json_object_set_boolean(child_object, "Progressive", eSize->progresive);
+
+				//Scaling Factor
+				json_object_set_number(child_object, "Size1", eSize->sizeMultiplier1);
+				json_object_set_number(child_object, "Size2", eSize->sizeMultiplier2);
+
+				//Time
+				json_object_set_number(child_object, "TimeStart", eSize->startChange);
+				json_object_set_number(child_object, "TimeStop", eSize->stopChange);
+
+				break;
+			}
+			case COLOR:
+			{	
+				EmitterColor* eColor = (EmitterColor*)emitter->modules.at(i);
+
+				//Bool size increases progresivly
+				json_object_set_boolean(child_object, "Progressive", eColor->progresive);
+
+				//Colors
+				//InitialColor
+				JSON_Array* arrInitialColor;
+
+				//Position
+				JSON_Value* jValueColor1 = json_value_init_array();
+				arrInitialColor = json_value_get_array(jValueColor1);
+
+				json_object_dotset_value(child_object, "Color1", jValueColor1);
+				json_array_append_number(arrInitialColor, eColor->color1.r);
+				json_array_append_number(arrInitialColor, eColor->color1.g);
+				json_array_append_number(arrInitialColor, eColor->color1.b);
+				json_array_append_number(arrInitialColor, eColor->color1.a);
+
+				//InitialColor
+				JSON_Array* arrFinalColor;
+
+				//Position
+				JSON_Value* jValueColor2 = json_value_init_array();
+				arrFinalColor = json_value_get_array(jValueColor2);
+
+				json_object_dotset_value(child_object, "Color2", jValueColor2);
+				json_array_append_number(arrFinalColor, eColor->color2.r);
+				json_array_append_number(arrFinalColor, eColor->color2.g);
+				json_array_append_number(arrFinalColor, eColor->color2.b);
+				json_array_append_number(arrFinalColor, eColor->color2.a);
+
+				//Time
+				json_object_set_number(child_object, "TimeStart", eColor->startChange);
+				json_object_set_number(child_object, "TimeStop", eColor->stopChange);
+
+				break;
+			}
+			case MAX:
+				break;
+			default:
+				break;
+			}
+
+			json_array_append_value(arr, modulo);
+		}
+
+
+		serialized_string = json_serialize_to_string_pretty(root_value);
+		puts(serialized_string);
+
+		//Crear el archivo en assets
+		std::string nameMeta;
+		nameMeta += PARTICLES_PATH;
+		nameMeta += std::to_string(docID);
+		nameMeta += PAR;
+		json_serialize_to_file(root_value, nameMeta.c_str());
+		json_free_serialized_string(serialized_string);
+		json_value_free(root_value);
+	}
+	return docID;
+}
+
+void ComponentParticleSystem::LoadEmmiterJSON(const char* path)
+{
+/*JSON_Value* root_value = json_parse_file(filePath.c_str());
+JSON_Object* root_object = json_value_get_object(root_value);
+
+int numMeshes = json_object_get_number(root_object, "NumMeshes");
+
+JSON_Array* arr = json_object_get_array(root_object, "Meshes");
+for (int i = 0; i < numMeshes; i++)
+{
+	vecNameMeshes.push_back(json_array_get_string(arr, i * 2));
+	vecUUIDmeshes.push_back(json_array_get_number(arr, i * 2 + 1));
+}*/
+//return json_object_get_string(root_object, "Name");
 }
 
 

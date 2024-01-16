@@ -139,7 +139,6 @@ void ImporterFBX::Load(char* buffer)
 
 const char* ImporterFBX::GetMetaUUID(const char* filePath, std::vector<uint32_t>& vecUUIDmeshes, std::vector<std::string>& vecNameMeshes)
 {
-	
 	JSON_Value* root_value = json_parse_file(filePath);
 	JSON_Object* root_object = json_value_get_object(root_value);
 

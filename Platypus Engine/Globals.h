@@ -29,8 +29,10 @@ void log(const char file[], int line, const char* format, ...);
 #define ASSETS_MODELS "Assets/Models/"
 #define ASSETS_TEXTURES "Assets/Textures/"
 #define ASSETS_GAMEOBJECTS "Assets/Objects/"
+#define ASSETS_PARTICLES "Assets/Particles/"
 //CFF
 #define CFF ".pry"
+#define PAR ".par"
 
 #define CAP(n) ((n <= 0.0f) ? n=0.0f : (n >= 1.0f) ? n=1.0f : n=n)
 

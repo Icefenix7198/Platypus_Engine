@@ -41,6 +41,11 @@ public:
 	//ImGui
 	void OnEditor();
 
+	const char* SaveMetaEmitters(); //Returns the Meta Path File
+	uint32_t SaveEmmiterJSON(ParticleEmitter* emitter);
+	void LoadEmitterFromMeta(const char* pathMeta);
+	void LoadEmmiterJSON(const char* path);
+
 private:
 };
 

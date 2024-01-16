@@ -136,8 +136,8 @@ void ComponentParticleSystem::OnEditor()
 
 							//Positions
 							EmitterBase* eBase = (EmitterBase*)listModule.at(j);
-							ImGui::DragFloat3("Initial Pos.", &(eBase->emitterOrigin[0]), 0.1f);
-							ImGui::DragFloat("Life Time", &(eBase->particlesLifeTime), 0.5F, 1.0F, 720.0F);
+							ImGui::DragFloat3("Initial Pos. ## BASE", &(eBase->emitterOrigin[0]), 0.1f);
+							ImGui::DragFloat("Life Time ## BASE", &(eBase->particlesLifeTime), 0.5F, 1.0F, 720.0F);
 							break;
 						}
 						case SPAWN:
@@ -161,7 +161,7 @@ void ComponentParticleSystem::OnEditor()
 							if (eSpawner->basedTimeSpawn)
 							{
 
-								if (ImGui::SliderFloat("Delay", &(eSpawner->spawnRatio), 0.1f, 1.0f))
+								if (ImGui::SliderFloat("Delay ##SPAWN", &(eSpawner->spawnRatio), 0.1f, 1.0f))
 								{
 
 								}
@@ -198,7 +198,7 @@ void ComponentParticleSystem::OnEditor()
 							{
 								ImGui::DragFloat3("Position", &(ePosition->direction1[0]), 0.1f);
 							}
-							ImGui::DragFloat("Speed", &(ePosition->particleSpeed),0.2F);
+							ImGui::DragFloat("Speed ##POSITION", &(ePosition->particleSpeed),0.2F);
 
 							break;
 						}
@@ -232,8 +232,8 @@ void ComponentParticleSystem::OnEditor()
 							if (eSize->progresive)
 							{
 								ImGui::SliderFloat("End Scale", &(eSize->sizeMultiplier2), 0.1f, 10.0f);
-								ImGui::SliderFloat("Start Change", &(eSize->startChange), 0.0f, (eSize->stopChange - 0.05f));
-								ImGui::SliderFloat("Stop Change", &(eSize->stopChange), eSize->startChange + 0.05f, 1.0f);
+								ImGui::SliderFloat("Start Change ##SCALE", &(eSize->startChange), 0.0f, (eSize->stopChange - 0.05f));
+								ImGui::SliderFloat("Stop Change ##SCALE", &(eSize->stopChange), eSize->startChange + 0.05f, 1.0f);
 							}
 							break;
 						}
@@ -258,8 +258,8 @@ void ComponentParticleSystem::OnEditor()
 								{
 									eColor->color2 = eColor->color2;
 								}
-								ImGui::SliderFloat("Start Change", &(eColor->startChange), 0.0f, (eColor->stopChange-0.05f));
-								ImGui::SliderFloat("Stop Change", &(eColor->stopChange), eColor->startChange+0.05f, 1.0f);
+								ImGui::SliderFloat("Start ReSize ##COLOR", &(eColor->startChange), 0.0f, (eColor->stopChange-0.05f));
+								ImGui::SliderFloat("Stop ReSize ##COLOR", &(eColor->stopChange), eColor->startChange+0.05f, 1.0f);
 							}
 							
 							break;

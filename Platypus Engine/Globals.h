@@ -29,6 +29,7 @@ void log(const char file[], int line, const char* format, ...);
 #define ASSETS_MODELS "Assets/Models/"
 #define ASSETS_TEXTURES "Assets/Textures/"
 #define ASSETS_GAMEOBJECTS "Assets/Objects/"
+#define ASSETS_GAMEOBJECTS_INI "Assets/OBJECTS/INITIAL/"
 #define ASSETS_PARTICLES "Assets/Particles/"
 //CFF
 #define CFF ".pry"

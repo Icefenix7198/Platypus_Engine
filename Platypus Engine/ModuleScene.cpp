@@ -372,19 +372,35 @@ void ModuleScene::CreateSerializationGameObject(GameObject* go)
 	}
 }
 
-void ModuleScene::InitCreateGOFromSerialization(bool fistTime)
+void ModuleScene::InitCreateGOFromSerialization(bool firstTime)
 {
 	std::vector<std::string> listJsons;
 	
 	//Get all files with the extension
-	App->fileSystem->GetAllFilesWithExtension(ASSETS_GAMEOBJECTS, "json", listJsons);
+	if (firstTime)
+	{
+		App->fileSystem->GetAllFilesWithExtension(ASSETS_GAMEOBJECTS_INI, "json", listJsons);
+	}
+	else
+	{
+		App->fileSystem->GetAllFilesWithExtension(ASSETS_GAMEOBJECTS, "json", listJsons);
+	}
+	
 	
 	//Search root node
 	for (int i = 0; i < listJsons.size(); ++i)
 	{
 		//Get add its origin path for the parser to work ("/Assest/Folder/Nombre.json")
 		std::string pathFile;
-		pathFile.assign(ASSETS_GAMEOBJECTS);
+		if (firstTime)
+		{
+			pathFile.assign(ASSETS_GAMEOBJECTS_INI);
+		}
+		else
+		{
+			pathFile.assign(ASSETS_GAMEOBJECTS);
+		}
+		
 		pathFile += listJsons.at(i).c_str();
 
 		JSON_Value* root_value = json_parse_file(pathFile.c_str());
@@ -468,7 +484,15 @@ void ModuleScene::InitCreateGOFromSerialization(bool fistTime)
 					{
 						//Test if UUID is correct
 						std::string pathJson;
-						pathJson.assign(ASSETS_GAMEOBJECTS);
+						if (firstTime)
+						{
+							pathJson.assign(ASSETS_GAMEOBJECTS_INI);
+						}
+						else
+						{
+							pathJson.assign(ASSETS_GAMEOBJECTS);
+						}
+						
 						pathJson += listJsons.at(a).c_str();
 
 						JSON_Value* root_value2 = json_parse_file(pathJson.c_str());

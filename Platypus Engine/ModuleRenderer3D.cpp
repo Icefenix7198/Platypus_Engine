@@ -189,6 +189,7 @@ bool ModuleRenderer3D::Init()
 	ImporterFBX impFBX;
 	impFBX.Import(path.c_str());//It must be done in Renderer because OpenGL isn't inizialitzed in scene.
 	
+	App->scene->InitCreateGOFromSerialization(true);
 
 	return ret;
 }

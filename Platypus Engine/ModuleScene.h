@@ -49,7 +49,7 @@ public:
 	//Serialization
 	//void I
 	void CreateSerializationGameObject(GameObject* go);
-	void InitCreateGOFromSerialization();
+	void InitCreateGOFromSerialization(bool firstTime = false);
 	void CreateGObFromSerializationRecursively(std::vector<std::string> listJsons, GameObject* go, const char* jsonName,uint32_t UUID);
 
 private:

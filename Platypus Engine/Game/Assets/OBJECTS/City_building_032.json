@@ -1,1 +1,1 @@
-{"Name":"City_building_032","UUID":939049199,"Active":true,"IsRoot":false,"NumChildren":0,"NumCompoments":2,"Components":[{"UUID":974277425,"Type":0,"Position":[0,0,0],"Rotation":[0,0,0,0],"Scale":[1,1,1]},{"UUID":1008879062,"Type":1,"MeshUUID":2549911255}],"Children":[]}
+{"Name":"City_building_032","UUID":2900322438,"Active":true,"IsRoot":false,"NumChildren":0,"NumCompoments":2,"Components":[{"UUID":2928936669,"Type":0,"Position":[-29.478403091430664,21.01409912109375,0],"Rotation":[1,0,0,0],"Scale":[1,1,1]},{"UUID":2963886411,"Type":1,"MeshUUID":4097532571}],"Children":[]}

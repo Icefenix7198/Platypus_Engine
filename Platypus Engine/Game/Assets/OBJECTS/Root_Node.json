@@ -1,1 +1,1 @@
-{"Name":"Root_Node","UUID":4099920573,"Active":true,"IsRoot":true,"NumChildren":1,"NumCompoments":1,"Components":[{"UUID":4150604661,"Type":0,"Position":[0,0,0],"Rotation":[0,0,0,0],"Scale":[1,1,1]}],"Children":[{"Name":"Street environment_V01","UUID":553770761}]}
+{"Name":"Root_Node","UUID":3790809807,"Active":true,"IsRoot":true,"NumChildren":1,"NumCompoments":1,"Components":[{"UUID":3857019378,"Type":0,"Position":[0,0,0],"Rotation":[0,0,0,0],"Scale":[1,1,1]}],"Children":[{"Name":"Street environment_V01","UUID":341750688}]}

@@ -269,6 +269,40 @@ void ModuleEditor::DrawEditor()
 			ImGui::EndTabBar();
 		}
 	}
+	if (ImGui::Begin("Timer"))
+	{
+		if (isplaying == false)
+		{
+			if (ImGui::Button("Play"))
+			{
+				isplaying = true;
+				App->scene->CreateSerializationGameObject(App->scene->root);
+			}
+		}
+		if (isplaying == true)
+		{
+			if (ImGui::Button("Pause"))
+			{
+				ispaused = !ispaused;
+
+				if (ispaused == true)
+				{
+					dtsaved = App->dt;
+					App->dt = 0;
+				}
+				else
+				{
+					App->dt = dtsaved;
+				}
+			}
+			if (ImGui::Button("Stop"))
+			{
+				isplaying = false;
+				App->scene->InitCreateGOFromSerialization();
+			}
+		}
+		ImGui::End();
+	}
 	
 }
 

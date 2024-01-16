@@ -58,6 +58,11 @@ private:
 	bool showInspector = true; //No se si inspector es la palabra correcta
 	bool assetsWindow = true;
 
+	bool isplaying = false;
+	bool ispaused = false;
+
+	float dtsaved;
+
 	//For generic position in screen
 	const ImGuiViewport* main_viewport;
 };

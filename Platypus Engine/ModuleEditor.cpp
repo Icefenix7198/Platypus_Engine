@@ -276,24 +276,28 @@ void ModuleEditor::DrawEditor()
 			if (ImGui::Button("Play"))
 			{
 				isplaying = true;
+				ispaused = false;
 				App->scene->CreateSerializationGameObject(App->scene->root);
+				dtsaved = 0.0f;
 			}
 		}
 		if (isplaying == true)
 		{
-			if (ImGui::Button("Pause"))
+			if (!ispaused)
 			{
-				ispaused = !ispaused;
-
-				if (ispaused == true)
+				if (ImGui::Button("Pause ## Timer"))
 				{
-					dtsaved = App->dt;
-					App->dt = 0;
+					ispaused = true;
 				}
-				else
+				dtsaved = App->dt;
+			}
+			else
+			{
+				if (ImGui::Button("Continue ## Timer"))
 				{
-					App->dt = dtsaved;
+					ispaused = false;
 				}
+				dtsaved = App->dt;
 			}
 			if (ImGui::Button("Stop"))
 			{

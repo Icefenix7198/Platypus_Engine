@@ -144,13 +144,17 @@ void ParticleEmitter::Init(ComponentParticleSystem* component)
 
 void ParticleEmitter::Update(float dt)
 {
-	emitterTime += dt;
+	
+	if(!App->editor->GetPaused())
+	{	
+		emitterTime += dt;
 
-	//Eliminar las particulas de la lista que ya acabaron su tiempo de vida
-	KillDeadParticles();
+		//Eliminar las particulas de la lista que ya acabaron su tiempo de vida
+		KillDeadParticles();
 
-	//Actualizamos modulos que puedan cambiar con el tiempo (cambiar las particulas, moverlas o lo que haga falta)
-	UpdateModules(dt);
+		//Actualizamos modulos que puedan cambiar con el tiempo (cambiar las particulas, moverlas o lo que haga falta)
+		UpdateModules(dt);
+	}
 
 	//Llamamos a Draw particles para que printe todas las particulas con su info updateada
 	DrawParticles();

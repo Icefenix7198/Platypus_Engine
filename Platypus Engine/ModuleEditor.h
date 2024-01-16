@@ -39,6 +39,9 @@ public:
 
 	void AssetsMenu();
 
+	float GetPlayDT() { return dtsaved; }
+	bool GetPaused() { return ispaused; }
+
 	int cpuCache;
 	int cpus;
 	int ram;
@@ -61,7 +64,7 @@ private:
 	bool isplaying = false;
 	bool ispaused = false;
 
-	float dtsaved;
+	float dtsaved = 0.0f;
 
 	//For generic position in screen
 	const ImGuiViewport* main_viewport;

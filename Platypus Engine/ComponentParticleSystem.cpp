@@ -41,16 +41,20 @@ ComponentParticleSystem::~ComponentParticleSystem()
 bool ComponentParticleSystem::Update()
 {
 	//Si la primera vez que se ejecuta
-	return Update(App->dt);
+	return Update(App->editor->GetPlayDT());
 }
 
 bool ComponentParticleSystem::Update(float dt)
 {
 	bool ret = true;
-	for (unsigned int i = 0; i < allEmitters.size(); ++i)
+	if (dt>0.0f)
 	{
-		allEmitters.at(i)->Update(dt);
+		for (unsigned int i = 0; i < allEmitters.size(); ++i)
+		{
+			allEmitters.at(i)->Update(dt);
+		}
 	}
+	
 
 	return ret;
 }
